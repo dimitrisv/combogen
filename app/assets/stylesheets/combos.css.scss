@@ -1,0 +1,13 @@
+// Place all the styles related to the combos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.combo {
+	list-style-type: none;
+	li {
+		display: inline-block;
+	}
+	li:after {
+		content: " >";
+	}
+	li:last-child:after { content: ""; }
+}

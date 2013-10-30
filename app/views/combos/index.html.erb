@@ -1,0 +1,34 @@
+<div id="title" class="container">
+  <h1>Listing combos</h1>
+</div>
+
+<div class="container">
+  <%= link_to 'Back to Main', {:controller => :welcome, :action => :index}, :class => "btn btn-blue mrs" %>
+  <%= link_to 'Add Combo', new_combo_path, :class => "btn btn-green" %>
+</div>
+
+<div class="container">
+  <table>
+    <tr>
+      <th>No tricks</th>
+      <th>Landed</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+
+  <% @combos.each do |combo| %>
+    <tr>
+      <td><%= combo.no_tricks %></td>
+      <td><%= combo.landed %></td>
+      <td><%= link_to 'Show', combo %></td>
+      <td><%= link_to 'Edit', edit_combo_path(combo) %></td>
+      <td><%= link_to 'Destroy', combo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
+
+<br />
+
+

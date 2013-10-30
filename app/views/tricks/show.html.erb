@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<div id="title" class="container">
+  <h1><%= @trick.name %></h1>
+  <p>
+    <ul id="trick-details">
+      <li>Class <%= @trick.difficulty %></li>
+      <li><%= @trick.setup %> Setup</li>
+      <li>Landed? <%= @trick.landed %></li>
+    </ul>
+  </p>
+</div>
+
+<div class="container">
+  <h3>Description</h3>
+  <br>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet enim vitae massa semper vestibulum. Proin suscipit gravida tortor, non fringilla nunc gravida non. Morbi cursus tincidunt orci at egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras fermentum faucibus cursus
+  </p>
+</div>
+
+<div class="container">
+  <h3>Combos using this trick</h3>
+  <div class="container">
+    <ul class="combo-list">
+      <li>
+        <%- @trick.combos.each do |combo| %>
+          <ul class="combo">
+          <%- combo.tricks.each do |trick| %>
+            <li><%= trick.name %></li>
+          <%-end-%>
+          </ul>
+        <%-end-%>
+      </li>
+    </ul>
+</div>
+</div>
+
+<div class="container">
+  <%= link_to 'Edit', edit_trick_path(@trick) %> |
+  <%= link_to 'Back', tricks_path %>
+</div>

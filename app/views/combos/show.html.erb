@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <%= @combo.no_tricks %>-hit combo | Landed? <%= @combo.landed %>
+</p>
+
+<h3>The Sequence</h3>
+
+<ul>
+  <%- @combo.tricks.each do |trick| %>
+  	<li><%= trick.name %> ></li>
+  <%-end-%>
+</ul>
+
+
+
+
+<%= link_to 'Edit', edit_combo_path(@combo) %> |
+<%= link_to 'Back', combos_path %>

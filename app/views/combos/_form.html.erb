@@ -1,0 +1,25 @@
+<%= form_for(@combo) do |f| %>
+  <% if @combo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@combo.errors.count, "error") %> prohibited this combo from being saved:</h2>
+
+      <ul>
+      <% @combo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :no_tricks %><br />
+    <%= f.number_field :no_tricks %>
+  </div>
+  <div class="field">
+    <%= f.label :landed %><br />
+    <%= f.text_field :landed %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
