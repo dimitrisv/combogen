@@ -1,6 +1,12 @@
-<h1>Editing trick</h1>
+<div id="title" class="container">
+	<h1>Editing <%= @trick.name %></h1>
+</div>
+
+<div class="container">
+	<%= link_to 'Back to Index', tricks_path, :class => "btn btn-blue mrs" %>
+	<%= link_to 'Show Trick', @trick, :class => "btn btn-green" %>
+</div>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @trick %> |
-<%= link_to 'Back', tricks_path %>
+<br class="clear">

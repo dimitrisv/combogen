@@ -1,26 +1,18 @@
-
 <div id="title" class="container">
-  <h1>List of Tricks</h1>
+  <h1>Trick Database</h1>
   <p>
     Discover new ways to move!
   </p>
 </div>
 
-<div class="container">
-  <%= link_to 'Back to Main', {:controller => :welcome, :action => :index}, :class => "btn btn-blue mrs" %>
-  <%= link_to 'Add Trick', new_trick_path, :class => "btn btn-green" %>
-</div>
-
-<div class="container">
+<div class="container mbl">
   <table>
     <tr>
       <th>Name</th>
       <th>Difficulty</th>
       <th>Setup</th>
       <th>Landed</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th colspan="3">Actions</th>
     </tr>
 
   <% @tricks.each do |trick| %>
@@ -37,3 +29,8 @@
   </table>
 </div>
 
+<div class="container">
+  <%= link_to 'Back to Main', {:controller => :welcome, :action => :index}, :class => "btn btn-blue mrs" %>
+  <%= link_to 'Add Trick', new_trick_path, :class => "btn btn-green" %>
+</div>
+<br class="clear">

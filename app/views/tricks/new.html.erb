@@ -1,5 +1,14 @@
-<h1>New trick</h1>
+<div id="title" class="container">
+	<h1>Add new trick to the database</h1>
+	<p>
+		If you're not the admin, get the fuck out! :P
+	</p>
+</div>
+
+<div class="container">
+	<%= link_to 'Back to Index', tricks_path, :class => "btn btn-blue" %>
+</div>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', tricks_path %>
+<br class="clear">

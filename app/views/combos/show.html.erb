@@ -1,19 +1,21 @@
-<p id="notice"><%= notice %></p>
+<div id="title" class="container">
+	<h1>Combo <%= @combo.id %></h2>
+	<p>
+	  <%= @combo.no_tricks %>-hit combo | Landed? <%= @combo.landed %>
+	</p>
+</div>
 
-<p>
-  <%= @combo.no_tricks %>-hit combo | Landed? <%= @combo.landed %>
-</p>
+<div class="container">
+	<ul class="combo combo-lg">
+	  <%- @combo.tricks.each do |trick| %>
+	  	<li><%= trick.name %></li>
+	  <%-end-%>
+	</ul>
+</div>
 
-<h3>The Sequence</h3>
-
-<ul>
-  <%- @combo.tricks.each do |trick| %>
-  	<li><%= trick.name %> ></li>
-  <%-end-%>
-</ul>
-
-
-
-
-<%= link_to 'Edit', edit_combo_path(@combo) %> |
-<%= link_to 'Back', combos_path %>
+<div class="container">
+	<%= link_to 'Back', combos_path, :class => "btn btn-blue mrs"%>
+	<%= link_to 'Edit', edit_combo_path(@combo), :class => "btn btn-green mrs" %>
+	<p id="notice"><%= notice %></p>
+</div>
+<br class="clear">

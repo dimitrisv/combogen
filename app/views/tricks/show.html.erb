@@ -1,14 +1,16 @@
-<p id="notice"><%= notice %></p>
-
 <div id="title" class="container">
   <h1><%= @trick.name %></h1>
-  <p>
-    <ul id="trick-details">
-      <li>Class <%= @trick.difficulty %></li>
-      <li><%= @trick.setup %> Setup</li>
-      <li>Landed? <%= @trick.landed %></li>
-    </ul>
-  </p>
+  <ul id="trick-details">
+    <li>Class <%= @trick.difficulty %></li>
+    <li><%= @trick.setup %> Setup</li>
+    <li>Landed? <%= @trick.landed %></li>
+  </ul>
+</div>
+
+<div class="container">
+  <%= link_to 'Back to Index', tricks_path, :class => "btn btn-blue mrs" %>
+  <%= link_to 'Edit', edit_trick_path(@trick), :class => "btn btn-green mrs" %>
+  <p id="notice"><%= notice %></p>
 </div>
 
 <div class="container">
@@ -34,9 +36,4 @@
       </li>
     </ul>
 </div>
-</div>
-
-<div class="container">
-  <%= link_to 'Edit', edit_trick_path(@trick) %> |
-  <%= link_to 'Back', tricks_path %>
 </div>

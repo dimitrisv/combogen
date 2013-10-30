@@ -1,16 +1,11 @@
 <div id="title" class="container">
-  <h1>Listing combos</h1>
-</div>
-
-<div class="container">
-  <%= link_to 'Back to Main', {:controller => :welcome, :action => :index}, :class => "btn btn-blue mrs" %>
-  <%= link_to 'Add Combo', new_combo_path, :class => "btn btn-green" %>
+  <h1>Combo Database</h1>
 </div>
 
 <div class="container">
   <table>
     <tr>
-      <th>No tricks</th>
+      <th>Number of tricks</th>
       <th>Landed</th>
       <th></th>
       <th></th>
@@ -29,6 +24,8 @@
   </table>
 </div>
 
-<br />
-
-
+<div class="container">
+  <%= link_to 'Back to Main', {:controller => :welcome, :action => :index}, :class => "btn btn-blue mrs" %>
+  <%= link_to 'Add Combo', new_combo_path, :class => "btn btn-green" %>
+</div>
+<br class="clear">

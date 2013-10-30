@@ -5,9 +5,17 @@
 	list-style-type: none;
 	li {
 		display: inline-block;
+		white-space: nowrap;
+		overflow: hidden;
 	}
 	li:after {
 		content: " >";
 	}
 	li:last-child:after { content: ""; }
+}
+
+.combo-lg {
+	font-size: 3em;
+	line-height: 1em;
+	font-weight: bold;
 }

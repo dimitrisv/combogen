@@ -17,6 +17,8 @@
   * purple/light (#9D8AC7)
   * grey/dark (#62707D), grey/dark/text (#384047), grey/light/text (#8d9aa5), grey/light/text/2 (#8c989e)
   */
+
+/* APPLICATION GLOBALS ===================== */
 * { margin: 0; padding: 0; }
 
 body {
@@ -27,16 +29,53 @@ body {
 .container {
 	margin: 0 auto;
 	padding: 20px;
+	padding-bottom: 0;
 }
 
 h1, h2, p { padding-bottom: 20px; }
 
-.clear {
-	clear: both;
+.clear { clear: both; }
+.mrs { margin-right: 10px; }
+.mbl { margin-bottom: 20px; }
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
 }
 
-.mrs {
-	margin-right: 10px;
+input, textarea {
+	font-size: 1em;
+	height: 2em;
+	padding: 0 5px;
+	border: none;
+	border-radius: 0;
+	border: 1px solid #b7c0c7;
+}
+
+form .actions input {
+	background-color: #5fcf80;
+	border-color: #3ac162;
+	cursor: pointer;
+	color: white;
+	font-weight: bold;
+	font-size: 14px;
+	border-radius: 5px;
+	padding: 0 8px;
+}
+form {
+	font-weight: bold;
+}
+
+
+/* TABLE ===================================== */
+
+table {
+	text-align: left;
+}
+th, td {
+	padding-right: 15px;
 }
 
 

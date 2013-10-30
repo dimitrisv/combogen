@@ -1,6 +1,12 @@
-<h1>Editing combo</h1>
+<div id="title" class="container">
+	<h1>Editing combo <%= @combo.id%></h1>
+</div>
+
+<div class="container">
+	<%= link_to 'Back', combos_path, :class => "btn btn-blue mrs" %>
+	<%= link_to 'Show', @combo, :class => "btn btn-green" %>
+</div>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @combo %> |
-<%= link_to 'Back', combos_path %>
+<br class="clear">
