@@ -1,12 +1,12 @@
 <div id="title" class="container">
 	<h1>Combo <%= @combo.id %></h2>
 	<p>
-	  <%= @combo.no_tricks %>-hit combo | Landed? <%= @combo.landed %>
+	  <%= @combo.no_tricks %>-hit combo
 	</p>
 </div>
 
 <div class="container">
-	<ul class="combo combo-lg">
+	<ul class="combo-list combo-lg">
 	  <%- @combo.tricks.each do |trick| %>
 	  	<li><%= trick.name %></li>
 	  <%-end-%>

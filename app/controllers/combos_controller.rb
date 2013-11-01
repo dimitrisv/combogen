@@ -40,7 +40,17 @@ class CombosController < ApplicationController
   # POST /combos
   # POST /combos.json
   def create
-    @combo = Combo.new(params[:combo])
+    @combo = Combo.create
+    @trick_ids = params[:combo][:trick_ids]
+    @trick_ids.reject! { |c| c.empty? }
+    @combo.no_tricks = @trick_ids.length
+
+    # if it's empty, return an error
+
+    # iterate through tricks added, and create all associations one by one!
+    @trick_ids.each do |id|
+      Element.create(index: 1, combo_id: @combo.id, trick_id: id);
+    end
 
     respond_to do |format|
       if @combo.save
@@ -56,8 +66,16 @@ class CombosController < ApplicationController
   # PUT /combos/1
   # PUT /combos/1.json
   def update
-    @combo = Combo.find(params[:id])
+    @combo = Combo.find(params[:id]) # FORCE ERROR, so I can see the params
 
+    @trick_ids = params[:combo][:trick_ids]
+    @trick_ids.reject! { |c| c.empty? }
+    @combo.no_tricks = @trick_ids.length
+
+    # DELETE ALL THAT ARE DESTROYED in tricks_attributes[][destroy]
+    # in the end, if all combo.no_tricks < 2, delete the combo itself
+
+    # HERE, render the proper message. eg. combo was deleted.
     respond_to do |format|
       if @combo.update_attributes(params[:combo])
         format.html { redirect_to @combo, notice: 'Combo was successfully updated.' }

@@ -11,7 +11,6 @@
       <th>Name</th>
       <th>Difficulty</th>
       <th>Setup</th>
-      <th>Landed</th>
       <th colspan="3">Actions</th>
     </tr>
 
@@ -20,7 +19,6 @@
       <td><%= trick.name %></td>
       <td><%= trick.difficulty %></td>
       <td><%= trick.setup %></td>
-      <td><%= trick.landed %></td>
       <td><%= link_to 'Show', trick %></td>
       <td><%= link_to 'Edit', edit_trick_path(trick) %></td>
       <td><%= link_to 'Destroy', trick, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -30,7 +28,7 @@
 </div>
 
 <div class="container">
-  <%= link_to 'Back to Main', {:controller => :welcome, :action => :index}, :class => "btn btn-blue mrs" %>
+  <%= link_to 'Back to Main', {:controller => :welcome, :action => :index}, :class => "btn mrs" %>
   <%= link_to 'Add Trick', new_trick_path, :class => "btn btn-green" %>
 </div>
 <br class="clear">

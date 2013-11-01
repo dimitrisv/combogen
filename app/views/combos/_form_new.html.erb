@@ -1,0 +1,28 @@
+<div class="container">
+  <%= semantic_nested_form_for(@combo) do |f| %>
+    <% if @combo.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@combo.errors.count, "error") %> prohibited this combo from being saved:</h2>
+        <ul>
+          <% @combo.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= f.inputs do %>
+      <%= f.input :tricks, :as => :select, :input_html => { :multiple => false } %>
+      <%= f.input :tricks, :as => :select, :input_html => { :multiple => false } %>
+      <%= f.link_to_add "add trick", :tricks, :class => "btn btn-green" %>
+      <%= f.fields_for :tricks do |trick_form| %>
+        <%= f.input :tricks, :as => :select, :input_html => { :multiple => false } %>
+        <%= trick_form.link_to_remove "X" %>
+      <% end %>
+    <% end %>
+    <%= f.actions do %>
+      <li class="action"><%= link_to 'Back to Index', combos_path, :class => "btn" %></li>
+      <%= f.action :submit, :button_html => { :class => "btn btn-blue" } %>
+    <% end %>
+  <% end %>
+</div>
