@@ -1,0 +1,20 @@
+.formtastic .actions {
+	padding-left: 0 !important;
+}
+
+.formtastic .input .label {
+	max-width: 120px;
+	font-size: 0.9em;
+}
+
+.formtastic .stringish input {
+	max-width: 200px;
+	padding: 0 6px;
+	font-weight: normal;
+}
+
+.formtastic .inline-errors {
+	color: #E15258 !important;
+	margin-left: 15px !important;
+	display: inline-block;
+}

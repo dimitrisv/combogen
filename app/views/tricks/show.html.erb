@@ -1,38 +1,44 @@
 <div id="title" class="container">
   <h1><%= @trick.name %></h1>
-  <ul id="trick-details">
+  <ul id="title-details">
     <li>Class <%= @trick.difficulty %></li>
     <li><%= @trick.setup %> Setup</li>
   </ul>
 </div>
 
-<div class="container">
-  <%= link_to 'Back to Index', tricks_path, :class => "btn btn-blue mrs" %>
-  <%= link_to 'Edit', edit_trick_path(@trick), :class => "btn btn-green mrs" %>
-  <p id="notice"><%= notice %></p>
-</div>
-
-<div class="container">
+<!--div class="container">
   <h3>Description</h3>
   <br>
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet enim vitae massa semper vestibulum. Proin suscipit gravida tortor, non fringilla nunc gravida non. Morbi cursus tincidunt orci at egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras fermentum faucibus cursus
   </p>
-</div>
+</div-->
 
 <div class="container">
-  <h3>Combos using this trick</h3>
-  <div class="container">
-    <ul>
-      <%- @trick.combos.each do |combo| %>
-      <li>
-          <ul class="combo-list">
-            <%- combo.tricks.each do |trick| %>
-              <li><%= trick.name %></li>
-            <%-end-%>
-          </ul>
-      </li>
-      <%-end-%>
-    </ul>
+  <% if @trick.combos.empty? %>
+    <h3 class="mbl">We found no combos that use this trick in our database. That's really sad...</h3>
+    <%= link_to 'Be the first to create one!', '/combos/new', :class => "btn btn-green mbl" %>
+  <% else %>
+    <h3>Combos using this trick:</h3>
+    <div class="container mbl ptt">
+      <ul>
+        <%- @trick.combos.uniq.each do |combo| %>
+        <li>
+            <ul class="combo-list">
+              <%- combo.tricks.each do |trick| %>
+                <li><%= trick.name %></li>
+              <%-end-%>
+            </ul>
+        </li>
+        <%-end-%>
+      </ul>
+    </div>
+  <% end %>
 </div>
+
+<div id="actions-bottom" class="container">
+  <%= link_to 'Back to DB', tricks_path, :class => "btn mrs" %>
+  <%= link_to 'Edit Trick', edit_trick_path(@trick), :class => "btn btn-green mrs" %>
+  <p id="notice"><%= notice %></p>
 </div>
+

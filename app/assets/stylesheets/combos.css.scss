@@ -7,6 +7,7 @@
 		display: inline-block;
 		white-space: nowrap;
 		overflow: hidden;
+		vertical-align: middle;
 	}
 	li:after {
 		content: " >";
@@ -14,8 +15,13 @@
 	li:last-child:after { content: ""; }
 }
 
-.combo-lg {
+.combo-lg li {
 	font-size: 3em;
-	line-height: 1em;
+	line-height: 1.4em;
 	font-weight: bold;
+}
+
+#title .combo-lg {
+	color: white;
+	padding-bottom: 20px;
 }

@@ -1,6 +1,6 @@
 class CreateElements < ActiveRecord::Migration
   def change
-    create_table :elements, :id => false do |t|
+    create_table :elements do |t|
     	t.integer :combo_id
     	t.integer :trick_id
      	t.integer :index

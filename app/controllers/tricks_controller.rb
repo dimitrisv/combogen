@@ -2,7 +2,9 @@ class TricksController < ApplicationController
   # GET /tricks
   # GET /tricks.json
   def index
-    @tricks = Trick.all
+    @tricks = Trick
+    @tricks = Trick.order(params[:sort]) if params[:sort]
+    @tricks = @tricks.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -73,10 +75,34 @@ class TricksController < ApplicationController
   # DELETE /tricks/1.json
   def destroy
     @trick = Trick.find(params[:id])
+
+    # Get all the combos associated with this trick
+    @trick.combos.uniq.each do |combo|
+      # Get the number of times the trick appears in this combo & subtract from total num of tricks
+      @no_tricks = combo.no_tricks
+      @no_duplicates = combo.tricks.where(:name => @trick.name).length
+      combo.no_tricks = @no_tricks - @no_duplicates
+      # If a combo ends up with less than 2 tricks, delete it
+      if (combo.no_tricks < 2)
+        combo.destroy
+      else
+        # ERROR: can't save updated index... fix it SOMEDAY
+        # Update the indexes of the remaining tricks in the combo
+        # @index = 1
+        # combo.elements.each do |elem|
+        #   if elem.trick.name != @trick.name
+        #     # update here
+        #     @index += 1
+        #   end
+        # end
+      end
+    end
+
+    # Destroy the trick itself
     @trick.destroy
 
     respond_to do |format|
-      format.html { redirect_to tricks_url }
+      format.html { redirect_to tricks_url, notice: 'Trick was successfully removed from the database.' }
       format.json { head :no_content }
     end
   end

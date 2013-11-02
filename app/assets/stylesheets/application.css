@@ -16,6 +16,7 @@
   * mustard (#E0AB18), burgundy? (#913B53), teal (#53BBB4), orange (#F9845B), purple (#665885)
   * purple/light (#9D8AC7)
   * grey/dark (#62707D), grey/dark/text (#384047), grey/light/text (#8d9aa5), grey/light/text/2 (#8c989e)
+  * grey/light/input (#e8ebed)
   */
 
 /* APPLICATION GLOBALS ===================== */
@@ -37,21 +38,49 @@ h1, h2, p { padding-bottom: 20px; }
 .clear { clear: both; }
 .mrs { margin-right: 10px; }
 .mbl { margin-bottom: 20px; }
+.pbl { padding-bottom: 20px; }
+.ptt { padding-top: 5px; }
 
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
-    outline: none;
-}
+
+
+/* TABLE STYLES =============================== */
+
+table { border-spacing: 0; width: 100%; border-collapse: collapse; }
+table td { vertical-align: middle; }
+table tr:nth-child(2n) { background-color: #edeff0;}
+table td:first-child, table th:first-child { padding-left: 10px; }
+
+
+
+/* ACTION MENUS =============================== */
+
+#actions-top, #actions-bottom { padding-bottom: 20px; }
+
+#actions-top { border-bottom: 1px solid #edeff0; }
+
+#actions-bottom { border-top: 1px solid #edeff0; }
+
+
+/* INPUTS & FORMS =============================== */
+
+input:focus, select:focus, textarea:focus, button:focus, a:focus { outline: none; }
 
 input, textarea {
 	font-size: 1em;
-	height: 2em;
+	height: 2.5em;
 	padding: 0 5px;
 	border: none;
-	border-radius: 0;
-	border: 1px solid #b7c0c7;
+	border-radius: 5px;
+	border: 2px solid #e8ebed;
+	color: #8c989e;
+	background-color: #e8ebed;
+	transition: all 300ms ease-out;
+}
+
+input:focus, textarea:focus {
+	background-color: white;
+	border: 2px solid #8d9aa5;
+	color: #384047;
 }
 
 form .actions input {
@@ -62,35 +91,45 @@ form .actions input {
 	border-radius: 5px;
 	padding: 6px 8px;
 }
-form {
-	font-weight: bold;
-}
 
+form { font-weight: bold; }
 
-/* COMBO FORM =============================== */
-#new_combo ol .input:after {
-	content: "";
-}
+#trick_submit_action input:focus,
+#combo_submit_action input:focus { background-color: #c6ccd2; }
 
 #combo_tricks_input .label {
 	display: none;
 }
 #combo_tricks_input {
 	overflow: hidden;
-	padding-right: 20px;
+	padding-top: 30px;
+	margin-right: 20px;
 	display: inline-block;
 }
 .fields .remove_nested_fields {
 	position: absolute;
-	right: 5px;
+	right: 20px;
 	top: 0;
 	display: inline-block;
+	border-radius: 3px;
+	background-color: #edeff0;
+	width: 20px;
+	line-height: 1.3em;
+	text-align: center;
+	transition: all 200ms ease-out;
+}
+.fields .remove_nested_fields:hover {
+	background-color: #E15258;
+	color: white;
 }
 .fields {
 	position: relative;
 	display: inline-block;
 	height: 50px;
 }
+
+/*.inputs {position: relative;}*/
+.add_nested_fields { vertical-align: middle;}/*position: absolute; bottom:-10px; left:0;}*/
 
 
 /* TABLE ===================================== */
@@ -138,20 +177,14 @@ th, td {
 	box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
 }
 
-.btn-green {
-	background-color: #5fcf80 !important;
-	border-color: #3ac162 !important;
-}
+.btn-green { background-color: #5fcf80 !important; border-color: #3ac162 !important; }
+.btn-blue { background-color: #3f8abf; border-color: #326e99; }
+.btn-transparent { background-color: rgba(255,255,255,0.3); color: white; border: 0; }
 
-.btn-blue {
-	background-color: #3f8abf;
-	border-color: #326e99;
-}
-
-.btn-transparent {
-	background-color: rgba(255,255,255,0.3);
-	color: white;
-	border: 0;
+.btn-jumbo {
+	height: 100px;
+	width: 200px;
+	font-size: 3em;
 }
 
 
@@ -166,7 +199,7 @@ header {
 }
 
 header .container {
-	padding: 0;
+	padding: 0 20px;
 }
 
 header a {
@@ -227,6 +260,7 @@ header a:hover {
 	padding: 50px 20px 30px 20px;
 	background-color: #E15258;
 	color: rgba(255,255,255,0.7);
+	font-size: 1.4em;
 }
 
 #title h1 {
@@ -235,6 +269,8 @@ header a:hover {
 	color: white;
 }
 
-#title p {
-	font-size: 1.4em;
+
+/* RESPONSIVE ADOPTATIONS ===================== */
+@media only screen and (min-width: 1024px){
+	header .container { padding: 0; }
 }

@@ -1,31 +1,21 @@
 <div class="container">
-  <%= form_for(@trick) do |f| %>
+  <%= semantic_form_for(@trick) do |f| %>
     <% if @trick.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@trick.errors.count, "error") %> prohibited this trick from being saved:</h2>
-
-        <ul>
-        <% @trick.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
+      <div id="error_explanation" class="mbl">
+        <h3>
+          <%= pluralize(@trick.errors.count, "error") %> prevented this trick from being saved.
+          Please review your inputs below.
+        </h3>
       </div>
     <% end %>
 
-    <div class="field">
-      <%= f.label :name %><br />
-      <%= f.text_field :name %>
-    </div>
-    <div class="field">
-      <%= f.label :difficulty %><br />
-      <%= f.text_field :difficulty %>
-    </div>
-    <div class="field">
-      <%= f.label :setup %><br />
-      <%= f.text_field :setup %>
-    </div>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
+    <%= f.inputs do %>
+      <%= f.input :name %>
+      <%= f.input :difficulty %>
+      <%= f.input :setup %>
+    <% end %>
+    <%= f.actions do %>
+      <%= f.action :submit, :button_html => { :class => "btn btn-blue" } %>
+    <% end %>
   <% end %>
 </div>

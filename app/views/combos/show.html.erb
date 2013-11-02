@@ -1,21 +1,17 @@
 <div id="title" class="container">
-	<h1>Combo <%= @combo.id %></h2>
-	<p>
-	  <%= @combo.no_tricks %>-hit combo
-	</p>
-</div>
-
-<div class="container">
 	<ul class="combo-list combo-lg">
 	  <%- @combo.tricks.each do |trick| %>
 	  	<li><%= trick.name %></li>
 	  <%-end-%>
 	</ul>
+	<ul id="title-details">
+		<li>Combo #<%= @combo.id %></li>
+		<li><%= @combo.no_tricks %> tricks</li>
+	</ul>
 </div>
 
-<div class="container">
-	<%= link_to 'Back', combos_path, :class => "btn btn-blue mrs"%>
-	<%= link_to 'Edit', edit_combo_path(@combo), :class => "btn btn-green mrs" %>
+<div id="actions-bottom" class="container">
+	<%= link_to 'Back', combos_path, :class => "btn mrs"%>
+	<%= link_to 'Edit Combo', edit_combo_path(@combo), :class => "btn btn-green mrs" %>
 	<p id="notice"><%= notice %></p>
 </div>
-<br class="clear">

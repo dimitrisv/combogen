@@ -2,7 +2,9 @@ class CombosController < ApplicationController
   # GET /combos
   # GET /combos.json
   def index
-    @combos = Combo.all
+    @combos = Combo
+    @combos = Combo.order(params[:sort]) if params[:sort]
+    @combos = @combos.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,9 +46,7 @@ class CombosController < ApplicationController
     @trick_ids = params[:combo][:trick_ids]
     @trick_ids.reject! { |c| c.empty? }
     @combo.no_tricks = @trick_ids.length
-
-    # if it's empty, return an error
-
+    
     # iterate through tricks added, and create all associations one by one!
     @trick_ids.each do |id|
       Element.create(index: 1, combo_id: @combo.id, trick_id: id);
@@ -94,7 +94,7 @@ class CombosController < ApplicationController
     @combo.destroy
 
     respond_to do |format|
-      format.html { redirect_to combos_url }
+      format.html { redirect_to combos_url, notice: 'Combo was successfully removed from the database.' }
       format.json { head :no_content }
     end
   end

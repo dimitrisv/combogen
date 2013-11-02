@@ -5,17 +5,28 @@
   </p>
 </div>
 
+<div id="actions-top" class="container">
+  <%= link_to 'Back to Main', {:controller => :welcome, :action => :index}, :class => "btn mrs" %>
+  <%= link_to 'Add Trick', new_trick_path, :class => "btn btn-green mrs" %>
+  <p id="notice"><%= notice %></p>
+  <!--form id="search_form" style="float:right">
+    <input type="text" placeholder="Search">
+  </form-->
+</div>
+
 <div class="container mbl">
   <table>
     <tr>
-      <th>Name</th>
-      <th>Difficulty</th>
-      <th>Setup</th>
+      <th>Id <%= link_to "↓", tricks_path(sort: "id") %></th>
+      <th>Name <%= link_to "↓", tricks_path(sort: "name") %></th>
+      <th>Difficulty <%= link_to "↓", tricks_path(sort: "difficulty") %></th>
+      <th>Setup <%= link_to "↓", tricks_path(sort: "setup") %></th>
       <th colspan="3">Actions</th>
     </tr>
 
   <% @tricks.each do |trick| %>
     <tr>
+      <td><%= trick.id %></td>
       <td><%= trick.name %></td>
       <td><%= trick.difficulty %></td>
       <td><%= trick.setup %></td>
@@ -27,8 +38,8 @@
   </table>
 </div>
 
-<div class="container">
+<div id="actions-bottom" class="container">
   <%= link_to 'Back to Main', {:controller => :welcome, :action => :index}, :class => "btn mrs" %>
-  <%= link_to 'Add Trick', new_trick_path, :class => "btn btn-green" %>
+  <%= link_to 'Add Trick', new_trick_path, :class => "btn btn-green mrs" %>
+  <p id="notice"><%= notice %></p>
 </div>
-<br class="clear">
