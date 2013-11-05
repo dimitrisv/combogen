@@ -23,12 +23,13 @@
           @default = @combo.tricks[@index].id if !@combo.tricks[@index].nil?
           @index += 1
         %>
-        <%= f.input :tricks, :as => :select, :selected => @default, :input_html => { :multiple => false } %>
+        <%= f.input :tricks, :as => :select, :collection => Trick.order(:name), :selected => @default, :input_html => { :multiple => false } %>
         <%= trick_form.link_to_remove "X" %>
       <% end %>
       <%= f.link_to_add "add trick", :tricks, :class => "btn btn-green" %>
 
     <% end %>
+    <br>
     <%= f.actions do %>
       <%= f.action :submit, :button_html => { :class => "btn btn-blue" } %>
     <% end %>

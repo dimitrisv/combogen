@@ -1,10 +1,13 @@
 <div id="title" class="container">
-	<h1>Editing combo <%= @combo.id%></h1>
+	<h1>Editing Combo #<%= @combo.id%></h1>
 </div>
 
 <div id="actions-top" class="container">
-	<%= link_to 'Cancel', combos_path, :class => "btn mrs" %>
-	<%= link_to 'Show Combo', @combo, :class => "btn btn-green" %>
+	<%= link_to 'Back to DB', combos_path, :class => "btn mrs" %>
+	<%= link_to 'Show Combo', @combo, :class => "btn btn-green mrs" %>
+	<%= link_to 'Destroy', @combo, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-blue mrs" %>
+	<p id="notice"><%= notice %></p>
+	<p id="notice" class="red"><%= alert %></p>
 </div>
 
 <%= render 'form_edit' %>

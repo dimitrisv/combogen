@@ -15,13 +15,13 @@
 
     <%= f.inputs do %>
       <!-- Every combo must have at least 2 tricks, so these are not removable. -->
-      <%= f.input :tricks, :as => :select, :input_html => { :multiple => false } %>
-      <%= f.input :tricks, :as => :select, :input_html => { :multiple => false } %>
+      <%= f.input :tricks, :collection => Trick.order(:name), :as => :select, :input_html => { :multiple => false } %>
+      <%= f.input :tricks, :collection => Trick.order(:name), :as => :select, :input_html => { :multiple => false } %>
       <%= f.link_to_add "add trick", :tricks, :class => "btn btn-green" %>
 
       <!-- But every extra trick that's added dynamically is removable. -->
       <%= f.fields_for :tricks do |trick_form| %>
-        <%= f.input :tricks, :as => :select, :input_html => { :multiple => false } %>
+        <%= f.input :tricks, :collection => Trick.order(:name), :as => :select, :input_html => { :multiple => false } %>
         <%= trick_form.link_to_remove "X" %>
       <% end %>
     <% end %>

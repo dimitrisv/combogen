@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20131031101208) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "elements", :id => false, :force => true do |t|
+  create_table "elements", :force => true do |t|
     t.integer  "combo_id"
     t.integer  "trick_id"
     t.integer  "index"

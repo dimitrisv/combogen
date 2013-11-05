@@ -2,7 +2,7 @@ class TricksController < ApplicationController
   # GET /tricks
   # GET /tricks.json
   def index
-    @tricks = Trick
+    @tricks = Trick.order(:name)
     @tricks = Trick.order(params[:sort]) if params[:sort]
     @tricks = @tricks.all
 
@@ -83,26 +83,38 @@ class TricksController < ApplicationController
       @no_duplicates = combo.tricks.where(:name => @trick.name).length
       combo.no_tricks = @no_tricks - @no_duplicates
       # If a combo ends up with less than 2 tricks, delete it
+      @combos_destroyed = 0
       if (combo.no_tricks < 2)
         combo.destroy
+        @combos_destroyed += 1
       else
-        # ERROR: can't save updated index... fix it SOMEDAY
         # Update the indexes of the remaining tricks in the combo
-        # @index = 1
-        # combo.elements.each do |elem|
-        #   if elem.trick.name != @trick.name
-        #     # update here
-        #     @index += 1
-        #   end
-        # end
+        @index = 1
+        combo.elements.each do |elem|
+          if elem.trick.name != @trick.name
+            elem.index = @index
+            elem.save
+            @index += 1
+          else
+            elem.delete
+          end
+        end
       end
+    end
+
+    # craft response message
+    @name = @trick.name
+    if @combos_destroyed
+      @message = '\''+@name+'\' and '+@combos_destroyed.to_s+ ' of its combos were successfully removed from the database.'
+    else
+      @message = '\''+@name+'\' was successfully removed from the database.'
     end
 
     # Destroy the trick itself
     @trick.destroy
 
     respond_to do |format|
-      format.html { redirect_to tricks_url, notice: 'Trick was successfully removed from the database.' }
+      format.html { redirect_to tricks_url, notice: @message }
       format.json { head :no_content }
     end
   end

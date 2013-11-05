@@ -11,6 +11,7 @@
 	}
 	li:after {
 		content: " >";
+		color: #b2bac2;
 	}
 	li:last-child:after { content: ""; }
 }
@@ -24,4 +25,12 @@
 #title .combo-lg {
 	color: white;
 	padding-bottom: 20px;
+}
+
+#title .combo-lg {
+	li:after {
+		color: rgba(255,255,255,0.7);
+		font-weight: normal;
+		font-size: 0.7em;
+	}
 }

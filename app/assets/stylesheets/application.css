@@ -25,6 +25,21 @@
 body {
 	background-color: #edeff0;
 	color: #62707D;
+	font-family: "helvetica neue", helvetica, tahoma, sans-serif;
+	font-size: 13px;
+	line-height: 18px;
+}
+
+a {
+	text-decoration: none;
+	color: #b2bac2;
+	font-weight: bold;
+
+	&:hover { color: #384047; }
+}
+
+div {
+	&.field, &.actions { margin-bottom: 10px; }
 }
 
 .container {
@@ -43,21 +58,49 @@ h1, h2, p { padding-bottom: 20px; }
 
 
 
+/* NOTICES & ERRORS ======================== */
+
+#notice {
+  color: #5fcf80;
+  font-weight: bold;
+  font-size: 1.2em;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0;
+}
+#notice.red {
+  color: #E15258;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  padding: 0;
+  color: #E15258;
+  h3 { padding: 10px; display: inline-block;}
+}
+
+
+
 /* TABLE STYLES =============================== */
 
 table { border-spacing: 0; width: 100%; border-collapse: collapse; }
 table td { vertical-align: middle; }
 table tr:nth-child(2n) { background-color: #edeff0;}
 table td:first-child, table th:first-child { padding-left: 10px; }
+table .id { min-width: 35px; }
+table .no_tricks { min-width: 65px; }
 
 
 
 /* ACTION MENUS =============================== */
 
 #actions-top, #actions-bottom { padding-bottom: 20px; }
-
 #actions-top { border-bottom: 1px solid #edeff0; }
-
 #actions-bottom { border-top: 1px solid #edeff0; }
 
 
@@ -97,35 +140,38 @@ form { font-weight: bold; }
 #trick_submit_action input:focus,
 #combo_submit_action input:focus { background-color: #c6ccd2; }
 
-#combo_tricks_input .label {
-	display: none;
-}
+#combo_tricks_input .label { display: none; }
+
 #combo_tricks_input {
 	overflow: hidden;
 	padding-top: 30px;
 	margin-right: 20px;
 	display: inline-block;
 }
+
+.fields {
+	position: relative;
+	display: inline-block;
+	height: 50px;
+}
+
 .fields .remove_nested_fields {
 	position: absolute;
 	right: 20px;
 	top: 0;
 	display: inline-block;
 	border-radius: 3px;
-	background-color: #edeff0;
+	background-color: #c6ccd2;
+	color: white;
 	width: 20px;
 	line-height: 1.3em;
 	text-align: center;
 	transition: all 200ms ease-out;
 }
+
 .fields .remove_nested_fields:hover {
 	background-color: #E15258;
 	color: white;
-}
-.fields {
-	position: relative;
-	display: inline-block;
-	height: 50px;
 }
 
 /*.inputs {position: relative;}*/
@@ -198,22 +244,17 @@ header {
 	height: 35px;
 }
 
-header .container {
-	padding: 0 20px;
-}
+header .container { padding: 0 20px; }
 
 header a {
 	text-decoration: none;
 	color: #b2bac2
 }
 
-header a:hover {
-	color: #384047;
-}
+header a:hover { color: #384047; }
 
-#logo {
-	float: left;
-}
+#logo { float: left; }
+#nav { float: right; }
 
 #logo h1 {
 	font-size: 1.8em;
@@ -221,18 +262,13 @@ header a:hover {
 	padding: 0;
 }
 
-#nav {
-	float: right;
-}
-
-#navlist {
-	list-style-type: none;
-}
+#navlist { list-style-type: none; }
 
 #navlist li {
 	display: inline-block!important;
 	margin-right: 20px;
 }
+
 #navlist li:last-child {
 	margin-right: 0;
 }
@@ -245,8 +281,9 @@ header a:hover {
 
 /* MAIN ====================================== */
 
-#notice {
-	padding: 0;
+#main, p, ol, ul, td, th {
+  font-size: 1.1em;
+  line-height: 1.7em;
 }
 
 #main {
@@ -271,6 +308,10 @@ header a:hover {
 
 
 /* RESPONSIVE ADOPTATIONS ===================== */
+
 @media only screen and (min-width: 1024px){
 	header .container { padding: 0; }
 }
+
+
+
