@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
-gem 'sqlite3'
 gem 'pg', :group => :production
 
 gem 'jquery-rails'
@@ -17,4 +16,5 @@ end
 
 group :development, :test do
   gem 'pry-rails'
+  gem 'sqlite3'
 end
