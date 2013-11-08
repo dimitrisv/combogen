@@ -15,9 +15,9 @@
 # gem 'pg'
 #
 development:
-  adapter: sqlite3 #postgresql
-  database: development.sqlite3 #levelapp_development
-  #host: localhost
+  adapter: postgresql
+  database: levelapp_development
+  host: localhost
   pool: 5
   timeout: 5000
 
@@ -34,6 +34,6 @@ test:
 production:
   adapter: postgresql
   database: levelapp_production
-  # host: localhost
+  host: localhost
   pool: 5
   timeout: 5000
