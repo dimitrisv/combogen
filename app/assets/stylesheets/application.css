@@ -34,13 +34,10 @@ a {
 	text-decoration: none;
 	color: #b2bac2;
 	font-weight: bold;
-
-	&:hover { color: #384047; }
 }
+a:hover { color: #384047; }
 
-div {
-	&.field, &.actions { margin-bottom: 10px; }
-}
+div.field, div.actions { margin-bottom: 10px; }
 
 .container {
 	margin: 0 auto;
@@ -55,6 +52,7 @@ h1, h2, p { padding-bottom: 20px; }
 .mbl { margin-bottom: 20px; }
 .pbl { padding-bottom: 20px; }
 .ptt { padding-top: 5px; }
+.tac { text-align: center; }
 
 
 
@@ -174,8 +172,15 @@ form { font-weight: bold; }
 	color: white;
 }
 
+.inputs ol { position: relative; }
+
 /*.inputs {position: relative;}*/
-.add_nested_fields { vertical-align: middle;}/*position: absolute; bottom:-10px; left:0;}*/
+.add_nested_fields {
+	margin-bottom: 55px;
+/*	position: absolute;
+	bottom: -36px;*/
+	/*vertical-align: middle;*/
+}
 
 
 /* TABLE ===================================== */
@@ -305,6 +310,52 @@ header a:hover { color: #384047; }
 	line-height: 1em;
 	color: white;
 }
+
+#title.light-blue { background-color: #39ADD1; }
+#title.red { background-color: #E15258; }
+#title.mustard { background-color: #E0AB18; }
+.red { background-color: #E15258; }
+.mustard { background-color: #E0AB18; }
+
+
+/* DASHBOARD ================================== */
+
+#dashboard { background-color: #edeff0; }
+
+#dashboard a { font-weight: normal; color: #62707D; }
+
+#dashboard ul {
+	list-style-position: inside;
+	padding: 15px;
+}
+
+#dashboard h1 {
+	color: white;
+	height: 60px;
+	border-radius: 5px 5px 0 0;
+	padding: 30px 20px 20px 20px;
+	font-size: 3em;
+	line-height: 1em;
+}
+#dashboard h1:hover { opacity: 0.8; }
+#dashboard ul:hover { color: #384047; }
+
+#dashboard-tricks, #dashboard-combos {
+	display: inline-block;
+	min-width: 400px;
+	height: 250px;
+	text-align: left;
+	background-color: white;
+	border-radius: 5px;
+	-webkit-box-shadow: 0 1px 0 0 rgba(0,0,0,0.1);
+	-moz-box-shadow: 0 1px 0 0 rgba(0,0,0,0.1);
+	box-shadow: 0 1px 0 0 rgba(0,0,0,0.1);
+}
+
+
+#dashboard-tricks { float: left; }
+#dashboard-combos { float: right; }
+
 
 
 /* RESPONSIVE ADOPTATIONS ===================== */

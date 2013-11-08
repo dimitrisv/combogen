@@ -4,10 +4,7 @@
 </div>
 
 <div id="actions-top" class="container">
-  <%= link_to 'Back to Main', {:controller => :welcome, :action => :index}, :class => "btn mrs" %>
-  <%= link_to 'Add Combo', new_combo_path, :class => "btn btn-green mrs" %>
-  <%= link_to 'Generate Random', generate_random_path, :class => "btn btn-blue mrs" %>
-  <p id="notice"><%= notice %></p>
+  <%= render 'index_actions' %>
 </div>
 
 <div class="container mbl">
@@ -16,7 +13,10 @@
       <th class="id">Id <%= link_to "↓", combos_path(sort: "id") %></th>
       <th class="no_tricks">Tricks <%= link_to "↓", combos_path(sort: "no_tricks") %></th>
       <th>Sequence</th>
-      <th colspan="3">Actions</th>
+      <th>Creator</th>
+      <% if tricker_signed_in? %>
+        <th colspan="3">Actions</th>
+      <% end %>
     </tr>
 
   <% @combos.each do |combo| %>
@@ -30,18 +30,22 @@
         <% end %>
         </ul>
       </td>
-      <td><%= link_to 'Show', combo %></td>
-      <td><%= link_to 'Edit', edit_combo_path(combo) %></td>
-      <td><%= link_to 'Destroy', combo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= Tricker.find(combo.tricker_id).name %></td>
+      <% if tricker_signed_in? %>
+        <% if combo.tricker_id == current_tricker.id || current_tricker.try(:admin?) %>
+          <td><%= link_to 'Show', combo %></td>
+          <td><%= link_to 'Edit', edit_combo_path(combo) %></td>
+          <td><%= link_to 'Destroy', combo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% else %>
+          <td colspan="3"></td>
+        <% end %>
+      <% end %>
     </tr>
   <% end %>
   </table>
 </div>
 
 <div id="actions-bottom" class="container">
-  <%= link_to 'Back to Main', {:controller => :welcome, :action => :index}, :class => "btn mrs" %>
-  <%= link_to 'Add Combo', new_combo_path, :class => "btn btn-green mrs" %>
-  <%= link_to 'Generate Random', generate_random_path, :class => "btn btn-blue mrs" %>
-  <p id="notice"><%= notice %></p>
+  <%= render 'index_actions' %>
 </div>
 

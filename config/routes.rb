@@ -1,11 +1,11 @@
 Combogen::Application.routes.draw do
+  devise_for :trickers, :path_names => { :sign_up => "register", :sign_in => "login", :sign_out => "logout"}
+
   get "welcome/index"
+  get "welcome/dashboard"
 
   resources :combos
-
-
   resources :tricks
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -14,6 +14,8 @@ Combogen::Application.routes.draw do
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
   match '/generate_random' => 'combos#generate_random', :as => 'generate_random'
+  match '/dashboard' => 'welcome#dashboard', :as => 'dashboard'
+  # match '/order_by_combos' => 'tricks#order_by_combos', :as => 'order_by_combos'
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase

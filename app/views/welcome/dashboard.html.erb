@@ -1,0 +1,31 @@
+<div id="title" class="light-blue">
+  <h1>My Dashboard</h1>
+  <p>Welcome, <%= current_tricker.name %>!</p>
+</div>
+<div class="container tac">
+  <h2>What do you want to do today?</h2>
+</div>
+<div id="dashboard" class="container tac">
+  <div class="container">
+    <div id="dashboard-tricks">
+      <a href="/tricks">
+        <h1 class="red">Tricks</h1>
+        <ul>
+          <li>View database</li>
+          <li>Create your own</li>
+        </ul>
+      </a>
+    </div>
+    <div id="dashboard-combos">
+      <a href="/combos">
+        <h1 class="mustard">Combos</h1>
+        <ul>
+          <li>View database</li>
+          <li>Create your own</li>
+          <li>Play with our random generator!</li>
+        </ul>
+      </a>
+    </div>
+  </div>
+  <br class="clear">
+</div>

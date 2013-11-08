@@ -1,0 +1,23 @@
+<div id="title" class="container">
+	<h1>Resend confirmation e-mail</h1>
+</div>
+
+<div class="container">
+	<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+	  <div id="error_explanation" class="mbl">
+  	    <%= devise_error_messages! %>
+  	  </div>
+	  <div class="mbl">
+	  	<%= f.label :email %><br />
+	  	<%= f.email_field :email, :autofocus => true %>
+	  </div>
+
+	  <div class="mbl"><%= f.submit "Send it again", :class => "btn btn-blue"  %></div>
+	<% end %>
+</div>
+
+<br class="clear">
+
+<div id="actions-bottom" class="container">
+	<%= render "devise/shared/links" %>
+</div>

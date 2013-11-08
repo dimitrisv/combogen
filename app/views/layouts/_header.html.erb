@@ -7,7 +7,12 @@
 			<ul id="navlist">
 				<li><%= link_to "Tricks", tricks_path %></li>
 				<li><%= link_to "Combos", combos_path %></li>
-				<li><a href="#">Sign In</a></li>
+				<% if tricker_signed_in? %>
+					<li><%= link_to "My Account", edit_tricker_registration_path %></li>
+					<li><%= link_to 'Logout', destroy_tricker_session_path, :method => :delete %></li>
+				<% else %>
+					<li><%= link_to 'Login', new_tricker_session_path %></li>
+				<% end %>
 			</ul>
 		</div>
 		<br class="clear"/>

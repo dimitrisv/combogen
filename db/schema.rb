@@ -11,12 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131031101208) do
+ActiveRecord::Schema.define(:version => 20131107160349) do
 
   create_table "combos", :force => true do |t|
     t.integer  "no_tricks"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "tricker_id", :default => 1
   end
 
   create_table "elements", :force => true do |t|
@@ -30,12 +31,41 @@ ActiveRecord::Schema.define(:version => 20131031101208) do
   add_index "elements", ["combo_id"], :name => "index_elements_on_combo_id"
   add_index "elements", ["trick_id"], :name => "index_elements_on_trick_id"
 
+  create_table "trickers", :force => true do |t|
+    t.string   "email",                  :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0,     :null => false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "name"
+    t.string   "sampler"
+    t.string   "youtube"
+    t.string   "facebook"
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.boolean  "admin",                  :default => false
+  end
+
+  add_index "trickers", ["confirmation_token"], :name => "index_trickers_on_confirmation_token", :unique => true
+  add_index "trickers", ["email"], :name => "index_trickers_on_email", :unique => true
+  add_index "trickers", ["reset_password_token"], :name => "index_trickers_on_reset_password_token", :unique => true
+
   create_table "tricks", :force => true do |t|
     t.string   "name"
     t.string   "difficulty"
     t.string   "setup"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "tricker_id", :default => 1
   end
 
 end

@@ -1,0 +1,31 @@
+<div id="title" class="container">
+	<h1>Tricker Login</h1>
+</div>
+<div class="container">
+	<p id="notice"><%= notice %></p>
+	<p id="notice" class="red"><%= alert %></p>
+	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+	  <div class="mbl">
+	  	<%= f.label :email %><br />
+	  	<%= f.email_field :email, :autofocus => true %>
+	  </div>
+
+	  <div class="mbl">
+	  	<%= f.label :password %><br />
+	  	<%= f.password_field :password %>
+	  </div>
+
+	  <div class="mbl">
+	  	<%= f.submit "Sign in", :class => "btn btn-blue" %>
+	  	<% if devise_mapping.rememberable? -%>
+	    	<%= f.check_box :remember_me %> <%= f.label :remember_me %>
+	  	<% end -%>
+	  </div>
+	<% end %>
+</div>
+
+<br class="clear">
+
+<div id="actions-bottom" class="container">
+	<%= render "devise/shared/links" %>
+</div>

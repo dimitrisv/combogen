@@ -1,13 +1,23 @@
 class TricksController < ApplicationController
+  before_filter :authenticate_tricker!, :except => [:show, :index]
+  
   # GET /tricks
   # GET /tricks.json
   def index
     @tricks = Trick.order(:name)
     @tricks = Trick.order(params[:sort]) if params[:sort]
-    @tricks = @tricks.all
-
+    
     respond_to do |format|
       format.html # index.html.erb
+      format.json { render json: @tricks }
+    end
+  end
+
+  def order_by_combos
+    @tricks = Trick.order_by_combo
+
+    respond_to do |format|
+      format.html # { redirect_to tricks_url, :notice => "mmmmmmmeeeeeh" }# index.html.erb 
       format.json { render json: @tricks }
     end
   end
@@ -37,12 +47,19 @@ class TricksController < ApplicationController
   # GET /tricks/1/edit
   def edit
     @trick = Trick.find(params[:id])
+    if !(current_tricker.id.equal? @trick.tricker_id) || !current_tricker.try(:admin?)
+      respond_to do |format|
+        format.html { redirect_to @trick, alert: 'You need admin privileges for that action!' }
+        format.json { head :no_content }
+      end
+    end
   end
 
   # POST /tricks
   # POST /tricks.json
   def create
     @trick = Trick.new(params[:trick])
+    @trick.tricker_id = current_tricker.id
 
     respond_to do |format|
       if @trick.save

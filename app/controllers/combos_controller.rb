@@ -1,4 +1,5 @@
 class CombosController < ApplicationController
+  before_filter :authenticate_tricker!, :except => [:show, :index]
   # GET /combos
   # GET /combos.json
   def index
@@ -37,12 +38,19 @@ class CombosController < ApplicationController
   # GET /combos/1/edit
   def edit
     @combo = Combo.find(params[:id])
+    if !(current_tricker.id.equal? @combo.tricker_id) || !current_tricker.try(:admin?)
+      respond_to do |format|
+        format.html { redirect_to @combo, alert: 'You need admin privileges for that action!' }
+        format.json { head :no_content }
+      end
+    end
   end
 
   # POST /combos
   # POST /combos.json
   def create
     @combo = Combo.create
+    @combo.tricker_id = current_tricker.id
 
     remove_destroyed
 
@@ -110,6 +118,7 @@ class CombosController < ApplicationController
 
 def generate_random
   @combo = Combo.create
+  @combo.tricker_id = current_tricker.id
 
   # randomly select number of tricks X
   @max_no_tricks = 10

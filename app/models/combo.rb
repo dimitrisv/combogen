@@ -1,4 +1,5 @@
 class Combo < ActiveRecord::Base
+  belongs_to :tricker
   has_many :elements, :dependent => :delete_all
   has_many :tricks, :through => :elements
   accepts_nested_attributes_for :tricks, :reject_if => lambda { |a| a[:content].blank? }

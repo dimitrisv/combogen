@@ -1,0 +1,8 @@
+<%= link_to 'Back to Main', {:controller => :welcome, :action => :index}, :class => "btn mrs" %>
+<% if tricker_signed_in? %>
+	<%= link_to 'Add Trick', new_trick_path, :class => "btn btn-green mrs" %>
+<% end %>
+<p id="notice"><%= notice %></p>
+<!--form id="search_form" style="float:right">
+<input type="text" placeholder="Search">
+</form-->
