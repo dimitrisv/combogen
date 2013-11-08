@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
-gem 'pg', :group => :production
 
 gem 'jquery-rails'
 gem 'formtastic'
@@ -18,3 +17,9 @@ group :development, :test do
   gem 'pry-rails'
   gem 'sqlite3'
 end
+
+group :production do
+  gem 'pg'
+end
+
+gem 'activerecord-postgresql-adapter'

@@ -34,6 +34,6 @@ test:
 production:
   adapter: postgresql
   database: levelapp_production
-  host: localhost
+  # host: localhost
   pool: 5
   timeout: 5000
