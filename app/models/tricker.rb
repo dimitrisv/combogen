@@ -4,7 +4,7 @@ class Tricker < ActiveRecord::Base
   validates :name, :presence => true, :uniqueness => true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :confirmable,
+  devise :database_authenticatable, :registerable, #:confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
@@ -12,4 +12,8 @@ class Tricker < ActiveRecord::Base
   attr_accessible :name, :sampler, :youtube, :facebook, :admin
   # attr_accessible :title, :body
 
+  protected
+  def confirmation_required?
+    false
+  end
 end

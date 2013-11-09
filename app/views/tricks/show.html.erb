@@ -7,9 +7,11 @@
 </div>
 
 <div class="container">
-  <% if @trick.combos.empty? && tricker_signed_in? %>
+  <% if @trick.combos.empty? %>
     <h3 class="mbl">We found no combos that use this trick in our database. That's really sad...</h3>
-    <%= link_to 'Be the first to create one!', '/combos/new', :class => "btn btn-green mbl" %>
+    <% if tricker_signed_in? %>
+      <%= link_to 'Be the first to create one!', '/combos/new', :class => "btn btn-green mbl" %>
+    <% end %>
   <% else %>
     <h3>Combos using this trick:</h3>
     <div class="container mbl ptt">
@@ -29,9 +31,9 @@
 </div>
 
 <div id="actions-bottom" class="container">
-  <%= link_to 'Back to DB', tricks_path, :class => "btn mrs" %>
+  <%= link_to '← Trick DB', tricks_path, :class => "btn mrs" %>
   <% if tricker_signed_in? && @trick.tricker_id == current_tricker.id %>
-    <%= link_to 'Edit Trick', edit_trick_path(@trick), :class => "btn btn-green mrs" %>
+    <%= link_to 'Edit', edit_trick_path(@trick), :class => "btn btn-green mrs" %>
     <%= link_to 'Destroy', @trick, method: :delete, :class => "btn btn-blue mrs",
         data: { confirm: 'Destroying a trick will also remove it from all combos. The ones left with less than two tricks will be destroyed as well. Are you sure you want to continue?'
     } %>

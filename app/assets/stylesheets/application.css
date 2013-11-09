@@ -70,6 +70,7 @@ h1, h2, p { padding-bottom: 20px; }
 }
 #notice.red {
   color: #E15258;
+  background-color: white;
 }
 
 .field_with_errors {
@@ -94,6 +95,8 @@ table tr:nth-child(2n) { background-color: #edeff0;}
 table td:first-child, table th:first-child { padding-left: 10px; }
 table .id { min-width: 35px; }
 table .no_tricks { min-width: 65px; }
+table .db-row:hover { background-color: #9D8AC7; color: white; }
+table .db-row:hover a:hover { color: white; }
 
 
 
@@ -119,6 +122,8 @@ input, textarea {
 	background-color: #e8ebed;
 	transition: all 300ms ease-out;
 }
+
+input[type="checkbox"] { height: 1em; }
 
 input:focus, textarea:focus {
 	background-color: white;
@@ -174,15 +179,8 @@ form { font-weight: bold; }
 	color: white;
 }
 
-.inputs ol { position: relative; }
-
-/*.inputs {position: relative;}*/
-.add_nested_fields {
-	margin-bottom: 55px;
-/*	position: absolute;
-	bottom: -36px;*/
-	/*vertical-align: middle;*/
-}
+/*.inputs ol { position: relative; }*/
+.add_nested_fields { margin-bottom: 55px; }
 
 
 /* TABLE ===================================== */
@@ -339,8 +337,6 @@ header a:hover { color: #384047; }
 	font-size: 3em;
 	line-height: 1em;
 }
-#dashboard h1:hover { opacity: 0.8; }
-#dashboard ul:hover { color: #384047; }
 
 #dashboard-tricks, #dashboard-combos {
 	display: inline-block;
@@ -349,14 +345,22 @@ header a:hover { color: #384047; }
 	text-align: left;
 	background-color: white;
 	border-radius: 5px;
+	position: relative;
 	-webkit-box-shadow: 0 1px 0 0 rgba(0,0,0,0.1);
 	-moz-box-shadow: 0 1px 0 0 rgba(0,0,0,0.1);
 	box-shadow: 0 1px 0 0 rgba(0,0,0,0.1);
 }
 
-
 #dashboard-tricks { float: left; }
 #dashboard-combos { float: right; }
+
+.dashboard-link {
+	min-width: 400px;
+	height: 250px;
+	position: absolute;
+}
+.dashboard-link:hover h1 { opacity: 0.8; }
+.dashboard-link:hover ul { color: #384047; }
 
 
 

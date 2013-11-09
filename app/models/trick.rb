@@ -6,9 +6,6 @@ class Trick < ActiveRecord::Base
 	validates :name, :presence => true, :uniqueness => true
 
 	scope :order_by_combo,
-    	select("*, count(combos.id) AS no_combos").
-    	joins(:combos).
-    	group("tricks.id").
-    	order("no_combos DESC")
+        select("*, count(combos.id) AS no_combos").joins(:combos).group("tricks.id").order("no_combos DESC")
 
 end

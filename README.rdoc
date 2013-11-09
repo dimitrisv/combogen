@@ -1,68 +1,73 @@
-== Week 2 [04.Nov.2013 - 10.Nov.2013]
+= Week 2 [04.Nov.2013 - 10.Nov.2013]
 
 
-=IMPLEMENTED FEATURES
+==IMPLEMENTED FEATURES
+
+Saturday:
+BUGS: some things that worked perfectly before now aren't working. :/
+STYLE: various fixes all across the app
+DEVISE: email problems + gmail problems... deactivated :confirmable
+HEROKU: finally managed to deploy it! (needed precompiled assets)
 
 Friday:
-* TRICK+COMBO/INDEX: show actions depending on tricker_id
-* TRICK: tricks are editable by their creators & admins ONLY
-* USER: create own tricks & combos
-* TRICK/COMBO: assign tricker_id on creation
+HEROKU: tons of attempts to deploy
+POSTGRES: tons of work until it installed. (needed osx maverick and xcode 5)
+TRICK+COMBO/INDEX: show actions depending on tricker_id
+TRICK: tricks are editable by their creators & admins ONLY
+USER: create own tricks & combos
+TRICK/COMBO: assign tricker_id on creation
 
 Thursday:
-* USER: has_many tricks, has_many combos
-* TRICK/EDIT: redirect to show page if User is not Admin
-* USER/ADMIN: assigned Update & Delete for Tricks
-* USER: removed Update & Delete privileges for Tricks
-* USER: created ADMIN role with boolean variable
-* USER: Added as Trickers
+USER: has_many tricks, has_many combos
+TRICK/EDIT: redirect to show page if User is not Admin
+USER/ADMIN: assigned Update & Delete for Tricks
+USER: removed Update & Delete privileges for Tricks
+USER: created ADMIN role with boolean variable
+USER: Added as Trickers
 
 Wednesday:
-* RailsApps Devise-Rspec-Cucumber tutorial
+RailsApps Devise-Rspec-Cucumber tutorial
 
 Tuesday:
-* COMBO/GENERATE/RANDOM: easy mode random generation through a button :)
+COMBO/GENERATE/RANDOM: easy mode random generation through a button :)
 
 Monday:
-* COMBO/INDEX: default combo ordering by number of tricks
-* TRICK/INDEX: tricks listed in alphabetical order by default
-* TRICK/DESTROY: return relevant error message if combos were destroyed in the process.
-* COMBO/EDIT: verify presence of at least 2 tricks with redirect
-* COMBO/EDIT+NEW: trick SELECTS are in alphabetical order
-* STYLE/COMBOS: the after ">" part should be in different, more discrete color
-* STYLE/COMBOS/SHOW: the jumbo ">" should be transparent like the details
+COMBO/INDEX: default combo ordering by number of tricks
+TRICK/INDEX: tricks listed in alphabetical order by default
+TRICK/DESTROY: return relevant error message if combos were destroyed in the process.
+COMBO/EDIT: verify presence of at least 2 tricks with redirect
+COMBO/EDIT+NEW: trick SELECTS are in alphabetical order
+STYLE/COMBOS: the after ">" part should be in different, more discrete color
+STYLE/COMBOS/SHOW: the jumbo ">" should be transparent like the details
 
 
-=LEARNING
+==LEARNING
 
-* RailsApps
+RailsApps
 
 
-== Week 1 [28.Oct.2013 - 03.Nov.2013]
+= Week 1 [28.Oct.2013 - 03.Nov.2013]
 
 Started the creation of the application.
 Very excited & working very hard.
 
 
-IMPLEMENTED FEATURES
+=IMPLEMENTED FEATURES
 
-* COMBO/ATTRIBUTES: landed?, no_tricks
-* COMBO: show the sequence
-* COMBO: consists of many tricks
-* COMBO: dynamic "add trick" in form
-
-* TRICK/ATTRIBUTES: name, difficulty class (objective), setup, landed?
-* TRICK: can be used in many combinations
-* TRICK: in the "show" page, also show sample combos (top 5)
-
-* COMBO ELEMENT: index (trick position in the combo)
-
-* STYLE: treehouse flat
-* STYLE: main navigation menu partial
+COMBO/ATTRIBUTES: landed?, no_tricks
+COMBO: show the sequence
+COMBO: consists of many tricks
+COMBO: dynamic "add trick" in form
+TRICK/ATTRIBUTES: name, difficulty class (objective), setup, landed?
+TRICK: can be used in many combinations
+TRICK: in the "show" page, also show sample combos (top 5)
+COMBO ELEMENT: index (trick position in the combo)
+STYLE: treehouse flat
+STYLE: main navigation menu partial
 
 
-LEARNING
+=LEARNING
 
-* TutsPlus Riding Ruby on Rails
-* TutsPlus Ruby Fundamentals
+TutsPlus Riding Ruby on Rails
+TutsPlus Ruby Fundamentals
 

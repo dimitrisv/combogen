@@ -1,4 +1,4 @@
-<div id="title" class="container">
+<div id="title" class="container mustard">
 	<ul class="combo-list combo-lg">
 	  <%- @combo.tricks.each do |trick| %>
 	  	<li><%= trick.name %></li>
@@ -11,7 +11,7 @@
 </div>
 
 <div id="actions-bottom" class="container">
-	<%= link_to 'Back to DB', combos_path, :class => "btn mrs"%>
+	<%= link_to '← Combo DB', combos_path, :class => "btn mrs"%>
 	<% if tricker_signed_in? && @combo.tricker_id == current_tricker.id %>
 		<%= link_to 'Edit Combo', edit_combo_path(@combo), :class => "btn btn-green mrs" %>
 		<%= link_to 'Destroy', @combo, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-blue mrs" %>

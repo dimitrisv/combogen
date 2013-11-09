@@ -6,7 +6,6 @@ gem 'jquery-rails'
 gem 'formtastic'
 gem 'nested_form'
 gem 'devise'
-gem 'pg'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -16,13 +15,13 @@ end
 
 group :development, :test do
   gem 'pry-rails'
+  gem 'sqlite3'
 end
 
 group :production do
   gem 'rails_12factor'
   gem 'unicorn'
+  gem 'pg'
 end
-
-gem 'heroku'
 
 gem 'activerecord-postgresql-adapter'

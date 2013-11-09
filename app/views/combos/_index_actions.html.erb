@@ -1,6 +1,8 @@
-<%= link_to 'Back to Main', {:controller => :welcome, :action => :index}, :class => "btn mrs" %>
 <% if tricker_signed_in? %>
+  <%= link_to '← Dashboard', 'dashboard', :class => "btn mrs" %>
 	<%= link_to 'Add Combo', new_combo_path, :class => "btn btn-green mrs" %>
 	<%= link_to 'Generate Random', generate_random_path, :class => "btn btn-blue mrs" %>
+<% else %>
+  <%= render 'welcome/guest_actions'%>
 <% end %>
 <p id="notice"><%= notice %></p>
