@@ -20,7 +20,9 @@ end
 
 group :production do
   gem 'rails_12factor'
+  gem 'unicorn'
 end
 
-gem 'unicorn'
+gem 'heroku'
+
 gem 'activerecord-postgresql-adapter'
