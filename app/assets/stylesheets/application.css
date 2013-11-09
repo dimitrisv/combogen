@@ -10,6 +10,8 @@
  *
  *= require_self
  *= require_tree .
+ *= require formtastic
+ *= require my_formtastic_changes
  */
  /* FLAT COLOR COLLECTION:
   * red (#E15258), green (#5fcf80), silver (#c6ccd2), blue/light (#39ADD1), blue/dark (#3f8abf)
