@@ -18,5 +18,9 @@ group :development, :test do
   gem 'pry-rails'
 end
 
+group :production do
+  gem 'rails_12factor'
+end
+
 gem 'unicorn'
 gem 'activerecord-postgresql-adapter'
