@@ -93,7 +93,7 @@ Element.create(:combo_id => Combo.last.id, :index => 5, :trick_id => Trick.find_
 Element.create(:combo_id => Combo.last.id, :index => 6, :trick_id => Trick.find_by_name("Cork Doubleleg").id )
 
 Combo.create(:no_tricks => 3)
-Element.create(:combo_id => Combo.last.id, :index => 1, :trick_id => Trick.find_by_name("B-Twist").id )
+Element.create(:combo_id => Combo.last.id, :index => 1, :trick_id => Trick.find_by_name("Butterfly Twist").id )
 Element.create(:combo_id => Combo.last.id, :index => 2, :trick_id => Trick.find_by_name("Cheat 900").id )
 Element.create(:combo_id => Combo.last.id, :index => 3, :trick_id => Trick.find_by_name("Doubleleg").id )
 
