@@ -16,14 +16,19 @@
     <h3>Combos using this trick:</h3>
     <div class="container mbl ptt">
       <ul>
+        <% @index = 0 %>
         <%- @trick.combos.uniq.each do |combo| %>
-        <li>
-            <ul class="combo-list">
-              <%- combo.tricks.each do |trick| %>
-                <li><%= trick.name %></li>
-              <%-end-%>
-            </ul>
-        </li>
+          <li>
+              <ul class="combo-list">
+                <%
+                  @tricks = @tricks_names[@index] if !@tricks_names[@index].nil?
+                  @index += 1
+                %>
+                <%- @tricks.each do |trick| %>
+                  <li><%= trick %></li>
+                <%-end-%>
+              </ul>
+          </li>
         <%-end-%>
       </ul>
     </div>

@@ -26,6 +26,8 @@ class TricksController < ApplicationController
   # GET /tricks/1.json
   def show
     @trick = Trick.find(params[:id])
+    @combos = @trick.combos.uniq
+    get_tricks_for_all
 
     respond_to do |format|
       format.html # show.html.erb
@@ -47,7 +49,7 @@ class TricksController < ApplicationController
   # GET /tricks/1/edit
   def edit
     @trick = Trick.find(params[:id])
-    if !(current_tricker.id.equal? @trick.tricker_id) || !current_tricker.try(:admin?)
+    if !(current_tricker.id.equal? @trick.tricker_id) && !current_tricker.try(:admin?)
       respond_to do |format|
         format.html { redirect_to @trick, alert: 'You need admin privileges for that action!' }
         format.json { head :no_content }
@@ -135,4 +137,19 @@ class TricksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+    def get_tricks_for_all
+      @tricks_names = []
+      @combos.each do |combo|
+        @index = 1
+        @tricks = []
+        combo.elements.length.times do
+          @tricks << combo.elements.where(:index=> @index).first.trick.name
+          @index += 1
+        end
+        @tricks_names << @tricks
+      end
+    end
+
 end

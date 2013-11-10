@@ -6,7 +6,8 @@ class CombosController < ApplicationController
     @combos = Combo.order(:no_tricks)
     @combos = Combo.order(params[:sort]) if params[:sort]
     @combos = @combos.all
-    @tricks = Trick.all
+    
+    get_tricks_for_all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -120,31 +121,31 @@ class CombosController < ApplicationController
     end
   end
 
-def generate_random
-  @combo = Combo.create
-  @combo.tricker_id = current_tricker.id
+  def generate_random
+    @combo = Combo.create
+    @combo.tricker_id = current_tricker.id
 
-  # randomly select number of tricks X
-  @max_no_tricks = 10
-  @no_tricks = rand(2..@max_no_tricks)
-  @combo.no_tricks = @no_tricks
+    # randomly select number of tricks X
+    @max_no_tricks = 10
+    @no_tricks = rand(2..@max_no_tricks)
+    @combo.no_tricks = @no_tricks
 
-  # create @no_tricks combo elements
-  @trick_ids = Trick.limit(@no_tricks).order("RANDOM()").map &:id
+    # create @no_tricks combo elements
+    @trick_ids = Trick.limit(@no_tricks).order("RANDOM()").map &:id
 
-  create_combo_elements
+    create_combo_elements
 
-  # redirect to edit_random page, where there is an ability to DELETE.
-  respond_to do |format|
-    if @combo.save
-      format.html { redirect_to edit_combo_path(@combo), notice: 'A '+@no_tricks.to_s+'-trick combo was successfully generated!' }
-      format.json { head :no_content }
-    else
-      format.html { render action: "edit" }
-      format.json { render json: @combo.errors, status: :unprocessable_entity }
+    # redirect to edit_random page, where there is an ability to DELETE.
+    respond_to do |format|
+      if @combo.save
+        format.html { redirect_to edit_combo_path(@combo), notice: 'A '+@no_tricks.to_s+'-trick combo was successfully generated!' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @combo.errors, status: :unprocessable_entity }
+      end
     end
   end
-end
 
 private
 
@@ -162,8 +163,8 @@ private
     @combos.each do |combo|
       @index = 1
       @tricks = []
-      @combo.elements.length.times do
-        @tricks << @combo.elements.where(:index=> @index).first.trick
+      combo.elements.length.times do
+        @tricks << combo.elements.where(:index=> @index).first.trick.name
         @index += 1
       end
       @tricks_names << @tricks
