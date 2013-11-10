@@ -6,7 +6,7 @@ class CombosController < ApplicationController
     @combos = Combo.order(:no_tricks)
     @combos = Combo.order(params[:sort]) if params[:sort]
     @combos = @combos.all
-    @elements = Element.all
+    @tricks = Trick.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,14 +18,8 @@ class CombosController < ApplicationController
   # GET /combos/1.json
   def show
     @combo = Combo.find(params[:id])
-    @elements = Element.where(:combo_id => @combo.id)
-
-    @index = 1
-    @tricks = []
-    @combo.elements.length.times do
-      @tricks << @combo.elements.where(:index=> @index).first.trick
-      @index += 1
-    end
+    
+    get_tricks
 
     respond_to do |format|
       format.html # show.html.erb
@@ -47,6 +41,7 @@ class CombosController < ApplicationController
   # GET /combos/1/edit
   def edit
     @combo = Combo.find(params[:id])
+    get_tricks
     if !(current_tricker.id.equal? @combo.tricker_id) && !current_tricker.try(:admin?)
       respond_to do |format|
         format.html { redirect_to @combo, alert: 'You need admin privileges for that action!' }
@@ -151,8 +146,29 @@ def generate_random
   end
 end
 
-
 private
+
+  def get_tricks
+    @index = 1
+    @tricks = []
+    @combo.elements.length.times do
+      @tricks << @combo.elements.where(:index=> @index).first.trick
+      @index += 1
+    end
+  end
+
+  def get_tricks_for_all
+    @tricks_names = []
+    @combos.each do |combo|
+      @index = 1
+      @tricks = []
+      @combo.elements.length.times do
+        @tricks << @combo.elements.where(:index=> @index).first.trick
+        @index += 1
+      end
+      @tricks_names << @tricks
+    end
+  end
 
   def remove_destroyed
     @trick_ids = params[:combo][:trick_ids]

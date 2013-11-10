@@ -25,9 +25,10 @@
       <td><%= combo.no_tricks %></td>
       <td>
         <ul class="combo-list">
-          <%- combo.tricks.each do |trick| %>
+          
+          <% combo.tricks.each do |trick| %>
             <li><%= trick.name %></li>
-          <%-end-%>
+          <% end %>
         </ul>
       </td>
       <td><%= Tricker.find(combo.tricker_id).name %></td>

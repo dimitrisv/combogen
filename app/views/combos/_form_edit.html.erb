@@ -12,15 +12,12 @@
     <% end %>
 
     <%= f.inputs do %>
-      <!--
-        Print all tricks, along with a "remove" button.
-        If after editing there are less than 2 tricks left, the combo should be deleted.
-      -->
+      <!-- Print all tricks, along with a "remove" button. -->
       <% @index = 0 %>
       <%= f.fields_for :tricks do |trick_form| %>
         <%
           # Make sure that each trick is the default in the selection box
-          @default = @combo.tricks[@index].id if !@combo.tricks[@index].nil?
+          @default = @tricks[@index].id if !@tricks[@index].nil?
           @index += 1
         %>
         <%= f.input :tricks, :as => :select, :collection => Trick.order(:name), :selected => @default, :input_html => { :multiple => false } %>
