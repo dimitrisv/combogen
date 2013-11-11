@@ -1,4 +1,8 @@
-<%= link_to "Login", new_tricker_session_path, :class => "btn btn-green mrs" %>
-<span class="mrs">or</span>
-<%= link_to "Create Your Account", new_tricker_registration_path, :class => "btn btn-blue mrs" %>
-<p id="notice"><%= alert %></p>
+<% if tricker_signed_in? %>
+  <h2>Currently logged in as <%= current_tricker.name %></h2>
+<% else %>
+  <%= link_to "Login", new_tricker_session_path, :class => "btn btn-green mrs" %>
+  <span class="mrs">or</span>
+  <%= link_to "Register", new_tricker_registration_path, :class => "btn btn-blue mrs" %>
+  <p id="notice"><%= alert %></p>
+<% end %>

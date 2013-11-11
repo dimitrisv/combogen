@@ -10,13 +10,37 @@
   <%= render 'guest_actions' %>
 </div>
 
-<!-- <div class="container tac mbl">
-  Hello and welcome! Level App was designed to help you make the most of your tricking skills.
+<div class="container tac mbl">
+  <h2>How does it work?</h2>
+  <p>
+    Level App was designed to help you make the most of your tricking skills,<br>
+    by providing tools that promote creative thinking.
+  </p>
+  <br>
+  <h2>With Level App you can:</h2>
+  <ul id="selling-points" class="mbl">
+    <li>Explore an up-to-date trick list in our database<!--tricktionary--></li>
+    <li>Create your own tricks or combos<!--, and share them with your friends--></li>
+    <li>Generate random combos</li>
+    <!--li>
+        Generate combos for specific tricking styles with many parameters,<br>
+        like combo length, tricks involved, and many more
+    </li>
+    <li>
+        Easily organize all the above into lists.<br>
+        Defaults include "favorites", "next sampler goals", and "experimental".
+    </li>
+    <li>
+      Easily mark the tricks you can do as "landed" so that you can use them in your combos
+    </li>
+    <li>Set goals and watch yourself progress over time</li-->
+  </ul>
+  <br>
+  <h2>What are you waiting for?</h2>
+  <p><%= link_to "Join the community today!", new_tricker_registration_path, :class => "btn btn-blue mrs" %></p>
+  <br>
 </div>
 
-<div id="actions-bottom" class="container tac">
-  <%= link_to "Login", new_tricker_session_path, :class => "btn btn-green mrs" %>
-  <span class="mrs">or</span>
-  <%= link_to "Create Your Account", new_tricker_registration_path, :class => "btn btn-blue mrs" %>
-  <p id="notice"><%= alert %></p>
-</div> -->
+<!--div id="actions-bottom" class="container tac">
+  <%= render 'guest_actions' %>
+</div-->

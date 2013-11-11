@@ -1,0 +1,90 @@
+== Week 3 [11.Nov.2013 - 17.Nov.2013]
+
+IMPLEMENTED FEATURES
+
+Monday:
+- WELCOME/INDEX/HOW IT WORKS: wrote a nice & clean explanation of what it is
+- DASHBOARD/LIST ITEMS: each one links to the corresponding action
+- TRICKS+COMBOS/INDEX: My Tricks/Combos vs Database Tricks/Combos (two listings)
+
+
+
+== Week 2 [04.Nov.2013 - 10.Nov.2013]
+
+Lots of progress made! Created a basic working version.
+Managed to deploy it on Heroku and got some friends to test it out.
+
+
+IMPLEMENTED FEATURES
+
+Sunday:
+- COMBO/PRINT: Fixed all bugs that made them appear randomly. Now printing based on index.
+
+Saturday:
+- BUGS: some things that worked perfectly before now aren't working. :/
+- STYLE: various fixes all across the app
+- DEVISE: email problems + gmail problems... deactivated :confirmable
+- HEROKU: finally managed to deploy it! (needed precompiled assets)
+
+Friday:
+- HEROKU: tons of attempts to deploy
+- POSTGRES: tons of work until it installed. (needed osx maverick and xcode 5)
+- TRICK+COMBO/INDEX: show actions depending on tricker_id
+- TRICK: tricks are editable by their creators & admins ONLY
+- USER: create own tricks & combos
+- TRICK/COMBO: assign tricker_id on creation
+
+Thursday:
+- USER: has_many tricks, has_many combos
+- TRICK/EDIT: redirect to show page if User is not Admin
+- USER/ADMIN: assigned Update & Delete for Tricks
+- USER: removed Update & Delete privileges for Tricks
+- USER: created ADMIN role with boolean variable
+- USER: Added as Trickers
+
+Wednesday:
+- RailsApps Devise-Rspec-Cucumber tutorial
+
+Tuesday:
+- COMBO/GENERATE/RANDOM: easy mode random generation through a button :)
+
+Monday:
+- COMBO/INDEX: default combo ordering by number of tricks
+- TRICK/INDEX: tricks listed in alphabetical order by default
+- TRICK/DESTROY: return relevant error message if combos were destroyed in the process.
+- COMBO/EDIT: verify presence of at least 2 tricks with redirect
+- COMBO/EDIT+NEW: trick SELECTS are in alphabetical order
+- STYLE/COMBOS: the after ">" part should be in different, more discrete color
+- STYLE/COMBOS/SHOW: the jumbo ">" should be transparent like the details
+
+
+LEARNING
+
+- RailsApps
+
+
+== Week 1 [28.Oct.2013 - 03.Nov.2013]
+
+Started the creation of the application.
+Very excited & working very hard.
+
+
+IMPLEMENTED FEATURES
+
+- COMBO/ATTRIBUTES: landed?, no_tricks
+- COMBO: show the sequence
+- COMBO: consists of many tricks
+- COMBO: dynamic "add trick" in form
+- TRICK/ATTRIBUTES: name, difficulty class (objective), setup, landed?
+- TRICK: can be used in many combinations
+- TRICK: in the "show" page, also show sample combos (top 5)
+- COMBO ELEMENT: index (trick position in the combo)
+- STYLE: treehouse flat
+- STYLE: main navigation menu partial
+
+
+LEARNING
+
+- TutsPlus Riding Ruby on Rails
+- TutsPlus Ruby Fundamentals
+

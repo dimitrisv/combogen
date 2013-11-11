@@ -1,11 +1,7 @@
 <header>
 	<div class="container">
 		<div id="logo">
-			<% if tricker_signed_in? %>
-				<h1><a href="/dashboard">Level App</a></h1>
-			<% else %>
-				<h1><a href="/">Level App</a></h1>
-			<% end %>
+			<h1><%= link_to "Level App", root_path %></h1>
 		</div>
 		<div id="nav">
 			<ul id="navlist">

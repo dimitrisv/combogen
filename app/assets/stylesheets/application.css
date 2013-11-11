@@ -55,6 +55,7 @@ h1, h2, p { padding-bottom: 20px; }
 .pbl { padding-bottom: 20px; }
 .ptt { padding-top: 5px; }
 .tac { text-align: center; }
+.tal { text-align: left; }
 
 
 
@@ -281,6 +282,13 @@ header a:hover { color: #384047; }
 #navlist li a {
 	font-weight: bold;
 	font-size: 1.2em;
+}
+
+
+/* INDEX ===================================== */
+
+#selling-points {
+	list-style-position: inside;
 }
 
 
