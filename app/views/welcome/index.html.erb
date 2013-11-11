@@ -36,9 +36,11 @@
     <li>Set goals and watch yourself progress over time</li-->
   </ul>
   <br>
-  <h2>What are you waiting for?</h2>
-  <p><%= link_to "Join the community today!", new_tricker_registration_path, :class => "btn btn-blue mrs" %></p>
-  <br>
+  <% if !tricker_signed_in? %>
+    <h2>What are you waiting for?</h2>
+    <p><%= link_to "Join the community today!", new_tricker_registration_path, :class => "btn btn-blue mrs" %></p>
+    <br>
+  <% end %>
 </div>
 
 <!--div id="actions-bottom" class="container tac">
