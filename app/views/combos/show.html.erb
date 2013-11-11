@@ -12,7 +12,7 @@
 
 <div id="actions-bottom" class="container">
 	<%= link_to '← Combo DB', combos_path, :class => "btn mrs"%>
-	<% if tricker_signed_in? && @combo.tricker_id == current_tricker.id %>
+	<% if tricker_signed_in? && ((@combo.tricker_id.equal? current_tricker.id) || current_tricker.try(:admin?)) %>
 		<%= link_to 'Edit Combo', edit_combo_path(@combo), :class => "btn btn-green mrs" %>
 		<%= link_to 'Destroy', @combo, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-blue mrs" %>
 	<% end %>

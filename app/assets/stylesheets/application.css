@@ -321,13 +321,9 @@ header a:hover { color: #384047; }
 /* DASHBOARD ================================== */
 
 #dashboard { background-color: #edeff0; }
-
-#dashboard a { font-weight: normal; color: #62707D; }
-
-#dashboard ul {
-	list-style-position: inside;
-	padding: 15px;
-}
+#dashboard ul { list-style-position: inside; padding: 15px; }
+#dashboard a:hover h1 { opacity: 0.8; }
+#dashboard a:hover { color: #384047; }
 
 #dashboard h1 {
 	color: white;
@@ -337,6 +333,9 @@ header a:hover { color: #384047; }
 	font-size: 3em;
 	line-height: 1em;
 }
+
+#dashboard-tricks { float: left; }
+#dashboard-combos { float: right; }
 
 #dashboard-tricks, #dashboard-combos {
 	display: inline-block;
@@ -350,17 +349,6 @@ header a:hover { color: #384047; }
 	-moz-box-shadow: 0 1px 0 0 rgba(0,0,0,0.1);
 	box-shadow: 0 1px 0 0 rgba(0,0,0,0.1);
 }
-
-#dashboard-tricks { float: left; }
-#dashboard-combos { float: right; }
-
-.dashboard-link {
-	min-width: 400px;
-	height: 250px;
-	position: absolute;
-}
-.dashboard-link:hover h1 { opacity: 0.8; }
-.dashboard-link:hover ul { color: #384047; }
 
 
 

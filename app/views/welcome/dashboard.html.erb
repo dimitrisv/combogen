@@ -3,26 +3,23 @@
   <p>Welcome, <%= current_tricker.name %>! Thank you so much for being part of our testing phase. :)</p>
 </div>
 <div class="container tac">
-  <h2>What will you try out today?</h2>
+  <h2>What will you play with today?</h2>
 </div>
 <div id="dashboard" class="container tac">
   <div class="container">
-    <div id="dashboard-tricks">
-      <a href="/tricks" class="dashboard-link">
-        <h1 class="red">Tricks</h1>
-        <ul>
-          <li>View database</li>
-          <li>Create your own</li>
-        </ul>
-      </a>
+    <div id="dashboard-tricks" class="red">
+      <a href="/tricks"><h1 class="red">Tricks</h1></a>
+      <ul>
+        <li><%= link_to "View database", tricks_path %></li>
+        <li><%= link_to "Create your own", new_trick_path %></li>
+      </ul>
     </div>
-    <div id="dashboard-combos">
-      <a href="/combos" class="dashboard-link">
-        <h1 class="mustard">Combos</h1>
+    <div id="dashboard-combos" class="mustard">
+        <a href="/combos"><h1 class="mustard">Combos</h1></a>
         <ul>
-          <li>View database</li>
-          <li>Create your own</li>
-          <li>Play with our random generator!</li>
+          <li><%= link_to "View database", combos_path %></li>
+          <li><%= link_to "Create your own", new_combo_path %></li>
+          <li><%= link_to "Play with our random generator!", generate_random_path %></li>
         </ul>
       </a>
     </div>

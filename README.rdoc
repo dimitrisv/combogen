@@ -1,7 +1,19 @@
+= Week 3 [11.Nov.2013 - 17.Nov.2013]
+
+==IMPLEMENTED FEATURES
+
+Monday:
+- DASHBOARD/LIST ITEMS: each one links to the corresponding action
+- TRICKS+COMBOS/INDEX: My Tricks/Combos vs Database Tricks/Combos (two listings)
+
+
 = Week 2 [04.Nov.2013 - 10.Nov.2013]
 
 
 ==IMPLEMENTED FEATURES
+
+Sunday:
+COMBO/PRINT: Fixed all bugs that made them appear randomly. Now printing based on index.
 
 Saturday:
 BUGS: some things that worked perfectly before now aren't working. :/

@@ -7,49 +7,67 @@
   <%= render 'index_actions' %>
 </div>
 
-<div class="container mbl">
-  <table>
-    <tr>
-      <th class="id">Id <%= link_to "↓", combos_path(sort: "id") %></th>
-      <th class="no_tricks">Tricks <%= link_to "↓", combos_path(sort: "no_tricks") %></th>
-      <th>Sequence</th>
-      <th>Creator</th>
-      <% if tricker_signed_in? %>
+<!-- Print all combos from the current tricker -->
+<% @tricker_num_combos = 0 %>
+<% if tricker_signed_in? && !current_tricker.combos.empty? %>
+  <% @tricker_num_combos = current_tricker.combos.length %>
+  <div id="my-combos" class="container mbl">
+    <h2>My Combos (<%= @tricker_num_combos %>)</h2>
+    <table>
+      <tr>
+        <th class="id">Id <%= link_to "↓", combos_path(sort: "id") %></th>
+        <th class="no_tricks">Tricks <%= link_to "↓", combos_path(sort: "no_tricks") %></th>
+        <th>Sequence</th>
         <th colspan="3">Actions</th>
-      <% end %>
-    </tr>
-
-  <% @index = 0 %>
-  <% @combos.each do |combo| %>
-    <tr class="db-row">
-      <td><%= combo.id %></td>
-      <td><%= combo.no_tricks %></td>
-      <td>
-        <ul class="combo-list">
-          <%
-            @tricks = @tricks_names[@index] if !@tricks_names[@index].nil?
-            @index += 1
-          %>
-          <%- @tricks.each do |trick| %>
-            <li><%= trick %></li>
-          <%-end-%>
-          
-        </ul>
-      </td>
-      <td><%= Tricker.find(combo.tricker_id).name %></td>
-      <% if tricker_signed_in? %>
-        <% if combo.tricker_id == current_tricker.id || current_tricker.try(:admin?) %>
-          <td><%= link_to 'Show', combo %></td>
-          <td><%= link_to 'Edit', edit_combo_path(combo) %></td>
-          <td><%= link_to 'Destroy', combo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% else %>
-          <td colspan="3"></td>
+      </tr>
+      <% @index = 0 %>
+      <% @combos.each do |combo| %>
+        <% @combo = combo %>
+        <% if @combo.tricker_id.equal? current_tricker.id %>
+          <tr class="db-row">
+            <%= render 'index_table_row' %>
+            <%= render 'index_combo_actions' %>
+          </tr>
         <% end %>
+        <% @index += 1 %>
       <% end %>
-    </tr>
-  <% end %>
-  </table>
-</div>
+    </table>
+  </div>
+<% end %>
+
+<!-- Print all combos from the rest of the trickers -->
+<% if @combos.length > @tricker_num_combos %>
+  <div id="db-combos" class="container mbl">
+    <h2>Database Combos</h2>
+    <table>
+      <tr>
+        <%= render 'index_table_head' %>
+        <th>Creator</th>
+        <% if current_tricker.try(:admin?) %>
+          <th colspan="3">Actions</th>
+        <% end %>
+      </tr>
+      <% @index = 0 %>
+      <% @combos.each do |combo| %>
+        <% @combo = combo %>
+        <%
+          if (tricker_signed_in? && (@combo.tricker_id.equal? current_tricker.id))
+            @index += 1
+            next
+          end
+        %>
+        <tr class="db-row">
+          <%= render 'index_table_row' %>
+          <td><%= Tricker.find(@combo.tricker_id).name %></td>
+          <% if current_tricker.try(:admin?) %>
+            <%= render 'index_combo_actions' %>
+          <% end %>
+        </tr>
+        <% @index += 1 %>
+      <% end %>
+    </table>
+  </div>
+<% end %>
 
 <div id="actions-bottom" class="container">
   <%= render 'index_actions' %>
