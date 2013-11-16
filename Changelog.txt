@@ -2,6 +2,10 @@
 
 IMPLEMENTED FEATURES
 
+Saturday:
+- STYLE/HEADER: make collapse menu for mobile
+- STYLE/RESPONSIVE: header+text size adoptations
+
 Monday:
 - WELCOME/INDEX/HOW IT WORKS: wrote a nice & clean explanation of what it is
 - DASHBOARD/LIST ITEMS: each one links to the corresponding action

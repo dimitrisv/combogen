@@ -14,3 +14,15 @@
 //= require jquery_ujs
 //= require_tree .
 //= require jquery_nested_form
+
+$(document).ready(function(){  
+  
+  // Collapsing menu for mobile
+  $("#toggle-collapse").click(function(e){
+    $("#nav").toggle();
+    // $("#nav-collapse a").toggleClass("active");
+    e.preventDefault();
+  });
+
+});
+

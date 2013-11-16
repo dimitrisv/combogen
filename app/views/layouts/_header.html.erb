@@ -3,20 +3,12 @@
 		<div id="logo">
 			<h1><%= link_to "Level App", root_path %></h1>
 		</div>
+		<div id="collapse"><a id="toggle-collapse">=</a></div>
 		<div id="nav">
 			<ul id="navlist">
-				<li><%= link_to "Tricks", tricks_path %></li>
-				<li><%= link_to "Combos", combos_path %></li>
-				<% if tricker_signed_in? %>
-					<!--li><%= link_to "My Account", edit_tricker_registration_path %></li-->
-					<li>Logged in as <b><%= current_tricker.name %></b></li>
-					<li><%= link_to 'Dashboard', '/dashboard' %></li>
-					<li><%= link_to 'Logout', destroy_tricker_session_path, :method => :delete %></li>
-				<% else %>
-					<li><%= link_to 'Login', new_tricker_session_path %></li>
-				<% end %>
+				<%= render 'layouts/nav_list' %>
 			</ul>
 		</div>
-		<br class="clear"/>
+		<br class="clear">
 	</div>
 </header>

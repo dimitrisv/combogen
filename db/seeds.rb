@@ -126,7 +126,3 @@ Combo.create(:no_tricks => 3)
 Element.create(:combo_id => Combo.last.id, :index => 1, :trick_id => Trick.find_by_name("Jackknife").id )
 Element.create(:combo_id => Combo.last.id, :index => 2, :trick_id => Trick.find_by_name("Aerial").id )
 Element.create(:combo_id => Combo.last.id, :index => 3, :trick_id => Trick.find_by_name("Grandmasterswipe").id )
-
-
-# ADMIN
-Tricker.create(:name => "Dimitris", :email => "dimitris@tricking.gr", :password => "k0dik0ls", :admin => true )

@@ -13,7 +13,7 @@
       <%= link_to 'Be the first to create one!', '/combos/new', :class => "btn btn-green mbl" %>
     <% end %>
   <% else %>
-    <h3>Combos using this trick:</h3>
+    <h3>Combos using this trick (<%= @trick.combos.length %>)</h3>
     <div class="container mbl ptt">
       <ul>
         <% @index = 0 %>
