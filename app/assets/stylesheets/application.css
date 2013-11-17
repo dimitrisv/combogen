@@ -96,8 +96,14 @@ table tr:nth-child(2n) { background-color: #edeff0;}
 table td:first-child, table th:first-child { padding-left: 10px; }
 table .id { min-width: 35px; }
 table .no_tricks { min-width: 65px; }
+table .sequence { padding-left: 10px; }
 table .db-row:hover { background-color: #9D8AC7; color: white; }
 table .db-row:hover a:hover { color: white; }
+
+table a.show-link { color: #62707D; font-weight: normal; display: block; }
+table .db-row:hover a.show-link { color: white; }
+
+table .visible-lg { display: none; }
 
 
 
@@ -197,6 +203,7 @@ th, td {
 /* BUTTONS =================================== */
 
 .btn {
+	margin-top: 10px;
 	font-weight: bold;
 	font-size: 14px;
 	font-family: "Helvetica Neue", Helvetica, Tahoma, sans-serif;
@@ -269,8 +276,8 @@ header a:hover { color: #384047; }
 
 #logo h1 { font-size: 1.8em; line-height: 1.4; padding: 0; }
 
-#navlist { text-align: center; padding: 10px 0;}
-#navlist li { display: block; padding: 5px; }
+#navlist { text-align: center; padding: 5px 0; }
+#navlist li { display: block; padding: 5px;}
 #navlist li a {
 	display: block;
 	font-weight: bold;
@@ -279,6 +286,7 @@ header a:hover { color: #384047; }
 	-webkit-transition: all 200ms ease-out;
 	-moz-transition: all 200ms ease-out;
 	transition: all 200ms ease-out;
+	border-radius: 5px;
 }
 #navlist li a:hover { background-color: #edeff0; }
 
@@ -322,8 +330,10 @@ header a:hover { color: #384047; }
 #title.light-blue { background-color: #39ADD1; }
 #title.red { background-color: #E15258; }
 #title.mustard { background-color: #E0AB18; }
+#title.burgundy { background-color: #913B53; }
 .red { background-color: #E15258; }
 .mustard { background-color: #E0AB18; }
+.burgundy { background-color: #913B53; }
 
 
 /* DASHBOARD ================================== */
@@ -364,7 +374,10 @@ header a:hover { color: #384047; }
 @media only screen and (min-width: 640px){
 	#title { font-size: 1.4em; }
 	#title h1 { font-size: 3em; line-height: 1em; }
-	#title-details {}
+	table .visible-lg { display: table-cell; }
+	table .sequence { padding-left: 0px; }
+	#title .combo-lg li { font-size: 1.5em; line-height: 1.2em; }
+	.btn { margin-top: 0px; }
 }
 
 @media only screen and (min-width: 768px){
@@ -380,6 +393,7 @@ header a:hover { color: #384047; }
 	#navlist li:last-child { margin-right: 0; }
 	#navlist li a { font-weight: bold; font-size: 1.2em; display: inline-block; padding: 0; }
 	#navlist li a:hover { background-color: transparent; }
+	#title .combo-lg li { font-size: 2em; line-height: 1.2em; }
 }
 
 @media only screen and (min-width: 968px){
@@ -388,6 +402,7 @@ header a:hover { color: #384047; }
 
 @media only screen and (min-width: 1024px){
 	header .container { padding: 0; }
+	#title .combo-lg li { font-size: 3em; line-height: 1.4em; }
 }
 
 

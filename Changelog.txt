@@ -2,7 +2,16 @@
 
 IMPLEMENTED FEATURES
 
+Sunday:
+- TRICKING STYLE: CRUD operations with my trick list
+- TRICKING STYLE: create table and associations
+- TABLE/RESPONSIVE: make adoptations
+- COMBO/SHOW: display creator's name
+
 Saturday:
+- COMBOS/INDEX: combo now links to the SHOW page
+- TRICK/SHOW/COMBOS: proper array display
+- TRICK/SHOW/COMBOS: "X combos use this trick"
 - STYLE/HEADER: make collapse menu for mobile
 - STYLE/RESPONSIVE: header+text size adoptations
 

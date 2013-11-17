@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131107160349) do
+ActiveRecord::Schema.define(:version => 20131117111604) do
 
   create_table "combos", :force => true do |t|
     t.integer  "no_tricks"
@@ -58,6 +58,19 @@ ActiveRecord::Schema.define(:version => 20131107160349) do
   add_index "trickers", ["confirmation_token"], :name => "index_trickers_on_confirmation_token", :unique => true
   add_index "trickers", ["email"], :name => "index_trickers_on_email", :unique => true
   add_index "trickers", ["reset_password_token"], :name => "index_trickers_on_reset_password_token", :unique => true
+
+  create_table "tricking_styles", :force => true do |t|
+    t.integer  "tricker_id"
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "tricking_styles_tricks", :id => false, :force => true do |t|
+    t.integer "tricking_style_id"
+    t.integer "trick_id"
+  end
 
   create_table "tricks", :force => true do |t|
     t.string   "name"

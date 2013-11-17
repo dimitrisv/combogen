@@ -1,4 +1,5 @@
 class Tricker < ActiveRecord::Base
+  has_one :tricking_style
   has_many :tricks
   has_many :combos
   validates :name, :presence => true, :uniqueness => true

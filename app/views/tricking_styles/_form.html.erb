@@ -1,0 +1,23 @@
+<div class="container">
+  <%= semantic_form_for(@tricking_style) do |f| %>
+    <% if @tricking_style.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@tricking_style.errors.count, "error") %> prohibited this tricking_style from being saved:</h2>
+        <ul>
+        <% @tricking_style.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= f.inputs do %>
+      <%= f.input :name %>
+      <%= f.input :description %>
+      <%= f.input :tricks, :as => :check_boxes %>
+    <% end %>
+    <%= f.actions do %>
+      <%= f.action :submit, :button_html => { :class => "btn btn-blue" } %>
+    <% end %>
+  <% end %>
+</div>

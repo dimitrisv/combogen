@@ -1,0 +1,2 @@
+module TrickingStylesHelper
+end

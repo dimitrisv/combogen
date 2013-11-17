@@ -38,7 +38,9 @@
     <thead>
       <tr>
         <%= render 'index_table_head' %>
-        <th colspan="3">Actions</th>
+        <% if tricker_signed_in? && current_tricker.try(:admin?) %>
+          <th colspan="3">Actions</th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
@@ -49,8 +51,6 @@
           <%= render 'index_table_row' %>
           <% if tricker_signed_in? && current_tricker.try(:admin?) %>
             <%= render 'index_trick_actions' %>
-          <% else %>
-              <td colspan="3"><%= link_to 'Show', @trick %></td>
           <% end %>
         </tr>
       <% end %>

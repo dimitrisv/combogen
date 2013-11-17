@@ -13,26 +13,31 @@
       <%= link_to 'Be the first to create one!', '/combos/new', :class => "btn btn-green mbl" %>
     <% end %>
   <% else %>
-    <h3>Combos using this trick (<%= @trick.combos.length %>)</h3>
-    <div class="container mbl ptt">
-      <ul>
-        <% @index = 0 %>
-        <%- @trick.combos.uniq.each do |combo| %>
-          <li>
-              <ul class="combo-list">
-                <%
-                  @tricks = @tricks_names[@index] if !@tricks_names[@index].nil?
-                  @index += 1
-                %>
-                <%- @tricks.each do |trick| %>
-                  <li><%= trick %></li>
-                <%-end-%>
-              </ul>
-          </li>
-        <%-end-%>
-      </ul>
-    </div>
+    <h2>Combos using this trick (<%= @trick.combos.length %>)</h2>
+
+    <table>
+      <tr>
+        <%= render 'combos/index_table_head' %>
+        <th>Creator</th>
+        <% if current_tricker.try(:admin?) %>
+          <th colspan="3">Actions</th>
+        <% end %>
+      </tr>
+      <% @index = 0 %>
+      <% @trick.combos.uniq.each do |combo| %>
+        <% @combo = combo %>
+        <tr class="db-row">
+          <%= render 'combos/index_table_row' %>
+          <td><%= Tricker.find(@combo.tricker_id).name %></td>
+          <% if current_tricker.try(:admin?) %>
+            <%= render 'combos/index_combo_actions' %>
+          <% end %>
+        </tr>
+        <% @index += 1 %>
+      <% end %>
+    </table>
   <% end %>
+  <br class="clear"/>
 </div>
 
 <div id="actions-bottom" class="container">

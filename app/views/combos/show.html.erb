@@ -7,6 +7,7 @@
 	<ul id="title-details">
 		<li>Combo #<%= @combo.id %></li>
 		<li><%= @combo.no_tricks %> tricks</li>
+		<li>Created by <%= Tricker.find(@combo.tricker_id).name %></li>
 	</ul>
 </div>
 

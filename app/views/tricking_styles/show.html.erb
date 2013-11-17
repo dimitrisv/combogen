@@ -1,0 +1,26 @@
+<div id="title" class="container burgundy">
+  <h1><%= @tricking_style.name %></h1>
+  <ul id="title-details">
+    <li>Created by <%= Tricker.find(@tricking_style.tricker_id).name %></li>
+  </ul>
+</div>
+
+<div class="container mbl">
+  <h2>Description</h2>
+  <p><%= @tricking_style.description %></p>
+  <br>
+  <h2>Tricks</h2>
+  <ul class="trick-list">
+    <% @tricking_style.tricks.each do |t| %>
+      <li><%= t.name %></li>
+    <% end %>
+  </ul>
+</div>
+
+<div id="actions-bottom" class="container">
+  <%= link_to '← Dashboard', '/dashboard', :class => "btn mrs"%>
+  <% if tricker_signed_in? && ((@tricking_style.tricker_id.equal? current_tricker.id) || current_tricker.try(:admin?)) %>
+    <%= link_to 'Edit Style', edit_tricking_style_path(@tricking_style), :class => "btn btn-green mrs" %>
+  <% end %>
+  <p id="notice"><%= notice %></p>
+</div>

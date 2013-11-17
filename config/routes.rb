@@ -1,4 +1,7 @@
 Combogen::Application.routes.draw do
+  resources :tricking_styles
+
+
   devise_for :trickers, :path_names => { :sign_up => "register", :sign_in => "login", :sign_out => "logout"}
 
   get "welcome/index"

@@ -1,5 +1,6 @@
 class Trick < ActiveRecord::Base
 	belongs_to :tricker
+  has_and_belongs_to_many :tricking_styles
 	has_many :elements, :dependent => :delete_all
 	has_many :combos, :through => :elements
 	attr_accessible :difficulty, :landed, :name, :setup, :tricker_id
