@@ -1,4 +1,5 @@
 class TrickingStylesController < ApplicationController
+  before_filter :authenticate_tricker!
   # GET /tricking_styles
   # GET /tricking_styles.json
   def index
@@ -41,7 +42,8 @@ class TrickingStylesController < ApplicationController
   # POST /tricking_styles.json
   def create
     @tricking_style = TrickingStyle.new
-    
+    @tricking_style.tricker_id = current_tricker.id
+
     assign_attributes
 
     respond_to do |format|

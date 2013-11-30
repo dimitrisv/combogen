@@ -1,18 +1,19 @@
+.formtastic textarea {
+	font-weight: normal!important;
+	padding: 6px 8px!important;
+}
 .formtastic .actions {
 	padding-left: 0 !important;
 }
-
 .formtastic .input .label {
 	max-width: 120px;
 	font-size: 0.9em;
 }
-
 .formtastic .stringish input {
 	max-width: 200px;
 	padding: 0 6px;
 	font-weight: normal;
 }
-
 .formtastic .inline-errors {
 	color: #E15258 !important;
 	margin-left: 15px !important;
@@ -20,5 +21,15 @@
 }
 .formtastic select {
   width: 99%;
-  margin-left: 1px!important;
+  margin-left: 1px !important;
 }
+.formtastic legend {
+	color: #62707D !important;
+}
+
+.formtastic .input .label { float: none; }
+.formtastic .choices legend.label { position: relative; }
+.formtastic ol.choices-group { padding: 0; }
+.formtastic ol.choices-group li.choice { margin: 0; font-weight: normal; }
+
+#trick_trick_type { width: 215px; }

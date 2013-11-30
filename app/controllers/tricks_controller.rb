@@ -26,7 +26,12 @@ class TricksController < ApplicationController
   # GET /tricks/1.json
   def show
     @trick = Trick.find(params[:id])
-    @combos = @trick.combos.uniq
+    @combos = Combo.where(:id => @trick.combos.uniq.map(&:id))
+
+    if tricker_signed_in?
+      #filter_by_tricking_style
+    end
+
     get_tricks_for_all
 
     respond_to do |format|
@@ -39,6 +44,7 @@ class TricksController < ApplicationController
   # GET /tricks/new.json
   def new
     @trick = Trick.new
+    get_trick_types
 
     respond_to do |format|
       format.html # new.html.erb
@@ -49,6 +55,7 @@ class TricksController < ApplicationController
   # GET /tricks/1/edit
   def edit
     @trick = Trick.find(params[:id])
+    get_trick_types
     if !(current_tricker.id.equal? @trick.tricker_id) && !current_tricker.try(:admin?)
       respond_to do |format|
         format.html { redirect_to @trick, alert: 'You need admin privileges for that action!' }
@@ -139,17 +146,40 @@ class TricksController < ApplicationController
   end
 
   private
-    def get_tricks_for_all
-      @tricks_names = []
-      @combos.each do |combo|
-        @index = 1
-        @tricks = []
-        combo.elements.length.times do
-          @tricks << combo.elements.where(:index=> @index).first.trick.name
-          @index += 1
-        end
-        @tricks_names << @tricks
+
+  def get_tricks_for_all
+    @tricks_names = []
+    @combos.each do |combo|
+      @index = 1
+      @tricks = []
+      combo.elements.length.times do
+        @tricks << combo.elements.where(:index=> @index).first.trick.name
+        @index += 1
       end
+      @tricks_names << @tricks
     end
+  end
+
+  def get_trick_types
+    @trick_types = [ "Kick", "Flip", "Twist", "EX", "Invert", "Groundmove", "Kick, Flip",
+      "Flip, Twist", "Kick, Twist", "Kick, Flip, Twist" ]
+  end
+
+  def filter_by_tricking_style
+    # find all non user created combos
+    @trickers = Tricker.all.map(&:id)
+    @trickers.delete(current_tricker.id)
+    @combos = @combos.where(:tricker_id => @trickers)
+    
+    # query all combo elements, keeping only the ones whose tricks are included in the trick list
+    @trick_list = current_tricker.tricking_style.tricks.map(&:id)
+    @elements = Element.where(:combo_id=>@combos.map(&:id)).where(:trick_id => @trick_list)
+
+    @combos = @elements.map(&:combo_id).uniq
+    
+    # check which combos are complete?
+    # get combo.no_tricks then compare with my collections no_tricks for this combo
+    # for each individual combo in the collection, count its tricks... if equal to no_tricks
+  end
 
 end

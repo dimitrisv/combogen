@@ -1,6 +1,14 @@
-<h1>Editing tricking_style</h1>
+<div id="title" class="container burgundy">
+  <h1>Editing "<%= @tricking_style.name %>"</h1>
+</div>
+
+<div id="actions-top" class="container">
+  <%= link_to '← My Style', @tricking_style, :class => "btn mrs" %>
+  <%= link_to '← Dashboard', '/dashboard', :class => "btn btn-blue mrs" %>
+  <p id="notice"><%= notice %></p>
+  <p id="notice" class="red"><%= alert %></p>
+</div>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @tricking_style %> |
-<%= link_to 'Back', tricking_styles_path %>
+<br class="clear">

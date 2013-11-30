@@ -13,6 +13,7 @@
   <% @tricker_num_combos = current_tricker.combos.length %>
   <div id="my-combos" class="container mbl">
     <h2>My Combos (<%= @tricker_num_combos %>)</h2>
+    <!--h3--><!--%= paginate @combos %--><!--/h3-->
     <table>
       <tr>
         <%= render 'index_table_head' %>

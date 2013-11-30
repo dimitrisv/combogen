@@ -1,14 +1,13 @@
 Combogen::Application.routes.draw do
+  resources :lists
+  resources :combos
+  resources :tricks
   resources :tricking_styles
-
 
   devise_for :trickers, :path_names => { :sign_up => "register", :sign_in => "login", :sign_out => "logout"}
 
   get "welcome/index"
   get "welcome/dashboard"
-
-  resources :combos
-  resources :tricks
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

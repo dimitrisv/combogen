@@ -5,9 +5,14 @@ class CombosController < ApplicationController
   def index
     @combos = Combo.order(:no_tricks)
     @combos = Combo.order(params[:sort]) if params[:sort]
-    @combos = @combos.all
+    # @combos = @combos.page(params[:page]).per(10)
     
     get_tricks_for_all
+
+    # get all my combos and their indices
+    # get all database combos and their indices
+    # assign each to a different collection, and paginate both of them in the index page
+    # get_indices
 
     respond_to do |format|
       format.html # index.html.erb
@@ -125,17 +130,37 @@ class CombosController < ApplicationController
     @combo = Combo.create
     @combo.tricker_id = current_tricker.id
 
-    # randomly select number of tricks X
+    # 1. randomly select number of tricks 
     @max_no_tricks = 10
     @no_tricks = rand(2..@max_no_tricks)
     @combo.no_tricks = @no_tricks
 
-    # create @no_tricks combo elements
-    @trick_ids = Trick.limit(@no_tricks).order("RANDOM()").map &:id
+    # 2. randomly select the @no_tricks tricks
+    if current_tricker.tricking_style.equal? nil 
+      # if no trick list is present, choose any trick
+      @collection = Trick.all
+    else
+      # otherwise filter by tricker's style
+      @collection = current_tricker.tricking_style.tricks
+    end
+    
+    @random = @collection.order("RANDOM()").map &:id
+    @trick_ids = []
+    @index = 0
+    @no_tricks.times do
+      @trick_ids << @random[@index]
+      if @index < @collection.length
+        @index += 1
+      else
+        # if the trick list has less tricks than @no_tricks, start over
+        @index = 0
+      end
+    end
 
+    # 3. create the combo elements for the randomly selected tricks
     create_combo_elements
 
-    # redirect to edit_random page, where there is an ability to DELETE.
+    # 4. redirect to edit combo page.
     respond_to do |format|
       if @combo.save
         format.html { redirect_to edit_combo_path(@combo), notice: 'A '+@no_tricks.to_s+'-trick combo was successfully generated!' }

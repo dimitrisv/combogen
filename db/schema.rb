@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131117111604) do
+ActiveRecord::Schema.define(:version => 20131127214131) do
 
   create_table "combos", :force => true do |t|
     t.integer  "no_tricks"
@@ -30,6 +30,26 @@ ActiveRecord::Schema.define(:version => 20131117111604) do
 
   add_index "elements", ["combo_id"], :name => "index_elements_on_combo_id"
   add_index "elements", ["trick_id"], :name => "index_elements_on_trick_id"
+
+  create_table "list_elements", :force => true do |t|
+    t.integer  "combo_id"
+    t.integer  "list_id"
+    t.integer  "index"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "list_elements", ["combo_id"], :name => "index_list_elements_on_combo_id"
+  add_index "list_elements", ["list_id"], :name => "index_list_elements_on_list_id"
+
+  create_table "lists", :force => true do |t|
+    t.integer  "tricker_id"
+    t.string   "name"
+    t.text     "description"
+    t.string   "visibility"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "trickers", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false
@@ -75,10 +95,10 @@ ActiveRecord::Schema.define(:version => 20131117111604) do
   create_table "tricks", :force => true do |t|
     t.string   "name"
     t.string   "difficulty"
-    t.string   "setup"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.integer  "tricker_id", :default => 1
+    t.string   "trick_type", :default => "N/A"
   end
 
 end

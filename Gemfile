@@ -6,6 +6,7 @@ gem 'jquery-rails'
 gem 'formtastic'
 gem 'nested_form'
 gem 'devise'
+gem 'kaminari'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

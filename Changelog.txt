@@ -1,3 +1,19 @@
+== Week 4 [18.Nov.2013 - 24.Nov.2013]
+
+IMPLEMENTED FEATURES
+
+Friday:
+- TRICK/ATTRIBUTE: added the trick_type attribute, set the available select fields
+- PAGINATION: added 'kaminari' gem
+
+Tuesday:
+- TRICKING STYLE/FORMTASTIC/TEXTAREA: size+text color+font weight, label responsiveness
+- TRICKER/REGISTER: create my trick list
+- GENERATE RANDOM: filter by tricking style
+- TRICKING STYLE: dashboard box
+
+
+
 == Week 3 [11.Nov.2013 - 17.Nov.2013]
 
 IMPLEMENTED FEATURES
@@ -74,6 +90,7 @@ Monday:
 LEARNING
 
 - RailsApps
+
 
 
 == Week 1 [28.Oct.2013 - 03.Nov.2013]
