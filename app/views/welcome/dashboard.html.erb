@@ -5,7 +5,7 @@
       Level App is much more fun when tailored to your own needs.
       Creating your Trick List will allow you to generate combos that you have great chances of landing,
       as well as help you filter through the near infinite combos in our database.<br><br>
-      <a href='/tricking_styles/new' class="btn btn-transparent">Create it now</a>
+      <%= link_to "Create it now", edit_tricking_style_path(current_tricker.tricking_style), :class => "btn btn-transparent" %>
   <% end %>
 </div>
 <div class="container tac">
@@ -34,14 +34,10 @@
   </div>
   <div class="container">
     <div id="dashboard-panel" class="burgundy panel-left">
-        <a href="#"><h1 class="burgundy">My Trick List<!--Tricking Style--></h1></a>
+        <a href="#"><h1 class="burgundy">My Trick List</h1></a>
         <ul>
-          <% if !(current_tricker.tricking_style.equal? nil) %>
-            <li><%= link_to "View my trick list", current_tricker.tricking_style %></li>
-            <li><%= link_to "Edit my trick list", edit_tricking_style_path(current_tricker.tricking_style) %></li>
-          <% else %>
-            <li><%= link_to "Create your own!", new_tricking_style_path %></li>
-          <% end %>
+          <li><%= link_to "View my trick list", current_tricker.tricking_style %></li>
+          <li><%= link_to "Edit my trick list", edit_tricking_style_path(current_tricker.tricking_style) %></li>
         </ul>
       </a>
     </div>
