@@ -1,10 +1,15 @@
 class CombosController < ApplicationController
-  before_filter :authenticate_tricker!, :except => [:show, :index]
+  before_filter :authenticate_tricker!, :except => [:show]
   # GET /combos
   # GET /combos.json
   def index
-    @combos = Combo.order(:no_tricks)
-    @combos = Combo.order(params[:sort]) if params[:sort]
+    collection = current_tricker.combos
+    if params[:list]
+      @list = List.find(params[:list])
+      collection = @list.combos
+    end
+    @combos = collection.order(:no_tricks)
+    @combos = collection.order(params[:sort]) if params[:sort]
     # @combos = @combos.page(params[:page]).per(10)
     
     get_tricks_for_all
@@ -68,6 +73,8 @@ class CombosController < ApplicationController
     
     create_combo_elements
 
+    update_lists
+
     respond_to do |format|
       if @combo.save
         format.html { redirect_to @combo, notice: 'Combo was successfully created.' }
@@ -103,6 +110,8 @@ class CombosController < ApplicationController
 
     create_combo_elements
 
+    update_lists
+
     respond_to do |format|
       if @combo.save
         format.html { redirect_to @combo, notice: 'Combo was successfully updated.' }
@@ -136,40 +145,37 @@ class CombosController < ApplicationController
     @combo.no_tricks = @no_tricks
 
     # 2. randomly select the @no_tricks tricks
-    if current_tricker.tricking_style.equal? nil 
-      # if no trick list is present, choose any trick
-      @collection = Trick.all
+    if current_tricker.tricking_style.tricks.empty?
+      # if no trick list is present, choose from all tricks in the database (admin's tricks & user created tricks)
+      @collection = Trick.where(:tricker_id => [1, current_tricker.id])
     else
       # otherwise filter by tricker's style
       @collection = current_tricker.tricking_style.tricks
     end
     
-    @random = @collection.order("RANDOM()").map &:id
-    @trick_ids = []
-    @index = 0
-    @no_tricks.times do
-      @trick_ids << @random[@index]
-      if @index < @collection.length
-        @index += 1
-      else
-        # if the trick list has less tricks than @no_tricks, start over
-        @index = 0
-      end
+    generate_and_redirect
+  end
+
+  def generate_custom # v1
+    @combo = Combo.create
+    @combo.tricker_id = current_tricker.id
+
+    @filter = params[:filter]
+    @no_tricks = params[:no_tricks].to_i
+    @combo.no_tricks = @no_tricks
+
+    if (@filter.eql?"database") || (current_tricker.tricking_style.tricks.empty?)
+      # if no trick list is present, choose from all tricks in the database (admin's tricks & user created tricks)
+      @collection = Trick.where(:tricker_id => [1, current_tricker.id])
+    else
+      # otherwise filter by tricker's style
+      @collection = current_tricker.tricking_style.tricks
     end
 
-    # 3. create the combo elements for the randomly selected tricks
-    create_combo_elements
+    generate_and_redirect
+  end
 
-    # 4. redirect to edit combo page.
-    respond_to do |format|
-      if @combo.save
-        format.html { redirect_to edit_combo_path(@combo), notice: 'A '+@no_tricks.to_s+'-trick combo was successfully generated!' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @combo.errors, status: :unprocessable_entity }
-      end
-    end
+  def generate_options
   end
 
 private
@@ -229,4 +235,49 @@ private
       @index += 1
     end
   end
+
+  def update_lists
+    @list_ids = params[:combo][:list_ids]
+    @list_ids = @list_ids.reject! { |c| c.empty? }
+
+    # when you play with indices in lists, you have to change this code!
+
+    @combo.lists.each do |l|
+      l.combos.delete(@combo)
+    end
+
+    @list_ids.each do |id|
+      List.find(id).combos << @combo
+    end
+  end
+
+  def generate_and_redirect
+    @random = @collection.order("RANDOM()").map &:id
+    @trick_ids = []
+    @index = 0
+    @no_tricks.times do
+      @trick_ids << @random[@index]
+      if @index < @collection.length-1
+        @index += 1
+      else
+        # if the trick list has less tricks than @no_tricks, start over
+        @index = 0
+      end
+    end
+
+    # 3. create the combo elements for the randomly selected tricks
+    create_combo_elements
+
+    # 4. redirect to edit combo page.
+    respond_to do |format|
+      if @combo.save
+        format.html { redirect_to edit_combo_path(@combo), notice: 'A '+@no_tricks.to_s+'-trick combo was successfully generated!' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @combo.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 end

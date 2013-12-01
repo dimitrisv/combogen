@@ -4,7 +4,8 @@ Combogen::Application.routes.draw do
   resources :tricks
   resources :tricking_styles
 
-  devise_for :trickers, :path_names => { :sign_up => "register", :sign_in => "login", :sign_out => "logout"}
+  devise_for :trickers, :controllers => { :registrations => "registrations" },
+              :path_names => { :sign_up => "register", :sign_in => "login", :sign_out => "logout"}
 
   get "welcome/index"
   get "welcome/dashboard"
@@ -15,6 +16,8 @@ Combogen::Application.routes.draw do
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
+  match '/generate_options' => 'combos#generate_options', :as => 'generate_options'
+  match '/generate_custom' => 'combos#generate_custom', :as => 'generate_custom'
   match '/generate_random' => 'combos#generate_random', :as => 'generate_random'
   match '/dashboard' => 'welcome#dashboard', :as => 'dashboard'
   # match '/order_by_combos' => 'tricks#order_by_combos', :as => 'order_by_combos'

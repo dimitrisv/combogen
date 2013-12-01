@@ -1,7 +1,7 @@
 <div id="title" class="light-blue">
   <h1>My Dashboard</h1>
   <p>Welcome, <%= current_tricker.name %>. Thank you so much for being part of our testing phase!</p>
-  <% if current_tricker.tricking_style.equal? nil %>
+  <% if current_tricker.tricking_style.nil? %>
       Level App is much more fun when tailored to your own needs.
       Creating your Trick List will allow you to generate combos that you have great chances of landing,
       as well as help you filter through the near infinite combos in our database.<br><br>
@@ -23,16 +23,18 @@
     <div id="dashboard-panel" class="mustard panel-right">
         <a href="/combos"><h1 class="mustard">Combos</h1></a>
         <ul>
-          <li><%= link_to "View database", combos_path %></li>
-          <li><%= link_to "Create your own", new_combo_path %></li>
-          <li><%= link_to "Play with our random generator!", generate_random_path %></li>
+          <!--li--><!--%= link_to "Explore our database", explore_path %--><!--/li-->
+          <li><%= link_to "View my combos", combos_path %></li>
+          <li><%= link_to "Create a new one", new_combo_path %></li>
+          <li><%= link_to "Generate a random combo!", generate_random_path %></li>
+          <li><%= link_to "Generate a customized combo", generate_options_path %></li>
         </ul>
       </a>
     </div>
   </div>
   <div class="container">
     <div id="dashboard-panel" class="burgundy panel-left">
-        <a href="/combos"><h1 class="burgundy">My Trick List<!--Tricking Style--></h1></a>
+        <a href="#"><h1 class="burgundy">My Trick List<!--Tricking Style--></h1></a>
         <ul>
           <% if !(current_tricker.tricking_style.equal? nil) %>
             <li><%= link_to "View my trick list", current_tricker.tricking_style %></li>

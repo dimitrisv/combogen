@@ -1,0 +1,26 @@
+<% if !@list.nil? %>
+  <% @curr_list_name = @list.name %>
+  <% @num_combos = @list.combos.length %>
+<% else %>
+  <% @curr_list_name = "All" %>
+  <% @num_combos = current_tricker.combos.length %>
+<% end %>
+
+<!-- make form -->
+<div id="my-lists" class="container mbl">
+  <h2>My Combos</h2>
+  <ul class="list-of-lists">
+    <% if !@curr_list_name.eql?"All" %>
+      <li><%= link_to "All (#{current_tricker.combos.length})", combos_path %></li>
+    <% else %>
+      <li><b><%= @curr_list_name %> (<%= @num_combos %>)</b></li>
+    <% end %>
+    <% current_tricker.lists.each do |l| %>
+      <% if l.name.eql?@curr_list_name %>
+        <li><b><%= @curr_list_name %> (<%= @num_combos %>)</b></li>
+      <% else %>
+        <li><%= link_to "#{l.name} (#{l.combos.length})", combos_path(:list => l.id ) %></li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
