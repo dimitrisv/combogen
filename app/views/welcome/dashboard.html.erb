@@ -1,7 +1,7 @@
 <div id="title" class="light-blue">
   <h1>My Dashboard</h1>
   <p>Welcome, <%= current_tricker.name %>. Thank you so much for being part of our testing phase!</p>
-  <% if current_tricker.tricking_style.nil? %>
+  <% if current_tricker.tricking_style.tricks.empty? %>
       Level App is much more fun when tailored to your own needs.
       Creating your Trick List will allow you to generate combos that you have great chances of landing,
       as well as help you filter through the near infinite combos in our database.<br><br>

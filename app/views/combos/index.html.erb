@@ -1,6 +1,6 @@
 <div id="title" class="container mustard">
-  <h1>Combo Database</h1>
-  <p>Unleash your creativity.</p>
+  <h1>My Combos</h1>
+  <p>Get organized.</p>
 </div>
 
 <div id="actions-top" class="container">
@@ -16,17 +16,14 @@
       <table>
         <tr>
           <%= render 'index_table_head' %>
-          <th colspan="3">Actions</th>
         </tr>
         <% @index = 0 %>
         <% @combos.each do |combo| %>
           <% @combo = combo %>
-          <% if @combo.tricker_id.equal? current_tricker.id %>
-            <tr class="db-row">
-              <%= render 'index_table_row' %>
-              <%= render 'index_combo_actions' %>
-            </tr>
-          <% end %>
+          <tr class="db-row">
+            <%= render 'index_table_row' %>
+            <%= render 'index_combo_actions' %>
+          </tr>
           <% @index += 1 %>
         <% end %>
       </table>
