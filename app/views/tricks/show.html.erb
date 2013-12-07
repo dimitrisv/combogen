@@ -27,8 +27,8 @@
       <% @trick.combos.uniq.each do |combo| %>
         <% @combo = combo %>
         <tr class="db-row">
-          <%= render 'combos/index_table_row' %>
-          <td><%= Tricker.find(@combo.tricker_id).name %></td>
+          <%= render 'combos/combo_row' %>
+          <td><%= @combo.tricker.name %></td>
           <% if current_tricker.try(:admin?) %>
             <%= render 'combos/index_combo_actions' %>
           <% end %>

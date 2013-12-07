@@ -1,40 +1,44 @@
-<div id="title" class="container mustard">
-  <h1>My Combos</h1>
-  <p>Get organized.</p>
+<p id="notice"><%= notice %></p>
+
+<div id="sidebar" class="col-sm-3">
+  <div class="container">
+    <section>
+      <h2>My Combos</h2>
+    </section>
+    <section>
+      <%= render 'index_lists' %>
+    </section>
+    <section>
+      <%= render 'index_actions' %>
+    </section>
+  </div>
 </div>
 
-<div id="actions-top" class="container">
-  <%= render 'index_actions' %>
-</div>
-
-<%= render 'index_lists' %>
-
-<!-- Print all combos from the current tricker -->
-<div id="my-combos" class="container mbl">
-  <% if !@combos.empty? %>  
-      <!--h3--><!--%= paginate @combos %--><!--/h3-->
-      <table>
-        <tr>
-          <%= render 'index_table_head' %>
-          <th colspan="3">Actions</th>
-        </tr>
-        <% @index = 0 %>
-        <% @combos.each do |combo| %>
-          <% @combo = combo %>
-          <tr class="db-row">
-            <%= render 'index_table_row' %>
-            <%= render 'index_combo_actions' %>
-          </tr>
-          <% @index += 1 %>
-        <% end %>
-      </table>
-  <% else %>
-    <p>
-      There are currently no combos in this list.
-    </p>
-  <% end %>
-</div>
-
-<div id="actions-bottom" class="container">
-  <%= render 'index_actions' %>
+<div class="col-sm-9">
+  <!-- Print all combos from the current tricker -->
+  <div class="combo-list container">
+    <div class="combo-list-head clearfix">
+      <div class="col-xs-1">Id</div>
+      <div class="col-sm-8">Sequence</div>
+    </div>
+    <% if !@combos.empty? %>
+      <% @index = 0 %>
+      <% @combos.each do |combo| %>
+        <% @combo = combo %>
+        <%= render 'combo_row' %>
+        <% @index += 1 %>
+      <% end %>
+    <% else %>
+      <div class="combo-row">
+        <div class="col-xs-1">
+        </div>
+        <div class="col-sm-8">
+          There are currently no combos in this list.
+        </div>
+        <div class="col-sm-3">
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    <% end %>
+  </div>
 </div>
