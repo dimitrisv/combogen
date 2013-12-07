@@ -1,14 +1,40 @@
 <header>
-	<div class="container">
-		<div id="logo">
-			<h1><%= link_to "Level App", root_path %></h1>
-		</div>
-		<div id="collapse"><a id="toggle-collapse">=</a></div>
-		<div id="nav">
-			<ul id="navlist">
-				<%= render 'layouts/nav_list' %>
-			</ul>
-		</div>
-		<br class="clear">
-	</div>
+	
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+		  <div class="navbar-header">
+		    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		      <span class="sr-only">Toggle navigation</span>
+		      <span class="icon-bar"></span>
+		      <span class="icon-bar"></span>
+		      <span class="icon-bar"></span>
+		    </button>
+		    <%= link_to "Level App", root_path, :class => "navbar-brand" %>
+		  </div>
+
+		  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		    <ul class="nav navbar-nav">
+		      <li><%= link_to "Tricks", tricks_path %></li>
+					<li><%= link_to "Combos", combos_path %></li>
+					<li><a href="#">Explore</a></li>
+		    </ul>
+			    <ul class="nav navbar-nav navbar-right">
+			    	<% if tricker_signed_in? %>
+				      <li><%= link_to 'Dashboard', dashboard_path %></li>
+				      <li class="dropdown">
+				        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_tricker.name %> <b class="caret"></b></a>
+				        <ul class="dropdown-menu">
+				          <li><%= link_to "Settings", edit_tricker_registration_path %></li>
+				          <li class="divider"></li>
+				          <li><%= link_to 'Logout', destroy_tricker_session_path, :method => :delete %></li>
+				        </ul>
+				      </li>
+			      <% else %>
+			      	<li><%= link_to 'Login', new_tricker_session_path %></li>
+			      <% end %>
+			    </ul>
+		  </div>
+		  </div>
+		</nav>
+	
 </header>

@@ -1,15 +1,3 @@
 // Place all the styles related to the TrickingStyles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-.trick-list {
-  list-style-type: none;
-  li {
-    display: inline-block;
-    white-space: nowrap;
-    overflow: hidden;
-    vertical-align: middle;
-    margin-right: 20px;
-  }
-  li:last-child:after { content: ""; }
-}
