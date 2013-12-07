@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require_tree .
 //= require jquery_nested_form
+//= require twitter/bootstrap
 
 $(document).ready(function(){  
   

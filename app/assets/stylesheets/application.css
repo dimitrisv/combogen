@@ -8,10 +8,11 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
- *= require_tree .
+ *= require twitter/bootstrap
  *= require formtastic
  *= require my_formtastic_changes
+ *= require_self
+ *= require_tree .
  */
  /* FLAT COLOR COLLECTION:
   * red (#E15258), green (#5fcf80), silver (#c6ccd2), blue/light (#39ADD1), blue/dark (#3f8abf)
