@@ -3,13 +3,13 @@ class CombosController < ApplicationController
   # GET /combos
   # GET /combos.json
   def index
-    @combo = Combo.new
+    @new_combo = Combo.new
     collection = current_tricker.combos
     if params[:list]
       @list = List.find(params[:list])
       collection = @list.combos
     end
-    @combos = collection.order(:created_at).reverse
+    @combos = collection.order(:updated_at).reverse
     @combos = collection.order(params[:sort]) if params[:sort]
     # @combos = @combos.page(params[:page]).per(10)
     
@@ -78,7 +78,7 @@ class CombosController < ApplicationController
 
     respond_to do |format|
       if @combo.save
-        format.html { redirect_to @combo, notice: 'Combo was successfully created.' }
+        format.html { redirect_to combos_path, notice: 'Combo was successfully created.' }
         format.json { render json: @combo, status: :created, location: @combo }
       else
         format.html { render action: "new" }
@@ -115,7 +115,7 @@ class CombosController < ApplicationController
 
     respond_to do |format|
       if @combo.save
-        format.html { redirect_to @combo, notice: 'Combo was successfully updated.' }
+        format.html { redirect_to combos_path, notice: 'Combo was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

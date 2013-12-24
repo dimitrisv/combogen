@@ -1,52 +1,20 @@
 <div class="container">
   <div id="combos-affix" class="col-sm-4 col-md-3">
-    <div data-spy="affix" data-offset-top="60" data-offset-bottom="400">
+    <div data-spy="affix" data-offset-top="60" data-offset-bottom="250">
       <h2 id="toolbar-title">My Combos</h2>
       <div class="panel panel-default">
         <%= render 'index_lists' %>
       </div>
-      <div class="container tac">
-        <%= link_to 'Get Random', generate_random_path, :class => "btn btn-base btn-block mbm" %> 
-        <button class="btn btn-base btn-block" data-toggle="modal" data-target="#custom-combo-modal">
-          Generate Combo
-        </button>
-        <button class="btn btn-base btn-block" data-toggle="modal" data-target="#new-combo-modal">
-          Create New
-        </button>
-      </div>
-      <br>
-      <div class="panel-group mbl" id="custom-combo-panel">
-        <div class="panel panel-default">
-          <div id="custom-combo-heading" class="panel-heading">
-            <a data-toggle="collapse" data-parent="#custom-combo-panel" href="#custom-combo">
-              <h4 class="panel-title">
-                Generate Combo <i class="fa fa-chevron-down pull-right"></i>
-              </h4>
-            </a>
-          </div>
-          <div id="custom-combo" class="panel-collapse collapse">
-            <div class="panel-body">
-              <%= render 'generator_options' %>
-              <!--%= link_to 'Customize...', generate_options_path %-->
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="panel-group mbl" id="new-combo-panel">
-        <div class="panel panel-default">
-          <div id="new-combo-heading" class="combo-sidebar-heading panel-heading">
-            <a data-toggle="collapse" data-parent="#new-combo-panel" href="#add-combo">
-              <h4 class="panel-title">
-                New Combo <i class="fa fa-chevron-down pull-right"></i>
-              </h4>
-            </a>
-          </div>
-          <div id="add-combo" class="panel-collapse collapse">
-            <div class="panel-body">
-              <%= render 'form_new' %>
-            </div>
-          </div>
-        </div>
+      <div class="container">
+        <a class="btn btn-camouflaged" data-toggle="modal" data-target="#new-combo-modal">
+          <i class="fa fa-plus"></i> New Combo
+        </a>
+        <a class="btn btn-camouflaged" data-toggle="modal" data-target="#custom-combo-modal">
+          <i class="glyphicon glyphicon-cog"></i> Generate Custom
+        </a>
+        <a class="btn btn-camouflaged" href="<%= generate_random_path %>">
+          <i class="glyphicon glyphicon-random"></i> Generate Random
+        </a>
       </div>
     </div>
   </div>
@@ -76,3 +44,6 @@
     </div>
   </div>  
 </div>
+
+<%= render 'custom_combo_modal' %>
+<%= render 'new_combo_modal' %>

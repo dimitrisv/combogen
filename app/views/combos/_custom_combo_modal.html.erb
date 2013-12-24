@@ -1,0 +1,30 @@
+<div class="modal fade" id="custom-combo-modal" tabindex="-1" role="dialog" aria-labelledby="custom-combo-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3 class="modal-title" id="custom-combo-label">
+          Generate customized combo
+        </h3>
+      </div>
+      <%= form_tag "/generate_custom", method: "get" do %>
+        <div class="modal-body">
+          <p>
+            <%= label_tag :no_tricks, "Number of tricks", :class => "mr10" %>
+            <%= number_field_tag :no_tricks, 5, in: 2..10 %>
+          </p>
+          <p>
+            <%= label_tag :no_tricks, "Use tricks from" %><br>
+            <%= radio_button_tag :filter, "list", true %>
+            <%= label_tag :filter_list, "My Trick List", :class => "label-small" %><br>
+            <%= radio_button_tag :filter, "database" %>
+            <%= label_tag :filter_database, "The Database", :class => "label-small" %>
+          </p>        
+        </div>
+        <div class="modal-footer">
+          <%= submit_tag "Generate", :class => "btn btn-base" %>
+        </div>
+      <% end %>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

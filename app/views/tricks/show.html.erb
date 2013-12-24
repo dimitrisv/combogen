@@ -8,13 +8,25 @@
   <% end %>
 </div>
 
-<div class="container mbl">
+<div class="container card mbl">
   <h1><%= @trick.name %></h1>
-  <ul id="title-details">
-    <li>Class <%= @trick.difficulty %></li>
-    <li><%= @trick.trick_type %></li>
-  </ul>
+  Class <%= @trick.difficulty %> · <%= @trick.trick_type %>
+  <br><br>
 </div>
+
+<!--div class="container card mbl">
+  <div id="exampler" class="col-md-6 tac">
+    <iframe width="80%" height="360" src="//www.youtube.com/embed/QjOepEGrO8s?rel=0" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <div class="col-md-6">
+    <div class="combo-list-head clearfix">
+      <h3>Description</h3>
+    </div>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+  </div>
+</div-->
 
 <div class="container">
   <% if @trick.combos.empty? %>
@@ -23,9 +35,9 @@
       <%= link_to 'Be the first to create one!', '/combos/new', :class => "btn btn-camouflaged mbl" %>
     <% end %>
   <% else %>
-    <div class="combo-list container card-shadow">
+    <div class="combo-list">
       <div class="combo-list-head clearfix">
-        <h3>Combos using this trick (<%= @trick.combos.uniq.length %>)</h3>
+        <h3><%= @trick.combos.uniq.length %> related combos</h3>
       </div>
       <% if !@combos.empty? %>
         <% @index = 0 %>
@@ -38,4 +50,3 @@
     </div>
   <% end %>
 </div>
-

@@ -43,23 +43,7 @@
           </label>
         </div>
       </div>
-      <a href="#" class="btn btn-camouflaged fa fa-plus"> New Trick</a>
-      <!--div class="panel-group mbl" id="new-trick-panel">
-        <div class="panel panel-default">
-          <div id="new-trick-heading" class="combo-sidebar-heading panel-heading">
-            <a data-toggle="collapse" data-parent="#new-trick-panel" href="#add-trick">
-              <h4 class="panel-title">
-                New Trick <i class="fa fa-chevron-down pull-right"></i>
-              </h4>
-            </a>
-          </div>
-          <div id="add-trick" class="panel-collapse collapse">
-            <div class="panel-body">
-              <= render 'form' %>
-            </div>
-          </div>
-        </div>
-      </div-->
+      <a href="#" class="btn btn-camouflaged fa fa-plus" data-toggle="modal" data-target="#new-trick-modal"> New Trick</a>
     </div>
   </div>
 
@@ -71,15 +55,6 @@
     <% end %>
     <!--a href="#" class="btn btn-base mbm">New Trick</a-->
     <div class="combo-list container card-shadow">
-      <div class="combo-list-head">
-        <div class="col-sm-6">Name</div>
-        <div class="col-sm-1">Difficulty</div>
-        <div class="col-sm-1">Combos</div>
-        <div class="col-sm-3">Type</div>
-        <% if tricker_signed_in? && current_tricker.try(:admin?) %>
-          Actions
-        <% end %>
-      </div>
       <% @tricks.each do |trick| %>
         <% @trick = trick %>
         <%= render 'trick_row' %>
@@ -88,3 +63,5 @@
   </div>
   <div class="clearfix"></div>
 </div>
+
+<%= render 'new_trick_modal' %>

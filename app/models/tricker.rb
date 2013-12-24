@@ -2,7 +2,8 @@ class Tricker < ActiveRecord::Base
   has_one :tricking_style
   has_many :lists, :dependent => :delete_all
   has_many :tricks, :dependent => :delete_all
-  has_many :combos, :dependent => :delete_all  
+  has_many :combos, :dependent => :delete_all
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, #:confirmable,

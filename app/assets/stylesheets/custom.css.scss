@@ -30,6 +30,8 @@ h1, h2, h3, h4 {
 
 .panel, .panel-heading { border: none; background-color: $boxedBg; }
 .panel-heading h3 { color: white; }
+.modal-body { background-color: $boxedBg; }
+.modal-footer { margin-top: 0; }
 
 
 
@@ -96,6 +98,7 @@ h1, h2, h3, h4 {
 .btn-hg { height: 60px; padding: 10px 60px; font-size: 2em; }
 .container-mini { max-width: 768px; }
 .container-tiny { max-width: 480px; }
+.label-small { font-weight: normal; }
 
 .card {
   background-color: $greyLightest;
@@ -187,7 +190,7 @@ input[type="checkbox"]{
 }
 
 
-/* Tricks */
+/* Tricks Index */
 
 #tricks-affix .affix-top {
   width: 261px;
@@ -208,6 +211,13 @@ input[type="checkbox"]{
   background-color: $boxedBg;
   @include border-radius(5px);
   padding:10px 10px 15px 10px;
+}
+
+
+/* Tricks Index */
+
+#exampler {
+  padding: 20px 0;
 }
 
 
@@ -314,6 +324,7 @@ input[type="checkbox"]{
   }
   li:last-child:after { content: ""; }
 }
+
 
 
 /* header */

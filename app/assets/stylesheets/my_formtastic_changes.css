@@ -1,36 +1,42 @@
 
-
-
 /* New Combo Form */
 #combo_trick_ids { width: 90%; }
 
 #combo_tricks_input label { display: none; }
-#add-combo .fields { position: relative; }
-#add-combo .fields .remove_nested_fields {
+#combo-form .fields { position: relative; }
+#combo-form .fields .remove_nested_fields {
   position: absolute;
   right: 0;
   top: 9px;
 }
 
-#add-combo .remove_nested_fields { padding: 3px; margin-right: 0; }
-#add-combo .add_nested_fields { padding: 6px; }
+#combo-form .remove_nested_fields { padding: 3px; margin-right: 0; }
+#combo-form .add_nested_fields { padding: 6px; }
 
-#add-combo .add_nested_fields:hover,
-#add-combo .remove_nested_fields:hover {
+#combo-form .add_nested_fields:hover,
+#combo-form .remove_nested_fields:hover {
   text-decoration: none;
   border-radius: 5px;
   background-color: #678;
   color: white;
 }
 
-#add-combo hr { border-color: #E0E2E6; }
+.add_nested_fields:hover,
+.remove_nested_fields:hover {
+  text-decoration: none;
+  border-radius: 5px;
+  background-color: #678;
+  color: white;
+}
+
+#combo-form hr { border-color: #E0E2E6; }
 
 #combo_submit_action.action.input_action {
   display: block;
   width: 100%;
 }
-#combo_submit_action.action.input_action input { padding: 6px; }
-#add-combo fieldset.actions { padding: 0; }
+#combo_submit_action.action.input_action input { padding: 6px 20px; }
+#combo-form fieldset.actions { padding: 0; }
 .formtastic .action { padding:0; }
 
 #combo_lists_input { margin: 0; height: 100%; }
