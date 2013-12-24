@@ -1,34 +1,37 @@
-<div class="container">
-  <%= semantic_nested_form_for(@combo) do |f| %>
-    <% if @combo.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@combo.errors.count, "error") %> prohibited this combo from being saved:</h2>
-        <ul>
-          <% @combo.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <%= f.inputs do %>
-      <!-- Print all tricks, along with a "remove" button. -->
-      <% @index = 0 %>
-      <%= f.fields_for :tricks do |trick_form| %>
-        <%
-          # Make sure that each trick is the default in the selection box
-          @default = @tricks[@index].id if !@tricks[@index].nil?
-          @index += 1
-        %>
-        <%= f.input :tricks, :as => :select, :collection => Trick.order(:name), :selected => @default, :input_html => { :multiple => false } %>
-        <%= trick_form.link_to_remove "X" %>
-      <% end %>
-      <%= f.link_to_add "add trick", :tricks, :class => "btn btn-green" %>
-
-      <%= f.input :lists, :collection => current_tricker.lists, :as => :check_boxes %>
-    <% end %>
-    <%= f.actions do %>
-      <%= f.action :submit, :button_html => { :class => "btn btn-blue" } %>
-    <% end %>
+<%= semantic_nested_form_for(@combo) do |f| %>
+  <% if @combo.errors.any? %>
+    <div id="error_explanation">
+      <%= pluralize(@combo.errors.count, "error") %> prohibited this combo from being saved:
+      <ul class="list-unstyled">
+        <% @combo.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
-</div>
+
+  <%= f.inputs do %>
+    <!-- Print all tricks, along with a "remove" button. -->
+    <% @index = 0 %>
+    <%= f.fields_for :tricks do |trick_form| %>
+      <%
+        # Make sure that each trick is the default in the selection box
+        @default = @tricks[@index].id if !@tricks[@index].nil?
+        @index += 1
+      %>
+      <%= f.input :tricks, :as => :select, :collection => Trick.order(:name), :selected => @default, :input_html => { :multiple => false } %>
+      <%= trick_form.link_to_remove "", :class => "glyphicon glyphicon-remove btn btn-camouflaged" %>
+    <% end %>
+    <%= f.link_to_add " trick", :tricks, :class => "btn btn-camouflaged fa fa-plus" %>
+
+    <hr class="clearfix">
+    <b>Lists</b>
+    <%= f.input :lists, :collection => current_tricker.lists, :as => :check_boxes %>
+
+  <% end %>
+  <%= f.actions do %>
+    <hr class="clearfix">
+    <%= f.action :submit, :button_html => { :class => "btn btn-base btn-block" } %>
+    <br>
+  <% end %>
+<% end %>   

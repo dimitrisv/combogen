@@ -1,11 +1,9 @@
-<div id="title" class="container mustard">
-	<h1>Editing Combo #<%= @combo.id%></h1>
+<div class="container">
+  <%= render 'edit_actions' %>
 </div>
-
-<div id="actions-top" class="container">
-	<%= render 'edit_actions' %>
+<div class="container container-tiny tac">
+  <h1>Editing Combo #<%= @combo.id%></h1>
 </div>
-
-<%= render 'form_edit' %>
-
-<br class="clear">
+<div id="add-combo" class="container container-tiny card pt20 mbl">
+  <%= render 'form_edit' %>
+</div>

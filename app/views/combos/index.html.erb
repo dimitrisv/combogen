@@ -1,44 +1,78 @@
-<p id="notice"><%= notice %></p>
-
-<div id="sidebar" class="col-sm-3">
-  <div class="container">
-    <section>
-      <h2>My Combos</h2>
-    </section>
-    <section>
-      <%= render 'index_lists' %>
-    </section>
-    <section>
-      <%= render 'index_actions' %>
-    </section>
-  </div>
-</div>
-
-<div class="col-sm-9">
-  <!-- Print all combos from the current tricker -->
-  <div class="combo-list container">
-    <div class="combo-list-head clearfix">
-      <div class="col-xs-1">Id</div>
-      <div class="col-sm-8">Sequence</div>
-    </div>
-    <% if !@combos.empty? %>
-      <% @index = 0 %>
-      <% @combos.each do |combo| %>
-        <% @combo = combo %>
-        <%= render 'combo_row' %>
-        <% @index += 1 %>
-      <% end %>
-    <% else %>
-      <div class="combo-row">
-        <div class="col-xs-1">
-        </div>
-        <div class="col-sm-8">
-          There are currently no combos in this list.
-        </div>
-        <div class="col-sm-3">
-        </div>
-        <div class="clearfix"></div>
+<div class="container">
+  <div id="combos-affix" class="col-sm-4 col-md-3">
+    <div data-spy="affix" data-offset-top="60" data-offset-bottom="400">
+      <h2 id="toolbar-title">My Combos</h2>
+      <div class="panel panel-default">
+        <%= render 'index_lists' %>
       </div>
-    <% end %>
+      <div class="container tac">
+        <%= link_to 'Get Random', generate_random_path, :class => "btn btn-base btn-block mbm" %> 
+        <button class="btn btn-base btn-block" data-toggle="modal" data-target="#custom-combo-modal">
+          Generate Combo
+        </button>
+        <button class="btn btn-base btn-block" data-toggle="modal" data-target="#new-combo-modal">
+          Create New
+        </button>
+      </div>
+      <br>
+      <div class="panel-group mbl" id="custom-combo-panel">
+        <div class="panel panel-default">
+          <div id="custom-combo-heading" class="panel-heading">
+            <a data-toggle="collapse" data-parent="#custom-combo-panel" href="#custom-combo">
+              <h4 class="panel-title">
+                Generate Combo <i class="fa fa-chevron-down pull-right"></i>
+              </h4>
+            </a>
+          </div>
+          <div id="custom-combo" class="panel-collapse collapse">
+            <div class="panel-body">
+              <%= render 'generator_options' %>
+              <!--%= link_to 'Customize...', generate_options_path %-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel-group mbl" id="new-combo-panel">
+        <div class="panel panel-default">
+          <div id="new-combo-heading" class="combo-sidebar-heading panel-heading">
+            <a data-toggle="collapse" data-parent="#new-combo-panel" href="#add-combo">
+              <h4 class="panel-title">
+                New Combo <i class="fa fa-chevron-down pull-right"></i>
+              </h4>
+            </a>
+          </div>
+          <div id="add-combo" class="panel-collapse collapse">
+            <div class="panel-body">
+              <%= render 'form_new' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <div class="col-sm-8 col-md-9">
+    <% if flash.any? && !flash[:notice].empty? %>
+      <div id="notice" class="alert alert-success"><%= notice %></div>
+    <% elsif flash.any? && !flash[:alert].empty? %>
+      <div id="notice" class="alert alert-error"><%= alert %></div>
+    <% end %>
+    <!-- Print all combos from the current tricker -->
+    <div class="combo-list container">
+      <% if !@combos.empty? %>
+        <% @index = 0 %>
+        <% @combos.each do |combo| %>
+          <% @combo = combo %>
+          <%= render 'combo_row' %>
+          <% @index += 1 %>
+        <% end %>
+      <% else %>
+        <div class="combo-row">
+          <div class="container empty-list-head">
+            <h3>There are currently no combos in this list.</h3>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>  
 </div>

@@ -1,11 +1,5 @@
-<div id="title" class="container">
-	<h1>Add New Trick</h1>
+<div class="container container-tiny card mbl tac">
+	<h1>Create New Trick</h1>
+	<%= link_to '← Trick DB', tricks_path, :class => "btn btn-camouflaged mbl" %>
+  <%= render 'form' %>
 </div>
-
-<div id="actions-top" class="container">
-	<%= link_to '← Trick DB', tricks_path, :class => "btn" %>
-</div>
-
-<%= render 'form' %>
-
-<br class="clear">

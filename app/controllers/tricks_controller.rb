@@ -4,13 +4,13 @@ class TricksController < ApplicationController
   # GET /tricks
   # GET /tricks.json
   def index
-    @tricks = Trick.order(:name)
-    @tricks = Trick.order(params[:sort]) if params[:sort]
-    
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @tricks }
+    @tricks = Trick.where(:tricker_id => 1).order(:name)
+    if tricker_signed_in?
+      @my_tricks = current_tricker.tricks.order(:name)
     end
+    
+    @trick = Trick.new
+    get_trick_types
   end
 
   def order_by_combos
@@ -26,7 +26,7 @@ class TricksController < ApplicationController
   # GET /tricks/1.json
   def show
     @trick = Trick.find(params[:id])
-    @combos = Combo.where(:id => @trick.combos.uniq.map(&:id))
+    @combos = @trick.combos.uniq # Combo.where(:id => @trick.combos.uniq.map(&:id))
 
     if tricker_signed_in?
       #filter_by_tricking_style
@@ -72,7 +72,7 @@ class TricksController < ApplicationController
 
     respond_to do |format|
       if @trick.save
-        format.html { redirect_to @trick, notice: 'Trick was successfully created.' }
+        format.html { redirect_to tricks_path, notice: 'Trick was successfully created.' }
         format.json { render json: @trick, status: :created, location: @trick }
       else
         format.html { render action: "new" }

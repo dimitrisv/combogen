@@ -1,4 +1,14 @@
-<div id="title" class="container">
+<div class="container">
+  <%= link_to '← Tricks', tricks_path, :class => "btn btn-camouflaged mrs" %>
+  <% if tricker_signed_in? && ((@trick.tricker_id.equal? current_tricker.id) || current_tricker.try(:admin?)) %>
+    <%= link_to ' Edit', edit_trick_path(@trick), :class => "fa fa-pencil btn btn-camouflaged mrs" %>
+    <%= link_to ' Destroy', @trick, method: :delete, :class => "fa fa-trash-o btn btn-camouflaged mrs",
+        data: { confirm: 'Destroying a trick will also remove it from all combos. The ones left with less than two tricks will be destroyed as well. Are you sure you want to continue?'
+    } %>
+  <% end %>
+</div>
+
+<div class="container mbl">
   <h1><%= @trick.name %></h1>
   <ul id="title-details">
     <li>Class <%= @trick.difficulty %></li>
@@ -8,46 +18,24 @@
 
 <div class="container">
   <% if @trick.combos.empty? %>
-    <h3 class="mbl">We found no combos that use this trick in our database. That's really sad...</h3>
+    <h3 class="mbm">We found no combos that use this trick in our database. That's really sad...</h3>
     <% if tricker_signed_in? %>
-      <%= link_to 'Be the first to create one!', '/combos/new', :class => "btn btn-green mbl" %>
+      <%= link_to 'Be the first to create one!', '/combos/new', :class => "btn btn-camouflaged mbl" %>
     <% end %>
   <% else %>
-    <h2>Combos using this trick (<%= @trick.combos.length %>)</h2>
-
-    <table>
-      <tr>
-        <%= render 'combos/index_table_head' %>
-        <th>Creator</th>
-        <% if current_tricker.try(:admin?) %>
-          <th colspan="3">Actions</th>
-        <% end %>
-      </tr>
-      <% @index = 0 %>
-      <% @trick.combos.uniq.each do |combo| %>
-        <% @combo = combo %>
-        <tr class="db-row">
+    <div class="combo-list container card-shadow">
+      <div class="combo-list-head clearfix">
+        <h3>Combos using this trick (<%= @trick.combos.uniq.length %>)</h3>
+      </div>
+      <% if !@combos.empty? %>
+        <% @index = 0 %>
+        <% @combos.each do |combo| %>
+          <% @combo = combo %>
           <%= render 'combos/combo_row' %>
-          <td><%= @combo.tricker.name %></td>
-          <% if current_tricker.try(:admin?) %>
-            <%= render 'combos/index_combo_actions' %>
-          <% end %>
-        </tr>
-        <% @index += 1 %>
+          <% @index += 1 %>
+        <% end %>
       <% end %>
-    </table>
+    </div>
   <% end %>
-  <br class="clear"/>
-</div>
-
-<div id="actions-bottom" class="container">
-  <%= link_to '← Trick DB', tricks_path, :class => "btn mrs" %>
-  <% if tricker_signed_in? && ((@trick.tricker_id.equal? current_tricker.id) || current_tricker.try(:admin?)) %>
-    <%= link_to 'Edit', edit_trick_path(@trick), :class => "btn btn-green mrs" %>
-    <%= link_to 'Destroy', @trick, method: :delete, :class => "btn btn-blue mrs",
-        data: { confirm: 'Destroying a trick will also remove it from all combos. The ones left with less than two tricks will be destroyed as well. Are you sure you want to continue?'
-    } %>
-  <% end %>
-  <p id="notice"><%= notice %></p>
 </div>
 

@@ -1,63 +1,90 @@
-<div id="title" class="container">
-  <h1>Trick Database</h1>
-  <p>What will you work on next?</p>
-</div>
-
-<div id="actions-top" class="container">
-  <%= render 'index_actions' %>
-</div>
-
-<% if tricker_signed_in? && !current_tricker.tricks.empty? %>
-  <div class="container mbl">
-    <h2>My Tricks (<%= current_tricker.tricks.length %>)</h2>
-    <table>
-      <thead>
-        <tr>
-          <%= render 'index_table_head' %>
-          <th colspan="2">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @tricks.each do |trick| %>
-          <% @trick = trick %>
-          <% if trick.tricker_id.equal? current_tricker.id %>
-            <tr class="db-row">
-              <%= render 'index_table_row' %>
-              <%= render 'index_trick_actions' %>
-            </tr>
-          <% end %>
-        <% end %>
-      </tbody>
-    </table>
+<div class="container">
+  <div id="tricks-affix" class="col-sm-4 col-md-3">
+    <div data-spy="affix" data-offset-top="60" data-offset-bottom="100">
+      <h2 id="toolbar-title">Tricks</h2>
+      <div id="trick-toolbar" class="container mbm">
+        <small><b>Collection</b></small><br>
+        <div class="btn-group btn-group-sm mbm" data-toggle="buttons">
+          <label class="btn btn-default">
+            <input type="radio" name="options" id="option1"> Database
+          </label>
+          <label class="btn btn-default">
+            <input type="radio" name="options" id="option2"> User-created
+          </label>
+          <label class="btn btn-default">
+            <input type="radio" name="options" id="option3"> All
+          </label>
+        </div>
+        <br><small><b>Order by</b></small><br>
+        <div class="btn-group btn-group-sm mbm" data-toggle="buttons">
+          <label class="btn btn-default">
+            <input type="radio" name="options" id="option1"> Name
+          </label>
+          <label class="btn btn-default">
+            <input type="radio" name="options" id="option2"> Difficulty
+          </label>
+          <label class="btn btn-default">
+            <input type="radio" name="options" id="option3"> Type
+          </label>
+          <label class="btn btn-default">
+            <input type="radio" name="options" id="option3"> Combos
+          </label>
+        </div>
+        <br><small><b>System</b></small><br>
+        <div class="btn-group btn-group-sm" data-toggle="buttons">
+          <label class="btn btn-default">
+            <input type="radio" name="options" id="option1"> T10X
+          </label>
+          <label class="btn btn-default">
+            <input type="radio" name="options" id="option2"> TA
+          </label>
+          <label class="btn btn-default">
+            <input type="radio" name="options" id="option3"> TKT
+          </label>
+        </div>
+      </div>
+      <a href="#" class="btn btn-camouflaged fa fa-plus"> New Trick</a>
+      <!--div class="panel-group mbl" id="new-trick-panel">
+        <div class="panel panel-default">
+          <div id="new-trick-heading" class="combo-sidebar-heading panel-heading">
+            <a data-toggle="collapse" data-parent="#new-trick-panel" href="#add-trick">
+              <h4 class="panel-title">
+                New Trick <i class="fa fa-chevron-down pull-right"></i>
+              </h4>
+            </a>
+          </div>
+          <div id="add-trick" class="panel-collapse collapse">
+            <div class="panel-body">
+              <= render 'form' %>
+            </div>
+          </div>
+        </div>
+      </div-->
+    </div>
   </div>
-<% end %>
 
-<div class="container mbl">
-  <h2>Database Tricks</h2>
-  <table>
-    <thead>
-      <tr>
-        <%= render 'index_table_head' %>
+  <div class="col-sm-8 col-md-9">
+    <% if flash.any? && !flash[:notice].empty? %>
+      <div id="notice" class="alert alert-success"><%= notice %></div>
+    <% elsif flash.any? && !flash[:alert].empty? %>
+      <div id="notice" class="alert alert-error"><%= alert %></div>
+    <% end %>
+    <!--a href="#" class="btn btn-base mbm">New Trick</a-->
+    <div class="combo-list container card-shadow">
+      <div class="combo-list-head">
+        <div class="col-sm-6">Name</div>
+        <div class="col-sm-1">Difficulty</div>
+        <div class="col-sm-1">Combos</div>
+        <div class="col-sm-3">Type</div>
         <% if tricker_signed_in? && current_tricker.try(:admin?) %>
-          <th colspan="2">Actions</th>
+          Actions
         <% end %>
-      </tr>
-    </thead>
-    <tbody>
+      </div>
       <% @tricks.each do |trick| %>
         <% @trick = trick %>
-        <% next if (tricker_signed_in? && (@trick.tricker_id.equal? current_tricker.id)) %>
-        <tr class="db-row">
-          <%= render 'index_table_row' %>
-          <% if tricker_signed_in? && current_tricker.try(:admin?) %>
-            <%= render 'index_trick_actions' %>
-          <% end %>
-        </tr>
+        <%= render 'trick_row' %>
       <% end %>
-    </tbody>
-  </table>
-</div>
-
-<div id="actions-bottom" class="container">
-  <%= render 'index_actions' %>
+    </div>
+  </div>
+  <div class="clearfix"></div>
 </div>

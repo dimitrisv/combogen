@@ -25,5 +25,7 @@ $(document).ready(function(){
     e.preventDefault();
   });
 
+  $(".btn").button();
+
 });
 

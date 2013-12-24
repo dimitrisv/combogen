@@ -3,12 +3,13 @@ class CombosController < ApplicationController
   # GET /combos
   # GET /combos.json
   def index
+    @combo = Combo.new
     collection = current_tricker.combos
     if params[:list]
       @list = List.find(params[:list])
       collection = @list.combos
     end
-    @combos = collection.order(:no_tricks)
+    @combos = collection.order(:created_at).reverse
     @combos = collection.order(params[:sort]) if params[:sort]
     # @combos = @combos.page(params[:page]).per(10)
     
@@ -271,7 +272,7 @@ private
     # 4. redirect to edit combo page.
     respond_to do |format|
       if @combo.save
-        format.html { redirect_to edit_combo_path(@combo), notice: 'A '+@no_tricks.to_s+'-trick combo was successfully generated!' }
+        format.html { redirect_to combos_path, notice: 'A '+@no_tricks.to_s+'-trick combo was successfully generated!' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

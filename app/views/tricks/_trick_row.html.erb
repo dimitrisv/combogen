@@ -1,0 +1,14 @@
+<div class="combo-row container">
+  <div class="col-sm-6"><b><%= link_to @trick.name, @trick %></b></div>
+  <div class="col-sm-1"><%= @trick.difficulty %></div>
+  <div class="col-sm-1"><%= @trick.combos.count %></div>
+  <div class="col-sm-3"><%= @trick.trick_type %></div>
+  <div class="col-sm-1 pull-right">
+    <% if tricker_signed_in? && current_tricker.try(:admin?) %>
+        <!-- <i class="glyphicon glyphicon-list-alt"></i> -->
+        <%= link_to '', edit_trick_path(@trick), :class => "glyphicon glyphicon-pencil" %>
+        <%= link_to '', @trick, method: :delete, :class => "glyphicon glyphicon-remove pull-right",
+            data: { confirm: 'Destroying a trick will also remove it from all combos. The ones left with less than two tricks will be destroyed as well. Are you sure you want to continue?' } %>
+    <% end %>
+  </div>
+</div>

@@ -1,35 +1,42 @@
-.formtastic textarea {
-	font-weight: normal!important;
-	padding: 6px 8px!important;
-}
-.formtastic .actions {
-	padding-left: 0 !important;
-}
-.formtastic .input .label {
-	max-width: 120px;
-	font-size: 0.9em;
-}
-.formtastic .stringish input {
-	max-width: 200px;
-	padding: 0 6px;
-	font-weight: normal;
-}
-.formtastic .inline-errors {
-	color: #E15258 !important;
-	margin-left: 15px !important;
-	display: inline-block;
-}
-.formtastic select {
-  width: 99%;
-  margin-left: 1px !important;
-}
-.formtastic legend {
-	color: #62707D !important;
+
+
+
+/* New Combo Form */
+#combo_trick_ids { width: 90%; }
+
+#combo_tricks_input label { display: none; }
+#add-combo .fields { position: relative; }
+#add-combo .fields .remove_nested_fields {
+  position: absolute;
+  right: 0;
+  top: 9px;
 }
 
-.formtastic .input .label { float: none; }
-.formtastic .choices legend.label { position: relative; }
-.formtastic ol.choices-group { padding: 0; }
-.formtastic ol.choices-group li.choice { margin: 0; font-weight: normal; }
+#add-combo .remove_nested_fields { padding: 3px; margin-right: 0; }
+#add-combo .add_nested_fields { padding: 6px; }
 
-#trick_trick_type { width: 215px; }
+#add-combo .add_nested_fields:hover,
+#add-combo .remove_nested_fields:hover {
+  text-decoration: none;
+  border-radius: 5px;
+  background-color: #678;
+  color: white;
+}
+
+#add-combo hr { border-color: #E0E2E6; }
+
+#combo_submit_action.action.input_action {
+  display: block;
+  width: 100%;
+}
+#combo_submit_action.action.input_action input { padding: 6px; }
+#add-combo fieldset.actions { padding: 0; }
+.formtastic .action { padding:0; }
+
+#combo_lists_input { margin: 0; height: 100%; }
+#combo_lists_input_head { border-top: 1px solid #eeeeee; }
+#combo_lists_input fieldset legend { display: none; }
+#combo_lists_input .choices-group { padding: 0; padding-top: 0px; }
+#combo_lists_input .choices-group li { margin: 0; margin-bottom: 6px; }
+#combo_lists_input .choices-group li:last-child { margin-bottom: 0; }
+#combo_lists_input .choices-group li label { margin: 0; font-weight: normal; }

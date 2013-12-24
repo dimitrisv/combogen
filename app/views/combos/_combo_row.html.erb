@@ -1,8 +1,5 @@
 <div class="combo-row container">
-  <div class="col-xs-1">
-    <%= @combo.id %>
-  </div>
-  <div class="col-sm-8">
+  <div>
     <a href="/combos/<%= @combo.id.to_s %>">
       <ul class="combo-sequence">
         <% @tricks = @tricks_names[@index] if !@tricks_names[@index].nil? %>
@@ -11,15 +8,17 @@
         <%-end-%>
       </ul>
     </a>
-  </div>
-  <div class="col-sm-3">
-    <span class="pull-right">
-      <%= link_to 'V', edit_combo_path(@combo) %> · 
-      <%= link_to 'X', @combo, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <span class="combo-actions pull-right">
+      <%= link_to "", edit_combo_path(@combo), :class => "fa fa-cog mr5" %>
+      <%= link_to "", @combo, method: :delete, data: { confirm: 'Are you sure?' }, :class => "fa fa-trash-o" %>
     </span>
   </div>
   <div class="clearfix"></div>
-  <div class="col-sm-12 combo-details">
-    <%= @combo.no_tricks %>-trick combo · <%= time_ago_in_words(@combo.created_at) %> ago · <%= link_to @combo.tricker.name, "#" %>
+  <div>
+    <span class="combo-details">
+      by <%= link_to @combo.tricker.name, "#" %> ·
+      <%= time_ago_in_words(@combo.created_at) %> ago
+      <span class="pull-right"><%= @combo.no_tricks %>-trick combo</span>
+    </span>
   </div>
 </div>

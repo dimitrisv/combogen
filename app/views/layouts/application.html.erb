@@ -15,14 +15,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
 	<%= render 'layouts/header' %>
-	
-	<div id="main" class="container">
-		<%= yield %>
-	</div>
-
+	<%= yield %>
   <%= render 'layouts/footer' %>
-
 </body>
 </html>

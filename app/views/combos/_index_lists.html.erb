@@ -2,34 +2,41 @@
   <% @curr_list_name = @list.name %>
   <% @num_combos = @list.combos.length %>
 <% else %>
-  <% @curr_list_name = "All" %>
+  <% @curr_list_name = "All of them" %>
   <% @num_combos = current_tricker.combos.length %>
 <% end %>
 
-<!-- make form -->
-<div class="list-group">
-  <% if !@curr_list_name.eql?"All" %>
-    <a class="list-group-item" href="<%= combos_path%>">
-      All
-      <span class="badge"><%= current_tricker.combos.length %></span>
-    </a>
+<ul id="combo-lists" class="list-group">
+  <% if !@curr_list_name.eql?"All of them" %>
+    <li class="list-group-item">
+      <a href="<%= combos_path%>">
+        All of them
+        <span class="pull-right"><%= current_tricker.combos.length %></span>
+      </a>
+    </li>
   <% else %>
-    <a class="list-group-item">
-      <b><%= @curr_list_name %></b>
-      <span class="badge"><%= @num_combos %></span>
-    </a>
+    <li class="list-group-item">
+      <b>
+        <%= @curr_list_name %>
+        <span class="pull-right"><%= @num_combos %></span>
+      </b>
+    </li>
   <% end %>
   <% current_tricker.lists.each do |l| %>
     <% if l.name.eql?@curr_list_name %>
-      <a class="list-group-item">
-        <b><%= @curr_list_name %></b>
-        <span class="badge"><%= @num_combos %></span>
-      </a>
+      <li class="list-group-item">
+        <b>
+          <%= @curr_list_name %>
+          <span class="pull-right"><%= @num_combos %></span>
+        </b>
+      </li>
     <% else %>
-      <a class="list-group-item" href="<%= combos_path(:list => l.id ) %>">
-        <%= l.name %>
-        <span class="badge"><%= l.combos.length %></span>
-      </a>
+      <li class="list-group-item">
+        <a href="<%= combos_path(:list => l.id ) %>">
+          <%= l.name %>
+          <span class="pull-right"><%= l.combos.length %></span>
+        </a>
+      </li>
     <% end %>
   <% end %>
-</div>
+</ul>

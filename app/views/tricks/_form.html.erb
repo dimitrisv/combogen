@@ -2,10 +2,8 @@
   <%= semantic_form_for(@trick) do |f| %>
     <% if @trick.errors.any? %>
       <div id="error_explanation" class="mbl">
-        <h3>
-          <%= pluralize(@trick.errors.count, "error") %> prevented this trick from being saved.
-          Please review your inputs below.
-        </h3>
+        <%= pluralize(@trick.errors.count, "error") %> prevented this trick from being saved.
+        Please review your inputs below.
       </div>
     <% end %>
 
@@ -15,7 +13,7 @@
       <%= f.input :trick_type, :as => :select, :collection => @trick_types, :include_blank => "N/A" %>
     <% end %>
     <%= f.actions do %>
-      <%= f.action :submit, :button_html => { :class => "btn btn-blue" } %>
+      <%= f.action :submit, :button_html => { :class => "btn btn-base btn-block" } %>
     <% end %>
   <% end %>
 </div>

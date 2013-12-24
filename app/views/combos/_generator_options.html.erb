@@ -1,0 +1,17 @@
+<%= form_tag "/generate_custom", method: "get" do %>
+  <p>
+    <%= label_tag :no_tricks, "Number of tricks", :class => "mrs" %>
+    <%= number_field_tag :no_tricks, 5, in: 2..10 %>
+  </p>
+  <p>
+    <%= label_tag :no_tricks, "Use tricks from" %><br>
+    <%= radio_button_tag :filter, "list", true %>
+    <%= label_tag :filter_list, "My Trick List" %><br>
+    <%= radio_button_tag :filter, "database" %>
+    <%= label_tag :filter_database, "The Database" %>
+  </p>
+  <p>
+    <hr>
+    <%= submit_tag "Generate", :class => "btn btn-base btn-block" %>
+  </p>
+<% end %>

@@ -1,34 +1,23 @@
-<div class="container">
-  <%= semantic_nested_form_for(@combo) do |f| %>
+<%= semantic_nested_form_for(@combo) do |f| %>
+  <%= f.inputs do %>
+    <!-- Every combo must have at least 2 tricks, so these are not removable. -->
+    <%= f.input :tricks, :collection => Trick.order(:name), :as => :select, :input_html => { :multiple => false } %>
+    <%= f.input :tricks, :collection => Trick.order(:name), :as => :select, :input_html => { :multiple => false } %>
+    <%= f.link_to_add " trick", :tricks, :class => "fa fa-plus" %>
 
-    <!-- Scaffold-generated error display... might need to remove this -->
-    <% if @combo.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@combo.errors.count, "error") %> prohibited this combo from being saved:</h2>
-        <ul>
-          <% @combo.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <%= f.inputs do %>
-      <!-- Every combo must have at least 2 tricks, so these are not removable. -->
+    <!-- But every extra trick that's added dynamically is removable. -->
+    <%= f.fields_for :tricks do |trick_form| %>
       <%= f.input :tricks, :collection => Trick.order(:name), :as => :select, :input_html => { :multiple => false } %>
-      <%= f.input :tricks, :collection => Trick.order(:name), :as => :select, :input_html => { :multiple => false } %>
-      <%= f.link_to_add "add trick", :tricks, :class => "btn btn-green" %>
-
-      <!-- But every extra trick that's added dynamically is removable. -->
-      <%= f.fields_for :tricks do |trick_form| %>
-        <%= f.input :tricks, :collection => Trick.order(:name), :as => :select, :input_html => { :multiple => false } %>
-        <%= trick_form.link_to_remove "X" %>
-      <% end %>
-
-      <%= f.input :lists, :collection => current_tricker.lists, :as => :check_boxes %>
+      <%= trick_form.link_to_remove "", :class => "glyphicon glyphicon-remove pull-left" %>
     <% end %>
-    <%= f.actions do %>
-      <%= f.action :submit, :button_html => { :class => "btn btn-blue" } %>
-    <% end %>
+
+    <hr class="clearfix">
+    <b>Add to lists</b>
+    <%= f.input :lists, :collection => current_tricker.lists, :as => :check_boxes %>
+    <span class="clearfix"></span>
   <% end %>
-</div>
+  <%= f.actions do %>
+    <hr class="clearfix">
+    <%= f.action :submit, :button_html => { :class => "btn btn-base btn-block" } %>
+  <% end %>
+<% end %> 

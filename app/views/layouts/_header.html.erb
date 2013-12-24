@@ -1,27 +1,29 @@
 <header>
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<nav id="navigation" class="navbar navbar-inverse" role="navigation">
 		<div class="container">
 		  <div class="navbar-header">
-		    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#levelapp-nav">
 		      <span class="sr-only">Toggle navigation</span>
 		      <span class="icon-bar"></span>
 		      <span class="icon-bar"></span>
 		      <span class="icon-bar"></span>
 		    </button>
-		    <%= link_to "Level App", root_path, :class => "navbar-brand" %>
+		    <%= link_to " Level App", root_path, :class => "fa fa-level-up navbar-brand" %>
 		  </div>
 
-		  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		  <div class="collapse navbar-collapse" id="levelapp-nav">
 		    <ul class="nav navbar-nav">
 		      <li><%= link_to "Tricks", tricks_path %></li>
 					<li><%= link_to "Combos", combos_path %></li>
-					<li><a href="#">Explore</a></li>
+					<li><a href="#">Inspiration</a></li>
 		    </ul>
 			    <ul class="nav navbar-nav navbar-right">
 			    	<% if tricker_signed_in? %>
 				      <li><%= link_to 'Dashboard', dashboard_path %></li>
 				      <li class="dropdown">
-				        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_tricker.name %> <b class="caret"></b></a>
+				        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				        	<i class="fa fa-user fa-fw"></i> <%= current_tricker.name %> <b class="caret"></b>
+				        </a>
 				        <ul class="dropdown-menu">
 				          <li><%= link_to "Settings", edit_tricker_registration_path %></li>
 				          <li class="divider"></li>
@@ -30,7 +32,7 @@
 				      </li>
 			      <% else %>
 			      	<li><%= link_to 'Login', new_tricker_session_path %></li>
-			      	<li><button type="button" class="btn btn-success navbar-btn" href="<%= new_tricker_registration_path %>">Register</button></li>
+			      	<li><button type="button" class="btn btn-base navbar-btn" href="<%= new_tricker_registration_path %>">Register</button></li>
 			      <% end %>
 			    </ul>
 		  </div>
