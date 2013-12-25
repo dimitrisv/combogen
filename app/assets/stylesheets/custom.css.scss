@@ -90,10 +90,12 @@ h1, h2, h3, h4 {
 .mt20 { margin-top: 20px; }
 .mr5 { margin-right: 5px; }
 .mr10 { margin-right: 10px; }
+.mb5 { margin-bottom: 5px; }
 .mbm { margin-bottom: 10px; }
 .mbl { margin-bottom: 20px; }
 .mbh { margin-bottom: 50px; }
 .pt20 { padding-top: 20px; }
+.bb2 { border-bottom: 2px solid $boxedBorder; }
 .card-shadow { @include box-shadow(0 1px 0 0 rgba(0,0,0,0.1)); }
 .btn-hg { height: 60px; padding: 10px 60px; font-size: 2em; }
 .container-mini { max-width: 768px; }
@@ -218,9 +220,7 @@ input[type="checkbox"]{
 
 #trick-toolbar {
   color: $boxedText;
-  background-color: $boxedBg;
-  @include border-radius(5px);
-  padding:10px 10px 15px 10px;
+  padding: 0 0 15px 5px;
 }
 
 
@@ -297,7 +297,7 @@ input[type="checkbox"]{
   .actions {
     position: absolute;
     right: 5px;
-    top: 8px;
+    top: 5px;
     a {
       color: $grey4;
       &:hover { color: $textColorDark; }
@@ -313,6 +313,7 @@ input[type="checkbox"]{
 }
 
 .combo-sequence {
+  margin-top: 15px;
   margin-bottom: 5px;
   font-weight: bold;
   padding-left: 0;
@@ -426,4 +427,6 @@ footer {
 
 @media only screen and (min-width: 768px){
   #app-stats { font-size: 2em; }
+  .combo-sequence { margin-top: 0px; width: 90%; }
+  .actions { top: 8px; }
 }

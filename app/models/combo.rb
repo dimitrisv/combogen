@@ -8,5 +8,15 @@ class Combo < ActiveRecord::Base
   has_many :tricks, :through => :elements
   
   accepts_nested_attributes_for :tricks, :reject_if => lambda { |a| a[:content].blank? }
-  attr_accessible :no_tricks, :combo_id, :tricks_attributes, :tricker_id
+  attr_accessible :no_tricks, :combo_id, :tricks_attributes, :tricker_id, :sequence
+
+  def render_sequence
+    self.sequence = self.elements.where(:index => 1).first.trick.name
+    index = 2
+    (self.elements.count-1).times do
+      self.sequence += " > " + self.elements.where(:index => index).first.trick.name
+      index += 1
+    end
+    self.save
+  end
 end

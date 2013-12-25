@@ -18,9 +18,9 @@
   <div class="clearfix"></div>
   <div>
     <small>
-      by <%= link_to @combo.tricker.name, "#" %> ·
-      <%= time_ago_in_words(@combo.created_at) %> ago
-      <span class="pull-right"><%= @combo.no_tricks %>-trick combo</span>
+      <%= @combo.no_tricks %>-trick combo ·
+      by <%= link_to @combo.tricker.name, "#" %>
+      <span class="pull-right"><%= time_ago_in_words(@combo.created_at) %> ago</span>
     </small>
   </div>
 </div>

@@ -1,47 +1,22 @@
 <div class="container">
   <div id="tricks-affix" class="col-sm-4 col-md-3">
     <div data-spy="affix" data-offset-top="60" data-offset-bottom="100">
-      <h2 id="toolbar-title">Tricks</h2>
+      <h2 id="toolbar-title" class="bb2">Tricks</h2>
       <div id="trick-toolbar" class="container mbm">
         <small><b>Collection</b></small><br>
-        <div class="btn-group btn-group-sm mbm" data-toggle="buttons">
-          <label class="btn btn-default">
-            <input type="radio" name="options" id="option1"> Database
-          </label>
-          <label class="btn btn-default">
-            <input type="radio" name="options" id="option2"> User-created
-          </label>
-          <label class="btn btn-default">
-            <input type="radio" name="options" id="option3"> All
-          </label>
-        </div>
-        <br><small><b>Order by</b></small><br>
-        <div class="btn-group btn-group-sm mbm" data-toggle="buttons">
-          <label class="btn btn-default">
-            <input type="radio" name="options" id="option1"> Name
-          </label>
-          <label class="btn btn-default">
-            <input type="radio" name="options" id="option2"> Difficulty
-          </label>
-          <label class="btn btn-default">
-            <input type="radio" name="options" id="option3"> Type
-          </label>
-          <label class="btn btn-default">
-            <input type="radio" name="options" id="option3"> Combos
-          </label>
-        </div>
-        <br><small><b>System</b></small><br>
-        <div class="btn-group btn-group-sm" data-toggle="buttons">
-          <label class="btn btn-default">
-            <input type="radio" name="options" id="option1"> T10X
-          </label>
-          <label class="btn btn-default">
-            <input type="radio" name="options" id="option2"> TA
-          </label>
-          <label class="btn btn-default">
-            <input type="radio" name="options" id="option3"> TKT
-          </label>
-        </div>
+        <small>
+          <%= link_to "Database", :collection => "database" %> /
+          <%= link_to "User-created", :collection => "user" %> /
+          <%= link_to "All", :collection => "all" %>
+        </small>
+        <p class="mbm"></p>
+        <small><b>Order by</b></small><br>
+        <small>
+          <%= link_to "Name", :sort => "name" %> /
+          <%= link_to "Difficulty", :sort => "difficulty" %> /
+          <%= link_to "Type", :sort => "trick_type" %> /
+          <%= link_to "Combos", :sort => "combos" %>
+        </small>
       </div>
       <% if tricker_signed_in? %>
         <a href="#" class="btn btn-camouflaged fa fa-plus" data-toggle="modal" data-target="#new-trick-modal"> New Trick</a>

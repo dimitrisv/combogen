@@ -5,12 +5,38 @@ class TricksController < ApplicationController
   # GET /tricks.json
   def index
     @new_trick = Trick.new
-    @tricks = Trick.where(:tricker_id => 1).order(:name)
-    if tricker_signed_in?
-      @my_tricks = current_tricker.tricks.order(:name)
+
+    # retrieve tricks
+    @collection = params[:collection]
+    @tricks = Trick.where(:tricker_id => 1)
+    unless !@collection
+      if @collection.eql? "all"
+        @tricks = Trick.scoped
+      elsif @collection.eql? "user"
+        # get all tricks that are not from admin users ???
+        # change this
+        @tricks = Trick.where(Trick.arel_table[:tricker_id].not_eq(1))
+        # what about my own tricks?
+        # if tricker_signed_in?
+        #   @my_tricks = current_tricker.tricks.order(:name)
+        # end
+      end
     end
     
-    @trick = Trick.new
+    # sort tricks
+    @sort = params[:sort]
+    unless !@sort
+      if @sort.eql? "difficulty"
+        @tricks = @tricks.order(:difficulty).order(:name)
+      elsif @sort.eql? "trick_type"
+        @tricks = @tricks.order(:trick_type).order(:name)
+      elsif @sort.eql? "combos"
+        @tricks = @tricks.order_by_combo
+      end
+    else
+      @tricks = @tricks.order(:name)
+    end
+    
     get_trick_types
     get_difficulty_classes
   end
@@ -76,7 +102,7 @@ class TricksController < ApplicationController
 
     respond_to do |format|
       if @trick.save
-        format.html { redirect_to tricks_path, notice: 'Trick was successfully created.' }
+        format.html { redirect_to tricks_path, notice: 'Trick was successfully created.', params: { :collection => "user" } }
         format.json { render json: @trick, status: :created, location: @trick }
       else
         format.html { render action: "new" }
