@@ -1,7 +1,7 @@
 <%= semantic_form_for(@tricking_style) do |f| %>
   <% if @tricking_style.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@tricking_style.errors.count, "error") %> prohibited this tricking_style from being saved:</h2>
+      <%= pluralize(@tricking_style.errors.count, "error") %> prohibited this tricking_style from being saved:
       <ul>
       <% @tricking_style.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -11,11 +11,35 @@
   <% end %>
 
   <%= f.inputs do %>
-    <%= f.input :name %>
+    <% if @tricking_style.name != "My Trick List" %>
+      <%= f.input :name %>
+    <% else %>
+      <%= f.input :name, :value => @tricking_style.name, :input_html => { :readonly => true } %>
+    <% end %>
     <%= f.input :description %>
+    <b>Tricks</b>
+    <br class="clearfix"><br>
     <%= f.input :tricks, :as => :check_boxes %>
   <% end %>
   <%= f.actions do %>
-    <%= f.action :submit, :button_html => { :class => "btn btn-blue" } %>
+    <%= f.action :submit, :button_html => { :class => "btn btn-base" } %>
   <% end %>
 <% end %>
+<!--
+<%= form_for(@tricking_style) do |f| %>
+  <p class="mbl">
+    <%= f.text_field :name, :placeholder => @tricking_style.name %>
+  </p>
+  <p class="mbl">
+    <%= f.text_area :description, :placeholder => @tricking_style.description %>
+  </p>
+  <hr>
+  <p>
+    <h4>Tricks</h4>
+    <!--%= f.select :tricks, @trick_types, :as => :check_boxes %->
+  </p>
+  <hr>
+  <p>
+    <%= f.submit "Save Changes", :class => "btn btn-base" %>
+  </p>
+<% end %>-->

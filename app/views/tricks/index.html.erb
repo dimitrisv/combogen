@@ -43,18 +43,16 @@
           </label>
         </div>
       </div>
-      <a href="#" class="btn btn-camouflaged fa fa-plus" data-toggle="modal" data-target="#new-trick-modal"> New Trick</a>
+      <% if tricker_signed_in? %>
+        <a href="#" class="btn btn-camouflaged fa fa-plus" data-toggle="modal" data-target="#new-trick-modal"> New Trick</a>
+      <% end %>
     </div>
   </div>
 
   <div class="col-sm-8 col-md-9">
-    <% if flash.any? && !flash[:notice].empty? %>
-      <div id="notice" class="alert alert-success"><%= notice %></div>
-    <% elsif flash.any? && !flash[:alert].empty? %>
-      <div id="notice" class="alert alert-error"><%= alert %></div>
-    <% end %>
+    <%= render 'shared/flash_messages' %>
     <!--a href="#" class="btn btn-base mbm">New Trick</a-->
-    <div class="combo-list container card-shadow">
+    <div class="list container card-shadow">
       <% @tricks.each do |trick| %>
         <% @trick = trick %>
         <%= render 'trick_row' %>

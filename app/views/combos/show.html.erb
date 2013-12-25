@@ -1,26 +1,23 @@
-<div id="title" class="container mustard">
-	<ul class="combo">
+<div class="container">
+	<% if (@combo.tricker_id.equal? current_tricker.id) %>
+		<%= link_to '← My Combos', combos_path, :class => "btn btn-camouflaged mrs"%>
+	<% else %>
+		<%= link_to '← Back', tricks_path, :class => "btn btn-camouflaged mrs" %>
+		<!--%= link_to '← Combo DB', explore_path, :class => "btn mrs"%-->
+	<% end %>
+	<% if tricker_signed_in? && ((@combo.tricker_id.equal? current_tricker.id) || current_tricker.try(:admin?)) %>
+		<%= link_to 'Edit Combo', edit_combo_path(@combo), :class => "btn btn-camouflaged mrs" %>
+		<%= link_to 'Destroy', @combo, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-camouflaged mrs" %>
+	<% end %>
+</div>
+<div class=" container">
+	<ul class="combo-sequence">
 	  <%- @tricks.each do |trick| %>
 	  	<li><%= trick.name %></li>
 	  <%-end-%>
 	</ul>
-	<ul id="title-details">
-		<li>Combo #<%= @combo.id %></li>
-		<li><%= @combo.no_tricks %> tricks</li>
-		<li>Created by <%= Tricker.find(@combo.tricker_id).name %></li>
+	<span>
+		Combo #<%= @combo.id %> · <%= @combo.no_tricks %> tricks ·
+		Created by <%= link_to @combo.tricker.name, "#" %> · <%= time_ago_in_words(@combo.created_at) %> ago
 	</ul>
-</div>
-
-<div id="actions-bottom" class="container">
-	<% if (@combo.tricker_id.equal? current_tricker.id) %>
-		<%= link_to '← My Combos', combos_path, :class => "btn mrs"%>
-	<% else %>
-		<%= link_to '← Back', tricks_path, :class => "btn mrs" %>
-		<!--%= link_to '← Combo DB', explore_path, :class => "btn mrs"%-->
-	<% end %>
-	<% if tricker_signed_in? && ((@combo.tricker_id.equal? current_tricker.id) || current_tricker.try(:admin?)) %>
-		<%= link_to 'Edit Combo', edit_combo_path(@combo), :class => "btn btn-green mrs" %>
-		<%= link_to 'Destroy', @combo, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-blue mrs" %>
-	<% end %>
-	<p id="notice"><%= notice %></p>
 </div>

@@ -19,7 +19,7 @@
     <iframe width="80%" height="360" src="//www.youtube.com/embed/QjOepEGrO8s?rel=0" frameborder="0" allowfullscreen></iframe>
   </div>
   <div class="col-md-6">
-    <div class="combo-list-head clearfix">
+    <div class="list-head clearfix">
       <h3>Description</h3>
     </div>
     <p>
@@ -35,8 +35,8 @@
       <%= link_to 'Be the first to create one!', '/combos/new', :class => "btn btn-camouflaged mbl" %>
     <% end %>
   <% else %>
-    <div class="combo-list">
-      <div class="combo-list-head clearfix">
+    <div class="list">
+      <div class="list-head">
         <h3><%= @trick.combos.uniq.length %> related combos</h3>
       </div>
       <% if !@combos.empty? %>

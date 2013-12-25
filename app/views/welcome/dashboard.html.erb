@@ -1,5 +1,4 @@
-<div class="container">
-  <div id="title" class="light-blue">
+<div class="container container-mini tac mbl">
     <h1>My Dashboard</h1>
     <p>Welcome, <%= current_tricker.name %>. Thank you so much for being part of our testing phase!</p>
     <% if current_tricker.tricking_style.tricks.empty? %>
@@ -8,41 +7,15 @@
         as well as help you filter through the near infinite combos in our database.<br><br>
         <%= link_to "Create it now", edit_tricking_style_path(current_tricker.tricking_style), :class => "btn btn-transparent" %>
     <% end %>
+</div>
+<div class="container container-mini tac">
+  <div class="col-sm-4 mbl">
+    <h3><%= link_to "Trick Database", tricks_path %></h3>
   </div>
-  <div class="container tac">
-    <h2>What will you play with today?</h2>
+  <div class="col-sm-4 mbl">
+    <h3><%= link_to "My Combos", combos_path %></h3>
   </div>
-  <div id="dashboard" class="container tac">
-    <div class="container">
-      <div id="dashboard-panel" class="red panel-left">
-        <a href="/tricks"><h1 class="red">Tricks</h1></a>
-        <ul>
-          <li><%= link_to "View database", tricks_path %></li>
-          <li><%= link_to "Create your own", new_trick_path %></li>
-        </ul>
-      </div>
-      <div id="dashboard-panel" class="mustard panel-right">
-          <a href="/combos"><h1 class="mustard">Combos</h1></a>
-          <ul>
-            <!--li--><!--%= link_to "Explore our database", explore_path %--><!--/li-->
-            <li><%= link_to "View my combos", combos_path %></li>
-            <li><%= link_to "Create a new one", new_combo_path %></li>
-            <li><%= link_to "Generate a random combo!", generate_random_path %></li>
-            <li><%= link_to "Generate a customized combo", generate_options_path %></li>
-          </ul>
-        </a>
-      </div>
-    </div>
-    <div class="container">
-      <div id="dashboard-panel" class="burgundy panel-left">
-          <a href="#"><h1 class="burgundy">My Trick List</h1></a>
-          <ul>
-            <li><%= link_to "View my trick list", current_tricker.tricking_style %></li>
-            <li><%= link_to "Edit my trick list", edit_tricking_style_path(current_tricker.tricking_style) %></li>
-          </ul>
-        </a>
-      </div>
-    </div>
-    <br class="clear">
-  </div>  
+  <div class="col-sm-4 mbl">
+    <h3><%= link_to "My Trick List", current_tricker.tricking_style %></h3>
+  </div>
 </div>

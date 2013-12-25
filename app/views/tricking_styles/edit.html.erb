@@ -1,14 +1,11 @@
-<div id="title" class="container burgundy">
-  <h1>Editing "<%= @tricking_style.name %>"</h1>
+<div class="container mbl">
+  <%= link_to '← My Style', @tricking_style, :class => "btn btn-camouflaged mrs" %>
+  <%= link_to '← Dashboard', '/dashboard', :class => "btn btn-camouflaged mrs" %>
+  <%= render 'shared/flash_messages' %>
 </div>
-
-<div id="actions-top" class="container">
-  <%= link_to '← My Style', @tricking_style, :class => "btn mrs" %>
-  <%= link_to '← Dashboard', '/dashboard', :class => "btn btn-blue mrs" %>
-  <p id="notice"><%= notice %></p>
-  <p id="notice" class="red"><%= alert %></p>
+<div class="container container-mini mbl">
+  <h1>Editing '<%= @tricking_style.name %>'</h1>
 </div>
-
-<%= render 'form' %>
-
-<br class="clear">
+<div class="container container-mini card">
+  <%= render 'form' %>
+</div>

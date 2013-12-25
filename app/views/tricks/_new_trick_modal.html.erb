@@ -3,29 +3,33 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h3 class="modal-title" id="new-trick-label">
+        <h2 class="modal-title" id="new-trick-label">
           New trick
-        </h3>
+        </h2>
       </div>
-      <%= semantic_form_for(@trick) do |f| %>
+      <%= form_for(@new_trick) do |f| %>
         <div id="trick-form" class="modal-body">
           <% if @trick.errors.any? %>
-            <div id="error_explanation" class="mbl">
-              <%= pluralize(@trick.errors.count, "error") %> prevented this trick from being saved.
-              Please review your inputs below.
-            </div>
+            <%= pluralize(@trick.errors.count, "error") %> prevented this trick from being saved.
+            Please review your inputs below.
           <% end %>
 
-          <%= f.inputs do %>
-            <%= f.input :name %>
-            <%= f.input :difficulty %>
-            <%= f.input :trick_type, :as => :select, :collection => @trick_types, :include_blank => "N/A" %>
-          <% end %>
+          <p class="mbl">
+            <%= f.text_field :name, :autofocus => true, :placeholder => "Name" %>
+          </p>
+          <hr>
+          <p class="mbl">
+            <b class="mr10">Difficulty class</b>
+            <%= f.select :difficulty, @difficulty_classes %>
+          </p>
+          <hr>
+          <p>
+            <b class="mr10">Trick type</b>
+            <%= f.select :trick_type, @trick_types %>
+          </p>
         </div>
         <div class="modal-footer">
-          <%= f.actions do %>
-            <%= f.action :submit, :button_html => { :class => "btn btn-base" } %>
-          <% end %>
+          <%= f.submit "Create Trick", :class => "btn btn-base" %>
         </div>
       <% end %>
     </div><!-- /.modal-content -->

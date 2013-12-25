@@ -20,13 +20,9 @@
   </div>
 
   <div class="col-sm-8 col-md-9">
-    <% if flash.any? && !flash[:notice].empty? %>
-      <div id="notice" class="alert alert-success"><%= notice %></div>
-    <% elsif flash.any? && !flash[:alert].empty? %>
-      <div id="notice" class="alert alert-error"><%= alert %></div>
-    <% end %>
+    <%= render 'shared/flash_messages' %>
     <!-- Print all combos from the current tricker -->
-    <div class="combo-list container">
+    <div class="list container">
       <% if !@combos.empty? %>
         <% @index = 0 %>
         <% @combos.each do |combo| %>
@@ -35,7 +31,7 @@
           <% @index += 1 %>
         <% end %>
       <% else %>
-        <div class="combo-row">
+        <div class="list-row">
           <div class="container empty-list-head">
             <h3>There are currently no combos in this list.</h3>
           </div>

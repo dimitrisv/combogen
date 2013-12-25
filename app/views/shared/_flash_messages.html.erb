@@ -1,0 +1,10 @@
+
+<% if flash.any? %>
+  <div id="notice">
+    <% if !flash[:notice].nil? %>
+      <span class="success"><%= notice %></span>
+    <% elsif !flash[:alert].nil? %>
+      <span class="error"><%= alert %></span>
+    <% end %>
+  </div>
+<% end %>

@@ -1,26 +1,21 @@
-<div class="combo-row container">
+<div class="list-row container">
   <div class="col-xs-6 col-sm-6">
     <b><%= link_to @trick.name, @trick %></b><br>
-    <span class="combo-details">
+    <small>
       Class <%= @trick.difficulty %> · <%= @trick.trick_type %>
-    </span>
+    </small>
   </div>
   <div class="col-xs-3 col-sm-3">
     <b><%= @trick.combos.count %></b><br>
-    <span class="combo-details">
-      combos
-    </span>
+    <small>combos</small>
   </div>
   <div class="col-xs-3 col-sm-3">
-    <div class="pull-right">
+    <div class="actions pull-right">
       <% if tricker_signed_in? && current_tricker.try(:admin?) %>
           <!-- <i class="glyphicon glyphicon-list-alt"></i> -->
           <%= link_to '', edit_trick_path(@trick), :class => "glyphicon glyphicon-pencil mr10" %>
           <%= link_to '', @trick, method: :delete, :class => "glyphicon glyphicon-remove",
-              data: { confirm:
-                'Destroying a trick will also remove it from all combos.
-                The ones left with less than two tricks will be destroyed as well.
-                Are you sure you want to continue?'
+              data: { confirm: 'Destroying a trick will also remove it from all combos. The ones left with less than two tricks will be destroyed as well. Are you sure you want to continue?'
               } %>
       <% end %>
     </div>

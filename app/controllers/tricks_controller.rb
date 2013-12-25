@@ -4,6 +4,7 @@ class TricksController < ApplicationController
   # GET /tricks
   # GET /tricks.json
   def index
+    @new_trick = Trick.new
     @tricks = Trick.where(:tricker_id => 1).order(:name)
     if tricker_signed_in?
       @my_tricks = current_tricker.tricks.order(:name)
@@ -11,6 +12,7 @@ class TricksController < ApplicationController
     
     @trick = Trick.new
     get_trick_types
+    get_difficulty_classes
   end
 
   def order_by_combos
@@ -45,6 +47,7 @@ class TricksController < ApplicationController
   def new
     @trick = Trick.new
     get_trick_types
+    get_difficulty_classes
 
     respond_to do |format|
       format.html # new.html.erb
@@ -56,6 +59,7 @@ class TricksController < ApplicationController
   def edit
     @trick = Trick.find(params[:id])
     get_trick_types
+    get_difficulty_classes
     if !(current_tricker.id.equal? @trick.tricker_id) && !current_tricker.try(:admin?)
       respond_to do |format|
         format.html { redirect_to @trick, alert: 'You need admin privileges for that action!' }
@@ -163,6 +167,10 @@ class TricksController < ApplicationController
   def get_trick_types
     @trick_types = [ "Kick", "Flip", "Twist", "EX", "Invert", "Groundmove", "Kick, Flip",
       "Flip, Twist", "Kick, Twist", "Kick, Flip, Twist" ]
+  end
+
+  def get_difficulty_classes
+    @difficulty_classes = [ "A", "B", "C", "D", "E", "F", "FND", "EX" ]
   end
 
   def filter_by_tricking_style

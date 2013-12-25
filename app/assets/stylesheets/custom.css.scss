@@ -82,8 +82,8 @@ h1, h2, h3, h4 {
 .btn-camouflaged:active,
 .btn-camouflaged.active,
 .open .dropdown-toggle.btn-camouflaged {
-  background-color: $colorBoxText;
-  color: white;
+  background-color: $boxedBorder;
+  color: $base;
 }
 
 .tac { text-align: center; }
@@ -116,6 +116,10 @@ textarea:focus,
 button:focus, .btn:focus {
     outline: none;
 }
+input[disabled] {
+  border-color: $boxedBorder;
+  background-color: $boxedBorder;
+}
 
 input, textarea {
   font-family: inherit;
@@ -147,6 +151,13 @@ input[type="checkbox"]{
   height: 1em
 }
 
+#notice {
+  padding: 15px 0;
+  font-weight: bold;
+  .success { color: $green; }
+  .error { color: $red; }
+}
+
 
 
 /* Home Page */
@@ -172,7 +183,6 @@ input[type="checkbox"]{
 #call-to-action {
   padding: 100px 0 120px 0;
   color: white;
-  background-color: $base;
   h1 { font-size: 4em; }
   p { margin-top: 50px; }
 }
@@ -239,7 +249,7 @@ input[type="checkbox"]{
   b {
     display: block;
     padding: 10px;
-    background-color: $grey1;
+    background-color: $tableRowBg;
   }
   a {
     display: block;
@@ -248,7 +258,7 @@ input[type="checkbox"]{
   }
 }
 #combo-lists li.list-group-item:hover {
-  background-color: $grey1;
+  background-color: $tableRowBg;
 }
 
 #custom-combo-panel.panel.panel-default,
@@ -263,16 +273,12 @@ input[type="checkbox"]{
   }
 }
 
-.combo-list {
+.list {
   padding: 0;
   padding-bottom: 20px;
   background-color: white;
-  .combo-row:nth-child(2n+1){
-    background-color: $tableRowBg;
-  }
-
-  .combo-list-head {
-    padding: 10px 0 10px 0;
+  .list-head {
+    padding: 10px 0 8px 0;
     font-weight: bold;
     color: $mutedText;
     border-bottom: 2px solid $boxedBorder;
@@ -282,28 +288,28 @@ input[type="checkbox"]{
   .empty-list-head h3 { margin: 10px 0; }
 }
 
-.combo-row {
+.list-row {
   color: $grey4;
   padding: 8px 5px 8px 5px;
   border-bottom: 1px solid $grey1;
   background-color: white;
   position: relative;
-  .combo-actions {
+  .actions {
     position: absolute;
     right: 5px;
     top: 8px;
-  }
-  .combo-details {
-    text-align: right;
-    font-size: 12px;
+    a {
+      color: $grey4;
+      &:hover { color: $textColorDark; }
+    }
   }
   a {
     color: $textColorDark;
     &:hover { text-decoration: none; color: $base; }
   }
-  &:hover {
-    
-  }
+  &:nth-child(2n+1){
+    background-color: $tableRowBg;
+  };
 }
 
 .combo-sequence {
@@ -327,6 +333,18 @@ input[type="checkbox"]{
 
 
 
+/* Styles */
+
+.trick-list {
+  list-style-type: none;
+  padding: 0;
+  li {
+    display: inline;
+    margin-right: 20px;
+  }
+}
+
+
 /* header */
 
 #navigation {
@@ -335,24 +353,44 @@ input[type="checkbox"]{
   border: 0;
   font-weight: bold;
   a {
-    color: $headerLink;
+    color: #b2bac2;
     &:hover {
-      color: $turquoise;
-      .caret {
-        color: $turquoise;
+      color: $greyDarker;
+    }
+  }
+  .dropdown > a:hover .caret {
+    border-top-color: $greyDarker;
+    border-bottom-color: $greyDarker;
+  }
+  .open {
+    & > a { background-color: $headerBg; }
+    a { color: $base; }
+    .caret {
+      border-top-color: $base;
+      border-bottom-color: $base;
+    }
+    .dropdown-menu {
+      border: none;
+      background-color: white;
+      li > a {
+        color: $base;
+        &:hover {
+          background-color: $boxedBorder;
+        }
       }
     }
   }
-}
-
-.navbar-nav > li {
-  a {
-    @include border-radius(5px);
+  .navbar-toggle {
+    border: none;
+    &:hover, &:focus, .active {
+      background-color: $base;
+      .icon-bar { background-color: white; }
+    }
+    .active { background-color: $base; }
+    .icon-bar {
+      background-color: #b2bac2;
+    }
   }
-}
-
-.navbar > .container .navbar-brand {
-  @include border-radius(5px);
 }
 
 
