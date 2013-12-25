@@ -2,9 +2,9 @@
 <% if flash.any? %>
   <div id="notice">
     <% if !flash[:notice].nil? %>
-      <span class="success"><%= notice %></span>
+      <span class="success"><i class="glyphicon glyphicon-ok mr5"></i> <%= notice %></span>
     <% elsif !flash[:alert].nil? %>
-      <span class="error"><%= alert %></span>
+      <span class="error"><i class="glyphicon glyphicon-minus-sign mr5"></i> <%= alert %></span>
     <% end %>
   </div>
 <% end %>

@@ -13,8 +13,6 @@ class CombosController < ApplicationController
     @combos = collection.order(params[:sort]) if params[:sort]
     # @combos = @combos.page(params[:page]).per(10)
     
-    get_tricks_for_all
-
     # get all my combos and their indices
     # get all database combos and their indices
     # assign each to a different collection, and paginate both of them in the index page
@@ -31,8 +29,6 @@ class CombosController < ApplicationController
   def show
     @combo = Combo.find(params[:id])
     
-    get_tricks
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @combo }
@@ -76,6 +72,8 @@ class CombosController < ApplicationController
 
     update_lists
 
+    @combo.render_sequence
+
     respond_to do |format|
       if @combo.save
         format.html { redirect_to combos_path, notice: 'Combo was successfully created.' }
@@ -112,6 +110,8 @@ class CombosController < ApplicationController
     create_combo_elements
 
     update_lists
+
+    @combo.render_sequence
 
     respond_to do |format|
       if @combo.save
@@ -176,6 +176,7 @@ class CombosController < ApplicationController
     generate_and_redirect
   end
 
+  # deprecated... loads in modal now
   def generate_options
   end
 
@@ -187,19 +188,6 @@ private
     @combo.elements.length.times do
       @tricks << @combo.elements.where(:index=> @index).first.trick
       @index += 1
-    end
-  end
-
-  def get_tricks_for_all
-    @tricks_names = []
-    @combos.each do |combo|
-      @index = 1
-      @tricks = []
-      combo.elements.length.times do
-        @tricks << combo.elements.where(:index=> @index).first.trick.name
-        @index += 1
-      end
-      @tricks_names << @tricks
     end
   end
 
@@ -268,6 +256,8 @@ private
 
     # 3. create the combo elements for the randomly selected tricks
     create_combo_elements
+
+    @combo.render_sequence
 
     # 4. redirect to edit combo page.
     respond_to do |format|

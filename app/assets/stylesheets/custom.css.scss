@@ -91,9 +91,9 @@ h1, h2, h3, h4 {
 .mr5 { margin-right: 5px; }
 .mr10 { margin-right: 10px; }
 .mb5 { margin-bottom: 5px; }
-.mbm { margin-bottom: 10px; }
-.mbl { margin-bottom: 20px; }
-.mbh { margin-bottom: 50px; }
+.mb10 { margin-bottom: 10px; }
+.mb20 { margin-bottom: 20px; }
+.mb50 { margin-bottom: 50px; }
 .pt20 { padding-top: 20px; }
 .bb2 { border-bottom: 2px solid $boxedBorder; }
 .card-shadow { @include box-shadow(0 1px 0 0 rgba(0,0,0,0.1)); }
@@ -239,38 +239,22 @@ input[type="checkbox"]{
   top: 15px;
 }
 
-#my-combos-heading {
-  background-color: $base;
-  color: white;
-}
-
 #combo-lists li.list-group-item {
   padding: 0;
+  border: 0;
   b {
     display: block;
-    padding: 10px;
+    padding: 5px 10px;
     background-color: $tableRowBg;
   }
   a {
     display: block;
-    padding: 10px;
+    padding: 5px 10px;
     &:hover { text-decoration: none; }
   }
 }
 #combo-lists li.list-group-item:hover {
   background-color: $tableRowBg;
-}
-
-#custom-combo-panel.panel.panel-default,
-#new-combo-panel.panel.panel-default { border: none; }
-
-#custom-combo-heading, #new-combo-heading {
-  background-color: $base;
-  border-bottom:none;
-  a {
-    color: white;
-    &:hover { text-decoration: none; color: white; }
-  }
 }
 
 .list {
@@ -309,7 +293,17 @@ input[type="checkbox"]{
   }
   &:nth-child(2n+1){
     background-color: $tableRowBg;
-  };
+  }
+  .main-link {
+    color: $base;
+    &:hover { color: $textColorDark; }
+  }
+}
+
+.combos-count {
+  font-size: 1em;
+  display: block;
+  color: $textColorDark;
 }
 
 .combo-sequence {
@@ -317,19 +311,8 @@ input[type="checkbox"]{
   margin-bottom: 5px;
   font-weight: bold;
   padding-left: 0;
-  list-style-type: none;
-  li {
-    display: inline-block;
-    white-space: nowrap;
-    overflow: hidden;
-    vertical-align: middle;
-  }
-  li:after {
-    font-weight: normal;
-    content: " >";
-    color: $grey3;
-  }
-  li:last-child:after { content: ""; }
+  white-space: normal;
+  display: block;
 }
 
 

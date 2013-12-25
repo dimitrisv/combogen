@@ -1,4 +1,4 @@
-<div class="container container-mini tac mbl">
+<div class="container container-mini tac mb20">
     <h1>My Dashboard</h1>
     <p>Welcome, <%= current_tricker.name %>. Thank you so much for being part of our testing phase!</p>
     <% if current_tricker.tricking_style.tricks.empty? %>
@@ -9,13 +9,13 @@
     <% end %>
 </div>
 <div class="container container-mini tac">
-  <div class="col-sm-4 mbl">
+  <div class="col-sm-4 mb20">
     <h3><%= link_to "Trick Database", tricks_path %></h3>
   </div>
-  <div class="col-sm-4 mbl">
+  <div class="col-sm-4 mb20">
     <h3><%= link_to "My Combos", combos_path %></h3>
   </div>
-  <div class="col-sm-4 mbl">
+  <div class="col-sm-4 mb20">
     <h3><%= link_to "My Trick List", current_tricker.tricking_style %></h3>
   </div>
 </div>

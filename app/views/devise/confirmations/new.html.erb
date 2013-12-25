@@ -4,15 +4,15 @@
 
 <div class="container">
 	<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
-	  <div id="error_explanation" class="mbl">
+	  <div id="error_explanation" class="mb20">
   	    <%= devise_error_messages! %>
   	  </div>
-	  <div class="mbl">
+	  <div class="mb20">
 	  	<%= f.label :email %><br />
 	  	<%= f.email_field :email, :autofocus => true %>
 	  </div>
 
-	  <div class="mbl"><%= f.submit "Send it again", :class => "btn btn-blue"  %></div>
+	  <div class="mb20"><%= f.submit "Send it again", :class => "btn btn-blue"  %></div>
 	<% end %>
 </div>
 

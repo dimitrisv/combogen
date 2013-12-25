@@ -1,15 +1,15 @@
 <div class="container">
   <div id="tricks-affix" class="col-sm-4 col-md-3">
-    <div data-spy="affix" data-offset-top="60" data-offset-bottom="100">
+    <div> <!--data-spy="affix" data-offset-top="60" data-offset-bottom="100"-->
       <h2 id="toolbar-title" class="bb2">Tricks</h2>
-      <div id="trick-toolbar" class="container mbm">
+      <div id="trick-toolbar" class="container mb10">
         <small><b>Collection</b></small><br>
         <small>
           <%= link_to "Database", :collection => "database" %> /
           <%= link_to "User-created", :collection => "user" %> /
           <%= link_to "All", :collection => "all" %>
         </small>
-        <p class="mbm"></p>
+        <p class="mb10"></p>
         <small><b>Order by</b></small><br>
         <small>
           <%= link_to "Name", :sort => "name" %> /
@@ -19,15 +19,15 @@
         </small>
       </div>
       <% if tricker_signed_in? %>
-        <a href="#" class="btn btn-camouflaged fa fa-plus" data-toggle="modal" data-target="#new-trick-modal"> New Trick</a>
+        <a href="#" class="btn btn-camouflaged mb20" data-toggle="modal" data-target="#new-trick-modal"> <i class="fa fa-plus"></i> New Trick</a>
       <% end %>
     </div>
   </div>
 
   <div class="col-sm-8 col-md-9">
     <%= render 'shared/flash_messages' %>
-    <!--a href="#" class="btn btn-base mbm">New Trick</a-->
-    <div class="list container card-shadow">
+    <!--a href="#" class="btn btn-base mb10">New Trick</a-->
+    <div class="list container">
       <% @tricks.each do |trick| %>
         <% @trick = trick %>
         <%= render 'trick_row' %>

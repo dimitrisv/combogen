@@ -1,7 +1,7 @@
 <div class="container container-tiny card tac">
 	<h1>Forgot your password?</h1>
 	<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-	  <div id="error_explanation" class="mbl">
+	  <div id="error_explanation" class="mb20">
 	    <%= devise_error_messages! %>
 	  </div>
 
@@ -9,15 +9,15 @@
 	  	Enter your email address and we’ll send you instructions on how to reset your password.
 	  </p>
 
-	  <div class="mbl">
+	  <div class="mb20">
 	  	<%= f.email_field :email, :autofocus => true, :placeholder => "Your email address" %>
 	  </div>
 
-	  <div class="mbl">
+	  <div class="mb20">
 	  	<%= f.submit "Reset Password", :class => "btn btn-base btn-lg" %>
 	  </div>
 	<% end %>
-	<p class="mbl">
+	<p class="mb20">
 		<%= render "devise/shared/links" %>
 	</p>
 </div>

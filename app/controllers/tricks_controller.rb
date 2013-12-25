@@ -60,8 +60,6 @@ class TricksController < ApplicationController
       #filter_by_tricking_style
     end
 
-    get_tricks_for_all
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @trick }
@@ -176,19 +174,6 @@ class TricksController < ApplicationController
   end
 
   private
-
-  def get_tricks_for_all
-    @tricks_names = []
-    @combos.each do |combo|
-      @index = 1
-      @tricks = []
-      combo.elements.length.times do
-        @tricks << combo.elements.where(:index=> @index).first.trick.name
-        @index += 1
-      end
-      @tricks_names << @tricks
-    end
-  end
 
   def get_trick_types
     @trick_types = [ "Kick", "Flip", "Twist", "EX", "Invert", "Groundmove", "Kick, Flip",

@@ -1,12 +1,7 @@
 <div class="list-row container">
   <div>
-    <a href="#"> <!--"/combos/<%= @combo.id.to_s %>"-->
-      <ul class="combo-sequence">
-        <% @tricks = @tricks_names[@index] if !@tricks_names[@index].nil? %>
-        <%- @tricks.each do |trick| %>
-          <li><%= trick %></li>
-        <%-end-%>
-      </ul>
+    <a href="#" class="main-link"> <!--"/combos/<%= @combo.id.to_s %>"-->
+      <span class="combo-sequence"><%= @combo.sequence %></span>
     </a>
     <span class="actions pull-right">
       <% if tricker_signed_in? %>
@@ -20,7 +15,7 @@
     <small>
       <%= @combo.no_tricks %>-trick combo ·
       by <%= link_to @combo.tricker.name, "#" %>
-      <span class="pull-right"><%= time_ago_in_words(@combo.created_at) %> ago</span>
+      <span class="pull-right"><%= time_ago_in_words(@combo.updated_at) %> ago</span>
     </small>
   </div>
 </div>

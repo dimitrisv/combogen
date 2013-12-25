@@ -1,7 +1,7 @@
 <div class="container">
   <%= semantic_form_for(@trick) do |f| %>
     <% if @trick.errors.any? %>
-      <div id="error_explanation" class="mbl">
+      <div id="error_explanation" class="mb20">
         <%= pluralize(@trick.errors.count, "error") %> prevented this trick from being saved.
         Please review your inputs below.
       </div>
