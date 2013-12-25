@@ -239,7 +239,12 @@ input[type="checkbox"]{
   top: 15px;
 }
 
-#combo-lists li.list-group-item {
+#combo-lists {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#combo-lists li {
   padding: 0;
   border: 0;
   b {
@@ -252,9 +257,7 @@ input[type="checkbox"]{
     padding: 5px 10px;
     &:hover { text-decoration: none; }
   }
-}
-#combo-lists li.list-group-item:hover {
-  background-color: $tableRowBg;
+  &:hover { background-color: $tableRowBg; }
 }
 
 .list {

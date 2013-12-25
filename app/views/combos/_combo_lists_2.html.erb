@@ -6,16 +6,16 @@
   <% @num_combos = current_tricker.combos.length %>
 <% end %>
 
-<ul id="combo-lists" class="list-group">
+<ul id="combo-lists">
   <% if !@curr_list_name.eql?"All of them" %>
-    <li class="list-group-item">
+    <li>
       <a href="<%= combos_path%>">
         All of them
         <span class="pull-right"><%= current_tricker.combos.length %></span>
       </a>
     </li>
   <% else %>
-    <li class="list-group-item">
+    <li>
       <b>
         <%= @curr_list_name %>
         <span class="pull-right"><%= @num_combos %></span>
@@ -24,14 +24,14 @@
   <% end %>
   <% current_tricker.lists.each do |l| %>
     <% if l.name.eql?@curr_list_name %>
-      <li class="list-group-item">
+      <li>
         <b>
           <%= @curr_list_name %>
           <span class="pull-right"><%= @num_combos %></span>
         </b>
       </li>
     <% else %>
-      <li class="list-group-item">
+      <li>
         <a href="<%= combos_path(:list => l.id ) %>">
           <%= l.name %>
           <span class="pull-right"><%= l.combos.length %></span>
