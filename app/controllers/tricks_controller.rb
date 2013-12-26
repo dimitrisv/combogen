@@ -12,30 +12,31 @@ class TricksController < ApplicationController
     unless !@collection
       if @collection.eql? "all"
         @tricks = Trick.scoped
-      elsif @collection.eql? "user"
+      elsif @collection.eql? "user_created"
         # get all tricks that are not from admin users ???
         # change this
         @tricks = Trick.where(Trick.arel_table[:tricker_id].not_eq(1))
+      elsif @collection.eql? "my_tricks"
         # what about my own tricks?
-        # if tricker_signed_in?
-        #   @my_tricks = current_tricker.tricks.order(:name)
-        # end
+        if tricker_signed_in?
+          @tricks = current_tricker.tricks
+        end
       end
     end
     
-    # sort tricks
-    @sort = params[:sort]
-    unless !@sort
-      if @sort.eql? "difficulty"
-        @tricks = @tricks.order(:difficulty).order(:name)
-      elsif @sort.eql? "trick_type"
-        @tricks = @tricks.order(:trick_type).order(:name)
-      elsif @sort.eql? "combos"
-        @tricks = @tricks.order_by_combo
-      end
-    else
+    # TODO: sort tricks
+    # @sort = params[:sort]
+    # unless !@sort
+    #   if @sort.eql? "difficulty"
+    #     @tricks = @tricks.order(:difficulty).order(:name)
+    #   elsif @sort.eql? "trick_type"
+    #     @tricks = @tricks.order(:trick_type).order(:name)
+    #   elsif @sort.eql? "combos"
+    #     @tricks = @tricks.order_by_combo
+    #   end
+    # else
       @tricks = @tricks.order(:name)
-    end
+    # end
     
     get_trick_types
     get_difficulty_classes

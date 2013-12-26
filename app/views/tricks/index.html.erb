@@ -3,23 +3,12 @@
     <div> <!--data-spy="affix" data-offset-top="60" data-offset-bottom="100"-->
       <h2 id="toolbar-title" class="bb2">Tricks</h2>
       <div id="trick-toolbar" class="container mb10">
-        <small><b>Collection</b></small><br>
-        <small>
-          <%= link_to "Database", :collection => "database" %> /
-          <%= link_to "User-created", :collection => "user" %> /
-          <%= link_to "All", :collection => "all" %>
-        </small>
-        <p class="mb10"></p>
-        <small><b>Order by</b></small><br>
-        <small>
-          <%= link_to "Name", :sort => "name" %> /
-          <%= link_to "Difficulty", :sort => "difficulty" %> /
-          <%= link_to "Type", :sort => "trick_type" %> /
-          <%= link_to "Combos", :sort => "combos" %>
-        </small>
+        <%= render 'tricks_filters' %>
       </div>
       <% if tricker_signed_in? %>
-        <a href="#" class="btn btn-camouflaged mb20" data-toggle="modal" data-target="#new-trick-modal"> <i class="fa fa-plus"></i> New Trick</a>
+        <a href="#" class="btn btn-camouflaged mb20" data-toggle="modal" data-target="#new-trick-modal">
+          <i class="fa fa-plus"></i> New Trick
+        </a>
       <% end %>
     </div>
   </div>

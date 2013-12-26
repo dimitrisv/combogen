@@ -1,5 +1,7 @@
 <div class="container">
-  <%= render 'edit_actions' %>
+  <%= link_to '← My Combos', combos_path, :class => "btn btn-camouflaged mrs" %>
+  <%= link_to 'View Combo', @combo, :class => "btn btn-camouflaged mrs" %>
+  <%= link_to 'Destroy', @combo, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-camouflaged mrs" %>
 </div>
 <div class="container container-tiny tac">
   <h1>Editing Combo #<%= @combo.id%></h1>

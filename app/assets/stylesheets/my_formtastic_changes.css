@@ -1,6 +1,7 @@
 
 /* New Combo Form */
 #combo_trick_ids { width: 90%; }
+#combo-form { padding: 20px 15px; }
 
 #combo_tricks_input label { display: none; }
 #combo-form .fields { position: relative; }
@@ -15,14 +16,6 @@
 
 #combo-form .add_nested_fields:hover,
 #combo-form .remove_nested_fields:hover {
-  text-decoration: none;
-  border-radius: 5px;
-  background-color: #678;
-  color: white;
-}
-
-.add_nested_fields:hover,
-.remove_nested_fields:hover {
   text-decoration: none;
   border-radius: 5px;
   background-color: #678;
