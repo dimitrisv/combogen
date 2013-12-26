@@ -17,9 +17,17 @@
     <%= render 'shared/flash_messages' %>
     <!--a href="#" class="btn btn-base mb10">New Trick</a-->
     <div class="list container">
-      <% @tricks.each do |trick| %>
-        <% @trick = trick %>
-        <%= render 'trick_row' %>
+      <% if !@tricks.empty? %>
+        <% @tricks.each do |trick| %>
+          <% @trick = trick %>
+          <%= render 'trick_row' %>
+        <% end %>
+      <% else %>
+        <div class="list-row">
+          <div class="container empty-list-head">
+            <h3>Nothing to see here.</h3>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>

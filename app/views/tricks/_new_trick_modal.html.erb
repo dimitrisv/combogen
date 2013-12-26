@@ -9,8 +9,8 @@
       </div>
       <%= form_for(@new_trick) do |f| %>
         <div id="trick-form" class="modal-body">
-          <% if @trick.errors.any? %>
-            <%= pluralize(@trick.errors.count, "error") %> prevented this trick from being saved.
+          <% if @new_trick.errors.any? %>
+            <%= pluralize(@new_trick.errors.count, "error") %> prevented this trick from being saved.
             Please review your inputs below.
           <% end %>
 

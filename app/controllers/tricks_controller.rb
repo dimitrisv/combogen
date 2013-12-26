@@ -16,6 +16,7 @@ class TricksController < ApplicationController
         # get all tricks that are not from the admin user (id: 1)
         # TODO: We need a better way to label "database/curated" tricks
         @tricks = Trick.where(Trick.arel_table[:tricker_id].not_eq(1))
+        @tricks.reject! { |t| current_tricker.tricks.include? t }
       elsif @collection.eql? "my_tricks"
         # what about my own tricks?
         @tricks = current_tricker.tricks
@@ -33,8 +34,11 @@ class TricksController < ApplicationController
     #     @tricks = @tricks.order_by_combo
     #   end
     # else
-      @tricks = @tricks.order(:name)
+    #   @tricks = @tricks.order(:name) unless @tricks.empty?
     # end
+
+    # NOTE: SQL is much faster. Try to do it that way.
+    @tricks.sort_by! { |t| t.name }
     
     get_trick_types
     get_difficulty_classes
