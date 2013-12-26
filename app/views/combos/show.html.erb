@@ -11,11 +11,9 @@
 	<% end %>
 </div>
 <div class=" container">
-	<ul class="combo-sequence">
-	  <%- @tricks.each do |trick| %>
-	  	<li><%= trick.name %></li>
-	  <%-end-%>
-	</ul>
+	<a class="combo-sequence">
+	  <%= @combo.sequence %>
+	</a>
 	<span>
 		Combo #<%= @combo.id %> · <%= @combo.no_tricks %> tricks ·
 		Created by <%= link_to @combo.tricker.name, "#" %> · <%= time_ago_in_words(@combo.created_at) %> ago
