@@ -1,5 +1,5 @@
 class TricksController < ApplicationController
-  before_filter :authenticate_tricker!, :except => [:show, :index]
+  before_filter :authenticate_tricker!
   
   # GET /tricks
   # GET /tricks.json
@@ -13,14 +13,12 @@ class TricksController < ApplicationController
       if @collection.eql? "all"
         @tricks = Trick.scoped
       elsif @collection.eql? "user_created"
-        # get all tricks that are not from admin users ???
-        # change this
+        # get all tricks that are not from the admin user (id: 1)
+        # TODO: We need a better way to label "database/curated" tricks
         @tricks = Trick.where(Trick.arel_table[:tricker_id].not_eq(1))
       elsif @collection.eql? "my_tricks"
         # what about my own tricks?
-        if tricker_signed_in?
-          @tricks = current_tricker.tricks
-        end
+        @tricks = current_tricker.tricks
       end
     end
     
