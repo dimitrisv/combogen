@@ -9,11 +9,8 @@
         <a class="btn btn-camouflaged" data-toggle="modal" data-target="#new-combo-modal">
           <i class="fa fa-plus"></i> New Combo
         </a>
-        <a class="btn btn-camouflaged" data-toggle="modal" data-target="#custom-combo-modal">
-          <i class="glyphicon glyphicon-cog"></i> Generate Custom
-        </a>
-        <a class="btn btn-camouflaged" href="<%= generate_random_path %>">
-          <i class="glyphicon glyphicon-random"></i> Generate Random
+        <a class="btn btn-camouflaged" data-toggle="modal" data-target="#combo-generator-modal">
+          <i class="glyphicon glyphicon-cog"></i> Combo Generator
         </a>
       </div>
     </div>
@@ -41,5 +38,5 @@
   </div>  
 </div>
 
-<%= render 'custom_combo_modal' %>
+<%= render 'combo_generator_modal' %>
 <%= render 'new_combo_modal' %>

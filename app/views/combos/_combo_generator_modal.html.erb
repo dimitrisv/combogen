@@ -1,14 +1,21 @@
-<div class="modal fade" id="custom-combo-modal" tabindex="-1" role="dialog" aria-labelledby="custom-combo-label" aria-hidden="true">
+<div class="modal fade" id="combo-generator-modal" tabindex="-1" role="dialog" aria-labelledby="combo-generator-label" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h3 class="modal-title" id="custom-combo-label">
-          Generate customized combo
+        <h3 class="modal-title" id="combo-generator-label">
+          Level App Combo Generator
         </h3>
       </div>
       <%= form_tag "/generate_custom", method: "get" do %>
         <div class="modal-body">
+          <p>
+            <a class="btn btn-base" href="<%= generate_random_path %>">
+              <i class="glyphicon glyphicon-random mr5"></i> Get Random Combo
+            </a>
+            <h4>Or customize it using the options below:</h4>
+          </p>
+          <hr class="clearfix">
           <p>
             <%= label_tag :no_tricks, "Number of tricks", :class => "mr10" %>
             <%= number_field_tag :no_tricks, 5, in: 2..10 %>
