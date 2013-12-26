@@ -1,19 +1,25 @@
-<div class="container">
-  <%= semantic_form_for(@trick) do |f| %>
-    <% if @trick.errors.any? %>
-      <div id="error_explanation" class="mb20">
-        <%= pluralize(@trick.errors.count, "error") %> prevented this trick from being saved.
-        Please review your inputs below.
-      </div>
-    <% end %>
-
-    <%= f.inputs do %>
-      <%= f.input :name %>
-      <%= f.input :difficulty %>
-      <%= f.input :trick_type, :as => :select, :collection => @trick_types, :include_blank => "N/A" %>
-    <% end %>
-    <%= f.actions do %>
-      <%= f.action :submit, :button_html => { :class => "btn btn-base btn-block" } %>
-    <% end %>
+<%= form_for(@trick) do |f| %>
+  <% if @trick.errors.any? %>
+    <%= pluralize(@trick.errors.count, "error") %> prevented this trick from being saved.
+    Please review your inputs below.
   <% end %>
-</div>
+
+  <p class="mb20">
+    <b class="mb10 mr10">Name</b>
+    <%= f.text_field :name, :autofocus => true, :placeholder => "Name" %>
+  </p>
+  <hr>
+  <p class="mb20">
+    <b class="mr10">Difficulty class</b>
+    <%= f.select :difficulty, @difficulty_classes %>
+  </p>
+  <hr>
+  <p>
+    <b class="mr10">Trick type</b>
+    <%= f.select :trick_type, @trick_types %>
+  </p>
+  <hr>
+  <p>
+    <%= f.submit "Save Changes", :class => "btn btn-base" %>
+  </p>
+<% end %>
