@@ -11,7 +11,7 @@
   </div>
   <div class="col-xs-3 col-sm-3">
     <div class="actions pull-right">
-      <% if tricker_signed_in? && current_tricker.try(:admin?) %>
+      <% if (@trick.tricker.id.equal? current_tricker.id) || current_tricker.try(:admin?) %>
           <!-- <i class="glyphicon glyphicon-list-alt"></i> -->
           <%= link_to '', edit_trick_path(@trick), :class => "glyphicon glyphicon-pencil mr5" %>
           <%= link_to '', @trick, method: :delete, :class => "glyphicon glyphicon-remove",

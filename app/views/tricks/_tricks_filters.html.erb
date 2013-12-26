@@ -1,10 +1,8 @@
-<small><b>Collection</b></small><br>
+<small class="filter-category">Collection</small>
 <small>
   <%= link_to "Database", :collection => "database" %> /
   <%= link_to "User-created", :collection => "user_created" %> /
-  <% if tricker_signed_in? %>
-    <%= link_to current_tricker.name+"'s tricks", :collection => "my_tricks" %>
-  <% end %>
+  <%= link_to current_tricker.name+"'s tricks", :collection => "my_tricks" %>
   <!--%= link_to "All", :collection => "all" %-->
 </small>
 <!-- <p class="mb10"></p>

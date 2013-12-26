@@ -1,6 +1,6 @@
 <div class="container">
   <%= link_to '← Tricks', tricks_path, :class => "btn btn-camouflaged mrs" %>
-  <% if tricker_signed_in? && ((@trick.tricker_id.equal? current_tricker.id) || current_tricker.try(:admin?)) %>
+  <% if (self.tricker.id.equal? current_tricker.id) || current_tricker.try(:admin?) %>
     <%= link_to ' Edit', edit_trick_path(@trick), :class => "fa fa-pencil btn btn-camouflaged mrs" %>
     <%= link_to ' Destroy', @trick, method: :delete, :class => "fa fa-trash-o btn btn-camouflaged mrs",
         data: { confirm: 'Destroying a trick will also remove it from all combos. The ones left with less than two tricks will be destroyed as well. Are you sure you want to continue?'
