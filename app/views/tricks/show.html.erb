@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mb10">
   <%= link_to '← Tricks', tricks_path, :class => "btn btn-camouflaged mrs" %>
   <% if (@trick.tricker.id.equal? current_tricker.id) || current_tricker.try(:admin?) %>
     <%= link_to ' Edit', edit_trick_path(@trick), :class => "fa fa-pencil btn btn-camouflaged mrs" %>
