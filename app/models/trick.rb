@@ -3,6 +3,8 @@ class Trick < ActiveRecord::Base
   has_and_belongs_to_many :tricking_styles
 	has_many :elements, :dependent => :delete_all
 	has_many :combos, :through => :elements
+  has_many :tutorials, class_name: "Video"
+
 	attr_accessible :difficulty, :landed, :name, :trick_type, :tricker_id, :trick_type
 	validates :name, :presence => true, :uniqueness => true
 

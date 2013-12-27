@@ -6,6 +6,8 @@ class Combo < ActiveRecord::Base
 
   has_many :elements, :dependent => :delete_all
   has_many :tricks, :through => :elements
+
+  has_many :executions, class_name: "Video"
   
   accepts_nested_attributes_for :tricks, :reject_if => lambda { |a| a[:content].blank? }
   attr_accessible :no_tricks, :combo_id, :tricks_attributes, :tricker_id, :sequence
