@@ -11,7 +11,13 @@
 <div class="container card mb20">
   <h1><%= @trick.name %></h1>
   Class <%= @trick.difficulty %> · <%= @trick.trick_type %>
-  <br><br>
+  <br>
+  <% if !@trick.tutorials.empty? %>
+    <a class="btn btn-base mt20 mb20" data-toggle="modal"
+    data-target="#watch-tutorial-modal" data-video-id=<%= @trick.tutorials.first.get_video_id %>>
+      <i class="glyphicon glyphicon-film mr5"></i> Watch Tutorial
+    </a>
+  <% end %>
 </div>
 
 <!--div class="container card mb20">
@@ -50,3 +56,5 @@
     </div>
   <% end %>
 </div>
+
+<%= render 'watch_tutorial_modal' %>
