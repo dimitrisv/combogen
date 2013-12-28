@@ -126,3 +126,17 @@ Combo.create(:no_tricks => 3)
 Element.create(:combo_id => Combo.last.id, :index => 1, :trick_id => Trick.find_by_name("Jackknife").id )
 Element.create(:combo_id => Combo.last.id, :index => 2, :trick_id => Trick.find_by_name("Aerial").id )
 Element.create(:combo_id => Combo.last.id, :index => 3, :trick_id => Trick.find_by_name("Grandmasterswipe").id )
+
+
+
+# TUTORIALS
+
+Video.create(tricker_id: 1, trick_id: Trick.find_by_name("540").id, url: "www.youtube.com/watch?v=QjOepEGrO8s")
+Video.create(tricker_id: 1, trick_id: Trick.find_by_name("Aerial").id, url: "www.youtube.com/watch?v=NDpgshR6s4g")
+Video.create(tricker_id: 1, trick_id: Trick.find_by_name("Backflip").id, url: "www.youtube.com/watch?v=BjgMjA_iIgw")
+Video.create(tricker_id: 1, trick_id: Trick.find_by_name("Pop 360").id, url: "www.youtube.com/watch?v=7_aDn5zdcPE")
+Video.create(tricker_id: 1, trick_id: Trick.find_by_name("Butterfly Twist").id, url: "www.youtube.com/watch?v=G_bpuAz9eIM")
+Video.create(tricker_id: 1, trick_id: Trick.find_by_name("Doubleleg").id, url: "www.youtube.com/watch?v=IgxGSUQ0jLg")
+Video.create(tricker_id: 1, trick_id: Trick.find_by_name("Flash Kick").id, url: "www.youtube.com/watch?v=9w8owtFTihc")
+Video.create(tricker_id: 1, trick_id: Trick.find_by_name("Sideswipe").id, url: "www.youtube.com/watch?v=k864os9ouog")
+Video.create(tricker_id: 1, trick_id: Trick.find_by_name("Jackknife").id, url: "www.youtube.com/watch?v=dkRM3MeSRXI")
