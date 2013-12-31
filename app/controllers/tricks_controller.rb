@@ -59,9 +59,8 @@ class TricksController < ApplicationController
     @trick = Trick.find(params[:id])
     @combos = @trick.combos.uniq # Combo.where(:id => @trick.combos.uniq.map(&:id))
 
-    if tricker_signed_in?
-      #filter_by_tricking_style
-    end
+    # this should be in combos model
+    filter_by_tricking_style
 
     respond_to do |format|
       format.html # show.html.erb
@@ -188,20 +187,15 @@ class TricksController < ApplicationController
   end
 
   def filter_by_tricking_style
-    # find all non user created combos
-    @trickers = Tricker.all.map(&:id)
-    @trickers.delete(current_tricker.id)
-    @combos = @combos.where(:tricker_id => @trickers)
-    
-    # query all combo elements, keeping only the ones whose tricks are included in the trick list
-    @trick_list = current_tricker.tricking_style.tricks.map(&:id)
-    @elements = Element.where(:combo_id=>@combos.map(&:id)).where(:trick_id => @trick_list)
+    # BUG: At some point after 'reject', @combos can be nil, which crashes the frontend
+    @combos = [] if !@combos
 
-    @combos = @elements.map(&:combo_id).uniq
-    
-    # check which combos are complete?
-    # get combo.no_tricks then compare with my collections no_tricks for this combo
-    # for each individual combo in the collection, count its tricks... if equal to no_tricks
+    @combos = @combos.reject! { |c| c.tricker == current_tricker  } # find all non user created combos
+    @trick_list = current_tricker.tricking_style.tricks.map(&:id) # get all tricks in the list
+
+    # (style-combo).count == style.count - combo.count
+    # this hits the database twice. is there a better way?
+    @combos = @combos.reject! { |c| ((@trick_list-c.tricks.map(&:id)).count != (@trick_list.count - c.tricks.map(&:id).count)) }
   end
 
 end
