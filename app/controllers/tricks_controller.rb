@@ -57,9 +57,8 @@ class TricksController < ApplicationController
   # GET /tricks/1.json
   def show
     @trick = Trick.find(params[:id])
-    @combos = @trick.combos.uniq # Combo.where(:id => @trick.combos.uniq.map(&:id))
+    @related_combos = @trick.combos.uniq # get all the combos using this trick
 
-    # this should be in combos model
     filter_by_tricking_style
 
     respond_to do |format|
@@ -186,16 +185,20 @@ class TricksController < ApplicationController
     @difficulty_classes = [ "A", "B", "C", "D", "E", "F", "FND", "EX" ]
   end
 
+  # Filters a collection of combos using the user's trick list
+  # Can be generalized to use any tricking style
   def filter_by_tricking_style
-    # BUG: At some point after 'reject', @combos can be nil, which crashes the frontend
-    @combos = [] if !@combos
+    @combos_you_can_do = @trick.combos.uniq # get all the combos using this trick
 
-    @combos = @combos.reject! { |c| c.tricker == current_tricker  } # find all non user created combos
-    @trick_list = current_tricker.tricking_style.tricks.map(&:id) # get all tricks in the list
+    # remove my combos from this list
+    @combos_you_can_do.reject! { |c| c.tricker == current_tricker  }
+    
+    # get the ids of the tricks I can do
+    @trick_list = current_tricker.tricking_style.tricks.map(&:id)
 
     # (style-combo).count == style.count - combo.count
     # this hits the database twice. is there a better way?
-    @combos = @combos.reject! { |c| ((@trick_list-c.tricks.map(&:id)).count != (@trick_list.count - c.tricks.map(&:id).count)) }
+    @combos_you_can_do.reject! { |c| ((@trick_list-c.tricks.map(&:id)).count != (@trick_list.count - c.tricks.map(&:id).count)) }
   end
 
 end
