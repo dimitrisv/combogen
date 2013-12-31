@@ -95,12 +95,14 @@ h1, h2, h3, h4 {
 .mb20 { margin-bottom: 20px; }
 .mb50 { margin-bottom: 50px; }
 .pt20 { padding-top: 20px; }
+.pb20 { padding-bottom: 20px; }
 .bb2 { border-bottom: 2px solid $boxedBorder; }
 .card-shadow { @include box-shadow(0 1px 0 0 rgba(0,0,0,0.1)); }
 .btn-hg { height: 60px; padding: 10px 60px; font-size: 2em; }
 .container-mini { max-width: 768px; }
 .container-tiny { max-width: 480px; }
 .label-small { font-weight: normal; }
+.scroller { max-height: 300px; overflow: scroll; }
 
 .card {
   background-color: $boxedBg;
@@ -283,7 +285,7 @@ input[type="checkbox"]{
   padding-bottom: 20px;
   background-color: white;
   .list-head {
-    padding: 10px 0 8px 0;
+    padding: 8px 0 5px 0;
     font-weight: bold;
     color: $mutedText;
     border-bottom: 2px solid $boxedBorder;
@@ -385,6 +387,7 @@ input[type="checkbox"]{
       }
     }
   }
+  .navbar-brand { font-weight: normal; }
   .navbar-toggle {
     border: none;
     &:hover, &:focus, .active {

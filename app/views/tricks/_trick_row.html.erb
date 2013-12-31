@@ -6,7 +6,7 @@
     </small>
   </div>
   <div class="col-xs-3 col-sm-3">
-    <b class="combos-count"><%= @trick.combos.count %></b>
+    <b class="combos-count"><%= @trick.combos.uniq.count %></b>
     <small>combos</small>
   </div>
   <div class="col-xs-3 col-sm-3">

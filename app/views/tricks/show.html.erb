@@ -8,12 +8,12 @@
   <% end %>
 </div>
 
-<div class="container card mb20">
+<div class="container card mb20 pb20">
   <h1><%= @trick.name %></h1>
   Class <%= @trick.difficulty %> · <%= @trick.trick_type %>
   <br>
   <% if !@trick.tutorials.empty? %>
-    <a class="btn btn-base mt20 mb20" data-toggle="modal"
+    <a class="btn btn-base mt20" data-toggle="modal"
     data-target="#watch-tutorial-modal" data-video-id=<%= @trick.tutorials.first.get_video_id %>>
       <i class="glyphicon glyphicon-film mr5"></i> Watch Tutorial
     </a>
@@ -34,42 +34,48 @@
   </div>
 </div-->
 
-<% if !@combos_you_can_do.empty? %>
-  <div class="container mb20">
-    <div class="list">
-      <div class="list-head">
-        <h3><%= pluralize(@combos_you_can_do.count, "combo") %> you can do with <%= @trick.name %></h3>
-      </div>
-      <% if !@combos_you_can_do.empty? %>
-        <% @index = 0 %>
-        <% @combos_you_can_do.each do |combo| %>
-          <% @combo = combo %>
-          <%= render 'combos/combo_row' %>
-          <% @index += 1 %>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-<% end %>
-
 <div class="container">
   <% if @trick.combos.empty? %>
     <h3 class="mb10">We found no combos with <%= @trick.name %> in Level App. That's really sad...</h3>
     <%= link_to 'Be the first to create one!', '/combos/new', :class => "btn btn-camouflaged mb20" %>
   <% else %>
-    <div class="list">
-      <div class="list-head">
-        <h3><%= @trick.combos.uniq.length %> related combos</h3>
+    <% if !@combos_you_can_do.empty? %>
+      <div class="col-md-6">
+        <div class="list">
+          <div class="list-head">
+            <h3>
+              <%= pluralize(@combos_you_can_do.count, "combo") %>
+              you can do<!--  with <%= @trick.name %> -->
+            </h3>
+          </div>
+          <div class="scroller">
+            <% @index = 0 %>
+            <% @combos_you_can_do.each do |combo| %>
+              <% @combo = combo %>
+              <%= render 'combos/combo_row' %>
+              <% @index += 1 %>
+            <% end %>
+          </div>
+        </div>
       </div>
-      <% if !@related_combos.empty? %>
-        <% @index = 0 %>
-        <% @related_combos.each do |combo| %>
-          <% @combo = combo %>
-          <%= render 'combos/combo_row' %>
-          <% @index += 1 %>
-        <% end %>
-      <% end %>
-    </div>
+    <% end %>
+    <% if !@related_combos.empty? %>
+      <div class="col-md-6">
+        <div class="list">
+          <div class="list-head">
+            <h3><%= pluralize(@trick.combos.uniq.length, "related combo") %></h3>
+          </div>
+          <div class="scroller">
+            <% @index = 0 %>
+            <% @related_combos.each do |combo| %>
+              <% @combo = combo %>
+              <%= render 'combos/combo_row' %>
+              <% @index += 1 %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   <% end %>
 </div>
 
