@@ -1,3 +1,9 @@
+== [30.Dec.2013 - 05.Jan.2014 ]
+
+- create VIDEOS model and assign to tricks
+- filter related combos by trick list/style
+
+
 == 25.Dec.2013 X-Mas!
 
 - finally finished the basic redesign. not doing any of this until the first major release (0.2beta)
@@ -85,6 +91,7 @@ Tuesday:
 - COMBO/GENERATE/RANDOM: easy mode random generation through a button :)
 
 Monday:
+
 - COMBO/INDEX: default combo ordering by number of tricks
 - TRICK/INDEX: tricks listed in alphabetical order by default
 - TRICK/DESTROY: return relevant error message if combos were destroyed in the process.

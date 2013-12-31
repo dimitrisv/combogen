@@ -172,6 +172,8 @@ input[type="checkbox"]{
   position: relative;
   top: -20px;
   margin-bottom: -30px;
+  h1 { display: inline-block; }
+  .label { display: inline-block; }
 }
 
 #app-stats {
