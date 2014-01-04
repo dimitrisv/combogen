@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131227165705) do
+ActiveRecord::Schema.define(:version => 20140104173359) do
 
   create_table "combos", :force => true do |t|
     t.integer  "no_tricks"
@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(:version => 20131227165705) do
     t.string   "difficulty"
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
-    t.integer  "tricker_id", :default => 1
+    t.integer  "tricker_id"
     t.string   "trick_type", :default => "N/A"
   end
 
