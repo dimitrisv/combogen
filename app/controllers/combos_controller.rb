@@ -148,7 +148,7 @@ class CombosController < ApplicationController
     # 2. randomly select the @no_tricks tricks
     if current_tricker.tricking_style.tricks.empty?
       # if no trick list is present, choose from all tricks in the database (admin's tricks & user created tricks)
-      @collection = Trick.where(:tricker_id => [1, current_tricker.id])
+      @collection = Trick.where(:tricker_id => [nil, current_tricker.id])
     else
       # otherwise filter by tricker's style
       @collection = current_tricker.tricking_style.tricks
@@ -167,7 +167,7 @@ class CombosController < ApplicationController
 
     if (@filter.eql?"database") || (current_tricker.tricking_style.tricks.empty?)
       # if no trick list is present, choose from all tricks in the database (admin's tricks & user created tricks)
-      @collection = Trick.where(:tricker_id => [1, current_tricker.id])
+      @collection = Trick.where(:tricker_id => [nil, current_tricker.id])
     else
       # otherwise filter by tricker's style
       @collection = current_tricker.tricking_style.tricks

@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_filter :authenticate_tricker!, :except => [:show]
+  before_filter :authenticate_tricker!
   # GET /lists
   # GET /lists.json
   def index

@@ -1,5 +1,7 @@
 == [30.Dec.2013 - 05.Jan.2014 ]
 
+- add trick filter highlighting
+- change the default tricker of admin tricks to nil
 - create VIDEOS model and assign to tricks
 - filter related combos by trick list/style
 
