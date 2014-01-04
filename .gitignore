@@ -10,7 +10,6 @@
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
-/*.sqlite3
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
@@ -26,3 +25,7 @@ doc/
 .idea
 .secret
 /script/update_production.rb
+.gemtags
+.tags
+.tags_sorted_by_file
+*.sqlite3
