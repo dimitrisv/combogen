@@ -7,9 +7,9 @@ class TricksController < ApplicationController
     @new_trick = Trick.new
 
     # retrieve tricks
+    @tricks = Trick.where(:tricker_id => nil)
     @collection = params[:collection]
-    @tricks = Trick.where(:tricker_id => 1)
-    unless !@collection
+    if !@collection.nil?
       if @collection.eql? "all"
         @tricks = Trick.scoped
       elsif @collection.eql? "user_created"

@@ -4,7 +4,7 @@
       <span class="combo-sequence"><%= @combo.sequence %></span>
     </a>
     <span class="actions pull-right">
-      <% if (@combo.tricker.id.equal? current_tricker.id) || current_tricker.try(:admin?) %>
+      <% if current_tricker_can_edit_combo %>
         <%= link_to "", edit_combo_path(@combo), :class => "fa fa-cog btn btn-xs btn-camouflaged" %>
         <%= link_to "", @combo, method: :delete, data: { confirm: 'Are you sure?' }, :class => "fa fa-trash-o btn btn-xs btn-camouflaged" %>
       <% end %>

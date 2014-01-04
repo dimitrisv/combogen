@@ -1,8 +1,18 @@
 <small class="filter-category">Collection</small>
 <small>
-  <%= link_to "Database", :collection => "database" %> /
-  <%= link_to "User-created", :collection => "user_created" %> /
-  <%= link_to current_tricker.name+"'s tricks", :collection => "my_tricks" %>
+  <% if current_page?(controller: 'tricks', collection: 'user_created') %>
+    <%= link_to "Database", :collection => "database" %> /
+    <b>User-created</b> /
+    <%= link_to current_tricker.name+"'s tricks", :collection => "my_tricks" %>
+  <% elsif current_page?(controller: 'tricks', collection: 'my_tricks') %>
+    <%= link_to "Database", :collection => "database" %> /
+    <%= link_to "User-created", :collection => "user_created" %> /
+    <b><%= current_tricker.name %>'s tricks</b>
+  <% else %>
+    <b>Database</b> /
+    <%= link_to "User-created", :collection => "user_created" %> /
+    <%= link_to current_tricker.name+"'s tricks", :collection => "my_tricks" %>
+  <% end %>
   <!--%= link_to "All", :collection => "all" %-->
 </small>
 <!-- <p class="mb10"></p>
