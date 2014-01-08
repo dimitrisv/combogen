@@ -1,8 +1,18 @@
 class CombosController < ApplicationController
   before_filter :authenticate_tricker!, :except => [:show]
+  
   # GET /combos
   # GET /combos.json
   def index
+    @combos = Combo.order(:updated_at).page(params[:page]).per(10)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @combos }
+    end
+  end
+
+  def my_combos
     @new_combo = Combo.new
     collection = current_tricker.combos
     if params[:list]
@@ -12,15 +22,6 @@ class CombosController < ApplicationController
     @combos = collection.order(:updated_at).reverse
     # @combos = collection.order(params[:sort]) if params[:sort]
     # @combos = @combos.page(params[:page])....
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @combos }
-    end
-  end
-
-  def feed
-    @combos = Combo.order(:updated_at).page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -80,7 +81,7 @@ class CombosController < ApplicationController
 
     respond_to do |format|
       if @combo.save
-        format.html { redirect_to combos_path, notice: 'Combo was successfully created.' }
+        format.html { redirect_to my_combos_path, notice: 'Combo was successfully created.' }
         format.json { render json: @combo, status: :created, location: @combo }
       else
         format.html { render action: "new" }
@@ -119,7 +120,7 @@ class CombosController < ApplicationController
 
     respond_to do |format|
       if @combo.save
-        format.html { redirect_to combos_path, notice: 'Combo was successfully updated.' }
+        format.html { redirect_to my_combos_path, notice: 'Combo was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -135,7 +136,7 @@ class CombosController < ApplicationController
     @combo.destroy
 
     respond_to do |format|
-      format.html { redirect_to combos_url, notice: 'Combo was successfully removed from the database.' }
+      format.html { redirect_to my_combos_url, notice: 'Combo was successfully removed from the database.' }
       format.json { head :no_content }
     end
   end
@@ -266,7 +267,7 @@ private
     # 4. redirect to edit combo page.
     respond_to do |format|
       if @combo.save
-        format.html { redirect_to combos_path, notice: 'A '+@no_tricks.to_s+'-trick combo was successfully generated!' }
+        format.html { redirect_to my_combos_path, notice: 'A '+@no_tricks.to_s+'-trick combo was successfully generated!' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

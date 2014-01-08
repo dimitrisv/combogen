@@ -1,17 +1,10 @@
 <div class="container">
   <div id="combos-affix" class="col-sm-4 col-md-3">
     <div> <!--data-spy="affix" data-offset-top="60" data-offset-bottom="300"-->
-      <h2 id="toolbar-title" class="bb2">My Combos</h2>
+      <h2 id="toolbar-title" class="bb2">Combo Feed</h2>
       <div class="mb20">
-        <%= render 'combo_lists' %>
-      </div>
-      <div class="container mb20">
-        <a class="btn btn-camouflaged" data-toggle="modal" data-target="#new-combo-modal">
-          <i class="fa fa-plus"></i> New Combo
-        </a>
-        <a class="btn btn-camouflaged" data-toggle="modal" data-target="#combo-generator-modal">
-          <i class="glyphicon glyphicon-cog"></i> Combo Generator
-        </a>
+        Showing the latest combos.<br>
+        Search stuff here soon...
       </div>
     </div>
   </div>
@@ -19,7 +12,7 @@
   <div class="col-sm-8 col-md-9">
     <%= render 'shared/flash_messages' %>
     <!-- Print all combos from the current tricker -->
-    <!--%= paginate @combos %-->
+    <%= paginate @combos %>
     <div class="list container">
       <% if !@combos.empty? %>
         <% @index = 0 %>
@@ -36,8 +29,6 @@
         </div>
       <% end %>
     </div>
+    <%= paginate @combos %>
   </div>  
 </div>
-
-<%= render 'combo_generator_modal' %>
-<%= render 'new_combo_modal' %>

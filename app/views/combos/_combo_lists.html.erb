@@ -9,7 +9,7 @@
 <ul id="combo-lists">
   <% if !@curr_list_name.eql?"All of them" %>
     <li>
-      <a href="<%= combos_path%>">
+      <a href="<%= my_combos_path%>">
         All of them
         <span class="pull-right"><%= current_tricker.combos.length %></span>
       </a>
@@ -32,7 +32,7 @@
       </li>
     <% else %>
       <li>
-        <a href="<%= combos_path(:list => l.id ) %>">
+        <a href="<%= my_combos_path(:list => l.id ) %>">
           <%= l.name %>
           <span class="pull-right"><%= l.combos.length %></span>
         </a>

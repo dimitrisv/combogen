@@ -1,6 +1,6 @@
 <div class="container">
 	<% if (@combo.tricker_id.equal? current_tricker.id) %>
-		<%= link_to '← My Combos', combos_path, :class => "btn btn-camouflaged mrs"%>
+		<%= link_to '← My Combos', my_combos_path, :class => "btn btn-camouflaged mrs"%>
 	<% else %>
 		<%= link_to '← Back', tricks_path, :class => "btn btn-camouflaged mrs" %>
 		<!--%= link_to '← Combo DB', explore_path, :class => "btn mrs"%-->
