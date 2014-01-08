@@ -1,0 +1,32 @@
+<div class="container">
+  <div id="combos-affix" class="col-sm-4 col-md-3">
+    <div> <!--data-spy="affix" data-offset-top="60" data-offset-bottom="300"-->
+      <h2 id="toolbar-title" class="bb2"><%= @tricker.name %></h2>
+      <div class="mb20">
+        picture here.<br>
+        about text here.<br>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-8 col-md-9">
+    <%= paginate @combos %>
+    <div class="list container">
+      <% if !@tricker.combos.empty? %>
+        <% @index = 0 %>
+        <% @tricker.combos.each do |combo| %>
+          <% @combo = combo %>
+          <%= render 'combos/combo_row' %>
+          <% @index += 1 %>
+        <% end %>
+      <% else %>
+        <div class="list-row">
+          <div class="container empty-list-head">
+            <h3><%= @tricker.name %> has not created any combos yet.</h3>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <%= paginate @combos %>
+</div>

@@ -24,7 +24,7 @@
 			        	<i class="fa fa-user fa-fw"></i> <%= current_tricker.name %> <b class="caret"></b>
 			        </a>
 			        <ul class="dropdown-menu">
-			        	<li><%= link_to "My Profile", "#" %></li>
+			        	<li><%= link_to "My Profile", current_tricker %></li>
 			        	<li><%= link_to "My Trick List", current_tricker.tricking_style %></li>
 			        	<li class="divider"></li>
 			          <li><%= link_to "Settings", edit_tricker_registration_path %></li>
@@ -39,7 +39,6 @@
 		      			<%= link_to 'Register', new_tricker_registration_path, :class => "btn btn-success" %>
 		      		</div>
 		      	</li>
-		      	<!--li><%= link_to 'Register', new_tricker_registration_path %></li-->
 		      <% end %>
 		    </ul>
 		  </div>

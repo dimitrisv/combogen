@@ -14,7 +14,7 @@
   <div>
     <small>
       <%= @combo.no_tricks %>-trick combo ·
-      by <%= link_to @combo.tricker.name, "#" %>
+      by <%= link_to @combo.tricker.name, @combo.tricker %>
       <span class="pull-right"><%= time_ago_in_words(@combo.updated_at) %> ago</span>
     </small>
   </div>

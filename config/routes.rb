@@ -3,6 +3,7 @@ Combogen::Application.routes.draw do
   resources :combos
   resources :tricks
   resources :tricking_styles
+  resources :trickers, :only => :show
 
   devise_for :trickers, :controllers => { :registrations => "registrations" },
               :path_names => { :sign_up => "register", :sign_in => "login", :sign_out => "logout"}
