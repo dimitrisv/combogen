@@ -8,7 +8,6 @@ Combogen::Application.routes.draw do
               :path_names => { :sign_up => "register", :sign_in => "login", :sign_out => "logout"}
 
   get "welcome/index"
-  get "welcome/dashboard"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -19,7 +18,6 @@ Combogen::Application.routes.draw do
   match '/generate_options' => 'combos#generate_options', :as => 'generate_options'
   match '/generate_custom' => 'combos#generate_custom', :as => 'generate_custom'
   match '/generate_random' => 'combos#generate_random', :as => 'generate_random'
-  match '/dashboard' => 'welcome#dashboard', :as => 'dashboard'
   # match '/order_by_combos' => 'tricks#order_by_combos', :as => 'order_by_combos'
 
   # Sample of named route:

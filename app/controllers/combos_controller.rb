@@ -10,13 +10,8 @@ class CombosController < ApplicationController
       collection = @list.combos
     end
     @combos = collection.order(:updated_at).reverse
-    @combos = collection.order(params[:sort]) if params[:sort]
-    # @combos = @combos.page(params[:page]).per(10)
-    
-    # get all my combos and their indices
-    # get all database combos and their indices
-    # assign each to a different collection, and paginate both of them in the index page
-    # get_indices
+    # @combos = collection.order(params[:sort]) if params[:sort]
+    # @combos = @combos.page(params[:page])....
 
     respond_to do |format|
       format.html # index.html.erb
