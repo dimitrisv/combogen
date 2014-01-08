@@ -9,13 +9,14 @@ Combogen::Application.routes.draw do
 
   get "welcome/index"
 
+  match '/feed' => 'combos#feed', :as => 'combos_feed'
   match '/generate_options' => 'combos#generate_options', :as => 'generate_options'
   match '/generate_custom' => 'combos#generate_custom', :as => 'generate_custom'
   match '/generate_random' => 'combos#generate_random', :as => 'generate_random'
   # match '/order_by_combos' => 'tricks#order_by_combos', :as => 'order_by_combos'
 
   authenticated :tricker do
-    root :to => "combos#index"
+    root :to => "combos#feed"
   end
   root :to => 'welcome#index'
   

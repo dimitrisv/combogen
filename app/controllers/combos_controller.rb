@@ -19,6 +19,15 @@ class CombosController < ApplicationController
     end
   end
 
+  def feed
+    @combos = Combo.order(:updated_at).page(params[:page]).per(10)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @combos }
+    end
+  end
+
   # GET /combos/1
   # GET /combos/1.json
   def show
