@@ -3,8 +3,7 @@
     <div> <!--data-spy="affix" data-offset-top="60" data-offset-bottom="300"-->
       <h2 id="toolbar-title" class="bb2"><%= @tricker.name %></h2>
       <div class="mb20">
-        picture here.<br>
-        about text here.<br>
+        Showing all combos.
       </div>
     </div>
   </div>
@@ -12,9 +11,9 @@
   <div class="col-sm-8 col-md-9">
     <%= paginate @combos %>
     <div class="list container">
-      <% if !@tricker.combos.empty? %>
+      <% if !@combos.empty? %>
         <% @index = 0 %>
-        <% @tricker.combos.each do |combo| %>
+        <% @combos.each do |combo| %>
           <% @combo = combo %>
           <%= render 'combos/combo_row' %>
           <% @index += 1 %>
@@ -27,6 +26,6 @@
         </div>
       <% end %>
     </div>
+    <%= paginate @combos %>
   </div>
-  <%= paginate @combos %>
 </div>
