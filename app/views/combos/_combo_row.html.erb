@@ -1,21 +1,21 @@
 <div class="list-row container">
   <div>
-    <a href="#" class="main-link"> <!--"/combos/<%= @combo.id.to_s %>"-->
-      <span class="combo-sequence"><%= @combo.sequence %></span>
+    <a href="#" class="main-link"> <!--"/combos/<%= combo.id.to_s %>"-->
+      <span class="combo-sequence"><%= combo.sequence %></span>
     </a>
     <span class="actions pull-right">
       <% if current_tricker_can_edit_combo %>
-        <%= link_to "", edit_combo_path(@combo), :class => "fa fa-cog btn btn-xs btn-camouflaged" %>
-        <%= link_to "", @combo, method: :delete, data: { confirm: 'Are you sure?' }, :class => "fa fa-trash-o btn btn-xs btn-camouflaged" %>
+        <%= link_to "", edit_combo_path(combo), :class => "fa fa-cog btn btn-xs btn-camouflaged" %>
+        <%= link_to "", combo, method: :delete, data: { confirm: 'Are you sure?' }, :class => "fa fa-trash-o btn btn-xs btn-camouflaged" %>
       <% end %>
     </span>
   </div>
   <div class="clearfix"></div>
   <div>
     <small>
-      <%= @combo.no_tricks %>-trick combo ·
-      by <%= link_to @combo.tricker.name, @combo.tricker %>
-      <span class="pull-right"><%= time_ago_in_words(@combo.updated_at) %> ago</span>
+      <%= combo.no_tricks %>-trick combo ·
+      by <%= link_to combo.tricker.name, combo.tricker %>
+      <span class="pull-right"><%= time_ago_in_words(combo.updated_at) %> ago</span>
     </small>
   </div>
 </div>

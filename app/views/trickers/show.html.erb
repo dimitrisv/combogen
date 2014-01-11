@@ -12,11 +12,8 @@
     <%= paginate @combos %>
     <div class="list container">
       <% if !@combos.empty? %>
-        <% @index = 0 %>
         <% @combos.each do |combo| %>
-          <% @combo = combo %>
-          <%= render 'combos/combo_row' %>
-          <% @index += 1 %>
+          <%= render partial: 'combos/combo_row', locals: {combo: combo} %>
         <% end %>
       <% else %>
         <div class="list-row">

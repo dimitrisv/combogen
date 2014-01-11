@@ -48,11 +48,8 @@
               you can do<!--  with <%= @trick.name %> -->
             </h3>
           </div>
-          <% @index = 0 %>
           <% @combos_you_can_do.each do |combo| %>
-            <% @combo = combo %>
-            <%= render 'combos/combo_row' %>
-            <% @index += 1 %>
+            <%= render partial: 'combos/combo_row', locals: {combo: combo} %>
           <% end %>
         </div>
       </div>
@@ -63,11 +60,8 @@
           <div class="list-head">
             <h3><%= pluralize(@trick.combos.uniq.length, "related combo") %></h3>
           </div>
-          <% @index = 0 %>
           <% @related_combos.each do |combo| %>
-            <% @combo = combo %>
-            <%= render 'combos/combo_row' %>
-            <% @index += 1 %>
+            <%= render partial: 'combos/combo_row', locals: {combo: combo} %>
           <% end %>
         </div>
       </div>

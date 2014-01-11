@@ -26,6 +26,7 @@ class CombosController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @combos }
+      format.js
     end
   end
 
