@@ -48,8 +48,11 @@ $(document).ready(function(){
     var vidWidth = 100; // default (in %)
     var vidHeight = 315; // default (in px)
 
+    var startTime = "&start="+$(this).attr('data-start-time')
+    var endTime = "&end="+$(this).attr('data-end-time')
+
     // create iframe code
-    var iFrameCode = '<iframe width="' + vidWidth + '%" height="'+ vidHeight +'" scrolling="no" allowtransparency="true" allowfullscreen="true" src="http://www.youtube.com/embed/'+ videoId +'?autoplay=1&rel=0&wmode=transparent&showinfo=0" frameborder="0"></iframe>';
+    var iFrameCode = '<iframe width="' + vidWidth + '%" height="'+ vidHeight +'" scrolling="no" allowtransparency="true" allowfullscreen="true" src="http://www.youtube.com/embed/'+ videoId +'?autoplay=1&rel=0&wmode=transparent&showinfo=0'+ startTime + endTime +'" frameborder="0"></iframe>';
 
     // Replace modal's HTML with iFrame embed and open it
     $(targetElement+' .modal-body .video-container').html(iFrameCode);
@@ -57,12 +60,12 @@ $(document).ready(function(){
   });
 
   // When modal closes, stop video playback.
+  // Clear the 'src' attribute of the iframe so the video is forced to reload
   $('#watch-tutorial-modal').on('hidden.bs.modal', function (e) {
     $("#watch-tutorial-modal iframe").attr("src", "");
   });
   $('#watch-combo-modal').on('hidden.bs.modal', function (e) {
-    // refresh the 'src' attribute of the iframe so the video is forced to reload
-    $("#watch-combo-modal iframe").attr("src", $("#watch-combo-modal iframe").attr("src"));
+    $("#watch-combo-modal iframe").attr("src", "");
   });
 
 });

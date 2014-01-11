@@ -140,3 +140,5 @@ Video.create(tricker_id: 1, trick_id: Trick.find_by_name("Doubleleg").id, url: "
 Video.create(tricker_id: 1, trick_id: Trick.find_by_name("Flash Kick").id, url: "www.youtube.com/watch?v=9w8owtFTihc")
 Video.create(tricker_id: 1, trick_id: Trick.find_by_name("Sideswipe").id, url: "www.youtube.com/watch?v=k864os9ouog")
 Video.create(tricker_id: 1, trick_id: Trick.find_by_name("Jackknife").id, url: "www.youtube.com/watch?v=dkRM3MeSRXI")
+Video.create(tricker_id: 1, combo_id: 6, url: "http://www.youtube.com/watch?v=zEGtgVM6NzE")
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140104173359) do
+ActiveRecord::Schema.define(:version => 20140111193756) do
 
   create_table "combos", :force => true do |t|
     t.integer  "no_tricks"
@@ -109,6 +109,8 @@ ActiveRecord::Schema.define(:version => 20140104173359) do
     t.string   "url"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "start_time"
+    t.integer  "end_time"
   end
 
 end

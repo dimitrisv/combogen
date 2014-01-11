@@ -1,6 +1,14 @@
 <div class="list-row container">
   <div>
-    <a href="#" class="main-link"> <!--"/combos/<%= combo.id.to_s %>"-->
+    <a href="#" class="main-link"
+      <% if !combo.executions.empty? %>
+        data-toggle="modal"
+        data-target="#watch-combo-modal"
+        data-video-id=<%= combo.executions.first.get_video_id %>
+        data-start-time="<%= combo.executions.first.start_time.to_s %>"
+        data-end-time="<%= combo.executions.first.end_time.to_s %>"
+      <% end %>
+    >
       <span class="combo-sequence"><%= combo.sequence %></span>
     </a>
     <span class="actions pull-right">

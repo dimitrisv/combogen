@@ -2,7 +2,7 @@ class Video < ActiveRecord::Base
   belongs_to :tricker
   belongs_to :trick
   belongs_to :combo
-  attr_accessible :url, :tricker_id, :combo_id, :trick_id
+  attr_accessible :url, :tricker_id, :combo_id, :trick_id, :start_time, :end_time
 
   # Currently assumes youtube video
   def get_video_id

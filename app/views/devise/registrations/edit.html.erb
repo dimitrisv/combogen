@@ -1,8 +1,8 @@
-<div id="title" class="container">
+<div class="container container-mini tac">
   <h1>Editing My Account <!--%= resource_name.to_s.humanize %--></h1>
 </div>
 
-<div class="container">
+<div class="container container-mini card pt20">
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
     <%= devise_error_messages! %>
 
@@ -22,17 +22,6 @@
     <div class="mb20"><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password %></div>
 
-    <div class="mb20"><%= f.submit "Update", :class => "btn btn-blue" %></div>
+    <div class="mb20"><%= f.submit "Save Changes", :class => "btn btn-primary" %></div>
   <% end %>
 </div>
-
-<!-- <div class="container">
-  <h3>Unhappy?</h3>
-  <p><%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
-</div> -->
-
-<br class="clear">
-
-<div id="actions-bottom" class="container">
-  <%= link_to "Back", :back, :class => "btn mrs" %>
-<div>
