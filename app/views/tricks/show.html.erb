@@ -43,27 +43,26 @@
       <div class="col-md-6">
         <div class="list">
           <div class="list-head">
-            <h3>
-              <%= pluralize(@combos_you_can_do.count, "combo") %>
-              you can do<!--  with <%= @trick.name %> -->
-            </h3>
+            <h3>Combos you can do</h3>
           </div>
           <% @combos_you_can_do.each do |combo| %>
             <%= render partial: 'combos/combo_row', locals: {combo: combo} %>
           <% end %>
         </div>
+        <%= link_to "See all ("+@combos_you_can_do.count.to_s+") →", "#", :class=> "btn btn-camouflaged btn-sm mt10" %>
       </div>
     <% end %>
     <% if !@related_combos.empty? %>
       <div class="col-md-6">
         <div class="list">
           <div class="list-head">
-            <h3><%= pluralize(@trick.combos.uniq.length, "related combo") %></h3>
+            <h3>Related combos</h3>
           </div>
           <% @related_combos.each do |combo| %>
             <%= render partial: 'combos/combo_row', locals: {combo: combo} %>
           <% end %>
         </div>
+        <%= link_to "See all ("+@trick.combos.uniq.length.to_s+") →", "#", :class=> "btn btn-camouflaged btn-sm mt10" %>
       </div>
     <% end %>
   <% end %>
