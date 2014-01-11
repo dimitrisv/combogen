@@ -164,6 +164,16 @@ input[type="checkbox"]{
   .error { color: $red; }
 }
 
+#devise-errors {
+  h2 { display: none; }
+  ul {
+    padding: 20px 0 0 20px;
+    color: $red;
+    list-style-type: none;
+    text-align: left;
+  }
+}
+
 
 
 /* Home Page */
