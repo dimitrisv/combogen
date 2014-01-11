@@ -103,6 +103,8 @@ h1, h2, h3, h4 {
 .container-tiny { max-width: 480px; }
 .label-small { font-weight: normal; }
 .scroller { max-height: 300px; overflow: scroll; }
+.page a, .page.current { padding: 3px; }
+.pagination { margin: 10px 0; }
 
 .card {
   background-color: $boxedBg;
@@ -285,7 +287,6 @@ input[type="checkbox"]{
 
 .list {
   padding: 0;
-  padding-bottom: 20px;
   background-color: white;
   .list-head {
     padding: 8px 0 5px 0;
