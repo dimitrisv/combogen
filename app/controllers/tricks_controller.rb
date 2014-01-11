@@ -57,7 +57,7 @@ class TricksController < ApplicationController
   # GET /tricks/1.json
   def show
     @trick = Trick.find(params[:id])
-    @related_combos = @trick.combos.uniq # get all the combos using this trick
+    @related_combos = @trick.combos.uniq.sample(5) # get all the combos using this trick
 
     filter_by_tricking_style
 
@@ -199,6 +199,7 @@ class TricksController < ApplicationController
     # (style-combo).count == style.count - combo.count
     # this hits the database twice. is there a better way?
     @combos_you_can_do.reject! { |c| ((@trick_list-c.tricks.map(&:id)).count != (@trick_list.count - c.tricks.uniq.map(&:id).count)) }
+    @combos_you_can_do.sample(5)
   end
 
 end

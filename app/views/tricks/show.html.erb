@@ -15,7 +15,7 @@
   <% if !@trick.tutorials.empty? %>
     <a class="btn btn-base mt20" data-toggle="modal"
     data-target="#watch-tutorial-modal" data-video-id=<%= @trick.tutorials.first.get_video_id %>>
-      <i class="glyphicon glyphicon-film mr5"></i> Watch Tutorial
+      <i class="glyphicon glyphicon-film mr5"></i> Tutorial
     </a>
   <% end %>
 </div>
@@ -48,14 +48,12 @@
               you can do<!--  with <%= @trick.name %> -->
             </h3>
           </div>
-          <div class="scroller">
-            <% @index = 0 %>
-            <% @combos_you_can_do.each do |combo| %>
-              <% @combo = combo %>
-              <%= render 'combos/combo_row' %>
-              <% @index += 1 %>
-            <% end %>
-          </div>
+          <% @index = 0 %>
+          <% @combos_you_can_do.each do |combo| %>
+            <% @combo = combo %>
+            <%= render 'combos/combo_row' %>
+            <% @index += 1 %>
+          <% end %>
         </div>
       </div>
     <% end %>
@@ -65,14 +63,12 @@
           <div class="list-head">
             <h3><%= pluralize(@trick.combos.uniq.length, "related combo") %></h3>
           </div>
-          <div class="scroller">
-            <% @index = 0 %>
-            <% @related_combos.each do |combo| %>
-              <% @combo = combo %>
-              <%= render 'combos/combo_row' %>
-              <% @index += 1 %>
-            <% end %>
-          </div>
+          <% @index = 0 %>
+          <% @related_combos.each do |combo| %>
+            <% @combo = combo %>
+            <%= render 'combos/combo_row' %>
+            <% @index += 1 %>
+          <% end %>
         </div>
       </div>
     <% end %>
