@@ -19,7 +19,11 @@
   <div class="col-sm-8 col-md-9">
     <%= render 'shared/flash_messages' %>
     <!-- Print all combos from the current tricker -->
-    <!--%= paginate @combos %-->
+    <div class="row">
+      <div class="pull-right">
+        <%= paginate @combos %>
+      </div>
+    </div>
     <div class="list container">
       <% if !@combos.empty? %>
         <% @index = 0 %>
@@ -35,6 +39,11 @@
           </div>
         </div>
       <% end %>
+    </div>
+    <div class="row">
+      <div class="pull-right">
+        <%= paginate @combos %>
+      </div>
     </div>
   </div>  
 </div>
