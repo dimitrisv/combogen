@@ -49,6 +49,39 @@
 #combo_lists_input .choices-group li:last-child { margin-bottom: 0; }
 #combo_lists_input .choices-group li label { margin: 0; font-weight: normal; }
 
+#video_fields {
+  padding-top: 6px;
+  ol {
+    padding-top: 10px;
+    li.input {
+      display: block;
+      padding: 0;
+      margin-bottom: 6px;
+      label {
+        float: none;
+        width: 70px;
+        display: inline-block;
+        font-weight: normal;
+        color: #456;
+        text-align: left;
+        font-size: 1em;
+        padding: 0;
+      }
+      input {
+        display: inline-block;
+        padding: 6px;
+        margin-bottom: 6px;
+        &[type="number"] {
+          width: 70px;
+        }
+      }
+    }
+    li:last-child, li:last-child input {
+      margin-bottom: 0;
+    }
+  }
+}
+
 
 /* Edit Tricking Style Form */
 

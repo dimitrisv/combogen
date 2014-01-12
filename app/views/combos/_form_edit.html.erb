@@ -30,9 +30,11 @@
 
     <hr class="clearfix">
     <b>Video Details</b>
-    <%= f.semantic_fields_for :execution do |video| %>
-      <% video.inputs :url, :start_time, :end_time %>
-    <% end %>
+    <div id="video_fields">
+      <%= f.semantic_fields_for :execution do |video| %>
+        <% video.inputs :url, :start_time, :end_time %>
+      <% end %>
+    </div>
   <% end %>
   <%= f.actions do %>
     <hr class="clearfix">

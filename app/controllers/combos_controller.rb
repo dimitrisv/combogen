@@ -73,6 +73,7 @@ class CombosController < ApplicationController
   # POST /combos.json
   def create
     @combo = Combo.create
+    @combo.execution = Video.create
     @combo.tricker_id = current_tricker.id
 
     remove_destroyed
