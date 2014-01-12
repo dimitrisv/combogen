@@ -10,7 +10,9 @@ class Combo < ActiveRecord::Base
   has_one :execution, class_name: "Video"
   
   accepts_nested_attributes_for :tricks, :reject_if => lambda { |a| a[:content].blank? }
-  attr_accessible :no_tricks, :combo_id, :tricks_attributes, :tricker_id, :sequence
+  accepts_nested_attributes_for :execution
+
+  attr_accessible :no_tricks, :combo_id, :tricks_attributes, :tricker_id, :sequence, :execution
 
   def render_sequence
     self.sequence = self.elements.where(:index => 1).first.trick.name

@@ -28,6 +28,11 @@
     <b>Lists</b>
     <%= f.input :lists, :collection => current_tricker.lists, :as => :check_boxes %>
 
+    <hr class="clearfix">
+    <b>Video Details</b>
+    <%= f.semantic_fields_for :execution do |video| %>
+      <% video.inputs :url, :start_time, :end_time %>
+    <% end %>
   <% end %>
   <%= f.actions do %>
     <hr class="clearfix">

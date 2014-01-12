@@ -14,6 +14,8 @@ class CombosController < ApplicationController
 
   def my_combos
     @new_combo = Combo.new
+    @new_combo.execution = Video.new
+
     collection = current_tricker.combos
     if params[:list]
       @list = current_tricker.lists.find_by_id(params[:list])
@@ -45,6 +47,7 @@ class CombosController < ApplicationController
   # GET /combos/new.json
   def new
     @combo = Combo.new
+    @combo.execution = Video.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -56,6 +59,8 @@ class CombosController < ApplicationController
   def edit
     @combo = Combo.find(params[:id])
     get_tricks
+    @combo.execution = Video.new unless !@combo.execution.nil?
+
     if !(current_tricker.id.equal? @combo.tricker_id) && !current_tricker.try(:admin?)
       respond_to do |format|
         format.html { redirect_to @combo, alert: 'You need admin privileges for that action!' }
@@ -77,6 +82,7 @@ class CombosController < ApplicationController
     create_combo_elements
 
     update_lists
+    update_execution
 
     @combo.render_sequence
 
@@ -116,6 +122,7 @@ class CombosController < ApplicationController
     create_combo_elements
 
     update_lists
+    update_execution
 
     @combo.render_sequence
 
@@ -277,4 +284,15 @@ private
     end
   end
 
+  def update_execution
+    new_execution = params[:combo][:execution_attributes]
+    if !new_execution[:url].empty?
+      @combo.execution.url = new_execution[:url]
+      @combo.execution.start_time = new_execution[:start_time].to_i unless new_execution[:start_time].empty?
+      @combo.execution.end_time = new_execution[:end_time].to_i unless new_execution[:end_time].empty?
+      @combo.execution.save
+    elsif @combo.execution.url.nil?
+      @combo.execution = nil
+    end
+  end
 end
