@@ -1,16 +1,18 @@
 <div class="list-row container">
   <div>
-    <a href="#" class="main-link"
-      <% if !combo.execution.nil? %>
+    <% if !combo.execution.nil? %>
+      <a href="#" class="main-link"
         data-toggle="modal"
         data-target="#watch-combo-modal"
         data-video-id=<%= combo.execution.get_video_id %>
         data-start-time="<%= combo.execution.start_time.to_s %>"
         data-end-time="<%= combo.execution.end_time.to_s %>"
-      <% end %>
-    >
-      <span class="combo-sequence"><%= combo.sequence %></span>
-    </a>
+      >
+        <span class="combo-sequence"><%= combo.sequence %> <i class="fa fa-youtube-play"></i></span>
+      </a>
+    <% else %>
+      <span class="combo-sequence no-link"><%= combo.sequence %></span>
+    <% end %>
     <span class="actions pull-right">
       <% @combo = combo %>
       <% if current_tricker_can_edit_combo %>
