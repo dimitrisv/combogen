@@ -22,11 +22,11 @@
           </p>
           <hr>
           <p>
-            <%= label_tag :no_tricks, "Use tricks from" %><br>
-            <%= radio_button_tag :filter, "list", true %>
-            <%= label_tag :filter_list, "My Trick List", :class => "label-small" %><br>
+            <%= label_tag :no_tricks, "Use which tricks?" %><br>
             <%= radio_button_tag :filter, "database" %>
-            <%= label_tag :filter_database, "The Database", :class => "label-small" %>
+            <%= label_tag :filter_database, "All of them", :class => "label-small" %><br>
+            <%= radio_button_tag :filter, "list", true %>
+            <%= label_tag :filter_list, "Only what I can do", :class => "label-small" %>
           </p>        
         </div>
         <div class="modal-footer">

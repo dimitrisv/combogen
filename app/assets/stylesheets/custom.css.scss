@@ -143,6 +143,11 @@ input, textarea {
   @include transition(all, 300ms, ease-out);
 }
 
+#no_tricks {
+  padding: 6px;
+  font-size: 1em;
+}
+
 input:focus,
 textarea:focus {
   background-color: white;
