@@ -17,15 +17,15 @@
           </p>
           <hr class="clearfix">
           <p>
-            <%= label_tag :no_tricks, "Number of tricks", :class => "mr10" %>
-            <%= number_field_tag :no_tricks, 5, in: 2..10 %>
+            <%= label_tag :no_tricks, "Combo length", :class => "mr10" %>
+            <%= number_field_tag :no_tricks, 5, in: 2..10 %> tricks
           </p>
           <hr>
           <p>
             <%= label_tag :no_tricks, "Use which tricks?" %><br>
-            <%= radio_button_tag :filter, "database" %>
+            <%= radio_button_tag :filter, "database", true %>
             <%= label_tag :filter_database, "All of them", :class => "label-small" %><br>
-            <%= radio_button_tag :filter, "list", true %>
+            <%= radio_button_tag :filter, "list" %>
             <%= label_tag :filter_list, "Only what I can do", :class => "label-small" %>
           </p>        
         </div>
