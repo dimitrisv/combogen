@@ -4,6 +4,8 @@
 
 /* Globals */
 
+html, body { height: 100%; }
+
 body {
   color: $pageHeaders;
   background-color: white;
@@ -429,8 +431,14 @@ input[type="checkbox"]{
 
 /* footer */
 
+#wrap {
+  min-height: 100%;
+  height: auto;
+  margin: 0 auto -100px;
+  padding: 0 0 100px;
+}
+
 footer {
-  margin-top:40px;
   height: 100px;
   padding-top: 20px;
   background-color: $midnightBlue;
