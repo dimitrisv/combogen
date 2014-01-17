@@ -1,6 +1,3 @@
-<div class="container mb20">
-  
-</div>
 <div class="container container-mini mb20">
   <h1>
     <%= @tricking_style.name %>
@@ -9,16 +6,16 @@
     <% end %>
   </h1>
   <small>
-    by <%= link_to @tricking_style.tricker.name, "#" %>
+    by <%= link_to @tricking_style.tricker.name, tricker_path(@tricking_style.tricker) %>
   </small>
   <%= render 'shared/flash_messages' %>
 </div>
-<div class="container container-mini card mb20">
+<!--div class="container container-mini card mb20">
   <h2>Description</h2>
   <p><%= @tricking_style.description %></p>
-</div>
-<div class="container container-mini card mb20">
-  <h2>Tricks</h2>
+</div-->
+<div class="container container-mini card mb20 pt20">
+  <!--h2>Tricks</h2-->
   <ul class="trick-list">
     <% @tricking_style.tricks.order(:name).each do |t| %>
       <li><%= t.name %></li>
