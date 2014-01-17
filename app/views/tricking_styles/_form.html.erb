@@ -11,35 +11,17 @@
   <% end %>
 
   <%= f.inputs do %>
-    <% if @tricking_style.name != "My Trick List" %>
+    <!-- <% if @tricking_style.name != "My Trick List" %>
       <%= f.input :name %>
     <% else %>
       <%= f.input :name, :value => @tricking_style.name, :input_html => { :readonly => true } %>
     <% end %>
-    <%= f.input :description %>
-    <b>Tricks</b>
-    <br class="clearfix"><br>
-    <%= f.input :tricks, :as => :check_boxes %>
+    <%= f.input :description %>-->
+    <!--b>Tricks</b>
+    <br class="clearfix"><br-->
+    <%= f.input :tricks, :as => :check_boxes, :collection => Trick.order("name ASC").all %>
   <% end %>
   <%= f.actions do %>
-    <%= f.action :submit, :button_html => { :class => "btn btn-base" } %>
+    <%= f.action :submit, :label => "Save Changes" , :button_html => { :class => "btn btn-base" } %>
   <% end %>
 <% end %>
-<!--
-<%= form_for(@tricking_style) do |f| %>
-  <p class="mb20">
-    <%= f.text_field :name, :placeholder => @tricking_style.name %>
-  </p>
-  <p class="mb20">
-    <%= f.text_area :description, :placeholder => @tricking_style.description %>
-  </p>
-  <hr>
-  <p>
-    <h4>Tricks</h4>
-    <!--%= f.select :tricks, @trick_types, :as => :check_boxes %->
-  </p>
-  <hr>
-  <p>
-    <%= f.submit "Save Changes", :class => "btn btn-base" %>
-  </p>
-<% end %>-->
