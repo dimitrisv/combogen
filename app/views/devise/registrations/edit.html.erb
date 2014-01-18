@@ -4,7 +4,9 @@
 
 <div class="container container-tiny card pt20">
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-    <%= devise_error_messages! %>
+    <div id="devise-errors" class="mb20">
+        <%= devise_error_messages! %>
+    </div>
 
     <div class="mb20">
       <%= f.label :email %><br />

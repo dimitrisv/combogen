@@ -4,23 +4,23 @@
 		Soon you'll be a part of our awesome community!
 	</p>
 </div>
-<div class="container container-tiny card tac">
+<div class="container container-tiny card tac pt20">
 	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
 		<div id="devise-errors" class="mb20">
 	    	<%= devise_error_messages! %>
 	  </div>
 
 	  <div class="mb10">
-	  	<%= f.text_field :name, :autofocus => true, :placeholder => "Name" %>
+	  	<%= f.text_field :name, :autofocus => true, :placeholder => "Name", :class => "large" %>
 	  </div>
 	  <div class="mb10">
-	  	<%= f.text_field :email, :placeholder => "Email" %>
+	  	<%= f.text_field :email, :placeholder => "Email", :class => "large" %>
 		</div>
 	  <div class="mb10">
-	  	<%= f.password_field :password, :placeholder => "Password" %>
+	  	<%= f.password_field :password, :placeholder => "Password", :class => "large" %>
 	  </div>
 	  <div class="mb20">
-	  	<%= f.password_field :password_confirmation, :placeholder => "Confirm password"  %>
+	  	<%= f.password_field :password_confirmation, :placeholder => "Confirm password", :class => "large" %>
 	  </div>
 	  <!-- <div class="mb20"><%= f.label :sampler %><br />
 	  <%= f.text_field :sampler %></div>

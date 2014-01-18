@@ -39,9 +39,6 @@ class TricksController < ApplicationController
 
     # NOTE: SQL is much faster. Try to do it that way.
     @tricks.sort_by! { |t| t.name }
-    
-    get_trick_types
-    get_difficulty_classes
   end
 
   def order_by_combos
@@ -72,8 +69,6 @@ class TricksController < ApplicationController
   # GET /tricks/new.json
   def new
     @trick = Trick.new
-    get_trick_types
-    get_difficulty_classes
 
     respond_to do |format|
       format.html # new.html.erb
@@ -84,8 +79,6 @@ class TricksController < ApplicationController
   # GET /tricks/1/edit
   def edit
     @trick = Trick.find(params[:id])
-    get_trick_types
-    get_difficulty_classes
     if !(current_tricker.id.equal? @trick.tricker_id) && !current_tricker.try(:admin?)
       respond_to do |format|
         format.html { redirect_to @trick, alert: 'You need admin privileges for that action!' }
@@ -176,15 +169,6 @@ class TricksController < ApplicationController
   end
 
   private
-
-  def get_trick_types
-    @trick_types = [ "Kick", "Flip", "Twist", "EX", "Invert", "Groundmove", "Kick, Flip",
-      "Flip, Twist", "Kick, Twist", "Kick, Flip, Twist" ]
-  end
-
-  def get_difficulty_classes
-    @difficulty_classes = [ "A", "B", "C", "D", "E", "F", "FND", "EX" ]
-  end
 
   # Filters a collection of combos using the user's trick list
   # Can be generalized to use any tricking style
