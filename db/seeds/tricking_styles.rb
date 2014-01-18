@@ -1,2 +1,0 @@
-TrickingStyle.create(:id => 1, :tricker_id => 1, :name => "My Trick List", :description => "All the tricks I can do.")
-TrickingStyle.create(:id => 2, :tricker_id => 2, :name => "My Trick List", :description => "All the tricks I can do.")
