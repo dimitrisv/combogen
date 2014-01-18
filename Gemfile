@@ -21,6 +21,7 @@ end
 group :development, :test do
   gem 'pry-rails'
   gem 'sqlite3'
+  gem 'seed_dumper'
 end
 
 group :production do
