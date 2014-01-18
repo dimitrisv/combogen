@@ -19,6 +19,5 @@ Video.create(:id => 25, :combo_id => 79, :url => "http://www.youtube.com/watch?v
 Video.create(:id => 30, :combo_id => 11, :url => "http://www.youtube.com/watch?v=1PMJyFEhQWA", :start_time => 327, :end_time => 333)
 Video.create(:id => 33, :combo_id => 5, :url => "www.youtube.com/watch?v=9DDuwCHyy1g", :start_time => 94, :end_time => 100)
 Video.create(:id => 34, :combo_id => 81, :url => "www.youtube.com/watch?v=9DDuwCHyy1g", :start_time => 62, :end_time => 68)
-Video.create(:id => 40)
 Video.create(:id => 41, :combo_id => 80, :url => "http://www.youtube.com/watch?v=0KG9xnCvGDk", :start_time => 203, :end_time => 210)
 Video.create(:id => 42, :combo_id => 84, :url => "http://www.youtube.com/watch?v=M-7ivrZAGVY", :start_time => 170, :end_time => 175)
