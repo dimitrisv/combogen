@@ -303,7 +303,8 @@ private
       @combo.execution.save
     elsif @combo.execution.id.nil? || @combo.execution.url.nil?
       # if it's a new unsaved Video, remove it
-      @combo.execution = nil
+      @combo.execution.save
+      @combo.execution.delete
     else
       # if it's an existing video, delete it from the database
       @combo.execution.delete
