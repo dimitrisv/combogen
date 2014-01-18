@@ -283,18 +283,17 @@ private
 
   def update_execution
     new_execution = params[:combo][:execution_attributes]
-binding.pry
+
     # parse for tabs and spaces?
     if !new_execution[:url].empty?
       @combo.execution.url = new_execution[:url]
-      
-      # make them null if empty!
+
       if new_execution[:start_time].empty?
         @combo.execution.start_time = nil
       else
         @combo.execution.start_time = new_execution[:start_time].to_i
       end
-
+      
       if new_execution[:end_time].empty?
         @combo.execution.end_time = nil
       else
@@ -309,6 +308,5 @@ binding.pry
       # if it's an existing video, delete it from the database
       @combo.execution.delete
     end
-binding.pry
   end
 end

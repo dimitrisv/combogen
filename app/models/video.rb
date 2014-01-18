@@ -4,6 +4,9 @@ class Video < ActiveRecord::Base
   belongs_to :combo
   attr_accessible :url, :tricker_id, :combo_id, :trick_id, :start_time, :end_time
 
+  validates_numericality_of :start_time, :greater_than_or_equal_to => 0, :only_integer => true
+  validates_numericality_of :end_time  , :greater_than_or_equal_to => 0, :only_integer => true
+
   # Currently assumes youtube video
   def get_video_id
     if url[/youtu\.be\/([^\?]*)/]
