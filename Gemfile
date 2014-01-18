@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.0.0'
 
 gem 'rails', '3.2.13'
 
@@ -7,6 +8,7 @@ gem 'formtastic'
 gem 'nested_form'
 gem 'devise'
 gem 'kaminari'
+gem 'sass-rails', '~> 3.2.3'
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
                           :github => 'anjlab/bootstrap-rails',
                           :branch => '3.0.0'
