@@ -90,8 +90,8 @@ class TrickingStylesController < ApplicationController
   private
 
   def assign_attributes
-    @tricking_style.name = params[:tricking_style][:name]
-    @tricking_style.description = params[:tricking_style][:description]
+    @tricking_style.name = params[:tricking_style][:name] if params[:tricking_style][:name]
+    @tricking_style.description = params[:tricking_style][:description] params[:tricking_style][:description]
     @tricking_style.tricks = []
     @trick_ids = params[:tricking_style][:trick_ids]
     @trick_ids.reject! { |c| c.empty? }
