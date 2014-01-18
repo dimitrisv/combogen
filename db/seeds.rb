@@ -67,6 +67,9 @@ Trick.create( :name => "Gainer Switch", :difficulty => "B", :trick_type => "Flip
 Trick.create( :name => "Pop 720 Double", :difficulty => "C", :trick_type => "Kick")
 Trick.create( :name => "Hyper Aerial", :difficulty => "C", :trick_type => "Invert" )
 
+Trick.create( :name => "Webster", :difficulty => "B", :trick_type => "Flip" )
+Trick.create( :name => "Round Off", :difficulty => "A", :trick_type => "Flip" )
+
 # Combos
 Combo.create(:no_tricks => 5, :tricker_id => 1, :sequence => "Hook > Masterscoot > Gainerflash > Backside 900 > Doubleleg")
 Element.create(:combo_id => Combo.last.id, :trick_id => Trick.find_by_name("Hook").id, :index => 1)
