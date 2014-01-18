@@ -1,5 +1,5 @@
 class Tricker < ActiveRecord::Base
-  has_one :tricking_style, :dependent => :delete_all
+  has_one :tricking_style, :dependent => :delete
   has_many :lists, :dependent => :delete_all
   has_many :tricks, :dependent => :delete_all
   has_many :combos, :dependent => :delete_all
