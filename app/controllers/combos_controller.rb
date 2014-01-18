@@ -109,11 +109,7 @@ class CombosController < ApplicationController
 
     # If after the editing the combo has < 2 tricks, return with error message
     if @combo.no_tricks < 2
-      # REDIRECT TO EDIT PAGE WITH ERROR MESSAGE! BOOM!!!
-      respond_to do |format|
-        format.html { redirect_to edit_combo_path(@combo), alert: 'A combo must consist of at least two tricks!' }
-        format.json { head :no_content }
-      end
+      redirect_to edit_combo_path(@combo), alert: 'A combo must consist of at least two tricks!'
       return
     end
 
@@ -287,13 +283,32 @@ private
 
   def update_execution
     new_execution = params[:combo][:execution_attributes]
+binding.pry
+    # parse for tabs and spaces?
     if !new_execution[:url].empty?
       @combo.execution.url = new_execution[:url]
-      @combo.execution.start_time = new_execution[:start_time].to_i unless new_execution[:start_time].empty?
-      @combo.execution.end_time = new_execution[:end_time].to_i unless new_execution[:end_time].empty?
+      
+      # make them null if empty!
+      if new_execution[:start_time].empty?
+        @combo.execution.start_time = nil
+      else
+        @combo.execution.start_time = new_execution[:start_time].to_i
+      end
+
+      if new_execution[:end_time].empty?
+        @combo.execution.end_time = nil
+      else
+        @combo.execution.end_time = new_execution[:end_time].to_i
+      end
+
       @combo.execution.save
-    elsif @combo.execution.url.nil?
+    elsif @combo.execution.id.nil? || @combo.execution.url.nil?
+      # if it's a new unsaved Video, remove it
       @combo.execution = nil
+    else
+      # if it's an existing video, delete it from the database
+      @combo.execution.delete
     end
+binding.pry
   end
 end
