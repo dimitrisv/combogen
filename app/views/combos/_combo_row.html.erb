@@ -1,10 +1,10 @@
 <div class="list-row container">
   <div>
-    <% if !combo.execution.nil? %>
+    <% unless combo.execution.nil? %>
       <a href="#" class="main-link"
         data-toggle="modal"
         data-target="#watch-combo-modal"
-        data-video-id=<%= combo.execution.get_video_id %>
+        data-video-id="<%= combo.execution.get_video_id %>"
         data-start-time="<%= combo.execution.start_time.to_s %>"
         data-end-time="<%= combo.execution.end_time.to_s %>"
       >

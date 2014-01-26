@@ -284,28 +284,23 @@ private
   def update_execution
     new_execution = params[:combo][:execution_attributes]
 
-    # parse for tabs and spaces?
-    if !new_execution[:url].empty?
+    if new_execution[:url].present?
       @combo.execution.url = new_execution[:url]
 
-      if new_execution[:start_time].empty?
+      unless new_execution[:start_time].present?
         @combo.execution.start_time = nil
       else
         @combo.execution.start_time = new_execution[:start_time].to_i
       end
       
-      if new_execution[:end_time].empty?
+      unless new_execution[:end_time].present?
         @combo.execution.end_time = nil
       else
         @combo.execution.end_time = new_execution[:end_time].to_i
       end
 
       @combo.execution.save
-    elsif @combo.execution.id.nil? || @combo.execution.url.nil?
-      # if it's a new unsaved Video, remove it
-      @combo.execution = nil
     else
-      # if it's an existing video, delete it from the database
       @combo.execution.delete
     end
   end
