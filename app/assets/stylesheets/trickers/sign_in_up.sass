@@ -1,0 +1,42 @@
+
+#tricker-sign-in,
+#tricker-sign-up
+  padding: 20px 0 30px
+  text-align: center
+  .logo
+    margin-bottom: 20px
+    img
+      width: 200px
+      height: 60px
+  h3
+    margin-bottom: 30px
+  #sign-in-inputs,
+  #sign-up-inputs
+    width: 300px
+    padding: 30px 40px 20px
+    margin: 0 auto 20px
+    background-color: #f7f7f7
+    @include box-sizing(content-box)
+    @include border-radius(2px)
+    @include box-shadow(0px 2px 2px rgba(0, 0, 0, 0.3))
+    input[type='text'],
+    input[type='email'],
+    input[type='password']
+      width: 100%
+      font-size: 15px
+      height: 36px
+      padding: 0 8px
+      margin: 0 0 10px
+      color: #404040
+      background: #fff
+      border: 1px solid #d9d9d9
+      @include box-sizing(border-box)
+      @include border-radius(1px)
+      &:hover
+        border: 1px solid #b9b9b9
+        @include box-shadow(inset 0 1px 2px rgba(0,0,0,0.1))
+      &:focus
+        outline: none
+        border: 1px solid #4d90fe
+    .devise-links
+      margin-top: 10px

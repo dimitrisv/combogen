@@ -12,6 +12,7 @@
 
 @import 'landing_page'
 @import 'tricktionary'
+@import 'trickers/sign_in_up'
 
 
 /* Basic Layout */
@@ -19,16 +20,39 @@
 html, body
   height: 100%
 
-.container
-  max-width: 970px
+#wrap
+  min-height: 100%
+  height: auto
+  margin: 0 auto -40px
+  padding: 0 0 80px
+  #main
+    margin: 0 auto
+
+footer
+  padding: 20px 0
+  color: white
+  background: black
+  @include box-sizing(content-box)
+  ul
+    text-align: right
+    margin-bottom: 0
+  a
+    color: white
+    &:hover
+      color: white
+
+
+
+/* Bootstrap Overrides */
 
 #navigation
   @include border-radius(0)
 
-#wrap
-  min-height: 100%
-  height: auto
-  margin: 0 auto -100px
-  padding: 0 0 140px
-  #main
-    margin: 0 auto
+h1, h2, h3
+  font-weight: 300
+
+a:hover
+  color: #428bca
+
+.container
+  max-width: 970px

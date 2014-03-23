@@ -1,4 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
+
   def create
     super
     resource.tricking_style = TrickingStyle.create(:tricker_id => resource.id, :name => "My Trick List", :description => "All the tricks I can do.")
