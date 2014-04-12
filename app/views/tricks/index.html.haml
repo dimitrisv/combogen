@@ -9,7 +9,7 @@
         New Trick
   #tricks-list.clearfix
     = render 'shared/flash_messages'
-    .list.container
+    .list
       - unless @tricks.empty?
         - @tricks.each do |trick|
           - @trick = trick

@@ -1,22 +1,20 @@
-.container
-  #combos-affix.col-sm-4.col-md-3
-    %div
-      / data-spy="affix" data-offset-top="60" data-offset-bottom="300"
-      %h2#toolbar-title.bb2 Combo Feed
-      .mb20
-        Showing all the latest combos.
-        %br/
-  .col-sm-8.col-md-9
+#combos-wrapper.container
+  .section-header.clearfix
+    .col-sm-4
+      %h2 Combo Feed
+    .col-sm-4
+      Showing all the latest combos.
+    .col-sm-4
+      %input#search{placeholder: 'Find combos...'}
+  #combos-list.clearfix
     = render 'shared/flash_messages'
-    / Print all combos from the current tricker
     = paginate @combos
-    .list.container
-      - if !@combos.empty?
+    .list
+      - unless @combos.empty?
         - @combos.each do |combo|
           = render partial: 'combo_row', locals: {combo: combo}
       - else
         .list-row
-          .container.empty-list-head
-            %h3 There are currently no combos in this list.
+          %h3 There are currently no combos in this list.
     = paginate @combos
 = render 'watch_combo_modal'
