@@ -10,4 +10,4 @@ class LevelApp.Router extends Backbone.Router
     "": "test"
 
   test: () ->
-    alert('welcome to backbone!')
+    # alert('welcome to backbone!')
