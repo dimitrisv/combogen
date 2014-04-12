@@ -13,6 +13,7 @@
 @import 'combos'
 @import 'tricking_styles'
 @import 'trickers/sign_in_up'
+@import 'trickers/account'
 
 
 /* Basic Layout */
@@ -26,6 +27,14 @@ html, body
   padding: 0 0 80px
   #main
     margin: 0 auto
+  .section-header
+    margin-bottom: 20px
+    border-bottom: 2px solid #eaedee
+    @include box-sizing(border-box)
+    .col-sm-4
+      height: 41px
+    h2
+      margin: 0 0 8px
 
 footer
   padding: 20px 0

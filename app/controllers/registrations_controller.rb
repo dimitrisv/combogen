@@ -1,5 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
 
+  layout 'application', only: [:edit, :update]
+
   def create
     super
     resource.tricking_style = TrickingStyle.create(:tricker_id => resource.id, :name => "My Trick List", :description => "All the tricks I can do.")
@@ -8,4 +10,5 @@ class RegistrationsController < Devise::RegistrationsController
     resource.lists << List.create(:tricker_id => resource.id, :name => "Working on",  :visibility => "Public" )
     resource.lists << List.create(:tricker_id => resource.id, :name => "Landed",      :visibility => "Public" )
   end
+
 end
