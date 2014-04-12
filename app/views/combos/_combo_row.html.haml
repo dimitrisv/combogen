@@ -1,7 +1,7 @@
 .list-row
   .combo-top.clearfix
     - unless combo.execution.nil?
-      %a.main-link{"data-end-time" => combo.execution.end_time.to_s, "data-start-time" => combo.execution.start_time.to_s, "data-target" => "#watch-combo-modal", "data-toggle" => "modal", "data-video-id" => combo.execution.get_video_id, :href => "#"}
+      %a.main-link{"data-end-time" => combo.execution.end_time.to_s, "data-start-time" => combo.execution.start_time.to_s, "data-target" => "#watch-combo-modal", "data-toggle" => "modal", "data-video-id" => combo.execution.uid, :href => "#"}
         .combo-sequence
           = combo.sequence
     - else
