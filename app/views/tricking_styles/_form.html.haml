@@ -1,0 +1,21 @@
+= semantic_form_for(@tricking_style) do |f|
+  - if @tricking_style.errors.any?
+    #error_explanation
+      = pluralize(@tricking_style.errors.count, "error")
+      prohibited this tricking_style from being saved:
+      %ul
+        - @tricking_style.errors.full_messages.each do |msg|
+          %li= msg
+  = f.inputs do
+    /
+      <haml:silent> if @tricking_style.name != &amp;quot;My Trick List&amp;quot; </haml:silent><haml:block>
+      <haml:loud> f.input :name </haml:loud>
+      </haml:block><haml:silent>     else
+      </haml:silent><haml:block>      <haml:loud> f.input :name, :value =&amp;gt; @tricking_style.name, :input_html =&amp;gt; { :readonly =&amp;gt; true } </haml:loud>
+      </haml:block>    <haml:loud> f.input :description </haml:loud>
+    /
+      b>Tricks</b>
+      <br class="clearfix"><br
+    = f.input :tricks, :as => :check_boxes, :collection => Trick.order("name ASC").all
+  = f.actions do
+    = f.action :submit, :label => "Save Changes" , :button_html => { :class => "btn btn-base" }

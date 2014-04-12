@@ -1,0 +1,18 @@
+.container.container-mini.mb20
+  %h1
+    = @tricking_style.name
+    - if current_tricker_can_edit_style
+      = link_to ' Edit', edit_tricking_style_path(@tricking_style), :class => "fa fa-pencil btn btn-camouflaged mr10"
+  %small
+    by #{link_to @tricking_style.tricker.name, tricker_path(@tricking_style.tricker)}
+  = render 'shared/flash_messages'
+/
+  div class="container container-mini card mb20">
+  <h2>Description</h2>
+  <p><haml:loud> @tricking_style.description </haml:loud></p>
+  </div
+.container.container-mini.card.mb20.pt20
+  / h2>Tricks</h2
+  %ul.trick-list
+    - @tricking_style.tricks.order(:name).each do |t|
+      %li= t.name

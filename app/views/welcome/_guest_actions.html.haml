@@ -1,0 +1,7 @@
+- if tricker_signed_in?
+  Currently logged in as #{current_tricker.name}.
+- else
+  = link_to "Login", new_tricker_session_path, :class => "btn btn-green mrs"
+  %span.mrs or
+  = link_to "Register", new_tricker_registration_path, :class => "btn btn-blue mrs"
+  %p#notice= alert

@@ -1,0 +1,27 @@
+.container.container-tiny.tac
+  %h1 Tricker Registration
+  %p
+    Soon you'll be a part of our awesome community!
+.container.container-tiny.card.tac.pt20
+  = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+    #devise-errors.mb20
+      = devise_error_messages!
+    .mb10
+      = f.text_field :name, :autofocus => true, :placeholder => "Name", :class => "large"
+    .mb10
+      = f.text_field :email, :placeholder => "Email", :class => "large"
+    .mb10
+      = f.password_field :password, :placeholder => "Password", :class => "large"
+    .mb20
+      = f.password_field :password_confirmation, :placeholder => "Confirm password", :class => "large"
+    /
+      <div class="mb20"><haml:loud> f.label :sampler </haml:loud><br />
+      <haml:loud> f.text_field :sampler </haml:loud></div>
+      
+      <div class="mb20"><haml:loud> f.label :youtube </haml:loud><br />
+      <haml:loud> f.text_field :youtube </haml:loud></div>
+      
+      <div class="mb20"><haml:loud> f.label :facebook </haml:loud><br />
+      <haml:loud> f.text_field :facebook </haml:loud></div>
+    .mb20
+      = f.submit "Create my account", :class => "btn btn-base btn-lg"

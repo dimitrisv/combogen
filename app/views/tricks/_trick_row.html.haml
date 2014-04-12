@@ -1,0 +1,17 @@
+.list-row.container
+  .col-xs-6.col-sm-6
+    %b= link_to @trick.name, @trick, :class => "main-link"
+    %br/
+    %small
+      Class #{@trick.difficulty} · #{@trick.trick_type}
+  .col-xs-3.col-sm-3
+    %b.combos-count= @trick.combos.uniq.count
+    %small combos
+  .col-xs-3.col-sm-3
+    .actions.pull-right
+      - if current_tricker_can_edit_trick
+        / <i class="glyphicon glyphicon-list-alt"></i>
+        = link_to '', edit_trick_path(@trick), :class => "glyphicon glyphicon-pencil mr5"
+        = link_to '', @trick, method: :delete, :class => "glyphicon glyphicon-remove",                                                                                                     |
+          data: { confirm: 'Destroying a trick will also remove it from all combos. The ones left with less than two tricks will be destroyed as well. Are you sure you want to continue?' |
+          }                                                                                                                                                                                |

@@ -1,0 +1,30 @@
+%small.filter-category Tricks
+%small
+  - if current_page?(controller: 'tricks', collection: 'user_created')
+    = link_to "Database", :collection => "database"
+    \/
+    %b User-created
+    \/
+    \#{link_to current_tricker.name+"'s tricks", :collection => "my_tricks"}
+  - elsif current_page?(controller: 'tricks', collection: 'my_tricks')
+    = link_to "Database", :collection => "database"
+    \/
+    \#{link_to "User-created", :collection => "user_created"} /
+    %b
+      = current_tricker.name
+      's tricks
+  - else
+    %b Database
+    \/
+    \#{link_to "User-created", :collection => "user_created"} /
+    \#{link_to current_tricker.name+"'s tricks", :collection => "my_tricks"}
+  / %= link_to "All", :collection => "all" %
+/
+  <p class="mb10"></p>
+  <small><b>Order by</b></small><br>
+  <small>
+  <haml:loud> link_to &amp;quot;Name&amp;quot;, :sort =&amp;gt; &amp;quot;name&amp;quot; </haml:loud> /
+  <haml:loud> link_to &amp;quot;Difficulty&amp;quot;, :sort =&amp;gt; &amp;quot;difficulty&amp;quot; </haml:loud> /
+  <haml:loud> link_to &amp;quot;Type&amp;quot;, :sort =&amp;gt; &amp;quot;trick_type&amp;quot; </haml:loud> /
+  <haml:loud> link_to &amp;quot;Combos&amp;quot;, :sort =&amp;gt; &amp;quot;combos&amp;quot; </haml:loud>
+  </small>

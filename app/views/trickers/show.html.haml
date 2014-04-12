@@ -1,0 +1,21 @@
+.container
+  #combos-affix.col-sm-4.col-md-3
+    %div
+      / data-spy="affix" data-offset-top="60" data-offset-bottom="300"
+      %h2#toolbar-title.bb2= @tricker.name
+      .mb20
+        Showing all combos.
+  .col-sm-8.col-md-9
+    = paginate @combos
+    .list.container
+      - if !@combos.empty?
+        - @combos.each do |combo|
+          = render partial: 'combos/combo_row', locals: {combo: combo}
+      - else
+        .list-row
+          .container.empty-list-head
+            %h3
+              = @tricker.name
+              has not created any combos yet.
+    = paginate @combos
+= render 'combos/watch_combo_modal'

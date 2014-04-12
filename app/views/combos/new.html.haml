@@ -1,0 +1,7 @@
+.container
+  = link_to '← My Combos', my_combos_path, :class => "btn btn-camouflaged"
+.container.container-tiny.tac
+  %h1 New combo
+#combo-form.container.container-tiny.card.pt20.mb20
+  .mb20
+    = render 'form_new'
