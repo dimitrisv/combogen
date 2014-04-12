@@ -1,0 +1,29 @@
+#new-trick-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "new-trick-label", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} &times;
+        %h2#new-trick-label.modal-title
+          New trick
+      = form_for(@new_trick) do |f|
+        .modal-body
+          - if @new_trick.errors.any?
+            = pluralize(@new_trick.errors.count, "error")
+            prevented this trick from being saved.
+            Please review your inputs below.
+          %p.mb20
+            %b.mr10 Name
+            = f.text_field :name
+          %hr/
+          %p.mb20
+            %b.mr10 Difficulty class
+            = f.select :difficulty, get_difficulty_classes
+          %hr/
+          %p
+            %b.mr10 Trick type
+            = f.select :trick_type, get_trick_types
+        .modal-footer
+          = f.submit "Create Trick", :class => "btn btn-base"
+    / /.modal-content
+  / /.modal-dialog
+/ /.modal

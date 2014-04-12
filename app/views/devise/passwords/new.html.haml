@@ -1,0 +1,13 @@
+.container.container-tiny.card.tac
+  %h1 Forgot your password?
+  = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+    #error_explanation.mb20
+      = devise_error_messages!
+    %p
+      Enter your email address and we’ll send you instructions on how to reset your password.
+    .mb20
+      = f.email_field :email, :autofocus => true, :placeholder => "Your email address"
+    .mb20
+      = f.submit "Reset Password", :class => "btn btn-base btn-lg"
+  %p.mb20
+    = render "devise/shared/links"

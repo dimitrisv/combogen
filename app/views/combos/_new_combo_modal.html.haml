@@ -1,0 +1,37 @@
+#new-combo-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "new-combo-label", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} &times;
+        %h3#new-combo-label.modal-title
+          New combo
+      = semantic_nested_form_for(@new_combo) do |f|
+        #combo-form.modal-body
+          = f.inputs do
+            / Every combo must have at least 2 tricks, so these are not removable.
+            = f.input :tricks, :collection => Trick.order(:name),   |
+              :as => :select, :input_html => { :multiple => false } |
+            -#
+            = f.input :tricks, :collection => Trick.order(:name),   |
+              :as => :select, :input_html => { :multiple => false } |
+            = f.link_to_add " trick", :tricks, :class => "fa fa-plus"
+            / But every extra trick that's added dynamically is removable.
+            = f.fields_for :tricks do |trick_form|
+              = f.input :tricks, :collection => Trick.order(:name),   |
+                :as => :select, :input_html => { :multiple => false } |
+              = trick_form.link_to_remove "", :class => "glyphicon glyphicon-remove pull-left"
+            %hr.clearfix/
+            %b Add to list
+            = f.input :lists, :collection => current_tricker.lists, :as => :check_boxes
+            %hr.clearfix/
+            %b Video Details
+            #video_fields
+              = f.semantic_fields_for :execution do |video|
+                - video.inputs :url, :start_time, :end_time
+        .modal-footer
+          = f.actions do
+            = f.action :submit, :label => "Save combo",    |
+              :button_html => { :class => "btn btn-base" } |
+  / /.modal-content
+/ /.modal-dialog
+/ /.modal

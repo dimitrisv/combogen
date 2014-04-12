@@ -1,0 +1,33 @@
+#combo-generator-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "combo-generator-label", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} &times;
+        %h3#combo-generator-label.modal-title
+          Level App Combo Generator
+      = form_tag "/generate_custom", method: "get" do
+        .modal-body
+          %p
+            %a.btn.btn-base{:href => generate_random_path}
+              %i.glyphicon.glyphicon-random.mr5
+              Get Random Combo
+          %h4 or customize it:
+          %hr.clearfix/
+          %p
+            = label_tag :no_tricks, "Combo length", :class => "mr10"
+            = number_field_tag :no_tricks, 5, in: 2..10
+            tricks
+          %hr/
+          %p
+            = label_tag :no_tricks, "Use which tricks?"
+            %br/
+            = radio_button_tag :filter, "database", true
+            = label_tag :filter_database, "All of them", :class => "label-small"
+            %br/
+            = radio_button_tag :filter, "list"
+            = label_tag :filter_list, "Only what I can do", :class => "label-small"
+        .modal-footer
+          = submit_tag "Generate", :class => "btn btn-base"
+    / /.modal-content
+  / /.modal-dialog
+/ /.modal

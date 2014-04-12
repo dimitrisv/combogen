@@ -1,0 +1,14 @@
+#title.container
+  %h1 Resend confirmation e-mail
+.container
+  = form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
+    #error_explanation.mb20
+      = devise_error_messages!
+    .mb20
+      = f.label :email
+      %br/
+      = f.email_field :email, :autofocus => true
+    .mb20= f.submit "Send it again", :class => "btn btn-blue"
+%br.clear/
+#actions-bottom.container
+  = render "devise/shared/links"

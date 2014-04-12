@@ -1,0 +1,23 @@
+/ Print all combos from the rest of the trickers
+- if @combos.length > @tricker_num_combos
+  #db-combos.container.mb20
+    %h2 Database Combos
+    %table
+      %tr
+        = render 'index_table_head'
+        %th Creator
+        - if current_tricker.try(:admin?)
+          %th{:colspan => "3"} Actions
+      - @index = 0
+      - @combos.each do |combo|
+        - @combo = combo
+        - if (tricker_signed_in? && (@combo.tricker_id.equal? current_tricker.id))
+        - @index += 1
+        - next
+        - end
+        %tr.db-row
+          = render 'index_table_row'
+          %td= Tricker.find(@combo.tricker_id).name
+          - if current_tricker.try(:admin?)
+            = render 'index_combo_actions'
+        - @index += 1

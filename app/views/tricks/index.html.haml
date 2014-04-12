@@ -1,0 +1,23 @@
+.container
+  #tricks-affix.col-sm-4.col-md-3
+    %div
+      %h2#toolbar-title.bb2 Tricktionary
+      #trick-toolbar.container.mb10
+        = render 'tricks_filters'
+      - if tricker_signed_in?
+        %a.btn.btn-camouflaged.mb20{"data-target" => "#new-trick-modal", "data-toggle" => "modal", :href => "#"}
+          %i.fa.fa-plus
+          New Trick
+  .col-sm-8.col-md-9
+    = render 'shared/flash_messages'
+    .list.container
+      - if !@tricks.empty?
+        - @tricks.each do |trick|
+          - @trick = trick
+          = render 'trick_row'
+      - else
+        .list-row
+          .container.empty-list-head
+            %h3 Nothing to see here.
+  .clearfix
+= render 'new_trick_modal'

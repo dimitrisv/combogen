@@ -1,0 +1,15 @@
+#watch-tutorial-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "watch-tutorial-label", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} &times;
+        %h3#watch-tutorial-label.modal-title
+          = @trick.name
+          Tutorial
+      .modal-body
+        .video-container
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+    / /.modal-content
+  / /.modal-dialog
+/ /.modal
