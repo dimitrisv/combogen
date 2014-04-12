@@ -1,6 +1,6 @@
 Combogen::Application.routes.draw do
   resources :lists
-  resources :combos
+  resources :combos, :except => :show
   resources :tricks
   resources :tricking_styles
 
