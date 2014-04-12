@@ -5,7 +5,7 @@
     .col-sm-4
       = render 'tricks_filters'
     .col-sm-4
-      %a{"data-target" => "#new-trick-modal", "data-toggle" => "modal", :href => "#"}
+      %a.btn.btn-xs.btn-default.pull-right{"data-target" => "#new-trick-modal", "data-toggle" => "modal", :href => "#"}
         New Trick
   #tricks-list.clearfix
     = render 'shared/flash_messages'

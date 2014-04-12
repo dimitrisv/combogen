@@ -1,17 +1,15 @@
-.list-row.container
-  .col-xs-6.col-sm-6
+.list-row.clearfix
+  .trick-name.col-sm-4.col-xs-7
     %b= link_to @trick.name, @trick, :class => "main-link"
-    %br/
-    %small
-      Class #{@trick.difficulty} · #{@trick.trick_type}
-  .col-xs-3.col-sm-3
+  .col-sm-2.col-xs-4.hidden-xs
+    Class #{@trick.difficulty}
+  .col-sm-2.col-xs-4.hidden-xs
+    #{@trick.trick_type}
+  .col-sm-2.col-xs-4.hidden-xs
     %b.combos-count= @trick.combos.uniq.count
-    %small combos
-  .col-xs-3.col-sm-3
-    .actions.pull-right
-      - if current_tricker_can_edit_trick
-        / <i class="glyphicon glyphicon-list-alt"></i>
-        = link_to '', edit_trick_path(@trick), :class => "glyphicon glyphicon-pencil mr5"
-        = link_to '', @trick, method: :delete, :class => "glyphicon glyphicon-remove",                                                                                                     |
-          data: { confirm: 'Destroying a trick will also remove it from all combos. The ones left with less than two tricks will be destroyed as well. Are you sure you want to continue?' |
-          }                                                                                                                                                                                |
+    %small= 'combo'.pluralize(@trick.combos.uniq.count)
+  .col-xs-5.col-sm-2
+    - if current_tricker_can_edit_trick
+      .actions.pull-right
+        = link_to '', edit_trick_path(@trick), :class => "fa fa-gear btn btn-xs btn-default"
+        = link_to '', @trick, method: :delete, :class => "fa fa-trash-o btn btn-xs btn-default", data: { confirm: 'Destroying a trick will also remove it from all combos. The ones left with less than two tricks will be destroyed as well. Are you sure you want to continue?'}
