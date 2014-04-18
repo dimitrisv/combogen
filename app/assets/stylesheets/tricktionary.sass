@@ -1,1 +1,34 @@
 #tricktionary-wrapper
+
+#tricktionary-entry-wrapper
+  .section-header
+    h2
+      display: inline-block
+  #trick-details
+    padding-bottom: 20px
+    margin-bottom: 20px
+    border-bottom: 2px solid #eaedee
+  #combos-using-trick
+    .list-head
+      margin-bottom: 8px
+    .list
+      .list-row
+        padding: 8px 5px
+        border-top: 1px solid #ecf0f1
+        &:last-child
+          border-bottom: 1px solid #ecf0f1
+        &:hover
+          .combo-details
+            .actions
+              display: inline
+        .combo-top
+          margin-bottom: 10px
+          .combo-sequence
+            display: inline
+            font-weight: 500
+        .combo-details
+          .actions
+            display: none
+    .list
+      .list-row:first-child
+        border-top: 2px solid #ecf0f1
