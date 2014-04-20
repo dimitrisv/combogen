@@ -25,10 +25,14 @@ class CombosController < ApplicationController
     # @combos = collection.order(params[:sort]) if params[:sort]
     # @combos = @combos.page(params[:page])....
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @combos }
-      format.js
+    if request.xhr?
+      render partial: 'combos_list'
+    else
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @combos }
+        format.js
+      end
     end
   end
 

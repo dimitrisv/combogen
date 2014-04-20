@@ -3,26 +3,16 @@
     .col-sm-4
       %h2 My Combos
     .col-sm-4
-      = render 'combo_lists'
+      = select_tag 'combo-lists-dropdown', options_for_select([["All of them (#{current_tricker.combos.count})", nil]]) + options_from_collection_for_select(current_tricker.lists, "id", "to_s")
     .col-sm-4
-      %a.btn.btn-camouflaged{"data-target" => "#new-combo-modal", "data-toggle" => "modal"}
+      %a.btn.btn-default.btn-sm{"data-target" => "#new-combo-modal", "data-toggle" => "modal"}
         %i.fa.fa-plus
         New Combo
-      %a.btn.btn-camouflaged{"data-target" => "#combo-generator-modal", "data-toggle" => "modal"}
+      %a.btn.btn-default.btn-sm{"data-target" => "#combo-generator-modal", "data-toggle" => "modal"}
         %i.glyphicon.glyphicon-cog
         Combo Generator
   #combos-list.clearfix
-    = render 'shared/flash_messages'
-    / Print all combos from the current tricker
-    = paginate @combos
-    .list
-      - unless @combos.empty?
-        - @combos.each do |combo|
-          = render partial: 'combo_row', locals: {combo: combo}
-      - else
-        .list-row
-          %h3 There are currently no combos in this list.
-    = paginate @combos
+    = render 'combos_list'
 = render 'combo_generator_modal'
 = render 'new_combo_modal'
 = render 'watch_combo_modal'

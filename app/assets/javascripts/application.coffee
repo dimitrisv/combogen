@@ -7,6 +7,7 @@
 #= require backbone
 #
 #= require backbone/app
+#= require backbone/views/my_combos
 
 $(document).ready ->
 
