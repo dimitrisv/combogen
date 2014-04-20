@@ -17,9 +17,10 @@
         %iframe{width:'100%', height:'315', scrolling: "no", allowtransparency: "true", allowfullscreen: "true", src: "http://www.youtube.com/embed/#{tutorial.uid}?autoplay=0&rel=0&wmode=transparent&showinfo=0&start=#{tutorial.start_time}&end=#{tutorial.end_time}", frameborder:'0'}
   #combos-using-trick.clearfix
     - if @trick.combos.empty?
-      %h3
-        We found no combos with #{@trick.name} in Level App. That's really sad...
-      = link_to 'Be the first to create one!', new_combo_path, :class => "btn btn-primary"
+      .container
+        %h3
+          We found no combos with #{@trick.name} in Level App. That's really sad...
+        = link_to 'Be the first to create one!', new_combo_path, :class => "btn btn-primary"
     - else
       - unless @combos_you_can_do.empty?
         .col-md-6
