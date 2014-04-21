@@ -85,36 +85,30 @@
 /* Edit Tricking Style Form */
 .tricking_style {
   padding: 20px 0;
-  .actions { padding-left: 0; }
-}
-
-#tricking_style_name_input, #tricking_style_description_input {
-  label {
-    color: #456;
-    text-align: left;
-    font-size: 1em;
-    display: block;
-    margin-right: 10px;
-    width: inherit;
-    min-width: 80px;
-    float: none;
+  .actions {
+    padding-left: 0;
+    .btn-default {
+      padding: 8px 20px;
+    }
   }
 }
-#tricking_style_name, #tricking_style_description {
-  padding: 10px;
-  width: 90%;
-  max-width: 400px;
+
+#tricking_style_submit_action input {
+  padding: 8px 20px;
+  margin-right: 10px;
 }
 
 #tricking_style_tricks_input {
   legend { display: none; }
   .choices-group {
+    width: 100%;
     padding-left: 0;
-    .choice label {
-      font-weight: normal;
+    .choice {
+      width: 150px;
+      float: left;
+      label {
+        font-weight: normal;
+      }
     }
   }
-}
-#tricking_style_submit_action input {
-  padding: 8px 20px;
 }
