@@ -5,14 +5,9 @@
     .col-sm-4
       = select_tag 'combo-lists-dropdown', options_for_select([["All of them (#{current_tricker.combos.count})", nil]]) + options_from_collection_for_select(current_tricker.lists, "id", "to_s")
     .col-sm-4
-      %a.btn.btn-default.btn-sm{"data-target" => "#new-combo-modal", "data-toggle" => "modal"}
-        %i.fa.fa-plus
-        New Combo
-      %a.btn.btn-default.btn-sm{"data-target" => "#combo-generator-modal", "data-toggle" => "modal"}
-        %i.glyphicon.glyphicon-cog
-        Combo Generator
+      %a.btn.btn-primary.pull-right{"data-target" => "#new-combo-modal", "data-toggle" => "modal"}
+        Create Combo
   #combos-list.clearfix
     = render 'combos_list'
-= render 'combo_generator_modal'
 = render 'new_combo_modal'
 = render 'watch_combo_modal'
