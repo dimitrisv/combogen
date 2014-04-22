@@ -1,12 +1,10 @@
 #tricktionary-wrapper.container
   .section-header.clearfix
-    .col-sm-4
+    .col-sm-6
       %h2 Tricktionary
-    .col-sm-4
-      =# render 'tricks_filters'
-    .col-sm-4
-      %a.btn.btn-xs.btn-default.pull-right{"data-target" => "#new-trick-modal", "data-toggle" => "modal", :href => "#"}
-        New Trick
+    -#
+      .col-sm-4
+        = render 'tricks_filters'
   #tricks-list.clearfix
     = render 'shared/flash_messages'
     .list
@@ -18,4 +16,8 @@
         .list-row
           .container.empty-list-head
             %h3 Nothing to see here.
+  .suggest-trick
+    Can't find the trick you're looking for?
+    %a{"data-target" => "#new-trick-modal", "data-toggle" => "modal", :href => "#"}
+      Suggest it
 = render 'new_trick_modal'
