@@ -1,24 +1,22 @@
 = form_for(@trick) do |f|
   - if @trick.errors.any?
-    %p.mb20
-      %strong.mb10
+    %p
+      %strong
         = pluralize(@trick.errors.count, "error")
         occured:
     %ul.list-unstyled
       - @trick.errors.full_messages.each do |msg|
         %li= msg
-    %hr/
-  %p.mb20
-    %strong.mb10.mr10 Name
+    %hr
+  .clearfix
+    %strong Name
     = f.text_field :name, :autofocus => true, :placeholder => "Name"
-  %hr/
-  %p.mb20
-    %strong.mr10 Difficulty class
+  .clearfix
+    %strong Difficulty class
     = f.select :difficulty, get_difficulty_classes
-  %hr/
-  %p
-    %strong.mr10 Trick type
+  .clearfix
+    %strong Trick type
     = f.select :trick_type, get_trick_types
-  %hr/
-  %p
-    = f.submit "Save Changes", :class => "btn btn-base"
+  .clearfix
+    = f.submit "Save Changes", :class => "btn btn-primary"
+    = link_to "Cancel", @trick, :class => "btn btn-default"
