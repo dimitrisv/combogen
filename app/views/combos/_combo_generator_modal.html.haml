@@ -2,17 +2,25 @@
   .modal-title
     %h2 Create your combo
   .modal-body
-    .clearfix
-      alalalalalala!!!!
-    -#
-      = label_tag :no_tricks, "Combo length", :class => "mr10"
-      = number_field_tag :no_tricks, 5, in: 2..10
-      tricks
-    -#
-      = label_tag :no_tricks, "Use which tricks?"
-      %br/
-      = radio_button_tag :filter, "database", true
-      = label_tag :filter_database, "All of them", :class => "label-small"
-      %br/
-      = radio_button_tag :filter, "list"
-      = label_tag :filter_list, "Only what I can do", :class => "label-small"
+    #generator-controls.clearfix
+      Add
+      = number_field_tag :no_tricks, 2, in: 2..10
+      tricks from
+      #trick-list
+        = select_tag "filter", options_for_select({ "The Database" => "database", "My Trick List" => "list" }, "list")
+      %a.btn.btn-primary
+        Add
+    #generated-combos
+      .combo.clearfix
+        - unless @combo.nil?
+          -# initialize all inputs based on this combo
+          -# @combo.sequence.split(' > ').each do .trick-input
+        - else
+          %input.trick-input{}
+          >
+          %input.trick-input{}
+    #generator-actions.clearfix
+      %a.btn.btn-success#save-combo
+        Save
+      %a.btn.btn-warning#discard
+        Discard
