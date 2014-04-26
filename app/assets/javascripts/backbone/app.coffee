@@ -3,6 +3,9 @@ window.LevelApp =
   Views: {}
   initialize: ->
     LevelApp.router = new LevelApp.Router()
+    LevelApp.modal  = new LevelApp.Views.Modal(
+      el: $('#levelapp-modal')
+    )
     Backbone.history.start(pushState: true)
 
 class LevelApp.Router extends Backbone.Router

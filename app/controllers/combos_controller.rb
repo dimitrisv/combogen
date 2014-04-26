@@ -190,9 +190,12 @@ class CombosController < ApplicationController
     generate_and_redirect
   end
 
-  # deprecated... loads in modal now
-  def generate_options
+  def get_generator_view
+    @combo = Combo.find(params[:combo]) if params[:combo]
+    render partial: 'combo_generator_modal'
   end
+
+
 
 private
 

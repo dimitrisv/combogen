@@ -5,8 +5,7 @@ Combogen::Application.routes.draw do
   resources :tricking_styles
 
   devise_for :trickers, :controllers => { :registrations => "registrations" }
-
-  resources :trickers, :only => :show
+  resources  :trickers, :only => :show
 
   get "welcome/index"
 
@@ -15,6 +14,8 @@ Combogen::Application.routes.draw do
   match '/generate_custom' => 'combos#generate_custom', :as => 'generate_custom'
   match '/generate_random' => 'combos#generate_random', :as => 'generate_random'
   # match '/order_by_combos' => 'tricks#order_by_combos', :as => 'order_by_combos'
+
+  get '/get_generator_view' => 'combos#get_generator_view'
 
   authenticated :tricker do
     root :to => "combos#index"

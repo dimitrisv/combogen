@@ -16,3 +16,20 @@
       = render 'layouts/header'
       = yield
     = render 'layouts/footer'
+
+    .modal.fade#levelapp-modal
+      .content
+
+    -# if current_user.present?
+      :javascript
+        $(function() {
+          AR.currentUser = new AR.Models.User({
+            id: #{current_user.id }
+          });
+          AR.currentUser.fetch({
+            silent: true,
+            success: function() {
+              AR.start({page_title: '#{@title}'});
+            }
+          });
+        });
