@@ -4,6 +4,7 @@ class LevelApp.Views.MyCombos extends Backbone.View
 
   events:
     'change #combo-lists-dropdown': 'updateList'
+    'click #load-view': 'openComboGeneratorModal'
 
   updateList: (evt) ->
     newList = $('#combo-lists-dropdown').val()
@@ -12,3 +13,9 @@ class LevelApp.Views.MyCombos extends Backbone.View
       $.get("my_combos?list=#{newList}").done((resp)=>
         @$('#combos-list').html(resp)
       )
+
+  openComboGeneratorModal: (evt) ->
+    evt.preventDefault()
+    LevelApp.modal.show(LevelApp.Views.ComboGenerator,
+      combo_id: 0
+    )

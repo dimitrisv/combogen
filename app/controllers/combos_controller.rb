@@ -191,10 +191,9 @@ class CombosController < ApplicationController
   end
 
   def get_generator_view
-    @combo = Combo.find(params[:combo]) if params[:combo]
+    @combo = Combo.find(params[:combo]) rescue nil
     render partial: 'combo_generator_modal'
   end
-
 
 
 private

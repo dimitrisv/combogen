@@ -5,6 +5,8 @@
     .col-sm-4
       = select_tag 'combo-lists-dropdown', options_for_select([["All of them (#{current_tricker.combos.count})", nil]]) + options_from_collection_for_select(current_tricker.lists, "id", "to_s")
     .col-sm-4
+      %a.btn.btn-primary.btn-xs#load-view
+        Create Combo
       %a.btn.btn-primary.pull-right{"data-target" => "#new-combo-modal", "data-toggle" => "modal"}
         Create Combo
   #combos-list.clearfix
