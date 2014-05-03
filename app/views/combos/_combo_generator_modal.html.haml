@@ -8,7 +8,7 @@
       tricks from
       #trick-list
         = select_tag "filter", options_for_select({ "The Database" => "database", "My Trick List" => "list" }, "list")
-      %a.btn.btn-primary
+      %a.btn.btn-primary#add
         Add
     #generated-combos
       .combo.clearfix
@@ -16,9 +16,13 @@
           -# initialize all inputs based on this combo
           -# @combo.sequence.split(' > ').each do .trick-input
         - else
-          %input.trick-input{}
-          >
-          %input.trick-input{}
+          .trick-input-container.linked
+            %input.trick-input{}
+            %a.remove X
+            >
+          .trick-input-container
+            %input.trick-input{}
+            %a.remove X
     #generator-actions.clearfix
       %a.btn.btn-success#save-combo
         Save

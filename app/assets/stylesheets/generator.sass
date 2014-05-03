@@ -1,14 +1,37 @@
 #combo-generator-wrapper
   #generator-controls
     padding-bottom: 20px
-    margin-bottom: 20px
+    margin-bottom: 40px
     border-bottom: 1px solid #eaedee
     #trick-list
       display: inline-block
   #generated-combos
-    padding-bottom: 20px
+    padding-bottom: 40px
     margin-bottom: 20px
     border-bottom: 1px solid #eaedee
     .combo
-      .trick-input
+      .trick-input-container
+        position: relative
+        display: inline-block
+        .trick-input
+          margin-bottom: 10px
+        a.remove
+          display: none
+          position: absolute
+          right: -9px
+          top: -11px
+          background-color: #96989d
+          color: white
+          cursor: pointer
+          padding: 0px 6px
+          z-index: 10
+          @include border-radius(10px)
+          &:hover
+            text-decoration: none
+        &.linked
+          a.remove
+            right: 7px
+        &:hover
+          a.remove
+            display: block
   #generator-actions.clearfix
