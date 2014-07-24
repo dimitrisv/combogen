@@ -5,7 +5,6 @@
     .col-sm-4
       Showing all combos.        
   #combos-list
-    = paginate @combos
     .list
       - if !@combos.empty?
         - @combos.each do |combo|
@@ -14,5 +13,4 @@
         .list-row
           %h3
             #{@tricker.name} has not created any combos yet.
-    = paginate @combos
 = render 'combos/watch_combo_modal'

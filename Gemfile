@@ -7,7 +7,6 @@ gem 'jquery-rails'
 gem 'formtastic'
 gem 'nested_form'
 gem 'devise'
-gem 'kaminari'
 gem 'sass-rails', '~> 3.2.3'
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
                           :github => 'anjlab/bootstrap-rails',

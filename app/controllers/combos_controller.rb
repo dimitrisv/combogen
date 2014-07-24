@@ -4,7 +4,7 @@ class CombosController < ApplicationController
   # GET /combos
   # GET /combos.json
   def index
-    @combos = Combo.page(params[:page]).per(10).order('updated_at DESC')
+    @combos = Combo.order('updated_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -21,7 +21,7 @@ class CombosController < ApplicationController
       @list = current_tricker.lists.find_by_id(params[:list])
       collection = @list.combos if @list
     end
-    @combos = collection.page(params[:page]).per(10).order('updated_at DESC')
+    @combos = collection.order('updated_at DESC')
     # @combos = collection.order(params[:sort]) if params[:sort]
     # @combos = @combos.page(params[:page])....
 

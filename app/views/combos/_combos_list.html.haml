@@ -1,5 +1,4 @@
 = render 'shared/flash_messages'
-= paginate @combos
 .list
   - unless @combos.empty?
     - @combos.each do |combo|
@@ -7,4 +6,3 @@
   - else
     .list-row
       %h3 There are currently no combos in this list.
-= paginate @combos
