@@ -1,6 +1,6 @@
 #my-account-wrapper.container
   .section-header.clearfix
-    .col-sm-4
+    .col-sm-12
       %h2
         Account Settings
         / %= resource_name.to_s.humanize %
@@ -12,18 +12,18 @@
         = f.label :password
         %i (leave blank if you don't want to change it)
         %br
-        = f.password_field :password, :autocomplete => "off"
+        = f.password_field :password, :autocomplete => "off", class: 'form-control'
       .input-container
         = f.label :password_confirmation
         %br
-        = f.password_field :password_confirmation
+        = f.password_field :password_confirmation, class: 'form-control'
       .input-container
         = f.label :current_password
         %i (we need your current password to confirm your changes)
         %br
-        = f.password_field :current_password
+        = f.password_field :current_password, class: 'form-control'
       .input-container
-        = f.submit "Save Changes", :class => "btn btn-primary"
+        = f.submit "Save Changes", :class => "btn btn-primary btn-block"
       
       -# UNUSED
         .input-container
