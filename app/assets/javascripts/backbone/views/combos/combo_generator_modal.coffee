@@ -22,7 +22,9 @@ class LevelApp.Views.ComboGenerator extends Backbone.View
       ],
       options: @allOfThem
     )
-    $('#filter').selectize({})
+    @selectize = $('.combo-input-wrapper')[0].selectize
+    # 
+    # selectize.setValue( existing combo )
     
   events:
     'click #add': 'addTricks'
