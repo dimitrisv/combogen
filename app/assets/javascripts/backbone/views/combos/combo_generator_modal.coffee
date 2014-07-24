@@ -4,6 +4,11 @@ class LevelApp.Views.ComboGenerator extends Backbone.View
   initialize: ->
     # trick input autocomplete. fetch collection once, add to all inputs.
     @currentCombo = @$('.combo').first()
+    $('.control-group').selectize(
+      persist: false,
+      createOnBlur: true,
+      create: true
+    )
     
   events:
     'click .remove': 'removeTrick'

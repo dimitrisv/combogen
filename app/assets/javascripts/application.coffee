@@ -6,6 +6,8 @@
 #= require underscore
 #= require backbone
 #
+#= require selectize
+#
 #= require backbone/app
 #= require_tree ./backbone/views/
 

@@ -12,17 +12,9 @@
         Add
     #generated-combos
       .combo.clearfix
-        - unless @combo.nil?
-          -# initialize all inputs based on this combo
-          -# @combo.sequence.split(' > ').each do .trick-input
-        - else
-          .trick-input-container.linked
-            %input.trick-input{autofocus: true}
-            %a.remove X
-            >
-          .trick-input-container
-            %input.trick-input{}
-            %a.remove X
+        .combo-input-wrapper
+          %label{ for: 'combo-input'} Tricks:
+          %input{type: 'text', id: 'combo-input', value: combo_input_value(@combo)}
     #generator-actions.clearfix
       %a.btn.btn-success#save-combo
         Save
