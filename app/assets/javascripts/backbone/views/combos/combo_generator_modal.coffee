@@ -12,6 +12,8 @@ class LevelApp.Views.ComboGenerator extends Backbone.View
       persist: false,
       createOnBlur: true,
       create: true,
+      hideSelected: false,
+      enableDuplicate: true,
       labelField: "name",
       valueField: "name",
       searchField: ["name"],
