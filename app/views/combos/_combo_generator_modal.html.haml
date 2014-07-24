@@ -13,8 +13,8 @@
     #generated-combos
       .combo.clearfix
         .combo-input-wrapper
-          %label{ for: 'combo-input'} Tricks:
-          %input{type: 'text', id: 'combo-input', value: combo_input_value(@combo)}
+          %label{ for: 'combo-input'}
+          %input{type: 'text', id: 'combo-input', value: combo_input_value(@combo), placeholder: 'Type your combo here...'}
     #generator-actions.clearfix
       %a.btn.btn-success#save-combo
         Save
