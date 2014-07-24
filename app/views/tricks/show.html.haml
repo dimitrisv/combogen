@@ -10,7 +10,20 @@
         = link_to ' Destroy', @trick, method: :delete, :class => "fa fa-trash-o btn btn-default btn-sm",data: { confirm: 'Destroying a trick will also remove it from all combos. The ones left with less than two tricks will be destroyed as well. Are you sure you want to continue?'}
   #trick-details.clearfix
     .col-md-6
-      Class #{@trick.difficulty} · #{@trick.trick_type}, Type, Takeoff, Landing, Short Description
+      #trick-info.clearfix
+        .clearfix
+          .col-xs-6 Class
+          .col-xs-6= @trick.difficulty
+        .clearfix
+          .col-xs-6 Type
+          .col-xs-6= @trick.trick_type
+        .clearfix
+          .col-xs-6 Landing
+          .col-xs-6 blahblah
+        .clearfix
+          .col-xs-6 Description
+        .clearfix
+          .col-xs-12 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque placerat sem, at porttitor neque vehicula vel. Nunc elit ligula, fermentum eu turpis a, vestibulum lacinia nibh. Aliquam sit amet eros eget mi laoreet interdum. Mauris venenatis diam quis nibh facilisis, vitae malesuada ante aliquet. Praesent egestas, turpis eget iaculis convallis, nibh neque egestas purus, et dignissim massa elit sed lectus.
     .col-md-6
       - if @trick.tutorials.any?
         - tutorial = @trick.tutorials.first
