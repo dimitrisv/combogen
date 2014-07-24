@@ -4,8 +4,9 @@
       %h2 Combo Feed
     -#.col-sm-4.latest-combos
       -#The latest combos from all over the world.
-    .col-sm-4.pull-right
-      %input#search{placeholder: 'Find combos...'}
+    -#
+      .col-sm-4.pull-right
+        %input#search.form-control{placeholder: 'Find combos...'}
   #combos-list.clearfix
     = render 'shared/flash_messages'
     .list

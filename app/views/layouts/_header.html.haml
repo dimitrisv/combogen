@@ -8,7 +8,6 @@
           %span.icon-bar
           %span.icon-bar
         <a href=#{root_path} class="navbar-brand">
-        %i.fa.fa-level-up
         Level App
       #levelapp-nav.collapse.navbar-collapse
         %ul.nav.navbar-nav.navbar-right
@@ -18,7 +17,6 @@
             %li= link_to "My Combos", my_combos_path
             %li.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-                %i.fa.fa-user.fa-fw
                 = current_tricker.name
                 %b.caret
               %ul.dropdown-menu

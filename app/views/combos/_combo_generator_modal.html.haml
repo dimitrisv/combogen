@@ -4,10 +4,10 @@
   .modal-body
     #generator-controls.clearfix
       Add
-      = number_field_tag :no_tricks, 1, in: 1..10
+      = number_field_tag :no_tricks, 1, in: 1..10, class: 'form-control'
       tricks from
       #trick-list
-        = select_tag "filter", options_for_select({ "The Database" => "database", "My Trick List" => "list" }, "list")
+        = select_tag "filter", options_for_select({ "The Database" => "database", "My Trick List" => "list" }, "list"), {class: 'form-control'}
       %a.btn.btn-primary#add
         Add
     #generated-combos
