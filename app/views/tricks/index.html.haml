@@ -11,7 +11,9 @@
       - unless @tricks.empty?
         - @tricks.each do |trick|
           - @trick = trick
-          = render 'trick_row'
+          .col-sm-4
+            = link_to @trick.name, @trick
+          =# render 'trick_row'
       - else
         .list-row
           .container.empty-list-head
