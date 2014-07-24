@@ -20,3 +20,7 @@
         Save
       %a.btn.btn-warning#discard
         Discard
+  .modal-data
+    .my-trick-list
+      = current_tricker.tricking_style.tricks.map(&:name)
+    .trick-database

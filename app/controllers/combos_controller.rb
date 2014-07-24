@@ -192,6 +192,8 @@ class CombosController < ApplicationController
 
   def get_generator_view
     @combo = Combo.find(params[:combo]) rescue nil
+    # @trick_list = 
+    # @trick_database = 
     render partial: 'combo_generator_modal'
   end
 
