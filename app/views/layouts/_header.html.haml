@@ -30,4 +30,5 @@
             %li
               = link_to 'Register', new_tricker_registration_path
             %li
-              = link_to 'Login', new_tricker_session_path, :class => "btn btn-success navbar-btn"
+              %form{action: new_tricker_session_path}
+                %button.btn.btn-success.navbar-btn Login
