@@ -25,7 +25,7 @@ class LevelApp.Views.ComboGenerator extends Backbone.View
     @selectize = $('.combo-input-wrapper')[0].selectize
     # 
     # selectize.setValue( existing combo )
-    
+
     @$el.on('keyup', @noEscape)
     
   events:
@@ -37,7 +37,6 @@ class LevelApp.Views.ComboGenerator extends Backbone.View
     # add 'em bro!
 
   saveCombo: ->
-    debugger
     comboSequence = $('.combo-input-wrapper').val()
     return if(comboSequence.length == 0 or comboSequence == undefined)
 
