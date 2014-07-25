@@ -4,7 +4,7 @@ class CombosController < ApplicationController
   # GET /combos
   # GET /combos.json
   def index
-    @combos = Combo.page(params[:page]).per(10).order('updated_at DESC')
+    @combos = Combo.order('updated_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -21,14 +21,18 @@ class CombosController < ApplicationController
       @list = current_tricker.lists.find_by_id(params[:list])
       collection = @list.combos if @list
     end
-    @combos = collection.page(params[:page]).per(10).order('updated_at DESC')
+    @combos = collection.order('updated_at DESC')
     # @combos = collection.order(params[:sort]) if params[:sort]
     # @combos = @combos.page(params[:page])....
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @combos }
-      format.js
+    if request.xhr?
+      render partial: 'combos_list'
+    else
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @combos }
+        format.js
+      end
     end
   end
 
@@ -73,29 +77,22 @@ class CombosController < ApplicationController
   # POST /combos.json
   def create
     @combo = Combo.create
-    @combo.execution = Video.new
     @combo.tricker_id = current_tricker.id
 
-    remove_destroyed
+    trick_names = params[:sequence].split(',') if params[:sequence].present?
+    @trick_ids = []
+    trick_names.each do |trick_name|
+      trick = Trick.find_by_name(trick_name) ||
+        Trick.create(name: trick_name, tricker_id: current_tricker.id)
+      @trick_ids << trick.id
+    end
 
-    @combo.no_tricks = @trick_ids.length
-    
     create_combo_elements
 
-    update_lists
-    update_execution
-
+    @combo.no_tricks = @combo.tricks.count
     @combo.render_sequence
-
-    respond_to do |format|
-      if @combo.save
-        format.html { redirect_to my_combos_path, notice: 'Combo was successfully created.' }
-        format.json { render json: @combo, status: :created, location: @combo }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @combo.errors, status: :unprocessable_entity }
-      end
-    end
+    @combo.save
+    render partial: 'combo_row', locals: {combo: @combo}
   end
 
   # PUT /combos/1
@@ -186,9 +183,11 @@ class CombosController < ApplicationController
     generate_and_redirect
   end
 
-  # deprecated... loads in modal now
-  def generate_options
+  def get_generator_view
+    @combo = Combo.find(params[:combo]) rescue nil
+    render partial: 'combo_generator_modal'
   end
+
 
 private
 

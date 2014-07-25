@@ -1,0 +1,51 @@
+#combo-generator-wrapper
+  #generator-controls
+    padding-bottom: 20px
+    margin-bottom: 40px
+    border-bottom: 1px solid #eaedee
+    font-size: 1.6rem
+    .form-control
+      margin: 0 8px
+    #no_tricks.form-control
+      width: 60px
+      display: inline-block
+    #trick-list
+      display: inline-block
+      select.form-control
+        width: 140px
+  #generated-combos
+    padding-bottom: 40px
+    margin-bottom: 20px
+    border-bottom: 1px solid #eaedee
+    .combo
+      .trick-input-container
+        position: relative
+        display: inline-block
+        .trick-input
+          height: 35px
+          margin-bottom: 10px
+          border: 1px solid #96989d
+          padding: 3px 8px
+          @include border-radius(5px)
+        a.remove
+          display: none
+          position: absolute
+          right: -9px
+          top: -11px
+          background-color: #96989d
+          color: white
+          cursor: pointer
+          padding: 0px 6px
+          z-index: 10
+          @include border-radius(10px)
+          &:hover
+            text-decoration: none
+        &.linked
+          a.remove
+            right: 7px
+        &:hover
+          a.remove
+            display: block
+  #generator-actions.clearfix
+  .modal-data
+    display: none

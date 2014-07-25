@@ -1,32 +1,35 @@
-.container.container-mini.tac
-  %h1
-    Editing My Account
-    / %= resource_name.to_s.humanize %
-.container.container-tiny.card.pt20
-  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-    #devise-errors.mb20
-      = devise_error_messages!
-    .mb20
-      = f.label :email
-      %br/
-      = f.email_field :email, :autofocus => true
-    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-      .mb20
-        Currently waiting confirmation for: #{resource.unconfirmed_email}
-    .mb20
-      = f.label :password
-      %i (leave blank if you don't want to change it)
-      %br/
-      = f.password_field :password, :autocomplete => "off"
-    .mb20
-      = f.label :password_confirmation
-      %br/
-      = f.password_field :password_confirmation
-    .mb20
-      = f.label :current_password
-      %br/
-      %i (we need your current password to confirm your changes)
-      %br/
-      = f.password_field :current_password
-    .mb20
-      = f.submit "Save Changes", :class => "btn btn-primary"
+#my-account-wrapper.container
+  .section-header.clearfix
+    .col-sm-12
+      %h2
+        Account Settings
+        / %= resource_name.to_s.humanize %
+  #edit-account.container
+    = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+      #devise-errors
+        = devise_error_messages!
+      .input-container
+        = f.label :password
+        %i (leave blank if you don't want to change it)
+        %br
+        = f.password_field :password, :autocomplete => "off", class: 'form-control'
+      .input-container
+        = f.label :password_confirmation
+        %br
+        = f.password_field :password_confirmation, class: 'form-control'
+      .input-container
+        = f.label :current_password
+        %i (we need your current password to confirm your changes)
+        %br
+        = f.password_field :current_password, class: 'form-control'
+      .input-container
+        = f.submit "Save Changes", :class => "btn btn-primary btn-block"
+      
+      -# UNUSED
+        .input-container
+          = f.label :email
+          %br
+          = f.email_field :email, :autofocus => true
+      -# if devise_mapping.confirmable? && resource.pending_reconfirmation?
+        .input-container
+          Currently waiting confirmation for: #{resource.unconfirmed_email}

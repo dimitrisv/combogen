@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140111193756) do
+ActiveRecord::Schema.define(:version => 20140412175956) do
 
   create_table "combos", :force => true do |t|
     t.integer  "no_tricks"
@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(:version => 20140111193756) do
     t.datetime "updated_at", :null => false
     t.integer  "start_time"
     t.integer  "end_time"
+    t.string   "uid"
   end
 
 end

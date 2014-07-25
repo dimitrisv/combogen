@@ -1,23 +1,22 @@
-.list-row.container
-  %div
+.list-row
+  .combo-top.clearfix
     - unless combo.execution.nil?
-      %a.main-link{"data-end-time" => combo.execution.end_time.to_s, "data-start-time" => combo.execution.start_time.to_s, "data-target" => "#watch-combo-modal", "data-toggle" => "modal", "data-video-id" => combo.execution.get_video_id, :href => "#"}
-        %span.combo-sequence
+      %a.main-link{"data-end-time" => combo.execution.end_time.to_s, "data-start-time" => combo.execution.start_time.to_s, "data-target" => "#watch-combo-modal", "data-toggle" => "modal", "data-video-id" => combo.execution.uid, :href => "#"}
+        .combo-sequence
           = combo.sequence
-          %i.fa.fa-youtube-play
+        -#
+          .video-preview
+            %img{src: "https://img.youtube.com/vi/#{combo.execution.uid}/1.jpg"}
     - else
-      %span.combo-sequence.no-link= combo.sequence
-    %span.actions.pull-right
-      - @combo = combo
-      - if current_tricker_can_edit_combo
-        = link_to "", edit_combo_path(combo), :class => "fa fa-cog btn btn-xs btn-camouflaged"
-        = link_to "", combo, method: :delete, data: { confirm: 'Are you sure?' }, :class => "fa fa-trash-o btn btn-xs btn-camouflaged"
-  .clearfix
-  %div
+      .combo-sequence.no-link
+        = combo.sequence
+  .combo-details
     %small
-      = combo.no_tricks
-      \-trick combo ·
-      by #{link_to combo.tricker.name, combo.tricker}
-      %span.pull-right
-        = time_ago_in_words(combo.updated_at)
-        ago
+      =# combo.no_tricks
+      =#\-trick combo ·
+      by #{link_to combo.tricker.name, combo.tricker} ·
+      #{time_ago_in_words(combo.updated_at)} ago
+    %span.actions.pull-right
+      - if current_tricker_can_edit_combo
+        =# link_to "", edit_combo_path(combo), :class => "glyphicon glyphicon-cog btn btn-sm btn-camouflaged"
+        = link_to "", combo, method: :delete, data: { confirm: 'Are you sure?' }, :class => "glyphicon glyphicon-trash btn btn-sm btn-camouflaged"

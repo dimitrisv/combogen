@@ -1,7 +1,10 @@
-.container.container-tiny.mb20
-  = link_to '← Back', @tricking_style, :class => "btn btn-camouflaged"
-  %h1
-    Editing '#{@tricking_style.name}'
-  = render 'shared/flash_messages'
-.container.container-tiny.card
-  = render 'form'
+#tricking-style-wrapper.container
+  .section-header.clearfix
+    .col-sm-6
+      = link_to 'My Trick List', @tricking_style
+      \/
+      %h2
+        Edit
+  =# render 'shared/flash_messages'
+  #tricking-style.container
+    = render 'form'

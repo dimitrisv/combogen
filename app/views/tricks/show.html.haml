@@ -1,54 +1,57 @@
-.container.mb10
-  = link_to '← Tricks', tricks_path, :class => "btn btn-camouflaged mrs"
-  - if current_tricker_can_edit_trick
-    = link_to ' Edit', edit_trick_path(@trick), :class => "fa fa-pencil btn btn-camouflaged mrs"
-    = link_to ' Destroy', @trick, method: :delete, :class => "fa fa-trash-o btn btn-camouflaged mrs",                                                                                      |
-          data: { confirm: 'Destroying a trick will also remove it from all combos. The ones left with less than two tricks will be destroyed as well. Are you sure you want to continue?' |
-      }                                                                                                                                                                                    |
-.container.card.mb20.pb20
-  %h1= @trick.name
-  Class #{@trick.difficulty} · #{@trick.trick_type}
-  %br/
-  - if !@trick.tutorials.empty?
-    <a class="btn btn-base mt20" data-toggle="modal"
-    data-target="#watch-tutorial-modal" data-video-id=#{@trick.tutorials.first.get_video_id}>
-    %i.glyphicon.glyphicon-film.mr5
-    Tutorial
-/
-  div class="container card mb20">
-  <div id="exampler" class="col-md-6 tac">
-  <iframe width="80%" height="360" src="//www.youtube.com/embed/QjOepEGrO8s?rel=0" frameborder="0" allowfullscreen></iframe>
-  </div>
-  <div class="col-md-6">
-  <div class="list-head clearfix">
-  <h3>Description</h3>
-  </div>
-  <p>
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  </p>
-  </div>
-  </div
-.container
-  - if @trick.combos.empty?
-    %h3.mb10
-      We found no combos with #{@trick.name} in Level App. That's really sad...
-    = link_to 'Be the first to create one!', '/combos/new', :class => "btn btn-camouflaged mb20"
-  - else
-    - if !@combos_you_can_do.empty?
-      .col-md-6
-        .list
-          .list-head
-            %h3 Combos you can do
-          - @combos_you_can_do.each do |combo|
-            = render partial: 'combos/combo_row', locals: {combo: combo}
-        / %= link_to "See all ("+@combos_you_can_do.count.to_s+") →", "#", :class=> "btn btn-camouflaged btn-sm mt10" %
-    - if !@related_combos.empty?
-      .col-md-6
-        .list
-          .list-head
-            %h3 Related combos
-          - @related_combos.each do |combo|
-            = render partial: 'combos/combo_row', locals: {combo: combo}
-        / %= link_to "See all ("+@trick.combos.uniq.length.to_s+") →", "#", :class=> "btn btn-camouflaged btn-sm mt10" %
-= render 'watch_tutorial_modal'
+#tricktionary-entry-wrapper.container
+  .section-header.clearfix
+    .col-sm-6
+      =link_to 'Tricktionary', tricks_path
+      \/
+      %h2= @trick.name
+    .col-sm-4.pull-right
+      - if current_tricker_can_edit_trick
+        = link_to edit_trick_path(@trick), :class => "btn btn-default btn-sm" do
+          %i.glyphicon.glyphicon-pencil
+          Edit
+        = link_to @trick, method: :delete, :class => "btn btn-default btn-sm",data: { confirm: 'Destroying a trick will also remove it from all combos. The ones left with less than two tricks will be destroyed as well. Are you sure you want to continue?'} do
+          %i.glyphicon.glyphicon-trash
+          Destroy
+  #trick-details.clearfix
+    .col-md-6
+      #trick-info.clearfix
+        .clearfix
+          .col-xs-6 Class
+          .col-xs-6= @trick.difficulty
+        .clearfix
+          .col-xs-6 Type
+          .col-xs-6= @trick.trick_type
+        .clearfix
+          .col-xs-6 Landing
+          .col-xs-6 blahblah
+        .clearfix
+          .col-xs-6 Description
+        .clearfix
+          .col-xs-12 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque placerat sem, at porttitor neque vehicula vel. Nunc elit ligula, fermentum eu turpis a, vestibulum lacinia nibh. Aliquam sit amet eros eget mi laoreet interdum. Mauris venenatis diam quis nibh facilisis, vitae malesuada ante aliquet. Praesent egestas, turpis eget iaculis convallis, nibh neque egestas purus, et dignissim massa elit sed lectus.
+    .col-md-6
+      - if @trick.tutorials.any?
+        - tutorial = @trick.tutorials.first
+        %iframe{width:'100%', height:'315', scrolling: "no", allowtransparency: "true", allowfullscreen: "true", src: "http://www.youtube.com/embed/#{tutorial.uid}?autoplay=0&rel=0&wmode=transparent&showinfo=0&start=#{tutorial.start_time}&end=#{tutorial.end_time}", frameborder:'0'}
+  #combos-using-trick.clearfix
+    - if @trick.combos.empty?
+      .container
+        %h3
+          We found no combos with #{@trick.name} in Level App. That's really sad...
+        = link_to 'Be the first to create one!', new_combo_path, :class => "btn btn-primary"
+    - else
+      - unless @combos_you_can_do.empty?
+        .col-md-6
+          %h3.list-head Combos you can do
+          .list
+            - @combos_you_can_do.each do |combo|
+              = render partial: 'combos/combo_row', locals: {combo: combo}
+          / %= link_to "See all ("+@combos_you_can_do.count.to_s+") →", "#", :class=> "btn btn-camouflaged btn-sm mt10" %
+      - unless @related_combos.empty?
+        .col-md-6
+          %h3.list-head Related combos
+          .list
+            - @related_combos.each do |combo|
+              = render partial: 'combos/combo_row', locals: {combo: combo}
+          / %= link_to "See all ("+@trick.combos.uniq.length.to_s+") →", "#", :class=> "btn btn-camouflaged btn-sm mt10" %
+
 = render 'combos/watch_combo_modal'

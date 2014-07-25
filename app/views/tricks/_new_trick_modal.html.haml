@@ -11,19 +11,18 @@
             = pluralize(@new_trick.errors.count, "error")
             prevented this trick from being saved.
             Please review your inputs below.
-          %p.mb20
-            %b.mr10 Name
+          .clearfix
+            %strong Name
             = f.text_field :name
-          %hr/
-          %p.mb20
-            %b.mr10 Difficulty class
+          .clearfix
+            %strong Difficulty class
             = f.select :difficulty, get_difficulty_classes
-          %hr/
-          %p
-            %b.mr10 Trick type
+          .clearfix
+            %strong Trick type
             = f.select :trick_type, get_trick_types
+        .modal-body
+          At levelapp, we take great care of our trick database and try to keep it up to date.
+          By suggesting a trick...
+          thank you!
         .modal-footer
-          = f.submit "Create Trick", :class => "btn btn-base"
-    / /.modal-content
-  / /.modal-dialog
-/ /.modal
+          = f.submit "Suggest Trick", :class => "btn btn-primary"

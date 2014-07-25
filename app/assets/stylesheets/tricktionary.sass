@@ -1,0 +1,64 @@
+#tricktionary-wrapper
+  #tricks-list
+    padding-bottom: 20px
+    margin-bottom: 20px
+    border-bottom: 2px solid #eaedee
+  .suggest-trick
+    margin-bottom: 20px
+
+#tricktionary-entry-wrapper
+  .section-header
+    h2
+      display: inline-block
+  #trick-details
+    padding-bottom: 20px
+    margin-bottom: 20px
+    border-bottom: 2px solid #eaedee
+    #trick-info
+      margin-bottom: 20px
+      .clearfix:nth-child(2n+1)
+        background-color: #f7f7f7
+      .clearfix
+        .col-xs-6:first-child
+          font-weight: 600
+      .col-xs-6,
+      .col-xs-12
+        padding: 10px
+  #combos-using-trick
+    @import 'combo_list'
+    .list-head
+      margin-bottom: 8px
+    .list
+      .list-row:first-child
+        border-top: 2px solid #ecf0f1
+
+#edit-trick-wrapper
+  .section-header
+    h2
+      display: inline-block
+    a
+      span
+        @media (max-width: 480px)
+          display: none
+  #trick-form
+    .clearfix
+      strong
+        width: 120px
+        display: inline-block
+      input[type='text'],
+      select
+        width: 220px
+      margin-bottom: 20px
+
+#new-trick-modal
+  .modal-body
+    .clearfix
+      strong
+        width: 120px
+        display: inline-block
+      input[type='text'],
+      select
+        width: 220px
+      margin-bottom: 20px
+      &:last-child
+        margin-bottom: 0

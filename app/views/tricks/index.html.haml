@@ -1,25 +1,25 @@
-.container
-  #tricks-affix.col-sm-4.col-md-3
-    %div
-      / data-spy="affix" data-offset-top="60" data-offset-bottom="100"
-      %h2#toolbar-title.bb2 Tricktionary
-      #trick-toolbar.container.mb10
+#tricktionary-wrapper.container
+  .section-header.clearfix
+    .col-sm-6
+      %h2 Tricktionary
+    -#
+      .col-sm-4
         = render 'tricks_filters'
-      - if tricker_signed_in?
-        %a.btn.btn-camouflaged.mb20{"data-target" => "#new-trick-modal", "data-toggle" => "modal", :href => "#"}
-          %i.fa.fa-plus
-          New Trick
-  .col-sm-8.col-md-9
-    = render 'shared/flash_messages'
-    / a href="#" class="btn btn-base mb10">New Trick</a
-    .list.container
-      - if !@tricks.empty?
+  #tricks-list.clearfix
+    =# render 'shared/flash_messages'
+    .list
+      - unless @tricks.empty?
         - @tricks.each do |trick|
           - @trick = trick
-          = render 'trick_row'
+          .col-sm-4
+            = link_to @trick.name, @trick
+          =# render 'trick_row'
       - else
         .list-row
           .container.empty-list-head
             %h3 Nothing to see here.
-  .clearfix
+  .suggest-trick
+    Can't find the trick you're looking for?
+    %a{"data-target" => "#new-trick-modal", "data-toggle" => "modal", :href => "#"}
+      Suggest it
 = render 'new_trick_modal'

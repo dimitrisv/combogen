@@ -1,18 +1,17 @@
-.container.container-tiny.tac
-  %h1 Tricker Login
-.container.container-tiny.card.tac.mb50
-  %p.mt20= notice
-  %p.mt20= alert
-  = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-    .mb20
-      = f.email_field :email, :autofocus => true, :placeholder => "Email", :class => "large"
-    .mb20
-      = f.password_field :password, :placeholder => "Password", :class => "large"
-    .mb20
-      = f.submit "Login", :class => "btn btn-base btn-lg"
-      - if devise_mapping.rememberable?
-        / %= f.check_box :remember_me %
-        / %= f.label :remember_me %
-      %br/
-    .mb20
-      = render "devise/shared/links"
+#tricker-sign-in
+  .logo.container
+    %img{src:"http://tricking.gr/images/logo2-.png"}
+  .container
+    %h3 Sign in with your Level App account
+  #sign-in-inputs
+    = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+      = f.email_field :email, :autofocus => true, :placeholder => "Email", :class => "form-control"
+      = f.password_field :password, :placeholder => "Password", :class => "form-control"
+      = f.submit "Show me the combos", :class => "btn btn-primary btn-block", :id => "sign-in-btn"
+      /- if devise_mapping.rememberable?
+      / = f.check_box :remember_me
+      / = f.label :remember_me
+    .devise-links
+      = link_to "Forgot your password?", new_password_path(resource_name)
+  .links
+    = link_to "Create an account", new_tricker_registration_path

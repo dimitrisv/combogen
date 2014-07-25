@@ -1,0 +1,82 @@
+/* Setup */
+@charset 'utf-8'
+@import 'twitter/bootstrap'
+@import 'formtastic'
+@import 'my_formtastic_changes'
+@import 'compass/css3'
+@import 'selectize.bootstrap3'
+
+/* Imports */
+@import 'landing_page'
+@import 'tricktionary'
+@import 'combos'
+@import 'tricking_styles'
+@import 'trickers/sign_in_up'
+@import 'trickers/account'
+@import 'modal'
+@import 'generator'
+
+
+/* Basic Layout */
+html, body
+  height: 100%
+
+#wrap
+  min-height: 100%
+  height: auto
+  margin: 0 auto -60px
+  padding: 0 0 80px
+  #main
+    margin: 0 auto
+  .section-header
+    margin-bottom: 20px
+    border-bottom: 2px solid #eaedee
+    @include box-sizing(border-box)
+    .col-sm-4
+      height: 41px
+    h2
+      margin: 0 0 8px
+
+footer
+  padding: 20px 0
+  color: #999
+  background: black
+  @include box-sizing(content-box)
+  text-align: center
+  a
+    color: #999
+    &:hover
+      color: white
+      text-decoration: none
+
+
+/* Bootstrap Overrides */
+.navbar
+  @include border-radius(0)
+
+.navbar-nav
+  margin: 7.5px -15px
+
+.dropdown-menu
+  .divider
+    @media (max-width: 768px)
+      background-color: #444
+
+h1, h2, h3
+  font-weight: 300
+
+a:hover
+  color: #428bca
+
+.container
+  max-width: 970px
+
+
+/* Form elements */
+.btn-camouflaged
+  color: #898f9c
+  &:hover,
+  &:focus,
+  &:active
+    color: white
+    background-color: #678

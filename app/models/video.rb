@@ -1,20 +1,24 @@
+# NOTE: Currently supports YouTube videos only!
 class Video < ActiveRecord::Base
   belongs_to :tricker
   belongs_to :trick
   belongs_to :combo
-  attr_accessible :url, :tricker_id, :combo_id, :trick_id, :start_time, :end_time
+  attr_accessible :url, :uid, :tricker_id, :combo_id, :trick_id, :start_time, :end_time
 
-  # Currently assumes youtube video
-  def get_video_id
-    if url[/youtu\.be\/([^\?]*)/]
-      youtube_id = $1
-    else
-      # Regex from # http://stackoverflow.com/questions/3452546/javascript-regex-how-to-get-youtube-video-id-from-url/4811367#4811367
-      url[/^.*((v\/)|(embed\/)|(watch\?))\??v?=?([^\&\?]*).*/]
-      youtube_id = $5
+  before_create :extract_uid
+
+  YT_LINK_FORMAT = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/i
+
+  private
+
+  def extract_uid
+    uid = url.match(YT_LINK_FORMAT)
+    self.uid = uid[2] if uid && uid[2]
+   
+    if self.uid.to_s.length != 11
+      self.errors.add(:url, 'is invalid.')
+      false
     end
-    # later I can insert this directly as a data attribute
-    # %Q{<iframe title="YouTube video player" width="640" height="390" src="http://www.youtube.com/embed/#{ youtube_id }" frameborder="0" allowfullscreen></iframe>}
   end
 
 end

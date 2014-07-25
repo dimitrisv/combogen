@@ -1,30 +1,12 @@
-.container
-  #combos-affix.col-sm-4.col-md-3
-    %div
-      / data-spy="affix" data-offset-top="60" data-offset-bottom="300"
-      %h2#toolbar-title.bb2 My Combos
-      .mb20
-        = render 'combo_lists'
-      .container.mb20
-        %a.btn.btn-camouflaged{"data-target" => "#new-combo-modal", "data-toggle" => "modal"}
-          %i.fa.fa-plus
-          New Combo
-        %a.btn.btn-camouflaged{"data-target" => "#combo-generator-modal", "data-toggle" => "modal"}
-          %i.glyphicon.glyphicon-cog
-          Combo Generator
-  .col-sm-8.col-md-9
-    = render 'shared/flash_messages'
-    / Print all combos from the current tricker
-    = paginate @combos
-    .list.container
-      - if !@combos.empty?
-        - @combos.each do |combo|
-          = render partial: 'combo_row', locals: {combo: combo}
-      - else
-        .list-row
-          .container.empty-list-head
-            %h3 There are currently no combos in this list.
-    = paginate @combos
-= render 'combo_generator_modal'
-= render 'new_combo_modal'
+#combos-wrapper.container
+  .section-header.clearfix
+    .col-sm-4
+      %h2 My Combos
+    .col-sm-4
+      = select_tag 'combo-lists-dropdown', options_for_select([["All of them (#{current_tricker.combos.count})", nil]]) + options_from_collection_for_select(current_tricker.lists, "id", "to_s"), { class: 'form-control'}
+    .col-sm-4
+      %a.btn.btn-primary.btn-block.pull-right#create-combo
+        Create Combo
+  #combos-list.clearfix
+    = render 'combos_list'
 = render 'watch_combo_modal'
