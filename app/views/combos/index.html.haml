@@ -8,7 +8,7 @@
       .col-sm-4.pull-right
         %input#search.form-control{placeholder: 'Find combos...'}
   #combos-list.clearfix
-    = render 'shared/flash_messages'
+    =# render 'shared/flash_messages'
     .list
       - unless @combos.empty?
         - @combos.each do |combo|
