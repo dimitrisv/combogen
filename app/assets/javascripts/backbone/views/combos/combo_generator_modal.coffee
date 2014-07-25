@@ -28,7 +28,22 @@ class LevelApp.Views.ComboGenerator extends Backbone.View
     
   events:
     'click #add': 'addTricks'
+    'click #save-combo': 'saveCombo'
 
   addTricks: ->
     # add 'em bro!
+
+  saveCombo: ->
+    debugger
+    comboSequence = $('.combo-input-wrapper').val()
+    return if(comboSequence.length == 0 or comboSequence == undefined)
+
+    $.ajax(
+      url: '/combos',
+      type: 'POST',
+      data:
+        sequence: comboSequence
+      success: () =>
+        LevelApp.modal.close()
+    )
 

@@ -3,9 +3,8 @@
     %h2 Create your combo
   .modal-body
     #generator-controls.clearfix
-      Add
       = number_field_tag :no_tricks, 1, in: 1..10, class: 'form-control'
-      tricks from
+      %span tricks from
       #trick-list
         = select_tag "filter", options_for_select({ "The Database" => "database", "My Trick List" => "list" }, "list"), {class: 'form-control'}
       %a.btn.btn-primary#add
@@ -16,9 +15,9 @@
           %label{ for: 'combo-input'}
           %input{type: 'text', id: 'combo-input', value: combo_input_value(@combo), placeholder: 'Type your combo here...'}
     #generator-actions.clearfix
-      %a.btn.btn-success#save-combo
+      %a.btn.btn-primary#save-combo
         Save
-      %a.btn.btn-warning#discard
+      %a.btn.btn-default#discard
         Discard
   .modal-data
     #my-tricks

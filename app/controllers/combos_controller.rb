@@ -77,29 +77,22 @@ class CombosController < ApplicationController
   # POST /combos.json
   def create
     @combo = Combo.create
-    @combo.execution = Video.new
     @combo.tricker_id = current_tricker.id
 
-    remove_destroyed
+    trick_names = params[:sequence].split(',') if params[:sequence].present?
+    @trick_ids = []
+    trick_names.each do |trick_name|
+      trick = Trick.find_by_name(trick_name) ||
+        Trick.create(name: trick_name, tricker_id: current_tricker.id)
+      @trick_ids << trick.id
+    end
 
-    @combo.no_tricks = @trick_ids.length
-    
     create_combo_elements
 
-    update_lists
-    update_execution
-
+    @combo.no_tricks = @combo.tricks.count
     @combo.render_sequence
-
-    respond_to do |format|
-      if @combo.save
-        format.html { redirect_to my_combos_path, notice: 'Combo was successfully created.' }
-        format.json { render json: @combo, status: :created, location: @combo }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @combo.errors, status: :unprocessable_entity }
-      end
-    end
+    @combo.save
+    render json: @combo.as_json
   end
 
   # PUT /combos/1
