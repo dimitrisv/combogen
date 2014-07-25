@@ -26,9 +26,12 @@ class LevelApp.Views.ComboGenerator extends Backbone.View
     # 
     # selectize.setValue( existing combo )
     
+    @$el.on('keyup', @noEscape)
+    
   events:
     'click #add': 'addTricks'
     'click #save-combo': 'saveCombo'
+    'click #discard': 'discard'
 
   addTricks: ->
     # add 'em bro!
@@ -47,3 +50,9 @@ class LevelApp.Views.ComboGenerator extends Backbone.View
         LevelApp.modal.close()
     )
 
+  discard: ->
+    LevelApp.modal.close()
+
+  noEscape: (evt) ->
+    if evt.keyCode is 27
+      evt.stopImmediatePropagation()
