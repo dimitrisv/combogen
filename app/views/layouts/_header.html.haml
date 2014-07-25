@@ -23,7 +23,7 @@
                 %li= link_to "My Profile", current_tricker
                 %li= link_to "My Trick List", current_tricker.tricking_style
                 %li.divider
-                %li= link_to "Account Settings", edit_tricker_registration_path
+                %li= link_to "Change Password", edit_tricker_registration_path
                 %li.divider
                 %li= link_to 'Logout', destroy_tricker_session_path, :method => :delete
           - else
