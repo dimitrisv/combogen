@@ -18,8 +18,9 @@
         .list-row
           .container.empty-list-head
             %h3 Nothing to see here.
-  .suggest-trick
-    Can't find the trick you're looking for?
-    %a{"data-target" => "#new-trick-modal", "data-toggle" => "modal", :href => "#"}
-      Suggest it
-= render 'new_trick_modal'
+  -#
+    .suggest-trick
+      Can't find the trick you're looking for?
+      %a{"data-target" => "#new-trick-modal", "data-toggle" => "modal", :href => "#"}
+        Suggest it
+=# render 'new_trick_modal'
