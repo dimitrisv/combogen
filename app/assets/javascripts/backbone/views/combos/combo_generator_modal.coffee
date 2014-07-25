@@ -23,9 +23,12 @@ class LevelApp.Views.ComboGenerator extends Backbone.View
       options: @allOfThem
     )
     @selectize = $('.combo-input-wrapper')[0].selectize
-    # selectize.setValue( existing combo )
+    #@selectize.setValue( '540,540,540' )
 
+    # Disable ESC key when typing
     @$el.on('keyup', @noEscape)
+    
+    setTimeout((=>@selectize.focus()), 200)    
     
   events:
     'click #add': 'addTricks'
