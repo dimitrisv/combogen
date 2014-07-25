@@ -23,7 +23,6 @@ class LevelApp.Views.ComboGenerator extends Backbone.View
       options: @allOfThem
     )
     @selectize = $('.combo-input-wrapper')[0].selectize
-    # 
     # selectize.setValue( existing combo )
 
     @$el.on('keyup', @noEscape)
@@ -34,7 +33,16 @@ class LevelApp.Views.ComboGenerator extends Backbone.View
     'click #discard': 'discard'
 
   addTricks: ->
-    # add 'em bro!
+    numTricks = $('#no_tricks').val()
+    list = $('#trick-list select').val()
+
+    collection = if list == 'database' then @dbTrickList else @myTrickList
+    
+    i = 0
+    while i < numTricks
+      trick = collection[Math.floor(Math.random()*collection.length)]
+      @selectize.addItem(trick.name)
+      i++
 
   saveCombo: ->
     comboSequence = $('.combo-input-wrapper').val()

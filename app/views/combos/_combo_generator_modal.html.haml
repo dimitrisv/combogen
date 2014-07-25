@@ -3,7 +3,7 @@
     %h2 Create your combo
   .modal-body
     #generator-controls.clearfix
-      = number_field_tag :no_tricks, 1, in: 1..10, class: 'form-control'
+      = number_field_tag :no_tricks, 2, in: 1..10, class: 'form-control'
       %span tricks from
       #trick-list
         = select_tag "filter", options_for_select({ "The Database" => "database", "My Trick List" => "list" }, "list"), {class: 'form-control'}
