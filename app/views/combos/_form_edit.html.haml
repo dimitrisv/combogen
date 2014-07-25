@@ -15,7 +15,7 @@
       - @index += 1
       = f.input :tricks, :as => :select, :collection => Trick.order(:name), :selected => @default, :input_html => { :multiple => false }
       = trick_form.link_to_remove "", :class => "glyphicon glyphicon-remove btn btn-camouflaged"
-    = f.link_to_add " trick", :tricks, :class => "btn btn-camouflaged fa fa-plus"
+    = f.link_to_add " trick", :tricks, :class => "btn btn-camouflaged glyphicon glyphicon-plus"
     %hr.clearfix/
     %b Lists
     = f.input :lists, :collection => current_tricker.lists, :as => :check_boxes

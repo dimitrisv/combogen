@@ -5,8 +5,9 @@
         = @tricking_style.name
     - if current_tricker_can_edit_style
       .col-sm-4.pull-right
-        = link_to ' Edit', edit_tricking_style_path(@tricking_style), :class => "fa fa-pencil btn btn-default mr10"
-      =#by #{link_to @tricking_style.tricker.name, tricker_path(@tricking_style.tricker)}
+        = link_to edit_tricking_style_path(@tricking_style), :class => "btn btn-default mr10" do
+          %i.glyphicon.glyphicon-pencil
+          %span Edit
   =# render 'shared/flash_messages'
   #tricking-style.container
     .trick-list.clearfix

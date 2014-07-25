@@ -6,8 +6,12 @@
       %h2= @trick.name
     .col-sm-4.pull-right
       - if current_tricker_can_edit_trick
-        = link_to ' Edit', edit_trick_path(@trick), :class => "fa fa-pencil btn btn-default btn-sm"
-        = link_to ' Destroy', @trick, method: :delete, :class => "fa fa-trash-o btn btn-default btn-sm",data: { confirm: 'Destroying a trick will also remove it from all combos. The ones left with less than two tricks will be destroyed as well. Are you sure you want to continue?'}
+        = link_to edit_trick_path(@trick), :class => "btn btn-default btn-sm" do
+          %i.glyphicon.glyphicon-pencil
+          Edit
+        = link_to @trick, method: :delete, :class => "btn btn-default btn-sm",data: { confirm: 'Destroying a trick will also remove it from all combos. The ones left with less than two tricks will be destroyed as well. Are you sure you want to continue?'} do
+          %i.glyphicon.glyphicon-trash
+          Destroy
   #trick-details.clearfix
     .col-md-6
       #trick-info.clearfix

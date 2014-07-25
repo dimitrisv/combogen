@@ -11,5 +11,8 @@
   .col-xs-5.col-sm-2
     - if current_tricker_can_edit_trick
       .actions.pull-right
-        = link_to '', edit_trick_path(@trick), :class => "fa fa-gear btn btn-xs btn-default"
-        = link_to '', @trick, method: :delete, :class => "fa fa-trash-o btn btn-xs btn-default", data: { confirm: 'Destroying a trick will also remove it from all combos. The ones left with less than two tricks will be destroyed as well. Are you sure you want to continue?'}
+        = link_to edit_trick_path(@trick), :class => "btn btn-xs btn-default" do
+          %i.glyphicon.glyphicon-cog
+        = link_to @trick, method: :delete, :class => "btn btn-default btn-xs",data: { confirm: 'Destroying a trick will also remove it from all combos. The ones left with less than two tricks will be destroyed as well. Are you sure you want to continue?'} do
+          %i.glyphicon.glyphicon-trash
+          %span Destroy
