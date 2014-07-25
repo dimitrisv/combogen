@@ -5,10 +5,10 @@
     %h3 Create your Level App account
   #sign-up-inputs
     = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-      = f.text_field :name, :autofocus => true, :placeholder => "Name", :class => ""
-      = f.text_field :email, :placeholder => "Email", :class => ""
-      = f.password_field :password, :placeholder => "Password", :class => ""
-      = f.password_field :password_confirmation, :placeholder => "Confirm password", :class => "large"
+      = f.text_field :name, :autofocus => true, :placeholder => "Name", :class => "form-control"
+      = f.text_field :email, :placeholder => "Email", :class => "form-control"
+      = f.password_field :password, :placeholder => "Password", :class => "form-control"
+      = f.password_field :password_confirmation, :placeholder => "Confirm password", :class => "large form-control"
       = f.submit "Create my account", :class => "btn btn-primary btn-block", :id => "sign-up-btn"
   .links
     = link_to "Already have an account? Sign in", new_tricker_session_path
