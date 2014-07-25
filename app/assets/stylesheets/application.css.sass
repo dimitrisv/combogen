@@ -51,8 +51,16 @@ footer
 
 
 /* Bootstrap Overrides */
-#navigation
+.navbar
   @include border-radius(0)
+
+.navbar-nav
+  margin: 7.5px -15px
+
+.dropdown-menu
+  .divider
+    @media (max-width: 768px)
+      background-color: #444
 
 h1, h2, h3
   font-weight: 300

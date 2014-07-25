@@ -1,5 +1,5 @@
 %header
-  %nav#navigation.navbar.navbar-inverse{:role => "navigation"}
+  %nav.navbar.navbar-inverse{:role => "navigation"}
     .container
       .navbar-header
         %button.navbar-toggle{"data-target" => "#levelapp-nav", "data-toggle" => "collapse", :type => "button"}
@@ -7,8 +7,8 @@
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        <a href=#{root_path} class="navbar-brand">
-        Level App
+        %a.navbar-brand{href: root_path}
+          Level App
       #levelapp-nav.collapse.navbar-collapse
         %ul.nav.navbar-nav.navbar-right
           - if tricker_signed_in?
@@ -30,5 +30,4 @@
             %li
               = link_to 'Register', new_tricker_registration_path
             %li
-              #navbar-btn
-                = link_to 'Login', new_tricker_session_path, :class => "btn btn-success navbar-btn"
+              = link_to 'Login', new_tricker_session_path, :class => "btn btn-success navbar-btn"
