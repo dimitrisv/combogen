@@ -92,7 +92,7 @@ class CombosController < ApplicationController
     @combo.no_tricks = @combo.tricks.count
     @combo.render_sequence
     @combo.save
-    render json: @combo.as_json
+    render partial: 'combo_row', locals: {combo: @combo}
   end
 
   # PUT /combos/1

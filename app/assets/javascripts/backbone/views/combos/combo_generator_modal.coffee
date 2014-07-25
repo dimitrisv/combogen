@@ -45,7 +45,8 @@ class LevelApp.Views.ComboGenerator extends Backbone.View
       type: 'POST',
       data:
         sequence: comboSequence
-      success: () =>
+      success: (resp) =>
+        $('#combos-list .list').prepend(resp)
         LevelApp.modal.close()
     )
 
