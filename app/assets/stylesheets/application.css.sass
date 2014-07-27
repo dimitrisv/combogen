@@ -57,30 +57,6 @@ footer
       color: white
       text-decoration: none
 
-
-/* Bootstrap Overrides */
-.navbar
-  @include border-radius(0)
-
-.navbar-nav
-  @media #{$small}
-    margin: 7.5px -15px
-
-.dropdown-menu
-  .divider
-    @media #{$small}
-      background-color: #444
-
-h1, h2, h3
-  font-weight: 300
-
-a:hover
-  color: #428bca
-
-.container
-  max-width: 970px
-
-
 /* Form elements */
 .btn-camouflaged
   color: #898f9c
@@ -89,3 +65,16 @@ a:hover
   &:active
     color: white
     background-color: #678
+
+/* Bootstrap Overrides */
+@import 'support/bootstrap_overrides'
+
+/* Devise Overrides */
+#devise-errors
+  h2
+    display: none
+  ul
+    color: #fa9237
+.field_with_errors
+  input.form-control
+    border-color: #fa9237 !important
