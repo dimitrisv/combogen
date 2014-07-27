@@ -28,7 +28,13 @@ class LevelApp.Views.ComboGenerator extends Backbone.View
     # Disable ESC key when typing
     @$el.on('keyup', @noEscape)
     
-    setTimeout((=>@selectize.focus()), 200)    
+    # Create combo with specific trick
+    trickName = window.location.hash.split('/')[1].replace(/_/g, ' ')
+    unless trickName == undefined
+      @selectize.addItem(trickName)
+
+    # Focus on input
+    setTimeout((=>@selectize.focus()), 200)
     
   events:
     'click #add': 'addTricks'

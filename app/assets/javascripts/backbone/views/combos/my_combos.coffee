@@ -1,7 +1,7 @@
 class LevelApp.Views.MyCombos extends Backbone.View
   initialize: ->
     @currentList = $('#combo-lists-dropdown').val()
-    if window.location.hash == '#new'
+    if window.location.hash.split('/')[0] == '#new'
       LevelApp.modal.show(LevelApp.Views.ComboGenerator,
         combo_id: 0
       )

@@ -6,6 +6,10 @@ module CombosHelper
       ''
     end
   end
+
+  def new_combo_anchor(trick_name)
+    "new/#{@trick.name.gsub(' ', '_')}"
+  end
   
   def my_tricks_for_selectize
     tricks = []
