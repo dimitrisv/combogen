@@ -4,8 +4,13 @@
     margin-bottom: 40px
     border-bottom: 1px solid #eaedee
     font-size: 1.6rem
-    .form-control
-      margin: 0 8px
+    @media #{$small}
+
+      span.copy
+        display: none
+    .form-control,
+    span.copy
+      margin: 0 8px 0 0
     #no_tricks.form-control
       width: 60px
       display: inline-block
