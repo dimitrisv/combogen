@@ -5,7 +5,7 @@ class Trick < ActiveRecord::Base
 	has_many :combos, :through => :elements
   has_many :tutorials, class_name: "Video"
 
-	attr_accessible :difficulty, :landed, :name, :trick_type, :tricker_id, :trick_type
+	attr_accessible :difficulty, :landed, :name, :trick_type, :tricker_id
 	validates :name, :presence => true, :uniqueness => true
 
 	scope :order_by_combo,
