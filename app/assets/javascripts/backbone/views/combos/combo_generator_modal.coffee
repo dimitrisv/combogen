@@ -29,9 +29,10 @@ class LevelApp.Views.ComboGenerator extends Backbone.View
     @$el.on('keyup', @noEscape)
     
     # Create combo with specific trick
-    trickName = window.location.hash.split('/')[1].replace(/_/g, ' ')
-    unless trickName == undefined
-      @selectize.addItem(trickName)
+    if window.location.hash
+      trickName = window.location.hash.split('/')[1].replace(/_/g, ' ')
+      unless trickName == undefined
+        @selectize.addItem(trickName)
 
     # Focus on input
     setTimeout((=>@selectize.focus()), 200)
