@@ -9,7 +9,7 @@
     %b.combos-count= @trick.combos.uniq.count
     %small= 'combo'.pluralize(@trick.combos.uniq.count)
   .col-xs-5.col-sm-2
-    - if current_tricker_can_edit_trick
+    - if current_tricker_can_edit_trick(@trick)
       .actions.pull-right
         = link_to edit_trick_path(@trick), :class => "btn btn-xs btn-default" do
           %i.glyphicon.glyphicon-cog

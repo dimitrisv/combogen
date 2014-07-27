@@ -5,7 +5,7 @@
       \/
       %h2= @trick.name
       .pull-right
-        - if current_tricker_can_edit_trick
+        - if current_tricker_can_edit_trick(@trick)
           = link_to edit_trick_path(@trick), :class => "btn btn-camouflaged btn-sm" do
             %i.glyphicon.glyphicon-pencil
             %span Edit
