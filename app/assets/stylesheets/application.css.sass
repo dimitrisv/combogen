@@ -16,6 +16,8 @@
 @import 'modal'
 @import 'generator'
 
+/* Support */
+@import 'support/media'
 
 /* Basic Layout */
 html, body
@@ -36,6 +38,12 @@ html, body
       height: 41px
     h2
       margin: 0 0 8px
+    a.btn
+      i
+        margin-right: 3px
+      @media #{$small}
+        span
+          display: none
 
 footer
   padding: 20px 0
@@ -55,12 +63,12 @@ footer
   @include border-radius(0)
 
 .navbar-nav
-  @media (max-width: 768px)
+  @media #{$small}
     margin: 7.5px -15px
 
 .dropdown-menu
   .divider
-    @media (max-width: 768px)
+    @media #{$small}
       background-color: #444
 
 h1, h2, h3
