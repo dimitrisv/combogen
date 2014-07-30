@@ -9,7 +9,7 @@
   = f.inputs do
     = f.input :tricks, :as => :check_boxes, :collection => Trick.where(tricker_id: nil).order("name ASC")
     %br
-    = f.input :tricks, :as => :check_boxes, :collection => Trick.where(Trick.arel_table[:tricker_id].not_eq(nil)).order("name ASC")
+    = f.input :tricks, :as => :check_boxes, :collection => Trick.where(tricker_id: current_tricker.id).order("name ASC")
   = f.actions do
     = f.action :submit, :label => "Save Changes" , :button_html => { :class => "btn btn-primary" }
     = link_to 'Cancel', @tricking_style, :class => "btn btn-default"

@@ -13,3 +13,7 @@
       - @tricking_style.tricks.order(:name).each do |t|
         .col-sm-4
           = t.name
+      - if @tricking_style.tricks.count == 0
+        %h3 You haven't created your trick list yet.
+        %p Doing so will enable you to get personal combo recommendations, generate random combos for your sessions, and more fun stuff!
+        = link_to 'Create it now!', edit_tricking_style_path(@tricking_style), :class => "btn btn-primary"
