@@ -21,7 +21,7 @@
       %a.btn.btn-default#discard
         Discard
   .modal-data
-    #my-tricks
-      = my_tricks_for_selectize
-    #db-tricks
-      = db_tricks_for_selectize
+    %script#my-tricks{type: "text/json"}
+      = my_tricks_for_selectize.html_safe
+    %script#db-tricks{type: "text/json"}
+      = db_tricks_for_selectize.html_safe
