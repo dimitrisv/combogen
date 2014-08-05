@@ -9,6 +9,7 @@ class LevelApp.Views.ComboGenerator extends Backbone.View
     @allOfThem   = @myTrickList.concat(@dbTrickList)
 
     $('.combo-input-wrapper').selectize(
+      plugins: ['remove_button', 'restore_on_backspace', 'drag_drop'],
       persist: false,
       createOnBlur: true,
       create: true,
@@ -24,9 +25,6 @@ class LevelApp.Views.ComboGenerator extends Backbone.View
     )
     @selectize = $('.combo-input-wrapper')[0].selectize
     #@selectize.setValue( '540,540,540' )
-
-    # Disable ESC key when typing
-    @$el.on('keyup', @noEscape)
     
     # Create combo with specific trick
     if window.location.hash
@@ -70,7 +68,3 @@ class LevelApp.Views.ComboGenerator extends Backbone.View
 
   discard: ->
     LevelApp.modal.close()
-
-  noEscape: (evt) ->
-    if evt.keyCode is 27
-      evt.stopImmediatePropagation()

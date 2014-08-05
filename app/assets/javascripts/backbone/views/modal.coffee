@@ -1,11 +1,11 @@
 class LevelApp.Views.Modal extends Backbone.View
   initialize: ->
     @$document = $(document)
-    @$el.on('show.bs.modal', =>
-      @$document.on('keyup', @closeModal)
-    )
+    # @$el.on('show.bs.modal', =>
+    #   @$document.on('keyup', @closeModal)
+    # )
     @$el.on('hide.bs.modal', =>
-      @$document.off('keyup', @closeModal)
+      # @$document.off('keyup', @closeModal)
       if @view isnt undefined
         @view.undelegateEvents()
         @view.stopListening()
@@ -14,8 +14,8 @@ class LevelApp.Views.Modal extends Backbone.View
         @view = undefined
     )
 
-  events:
-    'click': 'closeModal'
+  # events:
+  #   'click': 'closeModal'
 
   show: (view, options={}) ->
     @$el.modal(
@@ -39,12 +39,12 @@ class LevelApp.Views.Modal extends Backbone.View
   close: -> 
     @$el.modal('hide')
 
-  closeModal: (evt) =>
-    # Return if buttun isn't esc
-    if evt.type is 'keyup' and evt.keyCode isnt 27
-      return
-    if evt.type is 'click' and evt.currentTarget isnt evt.target
-      return
-    @close()
+  # closeModal: (evt) =>
+  #   # Return if buttun isn't esc
+  #   if evt.type is 'keyup' and evt.keyCode isnt 27
+  #     return
+  #   if evt.type is 'click' and evt.currentTarget isnt evt.target
+  #     return
+  #   @close()
 
 

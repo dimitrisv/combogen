@@ -1,12 +1,16 @@
 #= require jquery
 #= require jquery_ujs
 #= require jquery_nested_form
+#= require jquery-ui.min
 #= require twitter/bootstrap
 #
 #= require underscore
 #= require backbone
 #
-#= require selectize
+#= require selectize/selectize
+#= require selectize/plugins/drag_drop/plugin
+#= require selectize/plugins/remove_button/plugin
+#= require selectize/plugins/restore_on_backspace/plugin
 #
 #= require backbone/app
 #= require_tree ./backbone/views/
