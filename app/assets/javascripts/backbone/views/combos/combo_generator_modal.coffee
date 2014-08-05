@@ -9,7 +9,7 @@ class LevelApp.Views.ComboGenerator extends Backbone.View
     @allOfThem   = @myTrickList.concat(@dbTrickList)
 
     $('.combo-input-wrapper').selectize(
-      plugins: ['remove_button', 'restore_on_backspace'],
+      plugins: ['remove_button', 'restore_on_backspace', 'drag_drop'],
       persist: false,
       createOnBlur: true,
       create: true,
