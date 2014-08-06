@@ -6,7 +6,7 @@
       = number_field_tag :no_tricks, 2, in: 1..10, class: 'form-control'
       %span.copy tricks from
       #trick-list
-        = select_tag "filter", options_for_select({ "The Database" => "database", "My Trick List" => "list" }, "list"), {class: 'form-control'}
+        = select_tag "filter", options_for_select(available_styles_options, "list"), {class: 'form-control'}
       %a.btn.btn-primary#add
         Add
     #generated-combos
