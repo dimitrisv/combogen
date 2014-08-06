@@ -10,6 +10,14 @@ module CombosHelper
   def new_combo_anchor(trick_name)
     "new/#{@trick.name.gsub(' ', '_')}"
   end
+
+  def available_styles_options
+    styles = { "The Database" => "database" }
+    if current_tricker.tricking_style.tricks.count > 0
+      styles["My Trick List"] = "list"
+    end
+    styles
+  end
   
   def my_tricks_for_selectize
     tricks = []
