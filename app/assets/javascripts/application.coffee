@@ -2,6 +2,7 @@
 #= require jquery_ujs
 #= require jquery_nested_form
 #= require jquery-ui.min
+#= require jquery.ui.touch-punch.min
 #= require twitter/bootstrap
 #
 #= require underscore
