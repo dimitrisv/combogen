@@ -54,7 +54,9 @@ class LevelApp.Views.ComboGenerator extends Backbone.View
 
   saveCombo: ->
     comboSequence = $('.combo-input-wrapper').val()
-    return if(comboSequence.length == 0 or comboSequence == undefined)
+    if(comboSequence.length == 0 or comboSequence == undefined)
+      alert('Combo is empty!')
+      return
 
     $.ajax(
       url: '/combos',
