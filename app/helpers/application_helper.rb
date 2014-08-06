@@ -21,4 +21,8 @@ module ApplicationHelper
     [ "A", "B", "C", "D", "E", "F", "FND", "EX" ]
   end
 
+  def mobile_device?
+    request.user_agent =~ /Mobile/
+  end
+
 end
