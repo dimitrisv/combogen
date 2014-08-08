@@ -19,7 +19,7 @@ class CombosController < ApplicationController
       @list = current_tricker.lists.find_by_id(params[:list])
       collection = @list.combos if @list
     end
-    @combos = collection.order('updated_at DESC')
+    @combos = collection.order('updated_at DESC').paginate(page: params[:page])
     # @combos = collection.order(params[:sort]) if params[:sort]
     # @combos = @combos.page(params[:page])....
 

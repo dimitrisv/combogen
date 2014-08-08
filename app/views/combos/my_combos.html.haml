@@ -8,5 +8,6 @@
       %a.btn.btn-primary.btn-block.pull-right#create-combo
         Create Combo
   #combos-list.clearfix
+    = will_paginate @combos
     = render 'combos_list'
 = render 'watch_combo_modal'
