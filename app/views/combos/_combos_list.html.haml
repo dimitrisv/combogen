@@ -2,7 +2,7 @@
 .list
   - unless @combos.empty?
     - @combos.each do |combo|
-      = render partial: 'combo_row', locals: {combo: combo}
+      = render partial: 'combos/combo_row', locals: {combo: combo}
   - else
     .list-row
       %h3 There are currently no combos in this list.

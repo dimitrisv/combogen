@@ -26,6 +26,20 @@ class TricksController < ApplicationController
     end
   end
 
+  def fetch_combos
+    if request.xhr?
+      @trick = Trick.find(params[:trick_id])
+      type = params[:combos_type]
+      if type == 'more-to-try'
+        @combos = @trick.combos_in_tricking_style(current_tricker, current_tricker.tricking_style).sample(5)
+      elsif type == 'more-related'
+        @combos = @trick.combos.uniq.sample(5) # get all the combos using this trick
+      end
+
+      render partial: 'combos/combos_list'
+    end
+  end
+
   def new
     @trick = Trick.new
 

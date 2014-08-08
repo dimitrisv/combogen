@@ -40,20 +40,20 @@
         = link_to 'Be the first to create one!', my_combos_path(anchor: new_combo_anchor(@trick.name)), :class => "btn btn-primary"
     - else
       - unless @combos_you_can_do.empty?
-        .col-md-6
+        .col-md-6#try-these
           %h3.list-head
             Try these!
-            .btn.btn-camouflaged.pull-right
+            .btn.btn-camouflaged.pull-right#more-to-try
               %i.glyphicon.glyphicon-repeat
           .list
             - @combos_you_can_do.each do |combo|
               = render partial: 'combos/combo_row', locals: {combo: combo}
           / %= link_to "See all ("+@combos_you_can_do.count.to_s+") →", "#", :class=> "btn btn-camouflaged btn-sm mt10" %
       - unless @related_combos.empty?
-        .col-md-6
+        .col-md-6#related-combos
           %h3.list-head
             Related combos
-            .btn.btn-camouflaged.pull-right
+            .btn.btn-camouflaged.pull-right#more-related
               %i.glyphicon.glyphicon-repeat
           .list
             - @related_combos.each do |combo|
