@@ -11,6 +11,7 @@ gem 'sass-rails', '~> 3.2.3'
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
                           :github => 'anjlab/bootstrap-rails',
                           :branch => '3.0.0'
+gem 'will_paginate', '~> 3.0'
 
 group :assets do
   gem 'haml-rails'
