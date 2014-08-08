@@ -8,6 +8,6 @@
       %a.btn.btn-primary.btn-block.pull-right#create-combo
         Create Combo
   #combos-list.clearfix
-    = will_paginate @combos, renderer: BootstrapPagination::Rails
     = render 'combos_list'
+    = will_paginate @combos, renderer: BootstrapPagination::Rails
 = render 'watch_combo_modal'

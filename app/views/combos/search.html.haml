@@ -1,20 +1,17 @@
 #combos-wrapper.container
   .section-header.clearfix
     .col-sm-4
-      %h2 Combo Feed
+      %h2 Search Results
     .col-sm-4.pull-right
-      = form_tag combo_search_path, :method => 'get' do
-        %label
-          = text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Find combos...'
-        = submit_tag 'Search', class: 'btn btn-primary'
+      = render partial: 'search_form'
   #combos-list.clearfix
     =# render 'shared/flash_messages'
-    = will_paginate @combos, renderer: BootstrapPagination::Rails
     .list
       - unless @combos.empty?
         - @combos.each do |combo|
           = render partial: 'combo_row', locals: {combo: combo}
       - else
         .list-row
-          %h3 Could not find any combos that match these parameters.
+          %h3 Could not find any combos that match your criteria.
+    = will_paginate @combos, renderer: BootstrapPagination::Rails
 = render 'watch_combo_modal'

@@ -3,13 +3,9 @@
     .col-sm-4
       %h2 Combo Feed
     .col-sm-4.pull-right
-      = form_tag combo_search_path, :method => 'get' do
-        %label
-          = text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Find combos...'
-        = submit_tag 'Search', class: 'btn btn-primary'
+      = render partial: 'search_form'
   #combos-list.clearfix
     =# render 'shared/flash_messages'
-    = will_paginate @combos, renderer: BootstrapPagination::Rails
     .list
       - unless @combos.empty?
         - @combos.each do |combo|
@@ -17,4 +13,5 @@
       - else
         .list-row
           %h3 There are currently no combos in this list.
+    = will_paginate @combos, renderer: BootstrapPagination::Rails
 = render 'watch_combo_modal'
