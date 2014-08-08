@@ -9,4 +9,5 @@
         Create Combo
   #combos-list.clearfix
     = render 'combos_list'
+    = will_paginate @combos, renderer: BootstrapPagination::Rails
 = render 'watch_combo_modal'

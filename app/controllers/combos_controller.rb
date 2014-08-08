@@ -1,15 +1,17 @@
 class CombosController < ApplicationController
   before_filter :authenticate_tricker!, :except => [:show]
   
-  # GET /combos
-  # GET /combos.json
   def index
-    @combos = Combo.order('updated_at DESC')
+    @combos = Combo.order('updated_at DESC').page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @combos }
     end
+  end
+
+  def search
+    @combos = Combo.search(params[:search], params[:page])
   end
 
   def my_combos
@@ -21,7 +23,7 @@ class CombosController < ApplicationController
       @list = current_tricker.lists.find_by_id(params[:list])
       collection = @list.combos if @list
     end
-    @combos = collection.order('updated_at DESC')
+    @combos = collection.order('updated_at DESC').page(params[:page])
     # @combos = collection.order(params[:sort]) if params[:sort]
     # @combos = @combos.page(params[:page])....
 
@@ -36,8 +38,6 @@ class CombosController < ApplicationController
     end
   end
 
-  # GET /combos/1
-  # GET /combos/1.json
   def show
     @combo = Combo.find(params[:id])
     
@@ -47,8 +47,6 @@ class CombosController < ApplicationController
     end
   end
 
-  # GET /combos/new
-  # GET /combos/new.json
   def new
     @combo = Combo.new
     @combo.execution = Video.new
@@ -59,7 +57,6 @@ class CombosController < ApplicationController
     end
   end
 
-  # GET /combos/1/edit
   def edit
     @combo = Combo.find(params[:id])
     get_tricks
@@ -73,8 +70,6 @@ class CombosController < ApplicationController
     end
   end
 
-  # POST /combos
-  # POST /combos.json
   def create
     @combo = Combo.create
     @combo.tricker_id = current_tricker.id
@@ -95,8 +90,6 @@ class CombosController < ApplicationController
     render partial: 'combo_row', locals: {combo: @combo}
   end
 
-  # PUT /combos/1
-  # PUT /combos/1.json
   def update
     @combo = Combo.find(params[:id]) 
 
@@ -131,8 +124,6 @@ class CombosController < ApplicationController
     end
   end
 
-  # DELETE /combos/1
-  # DELETE /combos/1.json
   def destroy
     @combo = Combo.find(params[:id])
     @combo.destroy
