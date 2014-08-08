@@ -11,7 +11,14 @@ window.LevelApp =
 class LevelApp.Router extends Backbone.Router
   routes:
     '': 'test'
+    'tricks/:id': "trick"
     "my_combos": "myCombos"
+
+  trick: (trick_id) ->
+    LevelApp.currentView = new LevelApp.Views.Trick(
+      el: $('#tricktionary-entry-wrapper'),
+      id: trick_id
+    )
 
   myCombos: ->
     LevelApp.currentView = new LevelApp.Views.MyCombos(
