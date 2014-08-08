@@ -16,6 +16,12 @@ class Combo < ActiveRecord::Base
 
   self.per_page = 15
 
+  def self.search(query, page)
+    paginate :per_page => self.per_page, :page => page,
+           :conditions => ['sequence like ?', "%#{query}%"],
+           :order => 'sequence'
+  end
+
   def render_sequence
     self.sequence = self.elements.where(:index => 1).first.trick.name
     index = 2

@@ -2,12 +2,16 @@ class CombosController < ApplicationController
   before_filter :authenticate_tricker!, :except => [:show]
   
   def index
-    @combos = Combo.order('updated_at DESC').paginate(page: params[:page])
+    @combos = Combo.order('updated_at DESC').page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @combos }
     end
+  end
+
+  def search
+    @combos = Combo.search(params[:search], params[:page])
   end
 
   def my_combos
@@ -19,7 +23,7 @@ class CombosController < ApplicationController
       @list = current_tricker.lists.find_by_id(params[:list])
       collection = @list.combos if @list
     end
-    @combos = collection.order('updated_at DESC').paginate(page: params[:page])
+    @combos = collection.order('updated_at DESC').page(params[:page])
     # @combos = collection.order(params[:sort]) if params[:sort]
     # @combos = @combos.page(params[:page])....
 
