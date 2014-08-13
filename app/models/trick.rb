@@ -24,6 +24,8 @@ class Trick < ActiveRecord::Base
     # (style-combo).count == style.count - combo.count
     # this hits the database twice. is there a better way?
     combos.reject! { |c| ((included_tricks-c.tricks.map(&:id)).count != (included_tricks.count - c.tricks.uniq.map(&:id).count)) }
+
+    combos or []
   end
 
   # Removes a trick that's being deleted from all the combos
