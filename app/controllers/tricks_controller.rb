@@ -36,7 +36,7 @@ class TricksController < ApplicationController
         @combos = @trick.combos.uniq.sample(5) # get all the combos using this trick
       end
 
-      render partial: 'combos/combos_list'
+      render partial: 'combos/combos_list', locals: {empty_message: ''}
     end
   end
 

@@ -28,7 +28,7 @@ class CombosController < ApplicationController
     # @combos = @combos.page(params[:page])....
 
     if request.xhr?
-      render partial: 'combos_list'
+      render partial: 'combos_list', locals: {empty_message: 'There are currently no combos in this list.'}
     else
       respond_to do |format|
         format.html # index.html.erb
