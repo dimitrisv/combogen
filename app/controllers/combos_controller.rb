@@ -84,6 +84,16 @@ class CombosController < ApplicationController
 
     create_combo_elements
 
+    # Add to lists
+    list_names = params[:lists].split(',') if params[:lists].present?
+    @list_ids = []
+    list_names.each do |list_name|
+      list = current_tricker.lists.find_by_name(list_name) ||
+        List.create(name: list_name, tricker_id: current_tricker.id)
+      @list_ids << list.id
+    end
+
+    @combo.list_ids = @list_ids
     @combo.no_tricks = @combo.tricks.count
     @combo.render_sequence
     @combo.save
