@@ -35,4 +35,12 @@ module CombosHelper
     end
     tricks.to_json
   end
+
+  def my_lists_for_selectize
+    lists = []
+    current_tricker.lists.each do |list|
+      lists << {name: list.name}
+    end
+    lists.to_json
+  end
 end
