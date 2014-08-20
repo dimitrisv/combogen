@@ -4,6 +4,24 @@ class LevelApp.Views.ComboGenerator extends Backbone.View
   initialize: ->
     @currentCombo = @$('.combo').first()
 
+    @selectizeComboInput()
+    @selectizeListsInput()
+    
+    # Create combo with specific trick
+    if window.location.hash
+      trickName = window.location.hash.split('/')[1].replace(/_/g, ' ')
+      unless trickName == undefined
+        @selectize.addItem(trickName)
+
+    # Focus on input
+    setTimeout((=>@selectize.focus()), 200)
+    
+  events:
+    'click #add': 'addTricks'
+    'click #save-combo': 'saveCombo'
+    'click #discard': 'discard'
+
+  selectizeComboInput: ->
     @myTrickList = $.parseJSON($('#my-tricks').text())
     @dbTrickList = $.parseJSON($('#db-tricks').text())
     @allOfThem   = @myTrickList.concat(@dbTrickList)
@@ -25,20 +43,24 @@ class LevelApp.Views.ComboGenerator extends Backbone.View
     )
     @selectize = $('.combo-input-wrapper')[0].selectize
     #@selectize.setValue( '540,540,540' )
-    
-    # Create combo with specific trick
-    if window.location.hash
-      trickName = window.location.hash.split('/')[1].replace(/_/g, ' ')
-      unless trickName == undefined
-        @selectize.addItem(trickName)
 
-    # Focus on input
-    setTimeout((=>@selectize.focus()), 200)
-    
-  events:
-    'click #add': 'addTricks'
-    'click #save-combo': 'saveCombo'
-    'click #discard': 'discard'
+  selectizeListsInput: ->
+    @lists = $.parseJSON($('#my-lists').text())
+    $('.list-input-wrapper').selectize(
+      plugins: ['remove_button'],
+      persist: false,
+      createOnBlur: true,
+      create: true,
+      hideSelected: false,
+      enableDuplicate: true,
+      labelField: "name",
+      valueField: "name",
+      searchField: ["name"],
+      sortField: [
+        { field: "name", direction: "asc" }
+      ],
+      options: @lists
+    )
 
   addTricks: ->
     numTricks = $('#no_tricks').val()
@@ -58,11 +80,14 @@ class LevelApp.Views.ComboGenerator extends Backbone.View
       alert('Combo is empty!')
       return
 
+    lists = $('.list-input-wrapper').val()
+
     $.ajax(
       url: '/combos',
       type: 'POST',
       data:
         sequence: comboSequence
+        lists:    lists
       success: (resp) =>
         if $('.list .list-row h3').length > 0
           $('.list .list-row').remove()
