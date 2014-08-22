@@ -15,7 +15,7 @@
       =# combo.no_tricks
       =#\-trick combo ·
       by #{link_to combo.tricker.name, combo.tricker} ·
-      #{time_ago_in_words(combo.updated_at)} ago
+      = combo_date(combo)
     %span.actions.pull-right
       - if current_tricker_can_edit_combo(combo)
         =# link_to "", edit_combo_path(combo), :class => "glyphicon glyphicon-cog btn btn-sm btn-camouflaged"
