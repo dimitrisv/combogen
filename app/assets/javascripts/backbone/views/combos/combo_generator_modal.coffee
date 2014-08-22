@@ -89,9 +89,15 @@ class LevelApp.Views.ComboGenerator extends Backbone.View
         sequence: comboSequence
         lists:    lists
       success: (resp) =>
-        if $('.list .list-row h3').length > 0
-          $('.list .list-row').remove()
-        $('#combos-list .list').prepend(resp)
+        # ** TEMPORARY DIRTY HACK **
+        # Change to the default list + render the result
+        $('#combo-lists-dropdown').val('')
+        $.get("my_combos?list=").done((resp)->
+          $('#combos-list').html(resp)
+        )
+        # if $('.list .list-row h3').length > 0
+        #   $('.list .list-row').remove()
+        # $('#combos-list .list').prepend(resp)
         LevelApp.modal.close()
     )
 
