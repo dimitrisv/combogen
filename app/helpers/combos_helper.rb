@@ -42,5 +42,12 @@ module CombosHelper
       lists << {name: list.name}
     end
     lists.to_json
+
+  def combo_date(combo)
+    if DateTime.now - 1.week > combo.updated_at
+      combo.updated_at.strftime('%b %-m') # %Y at %I:%M%P
+    else
+      "#{time_ago_in_words(combo.updated_at)} ago"
+    end
   end
 end
