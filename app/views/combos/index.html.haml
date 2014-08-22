@@ -1,9 +1,10 @@
 #combos-wrapper.container
   .section-header.clearfix
     .col-sm-4
-      %h2 Combo Feed
-    .col-sm-6.pull-right
-      = render partial: 'search_form'
+      %h2 Latest Combos
+    -#
+      .col-sm-6.pull-right
+        = render partial: 'search_form'
   #combos-list.clearfix
     =# render 'shared/flash_messages'
     = render 'combos_list', locals: {empty_message: 'There are currently no combos in this list.'}
