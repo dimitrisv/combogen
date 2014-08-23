@@ -39,7 +39,7 @@ module CombosHelper
   def my_lists_for_selectize
     lists = []
     current_tricker.lists.each do |list|
-      lists << {name: list.name}
+      lists << {name: list.name, num_combos: list.combos.count}
     end
     lists.to_json
   end

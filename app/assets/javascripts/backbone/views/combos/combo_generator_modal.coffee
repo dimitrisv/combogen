@@ -13,7 +13,7 @@ class LevelApp.Views.ComboGenerator extends Backbone.View
       unless trickName == undefined
         @selectize.addItem(trickName)
 
-    # Focus on input
+    # Focus on combo input
     setTimeout((=>@selectize.focus()), 200)
     
   events:
@@ -45,7 +45,7 @@ class LevelApp.Views.ComboGenerator extends Backbone.View
     #@selectize.setValue( '540,540,540' )
 
   selectizeListsInput: ->
-    @lists = $.parseJSON($('#my-lists').text())
+    @myLists = $.parseJSON($('#my-lists').text())
     $('.list-input-wrapper').selectize(
       plugins: ['remove_button'],
       persist: false,
@@ -58,7 +58,7 @@ class LevelApp.Views.ComboGenerator extends Backbone.View
       sortField: [
         { field: "name", direction: "asc" }
       ],
-      options: @lists
+      options: @myLists
     )
 
   addTricks: ->
@@ -88,15 +88,12 @@ class LevelApp.Views.ComboGenerator extends Backbone.View
         sequence: comboSequence
         lists:    lists
       success: (resp) =>
-        # ** TEMPORARY DIRTY HACK **
-        # Change to the default list + render the result
+        # Change to the default list + fetch the result
         $('#combo-lists-dropdown').val('')
-        $.get("my_combos?list=").done((resp)->
-          $('#combos-list').html(resp)
-        )
-        # if $('.list .list-row h3').length > 0
-        #   $('.list .list-row').remove()
-        # $('#combos-list .list').prepend(resp)
+        $('#combo-lists-dropdown').trigger('change')
+
+        # Update number of combos in each list
+
         LevelApp.modal.close()
     )
 
