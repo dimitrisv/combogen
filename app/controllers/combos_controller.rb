@@ -68,10 +68,7 @@ class CombosController < ApplicationController
 
 
     @combo.save
-    # render partial: 'combo_row', locals: {combo: @combo}
-
-    @combos = current_tricker.combos
-    render 'my_combos'
+    render partial: 'combo_row', locals: {combo: @combo}
   end
 
   def destroy
