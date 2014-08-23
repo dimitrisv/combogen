@@ -1,6 +1,6 @@
 Combogen::Application.routes.draw do
   resources :lists
-  resources :combos, :except => [:show, :update, :new]
+  resources :combos, :except => [:show, :edit, :update, :new]
   resources :tricks do
     get '/fetch_combos' => 'tricks#fetch_combos', :as => 'fetch_combos'
   end

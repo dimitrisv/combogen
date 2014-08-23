@@ -15,8 +15,6 @@ class CombosController < ApplicationController
   end
 
   def my_combos
-    @new_combo = Combo.new
-    @new_combo.execution = Video.new
 
     collection = current_tricker.combos
     if params[:list]
@@ -34,19 +32,6 @@ class CombosController < ApplicationController
         format.html # index.html.erb
         format.json { render json: @combos }
         format.js
-      end
-    end
-  end
-
-  def edit
-    @combo = Combo.find(params[:id])
-    get_tricks
-    @combo.execution = Video.new unless !@combo.execution.nil?
-
-    if !(current_tricker.id.equal? @combo.tricker_id) && !current_tricker.try(:admin?)
-      respond_to do |format|
-        format.html { redirect_to @combo, alert: 'You need admin privileges for that action!' }
-        format.json { head :no_content }
       end
     end
   end
@@ -83,7 +68,10 @@ class CombosController < ApplicationController
 
 
     @combo.save
-    render partial: 'combo_row', locals: {combo: @combo}
+    # render partial: 'combo_row', locals: {combo: @combo}
+
+    @combos = current_tricker.combos
+    render 'my_combos'
   end
 
   def destroy
