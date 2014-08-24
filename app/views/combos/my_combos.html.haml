@@ -3,7 +3,7 @@
     .col-sm-4
       %h2 My Combos
     .col-sm-4
-      = select_tag 'combo-lists-dropdown', options_for_select([["All of them (#{current_tricker.combos.count})", nil]]) + options_from_collection_for_select(current_tricker.lists, "id", "to_s"), { class: 'form-control'}
+      = select_tag 'combo-lists-dropdown', options_for_select([["All of them", nil]]) + options_from_collection_for_select(current_tricker.lists, "id", "to_s"), { class: 'form-control'}
     .col-sm-4
       %a.btn.btn-primary.btn-block.pull-right#create-combo
         Create Combo
