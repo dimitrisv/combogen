@@ -36,10 +36,17 @@ module CombosHelper
     tricks.to_json
   end
 
+  def my_lists_for_selectize
+    lists = []
+    current_tricker.lists.each do |list|
+      lists << {name: list.name, num_combos: list.combos.count}
+    end
+    lists.to_json
+  end
+
   def combo_date(combo)
     if DateTime.now - 1.week > combo.updated_at
-      combo.updated_at.strftime('%b %-m')
-      #combo.updated_at.strftime('%b %-m at %I:%M%P')
+      combo.updated_at.strftime('%b %-m') # %Y at %I:%M%P
     else
       "#{time_ago_in_words(combo.updated_at)} ago"
     end

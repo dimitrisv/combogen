@@ -1,17 +1,11 @@
 #combos-wrapper.container
   .section-header.clearfix
     .col-sm-4
-      %h2 Combo Feed
-    .col-sm-6.pull-right
-      = render partial: 'search_form'
+      %h2 Latest Combos
+    -#
+      .col-sm-6.pull-right
+        = render partial: 'search_form'
   #combos-list.clearfix
     =# render 'shared/flash_messages'
-    .list
-      - unless @combos.empty?
-        - @combos.each do |combo|
-          = render partial: 'combo_row', locals: {combo: combo}
-      - else
-        .list-row
-          %h3 There are currently no combos in this list.
-    = will_paginate @combos, renderer: BootstrapPagination::Rails
+    = render 'combos_list', locals: {empty_message: 'There are currently no combos in this list.'}
 = render 'watch_combo_modal'
