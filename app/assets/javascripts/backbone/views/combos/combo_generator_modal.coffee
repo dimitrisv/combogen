@@ -1,12 +1,19 @@
 class LevelApp.Views.ComboGenerator extends Backbone.View
-  @VIEW_URL: (options) -> "/get_generator_view?combo=#{options.combo_id}"
+  @VIEW_URL: (opts) -> "/get_generator_view?combo=#{opts.combo_id}"
 
-  initialize: ->
+  initialize: (opts) ->
+    @opts = opts
     @currentCombo = @$('.combo').first()
 
     @selectizeComboInput()
     @selectizeListsInput()
     
+    # Edit existing combo
+    if !!opts.sequence > 0
+      tricks = opts.sequence.split(' > ')
+      for trickName in tricks
+        @selectize.addItem(trickName)
+
     # Create combo with specific trick
     if window.location.hash
       trickName = window.location.hash.split('/')[1].replace(/_/g, ' ')
@@ -85,15 +92,23 @@ class LevelApp.Views.ComboGenerator extends Backbone.View
       url: '/combos',
       type: 'POST',
       data:
+        combo_id: @opts.combo_id
         sequence: comboSequence
         lists:    lists
       success: (resp) =>
         # Change to the default list + fetch the result
-        $('#combo-lists-dropdown').val('')
-        $('#combo-lists-dropdown').trigger('change')
+        listsDropdown = $('#combo-lists-dropdown')
+        if listsDropdown.val() != ''
+          # If we're viewing the 'All of them' list
+          listsDropdown.val('')
+          listsDropdown.trigger('change')
+        else
+          if !!@opts.sequence
+            # delete existing entry
+            $(".list-row[data-combo-id=#{@opts.combo_id}]").remove()
+          $('#combos-list .list').prepend(resp)
 
-        # Update number of combos in each list
-
+        # TODO: Update number of combos in each list
         LevelApp.modal.close()
     )
 
