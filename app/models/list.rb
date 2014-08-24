@@ -7,7 +7,8 @@ class List < ActiveRecord::Base
   validates :description, length: { maximum: 255 }
 
   def to_s
-    "#{name} (#{combos.count})"
+    name
+    # "#{name} (#{combos.count})"
   end
 
 end

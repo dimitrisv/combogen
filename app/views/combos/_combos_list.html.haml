@@ -5,4 +5,5 @@
       = render partial: 'combos/combo_row', locals: {combo: combo}
   - else
     .list-row
-      %h3 There are currently no combos in this list.
+      %h3= empty_message
+= will_paginate @combos, renderer: BootstrapPagination::Rails

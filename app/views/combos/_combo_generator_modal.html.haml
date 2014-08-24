@@ -15,6 +15,11 @@
           %label{ for: 'combo-input'}
           %input{type: 'text', id: 'combo-input', value: combo_input_value(@combo)}
             %option{value:''} Type your combo...
+      .add-to-lists.clearfix
+        .list-input-wrapper
+          %label{ for: 'combo-input'}
+          %input{type: 'text', id: 'list-input', value: ''}
+            %option{value:''} Add to your lists...
     #generator-actions.clearfix
       %a.btn.btn-primary#save-combo
         Save
@@ -25,3 +30,5 @@
       = my_tricks_for_selectize.html_safe
     %script#db-tricks{type: "text/json"}
       = db_tricks_for_selectize.html_safe
+    %script#my-lists{type: "text/json"}
+      = my_lists_for_selectize.html_safe

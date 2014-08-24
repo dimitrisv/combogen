@@ -1,6 +1,6 @@
 Combogen::Application.routes.draw do
   resources :lists
-  resources :combos, :except => :show
+  resources :combos, :except => [:show, :edit, :update, :new]
   resources :tricks do
     get '/fetch_combos' => 'tricks#fetch_combos', :as => 'fetch_combos'
   end
@@ -11,6 +11,7 @@ Combogen::Application.routes.draw do
 
   get "welcome/index"
 
+  match '/search' => 'combos#search', :as => 'combo_search'
   match '/my_combos' => 'combos#my_combos', :as => 'my_combos'
   match '/generate_options' => 'combos#generate_options', :as => 'generate_options'
   match '/generate_custom' => 'combos#generate_custom', :as => 'generate_custom'

@@ -9,6 +9,7 @@ class LevelApp.Views.MyCombos extends Backbone.View
   events:
     'change #combo-lists-dropdown': 'updateList'
     'click #create-combo': 'openComboGeneratorModal'
+    'click .edit-combo': 'openComboEditorModal'
 
   updateList: (evt) ->
     newList = $('#combo-lists-dropdown').val()
@@ -22,4 +23,11 @@ class LevelApp.Views.MyCombos extends Backbone.View
     evt.preventDefault()
     LevelApp.modal.show(LevelApp.Views.ComboGenerator,
       combo_id: 0
+    )
+
+  openComboEditorModal: (evt) ->
+    evt.preventDefault()
+    LevelApp.modal.show(LevelApp.Views.ComboGenerator,
+      combo_id: $(evt.currentTarget).data('id')
+      sequence: $(evt.currentTarget).parents('.list-row').find('.combo-sequence').text()
     )

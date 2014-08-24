@@ -29,4 +29,4 @@ doc/
 .tags
 .tags_sorted_by_file
 *.sqlite3
-.sass-cache/
+.sass-cache/*
