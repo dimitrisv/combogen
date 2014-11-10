@@ -32,6 +32,7 @@ group :production do
   gem 'rails_12factor'
   gem 'unicorn'
   gem 'pg'
+  gem 'newrelic_rpm'
 end
 
 gem 'activerecord-postgresql-adapter'
