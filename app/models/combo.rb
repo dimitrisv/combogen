@@ -21,13 +21,19 @@ class Combo < ActiveRecord::Base
            :order => 'sequence'
   end
 
-  def render_sequence
-    self.sequence = self.elements.map(&:trick).map(&:name).join(' > ')
+  def cache_sequence
+    self.sequence = self.elements.map(&:trick).map(&:name).join(transition_arrow_markup)
   end
 
   def create_elements(trick_ids)
     trick_ids.each_with_index do |trick_id, index|
       self.elements.create!(index: index, trick_id: trick_id)
     end
+  end
+
+  private
+
+  def transition_arrow_markup
+    " <span class='transition-mark'>></span> "
   end
 end

@@ -55,7 +55,7 @@ class Trick < ActiveRecord::Base
           end
         end
       end
-      combo.render_sequence
+      combo.cache_sequence
     end
   end
 

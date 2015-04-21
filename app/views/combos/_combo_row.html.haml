@@ -2,12 +2,12 @@
   .combo-top.clearfix
     - unless combo.execution.nil?
       %a.main-link{"data-end-time" => combo.execution.end_time.to_s, "data-start-time" => combo.execution.start_time.to_s, "data-target" => "#watch-combo-modal", "data-toggle" => "modal", "data-video-id" => combo.execution.uid, :href => "#"}
-        .combo-sequence= combo.sequence
+        .combo-sequence= combo.sequence.html_safe
         -#
           .video-preview
             %img{src: "https://img.youtube.com/vi/#{combo.execution.uid}/1.jpg"}
     - else
-      .combo-sequence.no-link= combo.sequence
+      .combo-sequence.no-link= combo.sequence.html_safe
   .combo-details
     %small
       by #{link_to combo.tricker.name, combo.tricker} · #{combo_date(combo)}

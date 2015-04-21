@@ -50,7 +50,7 @@ class CombosController < ApplicationController
     @combo.create_elements(trick_ids)
 
     @combo.no_tricks = @combo.tricks.count
-    @combo.render_sequence
+    @combo.cache_sequence
 
     # Parse lists and fetch list ids
     list_names = params[:lists].split(',') if params[:lists].present?
