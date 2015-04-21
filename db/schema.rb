@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140412175956) do
+ActiveRecord::Schema.define(:version => 20150421160927) do
 
   create_table "combos", :force => true do |t|
     t.integer  "no_tricks"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
-    t.integer  "tricker_id", :default => 1
-    t.string   "sequence"
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+    t.integer  "tricker_id",                :default => 1
+    t.text     "sequence",   :limit => 255
   end
 
   create_table "elements", :force => true do |t|
