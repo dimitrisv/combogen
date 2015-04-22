@@ -8,5 +8,5 @@
       %a.btn.btn-primary.btn-block.pull-right#create-combo
         Create Combo
   #combos-list.clearfix
-    = render 'combos_list', locals: {empty_message: 'There are currently no combos in this list.'}
+    = render partial: 'combos_list', locals: {empty_message: 'There are currently no combos in this list.'}
 = render 'watch_combo_modal'

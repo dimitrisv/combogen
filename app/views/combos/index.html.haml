@@ -7,5 +7,5 @@
         = render partial: 'search_form'
   #combos-list.clearfix
     =# render 'shared/flash_messages'
-    = render 'combos_list', locals: {empty_message: 'There are currently no combos in this list.'}
+    = render partial: 'combos_list', locals: {empty_message: 'There are currently no combos in this list.'}
 = render 'watch_combo_modal'
