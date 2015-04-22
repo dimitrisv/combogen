@@ -39,9 +39,10 @@ class CombosController < ApplicationController
   def create
     @combo = Combo.find(params[:combo_id]) rescue Combo.create
 
-    unless params[:combo_id].to_i.zero?
-      @combo.elements.delete_all
+    if params[:combo_id].to_i.zero?
       @combo.tricker_id = current_tricker.id # skipped when admin edits. yay!
+    else
+      @combo.elements.delete_all
     end
 
     # Parse combo sequence and fetch trick ids
