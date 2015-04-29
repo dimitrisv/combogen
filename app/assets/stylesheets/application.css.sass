@@ -7,6 +7,7 @@
 
 /* Support */
 @import 'support/media'
+@import 'support/colors'
 @import 'support/selectize_overrides'
 @import 'support/my_formtastic_changes'
 
@@ -29,14 +30,12 @@ html, body
   height: auto
   margin: 0 auto -60px
   padding: 0 0 80px
+  background: $backgroundColor
   #main
     margin: 0 auto
   .section-header
     margin-bottom: 20px
-    border-bottom: 2px solid #eaedee
     @include box-sizing(border-box)
-    @media #{$small}
-      border-bottom: none
     & > div:first-child
       padding-left: 5px
     .col-sm-4
@@ -50,14 +49,27 @@ html, body
         span
           display: none
 
+header
+  .navbar-inverse
+    background: $headerBackgroundColor
+    border: 0
+    .navbar-brand
+      color: $headerLinkColor
+      font-weight: 300
+    .navbar-toggle
+      border-color: transparent
+      .icon-bar
+        color: $headerLinkColor
+
+
 footer
   padding: 20px 0
-  color: #999
-  background: black
-  @include box-sizing(content-box)
+  color: $headerLinkColor
+  background: $headerBackgroundColor
   text-align: center
+  @include box-sizing(content-box)
   a
-    color: #999
+    color: $headerLinkColor
     &:hover
       color: white
       text-decoration: none
