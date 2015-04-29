@@ -8,60 +8,63 @@
         by providing tools that promote creative thinking.
     %br
     %p
-      = link_to "Login", new_tricker_session_path, :class => "btn btn-success btn-lg"
-      / %= link_to "Sign Up", new_tricker_registration_path, :class => "btn btn-base-inverse btn-wide btn-lg" %
+      = link_to "Sign Up", new_tricker_registration_path, :class => "btn btn-success btn-wide btn-lg"
+    %p.LandingPage-small-type
+      Already have an account?
+      = link_to "Login", new_tricker_session_path
 
 .container
-  .row.featurette
-    .col-md-7
-      %h2.featurette-heading
-        Get organized.
-      %p.lead Keep all your combos in one place.
-      %p
-        Easy to access everything during your session!
-    .col-md-5
-      = image_tag('mockups/my_combos.png', class: "featurette-image img-responsive")
-  %hr.featurette-divider/
-  .row.featurette
-    .col-md-5
-      = image_tag('mockups/type_easy.png', class: "featurette-image img-responsive")
-    .col-md-7
-      %h2.featurette-heading
-        Creating new combos.
-      %p.lead
-        Just type it in!
-      %p
-        The generator will help you by pre-fetching all the tricks in our database that match what you type.
-  %hr.featurette-divider/
-  .row.featurette
-    .col-md-7
-      %h2.featurette-heading
-        But there's more!
-      %p.lead
-        Add new tricks that don't exist.
-      %p
-        If you can't find what you're looking for, you can easily add it while creating your combo!
-    .col-md-5
-      = image_tag('mockups/add_new_tricks.png', class: "featurette-image img-responsive")
-  %hr.featurette-divider/
-  .row.featurette
-    .col-md-5
-      = image_tag('mockups/edit_tricklist.png', class: "featurette-image img-responsive")
-    .col-md-7
-      %h2.featurette-heading
-        Create your trick list...
-      %p.lead
-        \... and get a personalized experience! 
-      %p
-        (Psst... New tricks you've added will appear at the bottom, for easier access.)
-  %hr.featurette-divider/
-  .row.featurette
-    .col-md-7
-      %h2.featurette-heading
-        Lacking inspiration?
-      %p.lead
-        Let our generator help you!
-      %p
-        Select how many tricks you want to generate, choose between all tricks or your personal trick list, then click Add. Boom! Fresh ideas for your sessions!
-    .col-md-5
-      = image_tag('mockups/add_random.png', class: "featurette-image img-responsive")
+  -#
+    .row.featurette
+      .col-md-7
+        %h2.featurette-heading
+          Get organized.
+        %p.lead Keep all your combos in one place.
+        %p
+          Easy to access everything during your session!
+      .col-md-5
+        = image_tag('mockups/my_combos.png', class: "featurette-image img-responsive")
+    %hr.featurette-divider/
+    .row.featurette
+      .col-md-5
+        = image_tag('mockups/type_easy.png', class: "featurette-image img-responsive")
+      .col-md-7
+        %h2.featurette-heading
+          Creating new combos.
+        %p.lead
+          Just type it in!
+        %p
+          The generator will help you by pre-fetching all the tricks in our database that match what you type.
+    %hr.featurette-divider/
+    .row.featurette
+      .col-md-7
+        %h2.featurette-heading
+          But there's more!
+        %p.lead
+          Add new tricks that don't exist.
+        %p
+          If you can't find what you're looking for, you can easily add it while creating your combo!
+      .col-md-5
+        = image_tag('mockups/add_new_tricks.png', class: "featurette-image img-responsive")
+    %hr.featurette-divider/
+    .row.featurette
+      .col-md-5
+        = image_tag('mockups/edit_tricklist.png', class: "featurette-image img-responsive")
+      .col-md-7
+        %h2.featurette-heading
+          Create your trick list...
+        %p.lead
+          \... and get a personalized experience! 
+        %p
+          (Psst... New tricks you've added will appear at the bottom, for easier access.)
+    %hr.featurette-divider/
+    .row.featurette
+      .col-md-7
+        %h2.featurette-heading
+          Lacking inspiration?
+        %p.lead
+          Let our generator help you!
+        %p
+          Select how many tricks you want to generate, choose between all tricks or your personal trick list, then click Add. Boom! Fresh ideas for your sessions!
+      .col-md-5
+        = image_tag('mockups/add_random.png', class: "featurette-image img-responsive")

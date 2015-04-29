@@ -1,10 +1,14 @@
 #combos-wrapper.container
   .section-header.clearfix
-    .col-sm-4
-      %h2 My Combos
-    .col-sm-4
+    .col-sm-12
+      %a.section-link{href: my_combos_path}
+        %h2
+          %i.glyphicon.glyphicon-book.section-icon
+          %span My Combos
+  .content-header.clearfix
+    .col-sm-6
       = select_tag 'combo-lists-dropdown', options_for_select([["All of them", nil]]) + options_from_collection_for_select(current_tricker.lists, "id", "to_s"), { class: 'form-control'}
-    .col-sm-4
+    .col-sm-6
       %a.btn.btn-primary.btn-block.pull-right#create-combo
         Create Combo
   #combos-list.clearfix

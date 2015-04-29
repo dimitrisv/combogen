@@ -1,0 +1,19 @@
+- if @trick.tutorials.any?
+  %h3 LEARN IT
+  #tutorials.card.clearfix
+    .col-md-6
+      #trick-info.clearfix
+        .clearfix
+          .col-xs-6 Tricker
+          .col-xs-6 Sesshoumaru
+        .clearfix
+          .col-xs-6 Views
+          .col-xs-6 9,999
+        .clearfix
+          .col-xs-6 Description
+        .clearfix
+          .col-xs-12 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque placerat sem, at porttitor neque vehicula vel. Nunc elit ligula, fermentum eu turpis a, vestibulum lacinia nibh. Aliquam sit amet eros eget mi laoreet interdum. Mauris venenatis diam quis nibh facilisis, vitae malesuada ante aliquet. Praesent egestas, turpis eget iaculis convallis, nibh neque egestas purus, et dignissim massa elit sed lectus.
+    .col-md-6
+      - if @trick.tutorials.any?
+        - tutorial = @trick.tutorials.first
+        %iframe{width:'100%', height:'315', scrolling: "no", allowtransparency: "true", allowfullscreen: "true", src: "http://www.youtube.com/embed/#{tutorial.uid}?autoplay=0&rel=0&wmode=transparent&showinfo=0&start=#{tutorial.start_time}&end=#{tutorial.end_time}", frameborder:'0'}

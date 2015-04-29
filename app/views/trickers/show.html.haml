@@ -1,9 +1,12 @@
 #combos-wrapper.container
-  .section-header.clearfix
-    .col-sm-4
-      %h2= @tricker.name
+  #tricker-profile-header.section-header.clearfix
+    .col-sm-6
+      %a{href: @tricker, class: 'section-link clearfix'}
+        %h2
+          %i.glyphicon.glyphicon-user.section-icon
+          %span= @tricker.name
   #combos-list
-    .list
+    .list.card
       - if !@combos.empty?
         - @combos.each do |combo|
           = render partial: 'combos/combo_row', locals: {combo: combo}

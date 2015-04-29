@@ -1,7 +1,10 @@
 #combos-wrapper.container
   .section-header.clearfix
-    .col-sm-4
-      %h2 Latest Combos
+    .col-sm-6
+      %a.section-link{href: root_path}
+        %h2
+          %i.glyphicon.glyphicon-book.section-icon
+          %span Latest Combos
     -#
       .col-sm-6.pull-right
         = render partial: 'search_form'

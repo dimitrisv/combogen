@@ -1,7 +1,10 @@
 #tricktionary-wrapper.container
-  .section-header.clearfix
+  #tricktionary-header.section-header.clearfix
     .col-sm-6
-      %h2 Tricktionary
+      %a.section-link{href: tricks_path}
+        %h2
+          %i.glyphicon.glyphicon-book.section-icon
+          %span Tricktionary
     -#
       .col-sm-4
         = render 'tricks_filters'
@@ -11,7 +14,7 @@
       - unless @tricks.empty?
         - @tricks.each do |trick|
           .col-sm-4
-            .trick-row
+            .trick-row.card
               = link_to trick.name, trick
           =# render 'trick_row'
       - else

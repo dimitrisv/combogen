@@ -1,0 +1,37 @@
+.navbar
+  @include border-radius(0)
+  margin-bottom: 0
+  .container
+    @media #{$mobile}
+      padding: 0 0 0 10px
+  .navbar-nav
+    a.btn.navbar-btn
+      margin: 6px 0
+      color: white
+      padding: 8px 15px
+      &:hover,
+      &:focus
+        background-color: #47a447
+        border-color: #398439
+
+.navbar-nav
+  @media #{$small}
+    margin: 7.5px -15px
+
+.dropdown-menu
+  .divider
+    @media #{$small}
+      background-color: #444
+
+h1, h2, h3
+  font-weight: 300
+
+a:hover
+  color: #428bca
+
+.container
+  max-width: 970px
+  @media #{$small}
+    padding: 0 10px
+  @media #{$mobile}
+    padding: 0

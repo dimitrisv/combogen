@@ -1,66 +1,24 @@
 #tricktionary-entry-wrapper.container
-  .section-header.clearfix
+  #tricktionary-header.section-header.clearfix
     .col-sm-6
-      %h2= link_to 'Tricktionary', tricks_path
-  .section-header.clearfix
-    .col-sm-12
+      %a.section-link{href: tricks_path}
+        %h2
+          %i.glyphicon.glyphicon-book.section-icon
+          %span Tricktionary
+  .content-header.clearfix
+    .col-sm-6
       %h2= @trick.name
-      .pull-right
-        - if current_tricker_can_edit_trick(@trick)
+    - if current_tricker_can_edit_trick(@trick)
+      .col-sm-6
+        .pull-right
           = link_to edit_trick_path(@trick), :class => "btn btn-camouflaged btn-sm" do
             %i.glyphicon.glyphicon-pencil
             %span Edit
           = link_to @trick, method: :delete, :class => "btn btn-camouflaged btn-sm",data: { confirm: 'Destroying a trick will also remove it from all combos. The ones left with less than two tricks will be destroyed as well. Are you sure you want to continue?'} do
             %i.glyphicon.glyphicon-trash
             %span Destroy
-  -#trick-details.clearfix
-    .col-md-6
-      #trick-info.clearfix
-        .clearfix
-          .col-xs-6 Class
-          .col-xs-6= @trick.difficulty
-        .clearfix
-          .col-xs-6 Type
-          .col-xs-6= @trick.trick_type
-        .clearfix
-          .col-xs-6 Landing
-          .col-xs-6 blahblah
-        .clearfix
-          .col-xs-6 Description
-        .clearfix
-          .col-xs-12 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque placerat sem, at porttitor neque vehicula vel. Nunc elit ligula, fermentum eu turpis a, vestibulum lacinia nibh. Aliquam sit amet eros eget mi laoreet interdum. Mauris venenatis diam quis nibh facilisis, vitae malesuada ante aliquet. Praesent egestas, turpis eget iaculis convallis, nibh neque egestas purus, et dignissim massa elit sed lectus.
-    .col-md-6
-      - if @trick.tutorials.any?
-        - tutorial = @trick.tutorials.first
-        %iframe{width:'100%', height:'315', scrolling: "no", allowtransparency: "true", allowfullscreen: "true", src: "http://www.youtube.com/embed/#{tutorial.uid}?autoplay=0&rel=0&wmode=transparent&showinfo=0&start=#{tutorial.start_time}&end=#{tutorial.end_time}", frameborder:'0'}
-  #combos-using-trick.clearfix
-    - if @trick.combos.empty?
-      .container
-        %h3
-          We found no combos with #{@trick.name} in Level App. That's really sad...
-        = link_to 'Be the first to create one!', my_combos_path(anchor: new_combo_anchor(@trick.name)), :class => "btn btn-primary"
-    - else
-      - unless @combos_you_can_do.empty?
-        .col-md-6#try-these
-          %h3.list-head
-            Try these!
-            - if @combos_you_can_do.count > 5
-              .btn.btn-camouflaged.pull-right#more-to-try
-                %i.glyphicon.glyphicon-repeat
-          .list
-            - @combos_you_can_do.each do |combo|
-              = render partial: 'combos/combo_row', locals: {combo: combo}
-          / %= link_to "See all ("+@combos_you_can_do.count.to_s+") →", "#", :class=> "btn btn-camouflaged btn-sm mt10" %
-      - unless @related_combos.empty?
-        .col-md-6#related-combos
-          %h3.list-head
-            Related combos
-            - if @related_combos.count > 5
-              .btn.btn-camouflaged.pull-right#more-related
-                %i.glyphicon.glyphicon-repeat
-          .list
-            - @related_combos.each do |combo|
-              = render partial: 'combos/combo_row', locals: {combo: combo}
-          / %= link_to "See all ("+@trick.combos.uniq.length.to_s+") →", "#", :class=> "btn btn-camouflaged btn-sm mt10" %
+  = render partial: 'tricks/entry/details'
+  =# render partial: 'tricks/entry/tutorials'
+  = render partial: 'tricks/entry/related_combos'
 
 = render 'combos/watch_combo_modal'

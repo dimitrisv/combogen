@@ -1,14 +1,18 @@
 #tricking-style-wrapper.container
   .section-header.clearfix
     .col-sm-12
-      %h2
-        = @tricking_style.name
-      - if current_tricker_can_edit_style(@tricking_style)
+      %a.section-link{href: tricking_style_path(@tricking_style)}
+        %h2
+          %i.glyphicon.glyphicon-book.section-icon
+          %span= @tricking_style.name
+  - if current_tricker_can_edit_style(@tricking_style)
+    .content-header.clearfix
+      .col-sm-12
         = link_to edit_tricking_style_path(@tricking_style), :class => "btn btn-default pull-right" do
           %i.glyphicon.glyphicon-pencil
           %span Edit
   =# render 'shared/flash_messages'
-  #tricking-style.container
+  #tricking-style.card.container
     .trick-list.clearfix
       - @tricking_style.tricks.order(:name).each do |t|
         .col-sm-4

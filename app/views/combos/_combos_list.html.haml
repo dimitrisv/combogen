@@ -1,9 +1,10 @@
 =# render 'shared/flash_messages'
-.list
+.list.card
   - unless @combos.empty?
     - @combos.each do |combo|
       = render partial: 'combos/combo_row', locals: {combo: combo}
   - else
     .list-row
       %h3= empty_message
-= will_paginate @combos, renderer: BootstrapPagination::Rails
+.pagination-container
+  = will_paginate @combos, renderer: BootstrapPagination::Rails

@@ -1,8 +1,12 @@
 #tricking-style-wrapper.container
   .section-header.clearfix
+    .col-sm-12
+      %a.section-link{href: tricking_style_path(@tricking_style)}
+        %h2
+          %i.glyphicon.glyphicon-book.section-icon
+          %span= @tricking_style.name
+  .content-header.clearfix
     .col-sm-6
-      = link_to 'My Trick List', @tricking_style
-      \/
       %h2
         Edit
   =# render 'shared/flash_messages'

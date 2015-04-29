@@ -1,12 +1,23 @@
+#tricktionary-header.section-header
+  h2
+    i.section-icon
+      background: $yellow
+  @media #{$mobile}
+    background: $yellow
+
 #tricktionary-wrapper
   #tricks-list
     padding-bottom: 20px
     margin-bottom: 20px
     .trick-row
-      background: #fff
-      border: 1px solid $borderColor
       margin-bottom: 15px
-      @include border-radius(2px)
+      transition: background 0.2s ease-in
+      &:hover
+        background: #f9f9f9
+      @media #{$small}
+        margin-bottom: 5px
+      @media #{$mobile}
+        margin-bottom: -1px
       a
         display: block
         padding: 10px
@@ -19,14 +30,13 @@
     margin-bottom: 20px
 
 #tricktionary-entry-wrapper
-  .section-header
-    h2
-      display: inline-block
-  #trick-details
-    padding-bottom: 20px
+  #trick-details,
+  #tutorials
+    padding: 20px 0
     margin-bottom: 20px
     #trick-info
-      margin-bottom: 20px
+      @media #{$small}
+        margin-bottom: 20px
       .clearfix:nth-child(2n+1)
         background-color: #f7f7f7
       .clearfix
@@ -38,7 +48,11 @@
   #combos-using-trick
     @import 'combo_list'
     .list-head
-      margin-bottom: 8px
+      margin: 10px 15px
+    #related-combos,
+    #try-these
+      @media #{$small}
+        padding: 0
 
 #edit-trick-wrapper
   .section-header

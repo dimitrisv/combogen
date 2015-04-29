@@ -6,10 +6,10 @@
 @import 'selectize.bootstrap3'
 
 /* Support */
-@import 'support/media'
+@import 'support/media_queries'
 @import 'support/colors'
-@import 'support/selectize_overrides'
-@import 'support/my_formtastic_changes'
+@import 'overrides/selectize'
+@import 'overrides/my_formtastic_changes'
 
 /* Imports */
 @import 'landing_page'
@@ -18,12 +18,14 @@
 @import 'tricking_styles'
 @import 'trickers/sign_in_up'
 @import 'trickers/account'
+@import 'trickers/profile'
 @import 'modal'
 @import 'generator'
 
 /* Basic Layout */
 html, body
   height: 100%
+  font-family: 'Lato'
 
 #wrap
   min-height: 100%
@@ -33,21 +35,81 @@ html, body
   background: $backgroundColor
   #main
     margin: 0 auto
-  .section-header
-    margin-bottom: 10px
-    @include box-sizing(border-box)
+
+.section-header
+  margin-bottom: 20px
+  padding: 20px 10px
+  border-bottom: 1px solid $hrColor
+  @include box-sizing(border-box)
+  @media #{$mobile}
+    border-bottom: 0
+  @media #{$mobile}
+    background: $darkBlue
+    color: white
+    padding: 0
     & > div:first-child
-      padding-left: 5px
-    .col-sm-4
-      height: 41px
+      padding-left: 0
+    .col-sm-4,
+    .col-sm-6,
+    .col-sm-12
+      padding: 0
     h2
-      margin: 0 0 8px
-    a.btn
-      i
-        margin-right: 3px
+      color: white
+    a.section-link
+      color: white
+      padding: 20px 10px
+  & > div:first-child
+    padding-left: 5px
+  .col-sm-4
+    height: 41px
+  h2
+    font-weight: 500
+    margin: 0
+    @media #{$small}
+      font-size: 20px
+    i.section-icon
+      color: white
+      padding: 10px 12px 14px 10px
+      @include border-radius(2px)
+      vertical-align: middle
+      font-size: 25px
+      margin-right: 10px
+      background: $darkBlue
       @media #{$small}
-        span
-          display: none
+        padding: 6px 8px 8px 6px
+        font-size: 15px
+        margin-right: 5px
+    span
+      vertical-align: middle
+  a.section-link
+    display: block
+    color: $headerBackgroundColor
+    &:hover,
+    &:focus
+      text-decoration: none
+  a.btn
+    i
+      margin-right: 3px
+    @media #{$small}
+      span
+        display: none
+.content-header
+  margin-bottom: 20px
+  h2
+    margin: 0
+  a.btn
+    @media #{$small}
+      span
+        display: none
+  .col-sm-6
+    @media #{$small}
+      margin-bottom: 10px
+
+
+.card
+  background: #fff
+  border: 1px solid $borderColor
+  @include border-radius(2px)
 
 header
   .navbar-inverse
@@ -60,6 +122,22 @@ header
       border-color: transparent
       .icon-bar
         color: $headerLinkColor
+    .navbar-nav > li > a:hover,
+    .navbar-nav > li > a:focus
+      background-color: #222
+    .navbar-nav
+      .open
+        .dropdown-menu
+          background: $headerBackgroundColor
+          & > li
+            & > a
+              color: $headerLinkColor
+              &:hover,
+              &:focus
+                color: white
+                background-color: #222
+          .divider
+            background-color: #333
 
 footer
   padding: 20px 0
@@ -82,15 +160,6 @@ footer
     color: white
     background-color: #678
 
-/* Bootstrap Overrides */
-@import 'support/bootstrap_overrides'
-
-/* Devise Overrides */
-#devise-errors
-  h2
-    display: none
-  ul
-    color: #fa9237
-.field_with_errors
-  input.form-control
-    border-color: #fa9237 !important
+/* Vendor Overrides */
+@import 'overrides/bootstrap'
+@import 'overrides/devise'

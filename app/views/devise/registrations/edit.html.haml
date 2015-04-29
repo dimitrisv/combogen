@@ -1,10 +1,9 @@
 #my-account-wrapper.container
   .section-header.clearfix
-    .col-sm-12
-      %h2
-        Change Password
-        / Account Settings
-        / %= resource_name.to_s.humanize %
+    %a.section-link{href: edit_registration_path(resource)}
+      .col-sm-12
+        %h2
+          Change Password
   #edit-account.container
     = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
       #devise-errors
