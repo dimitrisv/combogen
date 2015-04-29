@@ -1,8 +1,9 @@
 #tricktionary-entry-wrapper.container
   .section-header.clearfix
+    .col-sm-6
+      %h2= link_to 'Tricktionary', tricks_path
+  .section-header.clearfix
     .col-sm-12
-      =link_to 'Tricktionary', tricks_path
-      \/
       %h2= @trick.name
       .pull-right
         - if current_tricker_can_edit_trick(@trick)

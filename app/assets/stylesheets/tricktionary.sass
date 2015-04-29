@@ -2,7 +2,19 @@
   #tricks-list
     padding-bottom: 20px
     margin-bottom: 20px
-    border-bottom: 2px solid #eaedee
+    .trick-row
+      background: #fff
+      border: 1px solid $borderColor
+      margin-bottom: 15px
+      @include border-radius(2px)
+      a
+        display: block
+        padding: 10px
+        font-size: 20px
+        font-weight: 300
+        color: $headerBackgroundColor
+        &:hover
+          text-decoration: none
   .suggest-trick
     margin-bottom: 20px
 
@@ -13,7 +25,6 @@
   #trick-details
     padding-bottom: 20px
     margin-bottom: 20px
-    border-bottom: 2px solid #eaedee
     #trick-info
       margin-bottom: 20px
       .clearfix:nth-child(2n+1)
@@ -28,9 +39,6 @@
     @import 'combo_list'
     .list-head
       margin-bottom: 8px
-    .list
-      .list-row:first-child
-        border-top: 2px solid #ecf0f1
 
 #edit-trick-wrapper
   .section-header
