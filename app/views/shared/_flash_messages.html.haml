@@ -1,10 +1,4 @@
 - if flash.any?
-  #notice
-    - if !flash[:notice].nil?
-      %span.success
-        %i.glyphicon.glyphicon-ok.mr5
-        = notice
-    - elsif !flash[:alert].nil?
-      %span.error
-        %i.glyphicon.glyphicon-minus-sign.mr5
-        = alert
+  #flash-container
+    - flash.each do |name, msg|
+      = content_tag :div, msg, :class => "flash-notification #{name}"

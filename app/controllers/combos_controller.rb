@@ -58,6 +58,7 @@ class CombosController < ApplicationController
     @combo.list_ids = get_list_ids_from_names(list_names) unless list_names.nil?
 
     @combo.save
+    flash[:notice] = "Nice! You created a combo."
     render partial: 'combo_row', locals: {combo: @combo}
   end
 
@@ -66,7 +67,7 @@ class CombosController < ApplicationController
     @combo.destroy
 
     respond_to do |format|
-      format.html { redirect_to my_combos_url, notice: 'Combo was successfully removed from the database.' }
+      format.html { redirect_to my_combos_url, notice: 'Combo deleted.' }
       format.json { head :no_content }
     end
   end

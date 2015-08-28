@@ -7,6 +7,12 @@ window.LevelApp =
       el: $('#levelapp-modal')
     )
     Backbone.history.start(pushState: true)
+    
+    # Init toastr
+    toastr.options = {
+      "timeOut": "10000",
+      "positionClass": "toast-top-center"
+    }
 
 class LevelApp.Router extends Backbone.Router
   routes:

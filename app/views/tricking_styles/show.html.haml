@@ -11,7 +11,7 @@
         = link_to edit_tricking_style_path(@tricking_style), :class => "btn btn-default pull-right" do
           %i.glyphicon.glyphicon-pencil
           %span Edit
-  =# render 'shared/flash_messages'
+  = render 'shared/flash_messages'
   #tricking-style.card.container
     .trick-list.clearfix
       - @tricking_style.tricks.order(:name).each do |t|

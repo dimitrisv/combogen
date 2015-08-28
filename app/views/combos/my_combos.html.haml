@@ -5,6 +5,7 @@
         %h2
           %i.glyphicon.glyphicon-book.section-icon
           %span My Combos
+  = render 'shared/toastr_flash_messages'
   .content-header.clearfix
     .col-sm-6
       = select_tag 'combo-lists-dropdown', options_for_select([["All of them", nil]]) + options_from_collection_for_select(current_tricker.lists, "id", "to_s"), { class: 'form-control'}

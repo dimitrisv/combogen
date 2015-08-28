@@ -1,0 +1,7 @@
+- if flash.any?
+  - if flash[:notice].present?
+    :javascript
+      toastr.success('#{notice}')
+  - if flash[:alert].present?
+    :javascript
+      toastr.success('#{alert}')

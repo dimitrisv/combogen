@@ -1,8 +1,26 @@
 #devise-errors
+  max-width: 300px
+  margin: 0 auto
+  @media #{$mobile}
+    margin: 0 10px
   h2
     display: none
   ul
     color: #fa9237
+    list-style-type: none
+    padding-left: 0
+    margin: 10px 0 0
+    text-align: left
+    li
+      background: $darkYellow
+      color: #fff
+      margin-bottom: 10px
+      padding: 10px
+      border-radius: 4px
+      &:last-child
+        margin-bottom: 0
 .field_with_errors
+  display: inline-block
+  width: 100%
   input.form-control
-    border-color: #fa9237 !important
+    border-color: $darkYellow !important

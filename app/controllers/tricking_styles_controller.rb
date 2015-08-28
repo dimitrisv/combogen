@@ -66,7 +66,7 @@ class TrickingStylesController < ApplicationController
 
     respond_to do |format|
       if @tricking_style.save
-        format.html { redirect_to @tricking_style, notice: 'Tricking style was successfully updated.' }
+        format.html { redirect_to @tricking_style, notice: 'Your Trick List was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

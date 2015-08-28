@@ -1,0 +1,19 @@
+#flash-container
+  text-align: left
+  .flash-notification
+    max-width: 300px
+    margin: 0 auto
+    border-radius: 4px
+    padding: 10px
+    color: #fff
+    margin-bottom: 10px
+    &.notice
+      background: $green
+    &.alert
+      background: $darkYellow
+    &:first-child
+      margin-top: 20px
+    &:last-child
+      margin-bottom: 0
+    @media #{$mobile}
+      margin: 0 10px

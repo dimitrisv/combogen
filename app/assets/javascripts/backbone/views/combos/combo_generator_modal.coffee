@@ -96,6 +96,7 @@ class LevelApp.Views.ComboGenerator extends Backbone.View
         sequence: comboSequence
         lists:    lists
       success: (resp) =>
+        toastr.success('You created a combo. Nice!')
         # Change to the default list + fetch the result
         listsDropdown = $('#combo-lists-dropdown')
         if listsDropdown.val() != ''

@@ -2,6 +2,7 @@
   = render partial: 'layouts/logo'
   .container
     %h3 Sign in with your Level App account
+  = render 'shared/flash_messages'
   #sign-in-inputs
     = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
       = f.email_field :email, :autofocus => true, :placeholder => "Email", :class => "form-control"
