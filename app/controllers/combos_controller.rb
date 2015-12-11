@@ -1,6 +1,6 @@
 class CombosController < ApplicationController
   before_filter :authenticate_tricker!, :except => [:show]
-  
+
   def index
     @combos = Combo.order('updated_at DESC').page(params[:page])
 
