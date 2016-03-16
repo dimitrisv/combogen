@@ -15,15 +15,14 @@ class CombosController < ApplicationController
   end
 
   def my_combos
-
     collection = current_tricker.combos
+
     if params[:list]
       @list = current_tricker.lists.find_by_id(params[:list])
       collection = @list.combos if @list
     end
+
     @combos = collection.order('updated_at DESC').page(params[:page])
-    # @combos = collection.order(params[:sort]) if params[:sort]
-    # @combos = @combos.page(params[:page])....
 
     if request.xhr?
       render partial: 'combos_list', locals: {empty_message: 'There are currently no combos in this list.'}
@@ -77,7 +76,7 @@ class CombosController < ApplicationController
     render partial: 'combo_generator_modal'
   end
 
-private
+  private
 
   def get_trick_ids_from_names(trick_names)
     trick_ids = []
@@ -98,5 +97,4 @@ private
     end
     list_ids
   end
-
 end
